@@ -1,0 +1,86 @@
+.week-sat { color: blue; }
+.week-sun { color: red; }
+.holiday  { color: red; }
+
+.navi { text-align: right; }
+
+dd.APS-author { font-style: italic; }
+
+.red   { color: red; }
+.green { color: green; }
+.blue  { color: blue; }
+
+body {
+  font-family: arial,verdana,sans-serif;
+  font-size: 12px;
+  //background-color: #000;
+  background-color: #999;
+}
+
+a         { color: #900;}
+a:visited { color: #555; }
+a         { text-decoration: underline;}
+a:hover   { text-decoration: none;}
+
+.body {
+  background-color: #fff;
+}
+
+h2 {
+  margin: 10px;
+  padding: 5px 10px 5px 10px;
+  /* color: #900; */
+  background-color: #ddd;
+  font-weight: normal;
+  //font-weight: bold;
+  font-style:  italic;
+  border-bottom: 1px solid #900;
+  border-right:  1px solid #900;
+}
+
+hr {
+  margin: 10px;
+  border: 0px;
+  height: 1px;
+  background-color: #900;
+}
+
+pre {
+  display: block;
+  /* order of 4 parameters is top, right, bottom, left. */
+  padding: 0 0 0 .85em;
+  margin: .25em 20px .6em 0;
+  font-style: normal;
+  border-left: 4px solid #AAA;
+  background:#EEE;
+}
+
+blockquote {
+  display: block;
+  padding: 5px;
+  font-style: normal;
+  border: 1px solid #AAA;
+  background:#EEE;
+}
+
+.revision {
+  color: #080;
+}
+
+table.header {
+  margin: 0px;
+  padding:  10px;
+  background-color: #DDD;
+}
+
+table.footer {
+  margin: 0px;
+  padding:  10px;
+  #background-color: #DDD;
+  color: #eee;
+  background-color: #888;
+}
+
+p {
+  margin: 10px;
+}

@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - May 1998</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <link rel="alternate"  type="application/rss+xml" href="diary.rdf" />
+  </head>
+
+<body>
+
+
+
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+
+<h1><a id="top" name="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 1998年5月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+<a href="#d29">29</a>
+<a href="#d28">28</a>
+<a href="#d27">27</a>
+<a href="#d25">25</a>
+|
+<a href="#d21">21</a>
+<a href="#d20">20</a>
+<a href="#d19">19</a>
+<a href="#d18">18</a>
+|
+<a href="#d15">15</a>
+<a href="#d14">14</a>
+<a href="#d13">13</a>
+<a href="#d11">11</a>
+|
+<a href="#d8">8</a>
+
+ 
+<div class="body">
+
+<br />
+
+
+<h2><a id="d29" name="d29"></a>5/29 (Fri)</h2>
+<ul>
+ <li>S-E coupling の符号に付いて考える...解決！
+  1st moment の symmetric part K.S の符号が逆だった
+  これで、matrix の全ての符号問題が解決
+  次は、singular matrix の謎解明
+ </li>
+ <li>john
+ </li>
+ <li>非対称性は real で既に起きている様子
+  ...こっちには見込みなさそうなので、別のアプローチ
+ <ul>
+  <li>LU decomp ルーチンを使って inverse を計算
+   ...negative matrix になっている場合がある
+  </li>
+  <li>bug 発見 ; M の self part の matrix が identity tensor の
+   ２倍だった
+  </li>
+  <li>修正後は問題無くなる！！-&gt; cholesky にもどす
+  </li>
+  <li>しかし、昨日の「直った事件」は、なんだったのか？
+   (多分 N=1 としてたのでしょう)
+  </li>
+ </ul>
+ </li>
+</ul>
+		
+<h2><a id="d28" name="d28"></a>5/28 (Thu)</h2>
+<ul>
+ <li>FTS 1) プログラム書き上げる
+ </li>
+ <li>FTS 1) 比較終了、 debug 完了(real space function)
+  しかし、依然 FTS では phi&gt;.265 で singular matrix になってる
+  とりあえず、FT に限定して、drag coef. を計算、比較する。
+ </li>
+ <li>波数空間の符号を確認 -&gt; FTS までで SC で singular にならない
+ </li>
+ <li>FTS 2) 問題無し、終了
+ </li>
+ <li>FTS 3) BCC, FCC を計算
+ </li>
+ <li>うまくいったはずが、サブルーチン化(SC,BCC,FCC とも)したら
+  SC がまた同じ点(phi&gt;.265)で singular になった...謎
+ </li>
+ <li>行列の対称性をとりあえずチェック...微小料で反対称になってる
+ </li>
+ <li>本日は切り上げ
+ </li>
+ <li>物理の計画を立てる
+ </li>
+ <li>来月の月間スケジュールを立てた。
+  目標は学会参加(３つの話をしたい！)
+ </li>
+ <li>S-E coupling の符号に付いて、ようやく始める
+ </li>
+ <li>結局、結論のでないまま時間となる
+ </li>
+ <li>またあした。
+ </li>
+</ul>
+
+<h2><a id="d27" name="d27"></a>5/27 (Wed)</h2>
+<ul>
+ <li>john's lecture
+ </li>
+</ul>
+
+<h2><a id="d25" name="d25"></a>5/25 (Mon)</h2>
+<ul>
+ <li><a id="d25-candy" name="d25-candy"></a>
+  [music]
+  Candy Dulpher
+  at Central Park in Pasadena
+  (Playboy Jazz Fes のサテライト)
+ <ul>
+  <li>←
+   <a href="diary2003_11.html#d2-candy">11/2/2003</a>,
+   <a href="diary2003_10.html#d16-candy">10/16/2003</a>|
+   <a href="diary1998_05.html#d25-candy">5/25/1998</a>|
+   →</li>
+  <li><a href="diary2008_06.html#d29-maceo">6/29/2008</a>:
+   maceo parker @ edmonton.</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d21" name="d21"></a>5/21 (Thu)</h2>
+<ul>
+ <li>Ewald sum (ノートより)
+ <ul>
+  <li>mathematica で Ewald の scalar function を計算、プリントアウトしてる。
+  </li>
+ </ul>
+ </li>
+</ul>	
+
+<h2><a id="d20" name="d20"></a>5/20 (Wed)</h2>
+<ul>
+ <li>Ewald ノートに専念
+ </li>
+ <li>john's lecture で D vs nu について質問
+ </li>
+</ul>	
+
+<h2><a id="d19" name="d19"></a>5/19 (Tue)</h2>
+<ul>
+ <li>Ewald sum の計算、メドが立つ
+ </li>
+</ul>
+
+<h2><a id="d18" name="d18"></a>5/18 (Mon)</h2>
+<ul>
+ <li>sundar's lecture
+ </li>
+ <li>john と会って話す。Ewald sum の結果を聞くが、見当たらない様子。
+ </li>
+ <li>Ewald sum の計算を気合いを入れてする
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d15" name="d15"></a>5/15 (Fri)</h2>
+<ul>
+ <li>(ノートより)stokesian.f での Ewald matrix のストアについて
+ </li>
+</ul>
+
+<h2><a id="d14" name="d14"></a>5/14 (Thu)</h2>
+<ul>
+ <li>周期境界プログラムの small 化、check 済み.
+ </li>
+ <li>FTS 化、構造は完成。式を整理して入れれば OK.
+ </li>
+</ul>
+
+<h2><a id="d13" name="d13"></a>5/13 (Wed)</h2>
+<ul>
+ <li>fts-small.c 完成！
+  何が完成したかと言うと...
+ <ul>
+  <li>f_lr ルーチン: 長距離力を m-of-r で計算する方法 O(N^2)
+  </li>
+  <li>rfl ルーチン: R^inf を m-of-r で計算する方法 O(N^3) ;-&lt;
+  </li>
+  <li>新 mob,lub ルーチン: 小行列ごとにまとめて、見通しよい。
+  </li>
+ </ul>
+ </li>
+ <li>john's lecture
+ </li>
+</ul>
+
+<h2><a id="d11" name="d11"></a>5/11 (Mon)</h2>
+<ul>
+ <li>12:00 sundar's lecture
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d8" name="d8"></a>5/8 (Fri)</h2>
+<ul>
+ <li>13:00 john
+ </li>
+ <li>プログラムのデバッグが、久しぶりに捗る。
+  ただし、まだ問題あり...
+ </li>
+</ul>
+
+<hr />
+
+
+<a href="#d29">29</a>
+<a href="#d28">28</a>
+<a href="#d27">27</a>
+<a href="#d25">25</a>
+|
+<a href="#d21">21</a>
+<a href="#d20">20</a>
+<a href="#d19">19</a>
+<a href="#d18">18</a>
+|
+<a href="#d15">15</a>
+<a href="#d14">14</a>
+<a href="#d13">13</a>
+<a href="#d11">11</a>
+|
+<a href="#d8">8</a>
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+</body>
+</html>

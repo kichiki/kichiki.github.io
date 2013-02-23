@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - January 1998</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <link rel="alternate"  type="application/rss+xml" href="diary.rdf" />
+  </head>
+
+<body>
+
+
+
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+
+<h1><a id="top" name="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 1998年1月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+<a href="#d22">22</a>
+<a href="#d21">21</a>
+<a href="#d20">20</a>
+<a href="#d19">19</a>
+|
+<a href="#d16">16</a>
+<a href="#d15">15</a>
+<a href="#d14">14</a>
+
+ 
+<div class="body">
+
+<br />
+
+
+<h2><a id="d22" name="d22"></a>1/22 (Thu)</h2>
+<ul>
+ <li>zeta series の解析
+  check 用の速度がおかしい原因判明、rev 3.1 で完成か？
+ </li>
+ <li>zeta のお話はとりあえず、終り
+ </li>
+ <li>(問題)rev 3.1 でも速度はやはりおかしい -&gt; 定量的検証！
+ </li>
+ <li>3D の結果で singular になってるものがある。
+ </li>
+</ul>
+
+<h2><a id="d21" name="d21"></a>1/21 (Wed)</h2>
+<ul>
+ <li>&lt;zeta2/3&gt; YITP で実行を試みる -&gt; コンパイルで警告
+  -&gt; misc debugs.
+ </li>
+</ul>
+
+<h2><a id="d20" name="d20"></a>1/20 (Tue)</h2>
+<ul>
+ <li>VPP zeta3 の結果 -&gt; bug 発見(3D のみ rev 2.6)
+ </li>
+ <li>job 再投入(100番待ち...異様に混んでる)
+ </li>
+ <li>job 3D fun の結果を PD に取り込む
+ </li>
+</ul>
+
+<h2><a id="d19" name="d19"></a>1/19 (Mon)</h2>
+<ul>
+ <li>fun: zeta の更なる改良、check も兼ねて 3D zeta をやり直し
+ </li>
+ <li>blob の解析
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d16" name="d16"></a>1/16 (Fri)</h2>
+<ul>
+ <li>zeta 3D の結果の解析、a175-5 と a350-5 がsingular、 他は OK
+ </li>
+ <li>原因は config の overlap にあるようだ。(OK は overlap なし)
+ </li>
+ <li>config を cc で作ったものに変えて job 投入
+ </li>
+ <li>OK だった結果を使って他の job も投入
+ </li>
+ <li>zeta の改良、結果に平均速度を入れる修正、終り(rev 2.3)
+ </li>
+ <li>t_ratio の刻を指数にする修正、終り(rev 2.4)
+ </li>
+</ul>
+
+<h2><a id="d15" name="d15"></a>1/15 (Thu)</h2>
+<ul>
+ <li>昨日の fun3cc のデータ作り
+ </li>
+ <li>VPP の job をチェック -&gt; zeta3 が singular で止まってる
+ <ul>
+  <li>3D fortran の ewald chk を実際に行う事にする
+  </li>
+ </ul>
+ </li>
+ <li>とりあえず、check program は完成
+ <ul>
+  <li>結果の解析により、fun2.f は正しい、fun3.f はおかしい、事判明
+  </li>
+  <li>fun3.f は np=1 は OK なので、非self部のミスらしい
+  </li>
+  <li>zeta に depend する。午後はデバッグだな。
+  </li>
+  <li>(これまでの)3D の結果も破棄せねばならない。
+  </li>
+ </ul>
+ </li>
+ <li>3D の debug 完了！v 2.4 でいいはず。
+ </li>
+ <li>VPP に job (zeta3) の投げ込み終り
+ </li>
+ <li>帰る前に zeta3 の結果を覗くと、a100 は良かったが
+  a175 がおかしい。(速度の結果も出力するようにするべきか)
+ </li>
+ <li>明日の課題！
+ </li>
+</ul>
+
+<h2><a id="d14" name="d14"></a>1/14 (Wed)</h2>
+<ul>
+ <li>Eyink にメール
+ </li>
+ <li>funtai 3D
+ <ul>
+  <li>lx=30 と 40 の間で性質が変わっている様子
+  </li>
+  <li>lx=35 のデータ作り、zeta3 の job 投入
+  </li>
+  <li>(同時に u=0.3 の job も投入)
+  </li>
+  <li>fun3cc で dat3 作り
+  </li>
+ </ul>
+ </li>
+ <li>funtai 2D の結合の残り(vis) を攻略
+ </li>
+ <li>awk script をまとめる、
+ </li>
+ <li>fun3cc の a175 が完成、dat3.a175-35-5 を作る
+ </li>
+ <li>combine が出来た、チェックへ。
+ </li>
+</ul>
+
+<hr />
+
+
+<a href="#d22">22</a>
+<a href="#d21">21</a>
+<a href="#d20">20</a>
+<a href="#d19">19</a>
+|
+<a href="#d16">16</a>
+<a href="#d15">15</a>
+<a href="#d14">14</a>
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+</body>
+</html>

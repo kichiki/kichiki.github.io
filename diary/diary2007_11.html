@@ -1,0 +1,1736 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - November 2007</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <link rel="alternate"  type="application/rss+xml" href="diary.rdf" />
+    <script type="text/javascript" src="LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+
+
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top" name="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2007年11月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+<div class="body">
+
+<br />
+
+
+<h2><a id="d30" name="d30"></a>11/30 (Fri)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Linux (bue9) の ryuon 環境を upgrade.
+  <ul>
+   <li>ここのところ色々と手を入れているので、離されない内に catch-up。</li>
+   <li>ついでに libstokes/test suites を大幅に手入れ。</li>
+   <li>performance について一つの疑問が残る（要チェック）。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d30-report" name="d30-report"></a>
+  [phys]１１月の月刊レポートを書き上げる。
+ <ul>
+  <li>今月は半日を潰した。あんまり進展してないなぁ（<a href="#d13-twobody">しつ</a><a href="#d26_planning">こい</a>）。</li>
+  <li>back-numbers:
+  <ul>
+   <li><a href="diary2007_04.html#d3-ryuon">4/3/2007</a>: ４月号</li>
+   <li><a href="diary2007_05.html#d1-report">5/1/2007</a>: ５月号</li>
+   <li><a href="diary2007_06.html#d1-report">6/1/2007</a>: ６月号</li>
+   <li><a href="diary2007_07.html#d4-report">7/4/2007</a>: ７月号</li>
+   <li><a href="diary2007_08.html#d1-report">8/1/2007</a>: ８月号</li>
+   <li><a href="diary2007_09.html#d6-report">9/6/2007</a>: ９月号</li>
+   <li><a href="diary2007_10.html#d1-report">10/1/2007</a>: １０月号</li>
+   <li><a href="diary2007_10.html#d31-report">10/31/2007</a>: １１月号</li>
+   <li><a href="diary2007_11.html#d30-report">11/30/2007</a>: １２月号</li>
+   <li><a href="diary2008_01.html#d7-report">1/7/2007</a>: 2008年１月号</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d29" name="d29"></a>11/29 (Thu)</h2>
+<ul>
+ <li><a id="d29-ryuon" name="d29-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>stokes/stvis-vtk.py の改良。
+  <ul>
+   <li>初期配置を作るとき、 scm file も 3D 的に見たい、ということ。
+    scm が読み込めれば、今は全粒子を linear に繋ぐだけの -b option も、
+    正しく処理できるようになる。</li>
+   <li>試行錯誤の後、結局 libstokes 側で（C の方で）
+    簡単な wrapper を書くことで対応する。</li>
+   <li>viewer は、 stvis-vtk.py 内に書こうかとおもったけど、
+    既に充分スパゲッティなので、
+    暫定的に独立の script (stvis-vtk-scm.py) を書く。</li>
+   <li>帰宅後、 stvis-vtk 系の手入れ。
+    subroutine を切り出して ryuon_vtk.py という module にする。
+    stvis-vtk.py と stvis-vtk_.py と stvis-vtk-scm.py で共用。</li>
+  </ul>
+  </li>
+  <li>Brownian dynamics
+  <ul>
+   <li>時間発展スキーム。
+   <ul>
+    <li><a href="#d16-ryuon">11/16/2007</a> のネタに戻ってくる。</li>
+    <li><a href="http://link.aip.org/link/?JCPSA6/124/044911/1">Hsieh et al (2006)</a> に目を通してから、
+     またまた <a href="http://dx.doi.org/10.1016/S0377-0257(02)00132-5">Somasi et al (2002)</a> まで戻る。
+     やっぱ、自分で組んでみないと分からないな。</li>
+    <li><a href="diary2008_06.html#d20-ryuon">6/20/2008</a>:
+     やっと理解した。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d29-nano" name="d29-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>DIP:
+  <ul>
+   <li>昨日の計算は無事に終了。しかし単に「走った」というだけ。
+    パラメータを調整しないとダメ。</li>
+   <li>Pe を上げてみる。（時間刻みも上げないとダメか？）</li>
+   <li><a href="diary2007_12.html#d3-nano">12/3/2007</a>: 終了。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d29-seminar" name="d29-seminar"></a>
+  [phys]<a href="http://www.cein.ualberta.ca/research/nint/theory-modeling-group/seminar/index.html">グループ・セミナー</a>
+ <ul>
+  <li>ナノ・ドロップレット、超流動、量子モンテカルロと、興味深い subject で、
+   かつ、しっかりとした仕事だった。（それでも、話者の準備したものの半分までで中断。）</li>
+  <li>いろいろと妄想をかきたてる面白い話だった。つまり、即物的な対象ではない。
+   というか、こちらの理解が足りていなくて、距離が遠すぎて手が出せない、という感じ。
+   この辺りでモヤモヤ考えるのが、実は一番面白いのだろうな。</li>
+  <li><a href="diary2007_12.html#d20-seminar">12/20/2007</a>:
+   次回のグループ・セミナー。</li>
+  <li><a href="#d15-seminar">11/15/2008</a>:
+   前回のグループ・セミナー。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d28" name="d28"></a>11/28 (Wed)</h2>
+<ul>
+ <li><a id="d28-nano" name="d28-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>実験グループの学生二人と会う。
+  <ul>
+   <li>あちらのボスが超多忙で、
+    あと件のプロジェクトもちょうど学生の引き継ぎと重なってて、
+    あちら側の現実的なプランは流動的かな。</li>
+   <li>ネタは私に近（くて、相棒からはちと遠）い。
+    まぁ私としては、やることは何でもある、という感じ。</li>
+   <li><a href="#d11-nano">1/11/2008</a>: remind.</li>
+   <li><a href="diary2008_01.html#d11-nano">1/11/2008</a>: remind.</li>
+   <li><a href="diary2008_01.html#d24-nano">1/24/2008</a>: トップ会談。</li>
+  </ul>
+  </li>
+  <li>DIP (s/polymer/dna/):
+  <ul>
+   <li>gen-config.py を改良：
+    hcp config を作れるようにする（のに、バカみたいに時間を食った…）。</li>
+   <li>stncdump.py の改良：
+    COM を shift できるように修正
+    (nc から scm script 用の configure を吐く時のために)。</li>
+   <li>テスト config を幾つか作ってみる。
+   <ul>
+    <li>はじめてだと、なかなか思い通りの状況を作るのが大変。</li>
+    <li>結局、手始めは N=25 の系で行ってみることにする。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d28-ryuon" name="d28-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>libstokes の高速化：
+  <ul>
+   <li>行列版で LAPACK を使っている部分に無駄があった、という話。
+    （cf. <a href="#d25-ryuon">11/25/2007</a>）</li>
+   <li>まずは、該当部分の修正が本当に高速化されるか確認：
+   <ul>
+    <li>test/check-lapack-solve-lin.c を書く。</li>
+    <li>結果：かなり高速化されることが分かる。
+     100x100 の行列で約 2.6 倍、 1000x1000 なら 6.8 倍だ！</li>
+   </ul>
+   </li>
+   <li>この修正が適用可能な部分を探す。
+   <ul>
+    <li>結局、使えるのは２ヶ所のみだった。
+     つまり、 F version と FT version の
+     res 問題および mob-lub 問題の行列版。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d28-wifi" name="d28-wifi"></a>
+  帰宅したら wifi router の調子が悪い。
+ <ul>
+  <li><a href="diary2007_01.html#d1-soho">1/1/2007</a>に買ったもの。
+   結構、不安定で、電源を切って（というか、スイッチがないのでアダプターを引き抜いて）、
+   しばらく（といっても最低３分くらい）置いておいて、再び電気を入れる
+   （つまり、アダプターを突っ込む）という作業が、そうだな、数日に一回の割合で必要だった。
+   それが、今日は30分置いても結局戻ってこない（と、家の人がプンプンしていた）。</li>
+  <li>ネットワークが繋がらないと情報も取れないとか、かなり不自由な状況で手間取ったが、
+   full reset 後に firmware の update をしたら、生き返った（と思う）。
+   将来のために、一応手順を書いておくと、
+  <ul>
+   <li>wifi router の電源を入れた状態で、裏のリセットボタンを 10 秒程度
+    押しつづける。</li>
+   <li.その後離して 30 秒程度待つ。</li>
+   <li>その後、端末をポートに突っ込んで http で接続する。
+    この時、普通の web interface ではなく、
+    firmware update だけの plain なものしか出てこなかった
+    やっぱ、何かトラブっていたのだな）。</li>
+   <li>firmware を upload して、ウンともスンとも言わないのをジッと我慢したら
+    （そうだな、下手したら 2-3 分待ったかな？）、
+    LED の status が変化した（具体的にどれが点いたかとかは覚えてない）。</li>
+   <li>その後 http で接続すると、無事、なつかしい web interface が出てきた。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d27" name="d27"></a>11/27 (Tue)</h2>
+<ul>
+ <li><a id="d27-ryuon" name="d27-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>APIAG:
+  <ul>
+   <li>今のコードで結果を確認、続き：
+   <ul>
+    <li>確認のため C でも同じものを書いてみる。
+     この過程で python code に幾つか（下らない）間違いを見つけた。</li>
+    <li>結果：
+     C でも python 新旧と同様の振る舞いを確認。</li>
+    <li>解釈：
+     lub 抜き、 F version でも系統的な違いが見える。
+     F の M<sup>∞</sup>に既に問題がある。そこに集中しよう。</li>
+    <li>追跡：詰めていくと、 a[] を使うか slip_a[] を使うかの違いだ。</li>
+    <li>slip_a[] の定義（設計思想）を確認。
+     無次元化しないで、 a を掛けたものとして組んでいるようだ
+     （が、そうなっていなかった）。しかるべく、 slip_a の定義を修正。
+     （ついでに free し忘れていた temporary な array も直しておく。）</li>
+    <li>確認計算、 ok.</li>
+    <li>ちなみにこの bug は poly な slip にのみ影響するので、
+     <a href="diary2007_10.html#d18-paper">論文の結果</a>は
+     （monoだけだったので）問題なし。よかった、よかった。</li>
+   </ul>
+   </li>
+   <li>経過：
+   <ul>
+    <li><a href="diary2007_08.html#d25-nano">8/25/2007</a>: 問題発覚。</li>
+    <li><a href="#d26-ryuon">11/26/2007</a>: 再開。</li>
+    <li><a href="#d27-ryuon">11/27/2007</a>: debug 終了。</li>
+   </ul>
+   </li>
+   <li>改めて解析をやり直し。
+   <ul>
+    <li>h 依存性：
+     特異な振る舞いは見られなくなった。あと lub は極めて大事だ。</li>
+    <li>R を降ってみる。
+     400 を越えると破綻する。（理論的に展開点が無限遠に飛ぶので、仕方ないのだろう。）</li>
+    <li>F 問題と U<sup>∞</sup> 問題の比較：
+     前の結果（bug入り）ほど大きな違いはない
+     （つまり、前見た違いは bug が引き起こしていたものだった訳だ）。
+     しかし小さいが有意な違いは見える。こんなものか？</li>
+   </ul>
+   </li>
+   <li>と、無事 poly の固定粒子込みの bug が落ちたので、
+    <a href="#d27-nano">応用問題</a>を点火しておく。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d27-nano" name="d27-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>PIP(polymmer in porous medium)
+  <ul>
+   <li>めでたく
+    <a href="#d27-ryuon">APIAG の bug が取れた</a>ので、応用問題として始動。</li>
+   <li>実は <a href="diary2007_05.html#d30-nano">5/30/2007</a> に
+    ちょっと demo 計算をしたっ切りだな。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d27-metheny" name="d27-metheny"></a>[music]
+  「<a href="http://www.nytimes.com/2005/02/25/arts/music/25meth.html?_r=1&pagewanted=1&oref=slogin">Pat Metheny: An Idealist Reconnects With His Mentors By BEN RATLIFF (Published: February 25, 2005)</a>」@nytimes(<a href="LOCAL/20071127-nytimes-25meth.html">lc</a>)
+ <ul>
+  <li>続き：
+   <a href="http://www.nytimes.com/2005/02/25/arts/music/25meth.html?pagewanted=2&_r=1&oref=slogin">2</a>(<a href="LOCAL/20071127-nytimes-25meth-2.html">lc</a>)
+   <a href="http://www.nytimes.com/2005/02/25/arts/music/25meth.html?pagewanted=3&_r=1&oref=slogin">3</a>(<a href="LOCAL/20071127-nytimes-25meth-3.html">lc</a>)
+   <a href="http://www.nytimes.com/2005/02/25/arts/music/25meth.html?pagewanted=4&_r=1&oref=slogin">4</a>(<a href="LOCAL/20071127-nytimes-25meth-4.html">lc</a>)</li>
+  <li>備忘録として。</li>
+  <li><a href="diary2008_01.html#d11-wichita">1/11/2008</a>:
+   as falls wichita, so falls wichita falls.</li>
+  <li><a href="summaries.html#pat-metheny">サマリー：pat metheny</a></li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d26" name="d26"></a>11/26 (Mon)</h2>
+<ul>
+ <li>とうとう、ここも冬らしくなってしまった。
+ <ul>
+  <li>氷点下１０度以下だって。</li>
+ </ul>
+ </li>
+ <li><a id="d26-planning" name="d26-planning"></a>
+  [phys]研究計画。
+ <ul>
+  <li><a href="#d5-planning">月の初め</a>に立てた計画だが、
+   予定通りに進んでいない（ということは、
+   <a href="#d13-twobody">先週</a>も愚痴っていたな、そう言えば）。
+   今はある意味ちょうど一山越えた所で、
+   次のターゲットがどれも一癖あって、手を出しあぐねているといった感じだな。
+   端的に言えば、目標設定が高すぎた（遠すぎた）ということだな。</li>
+  <li>とは言え、（気分としては現実逃避気味にではあるが）
+   手が届くような出来ることに専心して進めているので、
+   まぁそういうもんだと思えばよいか。</li>
+  <li><a href="#d30-report">11/30/2007</a>: 月刊レポート１２月号。</li>
+ </ul>
+ </li>
+ <li><a id="d26-ryuon" name="d26-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>APIAG:
+  <ul>
+   <li>結局
+    <a href="diary2007_08.html#d25-nano">8/25/2007</a> 以来、放置していたもの。
+    気合を入れて再開させておく。</li>
+   <li>その時の解析を一通りおさらいしておく。
+    今見ると、結構いい線まで問題を詰めていたみたい
+    （詰め切れなくて時間切れ、という感じ）。</li>
+   <li>今のコードで結果を確認。うむ、何やら予期しない食い違いに出会う。</li>
+   <li><a href="#d27-ryuon">11/27/2007</a>: debug 終了。</li>
+  </ul>
+  </li>
+  <li>高速化の試み（前処理）。
+  <ul>
+   <li>Weiss を眺めてて、話題の multi-level method の辺りの感じをようやく掴んだ。</li>
+   <li>前処理全般に言えるけれど、この辺りは下手をするとトートロジーになりそうな、
+    そういう領域だな。逐次法への前処理というのは、有り体に言えば直接法の導入だし、
+    multi-level method もアイデアとしては FMM と近いし。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d26-nano" name="d26-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>実験家との共同研究の件。
+  <ul>
+   <li><a href="#d7-nano">先日</a>来、音沙汰がない。
+    相棒がしびれを切らして再びメールを出したら、あちらから程なく返事が来る。
+    明日か明後日に会いましょう、と。
+   <ul>
+    <li><a href="diary2008_09.html#d12-nano">9/12/2008</a>:
+     またまた音信不通であるよ。</li>
+   </ul>
+   </li>
+   <li><a href="#d28-nano">11/28/2008</a>: 学生二人と会う。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d25" name="d25"></a>11/25 (Sun)</h2>
+<ul>
+ <li><a id="d25-ryuon" name="d25-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li><a href="http://ryuon.sourceforge.net/libiter.html">libiter</a> の整備。
+  <ul>
+   <li>またちょっと API を変更。
+    収束したかどうかを戻り値で返すことにする。</li>
+   <li>前処理付き solver も準備。（solve_iter_pc）</li>
+  </ul>
+  </li>
+  <li>高速化の試み（前処理）。
+  <ul>
+   <li>mob-lub の前処理（test-precond.c）
+   <ul>
+    <li>lapack の LU 分解で inverse を陽に求めないようにした（今更ながら）。
+     これで ilu.c に組んでいた LU 分解コードはお払い箱。
+    <ul>
+     <li><a href="#d28-ryuon">11/28/2007</a>: libstokes も修正。</li>
+    </ul>
+    </li>
+    <li>precond.c も整理。こいつもダラダラ書いていたもの。分類して分割する。</li>
+    <li>古いテスト項目は外して、再計算。
+     結果は、おおむね予想通り。  つまり、
+    <ul>
+     <li>逐次回数は前処理により減少、セル・サイズが大きいとその分減る。</li>
+     <li>CPU 時間は、前処理の overhead があり、
+      セル・サイズを tune する必要がある。</li>
+     <li>それでも二倍はいかない（最高 1.8 倍程度）。</li>
+    </ul>
+    </li>
+    <li>また別のアイデアが必要だな。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d24" name="d24"></a>11/24 (Sat)</h2>
+<ul>
+ <li>今日はお供で南の方にブラブラと。</li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速化の試み（前処理）。
+  <ul>
+   <li>mob-lub の前処理（est-precond.c）
+   <ul>
+    <li>nearest pair approach はダメ、ということを認識。</li>
+    <li>次の案として、グルーピングを実装してみる、
+     かなり荒っぽい近似だが。</li>
+    <li>組み上がったので、走らせてみる。
+     セル・サイズを上げると逐次回数は減っている。
+     しかし実行時間は plain に負けている……</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d23" name="d23"></a>11/23 (Fri)</h2>
+<ul>
+ <li><a id="d23-ryuon" name="d23-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li><a href="http://ryuon.sourceforge.net/libiter.html">libiter</a> の整備。
+  <ul>
+   <li>昨日の変更の house keeping など。</li>
+   <li>test でこけるものの調査。
+    どうも Bi-CGSTAB は実装に sensitive みたい。
+    厄介なのは一回発散してから再び（見掛け上）収束しているもの。
+    （暫定的に）収束だけでなく上限チェックを入れておく。</li>
+   <li>前処理付き CG をテスト環境から libiter に持ってきておく。</li>
+  </ul>
+  </li>
+  <li>高速化の試み（前処理）。
+  <ul>
+   <li>LU 分解のテストコード（test-ilu.c）の整理。
+   <ul>
+    <li>これもベタァーっと書いていたものを、パーツごとに切り出し。</li>
+    <li>前処理チェック関数群も libiter/test 並にしておく。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li>Newton-GMRES の勉強
+  <ul>
+   <li>家にある Chatelin 「行列の固有値」という翻訳本をパラパラ眺めていて、
+    やっぱりきちんと押さえておこうかな、と思って。</li>
+   <li>情報収集。
+    Knoll J.Comp.Phys.(2004) にざっと眺める。
+    ノート（note/20071119-iter/iter.tex）に簡単にまとめておく。</li>
+   <li><a href="diary2008_06.html#d4-ryuon">6/4/2008</a>:
+    NITSOL の組み込み。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d22" name="d22"></a>11/22 (Thu)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li><a href="http://ryuon.sourceforge.net/libiter.html">libiter</a> の整備。
+  <ul>
+   <li>インターフェイスの大幅な見直しを行う。</li>
+   <li>あと、古い実装を新しいものに置き換え（bi-cgstab.c と orthomin.c）。</li>
+   <li>test suites も、 libstokes/test 並に整備。
+   <ul>
+    <li>様々なテスト事項のエラーをチェック、
+     最終結果で全部パスしたかどうか、きちんと見えるようにする。</li>
+    <li>ベタっと書いていたテスト・コードを、各テスト項目ごとに切り出し。
+     とりあえず、形になった。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d21" name="d21"></a>11/21 (Wed)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速化の試み（前処理）。
+  <ul>
+   <li>bi-cgstab 群の前処理化。
+   <ul>
+    <li>丸一日をブッ潰したが、できた。</li>
+    <li>とりあえず test はパスしたので libiter に組み込んでおく。</li>
+    <li>一通り ATLAS, BLAS, my-BLAS 版を準備したが、ほとんど違いは出てない。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d21-time_flies" name="d21-time_flies"></a>
+  今日は早く出てきたのに、あっという間に一日が終わった。
+ <ul>
+  <li>朝９時にオフィスに入って（月曜は一番乗りだったが、今日は二番だった）、
+   夕刻、横の同僚に「携帯が鳴ってるぞ」と教えてもらうまで、
+   それが鳴っていることに気づかなかった。
+   音楽を聞いていたのもあるが、 coding していると、あっという間に時が経つ。
+  <li>というか、自分の処理能力の遅さを痛感する。
+   program は logic なので、
+   <a href="theorems.html#bug">気合や魔法で何とかなるものではない</a>。
+   丁寧さが常に不可欠で、雑になったら成立しない。手を抜けない、とも言う。
+   いわゆる一つの（自分自身の） sanity check だな。
+  <ul>
+   <li><a href="diary2007_04.html#d20-mochio">4/20/2007</a>: 矜持。</li>
+   <li><a href="diary2007_06.html#d25-age">6/25/2007</a>:
+    能力として計算不可能になったとき。</li>
+   <li><a href="summaries.html#debug">サマリー：デバッグ</a></li>
+   <li><a href="summaries.html#research">サマリー：研究について</a>。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d20" name="d20"></a>11/20 (Tue)</h2>
+<ul>
+ <li><a id="d20-senya" name="d20-senya"></a>[blog][千夜千冊]
+  「<a href="http://www.isis.ne.jp/mnn/senya/senya1207.html">第千二百七夜　2007年11月20日 ベン・シャーン＆アーサー・ビナード ここが家だ</a>」@senya(<a href="LOCAL/20071120-senya1207.html">lc</a>)
+ <ul>
+  <li>引用その１、異邦人：
+  <blockquote>
+   この人、いまではちょっとした有名ガイジンである。
+   日本語で詩や絵本やエッセイを書く混血アメリカ人として知られる。
+  <br />
+   　が、有名ガイジンであることは、どうでもいい。
+   …
+   東京に来てからでもすでに十数年、日本人よりずっと深々と
+   日本語の「をかし」と「もどき」を味わっている。
+  <br />
+   …
+   いまは４０歳になっている。
+  </blockquote>
+  </li>
+  <li>引用その２、セイゴウ語録：
+  <blockquote>
+   ぼくは「遅ればせ」という言葉が好きで、…
+  <br />
+   　「遅ればせながら、私儀、只今、やはり参上致しました」。
+   これが大事なのである。準備ができれば、いつだっていい。
+   いくら遅ればせだっていい。そこに参上するべきなのだ。
+   「遅ればせ」は「遅れ馳せ」。そこに駆けつけることをいう。
+  </blockquote>
+  <ul>
+   <li><a href="theorems.html#okurebase">定理</a>にしておく。</li>
+  </ul>
+  </li>
+  <li>引用その３、本気：
+  <blockquote>
+   　なぜアーサー・ビナードがこういうコラボレーションができたのかといえば、
+   きっといろいろ理由があっただろうが、やはり心を打った日本語の短歌や俳句や詩を、
+   納得のいく英語にしたいと思いつづけ、それを試みてきたことが大きかったのではないかと思う。
+  <br />
+   　真髄に迫ろうというのでもない。
+   その表現の「本来」から、自分を含めた社会の「将来」を見据えている。
+   そのための翻訳コラボレーションなのである。ここが、たいしたものなのだ。
+   だから本気のコラボレーションができる。
+  <br />
+   　ということは、安易な妥協をしていないということでもある。
+  </blockquote>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d20-raiteu" name="d20-raiteu"></a>
+  [blog]
+  「<a href="http://www.isis.ne.jp/mnn/senya/senya1206.html">第千二百六夜　2007年11月8日 平塚らいてう 元始、女性は太陽であった</a>」@senya(<a href="LOCAL/20071120-senya1206.html">lc</a>)
+ <ul>
+  <li>前回の千夜千冊のエントリー。気になっていたのでついでに記録しておく。</li>
+  <li>特に引用する箇所もないが、一言で言うと、男は情けない、ということか。
+   あと、頭でっかちな一貫性なんか無くてよいのだと思った
+   （というのは、元々は <a href="http://en.wikipedia.org/wiki/Ralph_Waldo_Emerson">ralph emerson</a> から感じたことだが）。
+  <ul>
+   <li><a href="diary2010_06.html#d5-tatsuru">6/5/2010</a>:
+    高橋源一郎の論争におけるマナーについて。</li>
+  </ul>
+  </li>
+  <li><a href="diary2005_07.html#d28-sigure">7/28/2005</a>: 長谷川時雨</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速化の試み（前処理）。
+  <ul>
+   <li>前処理付き逐次法の実装。
+   <ul>
+    <li>LU 分解を使った線形方程式の解法ルーチン inv_ILU() を書く。</li>
+    <li>まずは CG の前処理版を書く。</li>
+    <li>libiter の orthomin を前処理化。
+    <ul>
+     <li>まずは今のコードを ALTAS 化する（ほとんど効果はなかったけど）。</li>
+     <li>実装した。一応動いている様子
+      （ただし、今は LU 分解は完全なので一発で終わってて、
+      本当のチェックにはなっていない）。</li>
+    </ul>
+    </li>
+    <li>対角成分の反転による前処理も実装(inv_diag())。
+    <ul>
+     <li>これでもうまく走っているので、よしとする。</li>
+    </ul>
+    </li>
+    <li>libiter の gmres.c にも手を入れる。
+    <ul>
+     <li>実装済み。
+      とりあえず inv_diag(), inv_ILU() とも、まともに動いている模様。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d19" name="d19"></a>11/19 (Mon)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>検証 run - 粒子編。
+   <ul>
+    <li>bue9 で週末走らせておいた結果：
+     JGdP だと dt=5e-5 は問題なし。 dt=0.0005 だと途中で止まってた。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li>bue9(SUSE-Linux) の RYUON の整備。
+  <ul>
+   <li>libstokes の pgcc 版ができた。
+    が、結果は期待はずれ。
+   <li>ということで、 bue9(SUSE-Linux) では
+    gcc -mtune=opteron -m64 -O3 で行くことにする。</li>
+   <li>最新版に更新して、 bench3 -all を仕込んでおく。</li>
+  </ul>
+  </li>
+  <li>高速化の試み（前処理）。
+  <ul>
+   <li>週末集めた文献を印刷しておく。</li>
+   <li>ILU の勉強（というか、 LU 分解（Gaussian elimination）のおさらい）。
+   <ul>
+    <li>なるほど、手を抜いているのは sparsity で、
+     dense なら普通の LU か。</li>
+    <li>実際にテスト・コードを書いて確認。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys] blob プロジェクト
+ <ul>
+  <li>torous の計算 on bue9。
+  <ul>
+   <li>一応 N=1000 も作ったが、まずは N=200 から。
+    今回は dt を 0.1 に刻んでおく。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d18" name="d18"></a>11/18 (Sun)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速化の試み（前処理）。
+  <ul>
+   <li>ずっと昔から todo list に入っている物件の一つ。</li>
+   <li>F-mob-lub に focus して、何かしら実装してみる。</li>
+   <li>結果：素のものが一番速い……</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d17" name="d17"></a>11/17 (Sat)</h2>
+<ul>
+ <li>ふと見ると、<a href="http://dfd2007.eng.utah.edu/">APS/DFD</a> は明日からだ。
+ <ul>
+  <li>プログラムとか眺めると、ミニ・シンポとか面白そうだなぁと思う。</li>
+  <li>どうせ行けないので
+   (cf.<a href="diary2007_07.html#d31-discussion">7/31/2007</a>)、
+   せめて刺激だけでも受けて、いい方に発散させねば。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>コードの整備。
+  <ul>
+   <li>WORK/SF/ryuon/stokes/stokes3.c:
+   <ul>
+    <li>atimes 版で使う libiter solver パラメータを
+     script で指定できるようにする。</li>
+   </ul>
+   </li>
+   <li>WORK/SF/ryuon/stokes/bench3.c:
+   <ul>
+    <li>blob の計算が予想外に遅いので、きちんと押さえておく。</li>
+    <li>まず open boundary (non-periodic) を追加、
+     あと -all option も（これは可能な option を網羅的にチェックする）。</li>
+   </ul>
+   </li>
+   <li>この過程で、一つ matrix の FT 版に bug を発見。直しておく。
+   <ul>
+    <li>ついでに、コードの手入れを少々。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys] blob プロジェクト
+ <ul>
+  <li>torous を計算。
+  <ul>
+   <li>するために stokes/python/gen-config.py を改造。</li>
+   <li>幾つか仕込んでおく。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d16" name="d16"></a>11/16 (Fri)</h2>
+<ul>
+ <li>アッシーのために早起き、早い出勤。
+ <ul>
+  <li>office に一番乗りであった。</li>
+ </ul>
+ </li>
+ <li><a id="d16-ryuon" name="d16-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>時間発展スキーム。
+   <ul>
+    <li>最近の勉強結果を
+     ノートにまとめる。(tex/note/20070913-brownian/brownian.tex)</li>
+    <li>semi-implicit scheme の再勉強。
+    <ul>
+     <li><a href="http://dx.doi.org/10.1016/S0377-0257(03)00107-1">Hsieh et al (2003)</a> をもう一度読む。
+      前に気になったポイントはやっぱり typo だよな。
+     <ul>
+      <li>6/20/2008 付記： 
+       typo ではない（言っているのは random vector 部の和の上限のこと）。</li>
+     </ul>
+     </li>
+     <li><a href="http://dx.doi.org/10.1016/S0377-0257(02)00132-5">Somasi et al (2002)</a> に戻る。
+      何となくイメージは掴めた。</li>
+     <li><a href="#d29-ryuon">11/29/2007</a>: 再アタック。</li>
+     <li><a href="diary2008_06.html#d20-ryuon">6/20/2008</a>:
+      やっと理解した。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+   <li>bue9(SUSE-Linux) の RYUON の整備。
+   <ul>
+    <li>libiter を pgcc で compile してみた。
+     が、速度は体感的にあんまり改善されていないみたい。</li>
+    <li>libstokes の方は、昨日の奴は option の関係で失敗していて、
+     今日また compile 中……</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys] blob プロジェクト
+ <ul>
+  <li>計算開始。
+  <ul>
+   <li>まずは blob を幾つか仕込んでおく。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d15" name="d15"></a>11/15 (Thu)</h2>
+<ul>
+ <li><a id="d15-ryuon" name="d15-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>bue9(SUSE-Linux) の RYUON の整備。
+   <ul>
+    <li>pgcc の compile,
+     大きいものは optimize なしにする。依然 compile 中。</li>
+   </ul>
+   </li>
+   <li>検証 run - 粒子編。
+   <ul>
+    <li>reject 版での検証。
+    <ul>
+     <li>こいつも、一旦ハマると抜け出せない模様。</li>
+     <li>全スキームで挙動を一通り押さえる。 BB が mid-point や BM より悪いのは、
+      一次だからかな？</li>
+    </ul>
+    </li>
+    <li>でも何か、根本的におかしい。</li>
+    <li><a href="diary2007_12.html#d12-ryuon">12/12/2007</a>: 復活。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li><a href="#d14-ryuon">昨日</a>物色した Brownian dynamics 関連の文献を印刷。
+   一通り目を通す。
+  <ul>
+   <li>BD の DNA モデルの別の系譜、という感じ。相互関係はどうなんだろうな？</li>
+   <li>DNA の結び目は、見た目、面白そうだと思った。</li>
+   <li><a href="diary2008_04.html#d4-nano">4/4/2008</a>: revive.</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d15-blob" name="d15-blob"></a>
+  [phys] blob プロジェクト
+ <ul>
+  <li>復活。
+  <ul>
+   <li>調べたら <a href="diary2004_01.html#d7-blob">1/7/2004</a> 以来だ。
+    やれやれ。</li>
+   <li>契機は先日（<a href="diary2007_11.html#d6-reading">11/6/2007</a>）
+    見つけた論文（Abade and Cunha 2007）。</li>
+  </ul>
+  </li>
+  <li>錯綜しているwebノートの情報を整理（プロジェクトの統廃合）。</li>
+  <li>現実的な（比較的短期的な）プランを立てよう。
+  <ul>
+   <li><a href="diary2003_12.html#d2-blob">12/2/2003</a> に
+    立てたプランが一番最近のものみたい。基本的にターゲットは同じ。</li>
+   <li>コードは、今回は RYUON をベースで行こうかな
+    （高次版を RYUON に入れるという hard な方向もあるが…）。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d15-seminar" name="d15-seminar"></a>
+  [phys]<a href="http://www.cein.ualberta.ca/research/nint/theory-modeling-group/seminar/index.html">グループ・セミナー</a>。
+ <ul>
+  <li>新しく来たポスドクのセミナー。これまでの仕事と、ここではじめた仕事を網羅的に。
+   詳細はすっとばされていたて、よく分からなかった。
+  <ul>
+   <li><a href="diary2008_01.html#d24-seminar">1/24/2008</a>:
+    新しい人のセミナー。</li>
+  </ul>
+  </li>
+  <li>議論は色々と白熱していた。メインは「そのアプローチは古い」的なコメント。
+   端的に言うと、 ginzburg-landau でアプローチするのが正道だろう、と。
+   話者のモデルも現象論なので、そのレベルで簡単に判断できないけど、
+   GL で free energy をテキトーに書いて、というアプローチって
+   何かヤラセっぽく感じるんだよなぁ（多分に趣味の問題だけれども）。
+  <ul>
+   <li><a href="diary2007_10.html#d14-linux">10/14/2007</a>:
+    web の情報 - ピカピカにしたハリボテの現象論。</li>
+  </ul>
+  </li>
+  <li><a href="#d29-seminar">11/29/2008</a>:
+   次回のグループ・セミナー。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d14" name="d14"></a>11/14 (Wed)</h2>
+<ul>
+ <li><a id="d14-ryuon" name="d14-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>検証 run - 粒子編。
+   <ul>
+    <li>bue9 の結果のチェック、続き。
+    <ul>
+     <li>昨日仕込んでおいた結果（BB03）も、やっぱり止まっていた。</li>
+     <li>時間刻みを更に下げる（が、結果は同じ）。</li>
+    </ul>
+    </li>
+    <li>stvis-vtk.py の時間表示を直しておく。
+     （%.1f が切り捨てではないのが混乱の原因。）
+     step も表示できるようにする。</li>
+    <li>埒が開かないので、別の dt 調整スキームを書く。
+     下限を外から指定し、それを下回ったら reject してやり直し。</li>
+    <li>bug 発見！
+     dt を縮めた時に、その分をきちんと勘定していなかった……。
+     修正して、今テスト中。</li>
+   </ul>
+   </li>
+   <li>bue9(SUSE-Linux) の RYUON の整備。
+   <ul>
+    <li>新しい dt スキームの libstokes を持ってくるついでに、少々。</li>
+    <li>test-all の check-matrix の結果を見ると、
+     mul_matrices の性能が出ていないことが発覚。
+    <ul>
+     <li>調べてみると config.h で BLAS がないことになっていた。</li>
+     <li>面倒なので、とりあえず手で config.h を修正して re-compile。</li>
+    </ul>
+    </li>
+    <li>install されている
+     <a href="http://www.pgroup.com/">pgcc</a>
+     をちょっと調べてみる。
+    <ul>
+     <li>-O4 で rebuild 中。
+      だがいくつかの冗長なソースでべらぼうに時間を食っている……</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+   <li>文献読み。
+   <ul>
+    <li>昨日の獲物から一本。
+     で、まだ見ていない predictor-corrector の古い論文が引用されていたので、
+     それから手繰ったりして、更にいくつか印刷しておく。</li>
+    <li><a href="#d15-ryuon">11/15/2007</a>: 目を通した。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]お勉強
+ <ul>
+  <li>何か乗らない時には、勉強でもしようということで、積ん読の消化。</li>
+  <li>Benes et al (2007) PRE
+  <ul>
+   <li>沈殿の話（実験）。 Peclet number を振っているのがミソ。
+    面白そうなので、後できちんと読んでおこう。</li>
+  </ul>
+  </li>
+  <li>Imparato et al (2007) PRE
+  <ul>
+   <li>Brownian dynamics の流れで見てみた（が、むしろ非平衡統計力学の話だった）。
+    これも、後できちんと読んでおこう。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>夜、久しぶりにお酒を飲む。
+ <ul>
+  <li>いや、思い出せないくらい本当に久しぶりだった。
+   結構、ゆっくりと時間を過ごした。</li>
+  <li>女性陣（というか、その内一方だけ、かな？）が主導的な話題展開であったようにも思うが、
+   まぁ、よかったんではないだろうか。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d13" name="d13"></a>11/13 (Tue)</h2>
+<ul>
+ <li>今朝は風の音で目が覚めた。
+ <ul>
+  <li>weather channel を見ると、どうも警報が出ているらしい。</li>
+ </ul>
+ </li>
+ <li>家の保険を契約しておく。
+ <ul>
+  <li>もちろん借家だが、大家が入れという手紙をよこしてきたので。</li>
+  <li>どうもあちらの（保険会社の）都合らしい。
+   基本的に建物はあちらの保険がカバーするが、
+   大家に落ち度がない場合、保険会社がテナントを訴える場合があるんだそうな。</li>
+ </ul>
+ </li>
+ <li>[phys]お勉強
+ <ul>
+  <li>Phys. Fluids と PR をサラッと眺め、いくつか印刷。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>検証 run - 粒子編。
+   <ul>
+    <li>bue9 の結果のチェック。
+    <ul>
+     <li>予期してない変な挙動（更新が止まる）が見られる。
+     <li>local でも確認してみるが、同様。</li>
+     <li>更にチェック中。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d13-twobody" name="d13-twobody"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>論文
+  <ul>
+   <li><a href="#d5-planning">計画</a>では
+    先週５０％進める予定だったもの（が進捗０％）。</li>
+   <li>まずは remind しておく。
+    (<a href="diary2007_09.html#d24-twobody">9/24/2007</a>)
+   <ul>
+    <li><a href="diary2008_03.html#d11-twobody">3/11/2008</a>:
+     remind (again...)</li>
+   </ul>
+   </li>
+   <li><a href="#d26-planning">11/26/2007</a>: 愚痴。</li>
+   <li><a href="#d30-report">11/30/2007</a>: 月刊レポート１２月号。</li>
+   <li><a href="diary2008_01.html#d18-twobody">1/18/2008</a>: 再始動。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d12" name="d12"></a>11/12 (Mon)</h2>
+<ul>
+ <li>振替え休日。</li>
+ <li><a id="d12-ryuon" name="d12-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>benchmark 続き。
+   <ul>
+    <li>mid-point algorithm で比較してみる。</li>
+    <li>結果は、全行列版が一つ遅く、
+     chebyshev 版は行列も atimes もほとんど同じ。</li>
+    <li>つまり、 bottleneck は <b>F</b><sup>B</sup> の構成という、
+     予想された結果に落ち着いた。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d11" name="d11"></a>11/11 (Sun)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>cholesky と chebyshev 及び matrix と atimes の benchmark をしておく。
+   <ul>
+    <li>時間積分は semi-implicit, Pe = 1 で flow は、なし。</li>
+    <li>結果：
+     確かに N&gt;21 で chebyshev-atimes が一番速くなっているが、
+     スケーリングは N<sup>3</sup> みたい。</li>
+    <li>挙動が理解できないので、
+     RYUON/stokes/src/bench3 の結果を一応確認。
+     結果はどちらも N<sup>2</sup> だ。</li>
+    <li>で、少し考えて分かった。 F の no-lub の mob は、
+     線形方程式を解かないので、そもそも N<sup>2</sup> なんだ。</li>
+    <li>つまり、非線形方程式の解法で N<sup>1</sup> を食っているということらしい。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d10" name="d10"></a>11/10 (Sat)</h2>
+<ul>
+ <li><a id="d10-waon" name="d10-waon"></a>
+  [SF][WaoN]<a href="http://waon.sourceforge.net/">WaoN</a>
+ <ul>
+  <li><a href="http://waon.sourceforge.net/pv.html">pv</a> の
+   jack 化をちょっと整理
+   (cf.<a href="diary2007_10.html#d21-waon">10/21/2007</a>)。
+  <ul>
+   <li>とりあえず stereo 化した。</li>
+   <li>しかし音が割れる。
+    pitch を下げる（と hop サイズが大きくなり負荷が減る）とマシになるが、
+    戻すと前よりひどかったり、使い物にならない。</li>
+   <li>bottleneck がどこか探ってみるが、まぁ順当に synthesize 部なんだな。</li>
+   <li>やはり DSP 部を別 thread で処理するようにしないと、
+    jack には追いつけないようだ。</li>
+  </ul>
+  </li>
+  <li>あと、 <a href="http://jackit.sourceforge.net/">jack</a>
+   は midi port もあるので、
+   <a href="http://waon.sourceforge.net/index.html">waon</a> の
+   jack 化も面白いかな、と思ったりしているところ。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>RYUON/stokes/stvis-vtk.py の改良。
+  <ul>
+   <li>DNA の結果を見るために、 bond を書くようにする。
+   <ul>
+    <li><a href="http://www.vtk.org/">vtk</a>
+     で線を書く方法を調べるのに結構手間取った。
+     以下、まとめ。
+    <ul>
+     <li>vtkTubeFilter で tube が作れる。</li>
+     <li>vtkTubeFilter は vtkPolyData をとる。</li>
+     <li>vtkPolyData の作り方：
+     <ul>
+      <li>１）既存の形から edge を取り出す。
+       (ex. vtkCubeSource を vtkExtractEdge に食わせる。)</li>
+      <li>２）データから点とその点の接続を与える、シンプルな vtkPolyData を作る。
+      <ul>
+       <li>点は vtkPoints を準備。（InsertNextPoints などで作る）。</li>
+       <li>線は vtkCellArray を準備。今は全点を繋ぐだけなので、
+        InsertCellPoint で全点を順番に与えるだけ。</li>
+      </ul>
+      </li>
+     </ul>
+     </li>
+     <li>vtkTubeFilter は default では３面で tube を作るようだ。
+     <ul>
+      <li>これを知らないで、どうして三角形が書かれるのかと、しばらく悩んだ。</li>
+     </ul>
+     </li>
+     <li>vtkTubeFilter を準備した後はいつも通り、
+      vtkPolyDataMapper に食わせて vtkActor に渡せばよい。</li>
+    </ul>
+    </li>
+    <li>絵はこんな感じ。<br />
+     <img src="images/20071110-stvis-vtk_t.png" />
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d9" name="d9"></a>11/9 (Fri)</h2>
+<ul>
+ <li><a id="d9-ahcip" name="d9-ahcip"></a>
+  alberta の保険事務所に出かける。
+ <ul>
+  <li>先日、「work permit が切れるので新しいのを持ってこい」
+   という手紙をもらってたので。
+   そう言えば、 alberta に来て一番にしたことは、この手続きだった
+   (cf.<a href="diary2006_12.html#d28-ahcip">12/28/2006</a>)。
+   仕事の契約はズルズルと延びて大変だったのだが、
+   その関係で申請時にはまだ古い work permit であった、ということ。</li>
+  <li>列も短く、 reception のおばちゃんがチャッチャッとコピーして終了。
+   よかったよかった。</li>
+  <li>しかし今日は寒い。あぁ冬が来たなぁ……</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>検証 run - 粒子編。
+   <ul>
+    <li>昨日の結果（dtの小さいもの）を見る。
+     うぅむ、よく分からなくなってきた。</li>
+    <li>時間積分 scheme の違いを押さえておく。</li>
+    <li>bue9 でも２つ計算を流しておく。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d8" name="d8"></a>11/8 (Thu)</h2>
+<ul>
+ <li>[phys]お勉強
+ <ul>
+  <li>昨日の thesis から引っ張ってきた論文など、印刷。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>検証 run - 粒子編。
+   <ul>
+    <li>昨日の結果（dt を振ったもの）を見比べてみる。
+    <ul>
+     <li>なるほど、一番小さい刻みだとそれなり。</li>
+     <li>確認のため、もう少し小さいものを流しておく。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+   <li>SUSE-Linux に BD 導入後の RYUON に upgrade しておく。
+   <ul>
+    <li>libstokes/test で一つ何か変なエラーが出ているなぁ……</li>
+    <li>cf.<a href="diary2007_10.html#d3-ryuon">10/3/2007</a> : 環境変数の設定</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>今日は、帰宅後は一切仕事も遊びも何もせずに、のんびりと過ごす。
+ <ul>
+  <li>付記：ってことで、気付いたら、最近続けていた筋トレもサボってた。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d7" name="d7"></a>11/7 (Wed)</h2>
+<ul>
+ <li><a id="d7-ryuon" name="d7-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>検証 run - 粒子編。
+   <ul>
+    <li><a href="diary2007_10.html#d25-ryuon">10/25/2007</a> の案件に戻ってきた、
+     ということ。</li>
+    <li>diffusion.scm をまず解析……
+     するための script をまず書く（ana-diff.py）。</li>
+    <li>結果を眺める。何か変だ。</li>
+    <li><a href="diary2007_12.html#d14-ryuon">12/14/2007</a>:
+     ana-diff.py は bug だらけだった。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d7-nano" name="d7-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>大学の実験家との共同研究。
+  <ul>
+   <li>今日ボスからメールが転送されてきた。
+   <ul>
+    <li>これは前回のこちらからのメール（10/15/2007 の日付）への返信。</li>
+   </ul>
+   </li>
+   <li>久しぶりに alex に会いにいく。
+   <ul>
+    <li>で、あちらの学生の thesis を貸してもらった。</li>
+   </ul>
+   </li>
+   <li><a href="#d26-nano">11/26/2007</a>: 相棒が催促メールを出す。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[blog]
+  「<a href="http://blog.tatsuru.com/2007/11/08_1114.php">雨ニモマケズ</a>」@tatsuru(<a href="LOCAL/20071107-tatsuru-08_1114.html">lc</a>)
+ <ul>
+  <li>そもそも文学音痴なので「雨ニモマケズ」と言えば冒頭の二節くらいしか頭にないのだが、
+  <blockquote>
+   それにつけても宮沢賢治はよいね。
+   『雨ニモマケズ』の後半はこんなリフレインである。
+  </blockquote>
+   以下の引用には、グラッと来てしまった。
+  </li>
+  <li><a href="http://www.aozora.gr.jp/cards/000081/files/45630_23908.html">〔雨ニモマケズ〕宮澤賢治</a>@aozora(<a href="LOCAL/20071107-aozora-45630_23908.html">lc</a>)</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d6" name="d6"></a>11/6 (Tue)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>検証 run - DNA 編。
+   <ul>
+    <li>rmin を simulator (stokes3-bd.c) に実装。
+     dna.scm が走るようになった。</li>
+    <li>結果を解析。
+     stncdump.py だけだと gnuplot script がひどいことになるので、
+     ana-chain.py を書く。</li>
+   </ul>
+   </li>
+   <li>動く所まで来たので simulator を 
+    ryuon/stokes/src/stokes3.c に merge する。
+   <ul>
+    <li>一応、 non-Brownian で新旧 simulators が同じ結果を吐くことは確認。</li>
+    <li>帰宅後、 merge 完了。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d6-reading" name="d6-reading"></a>
+  [phys]お勉強
+ <ul>
+  <li>ここ数日の収穫を印刷。（積ん読が溜まってる……）</li>
+  <li><a href="#d15-blob">11/15/2007</a>: blob プロジェクト、復活。</li>
+ </ul>
+ </li>
+ <li><a id="d6-bem" name="d6-bem"></a>
+  [phys]BEM
+ <ul>
+  <li>何でもよいからFEMのたたき台を書こう。
+  <ul>
+   <li>今回は Zienkiewicz, Taylor &quot;The finite element method&quot;
+    をベースにいこうと思い、今まで印刷している部分を確認。</li>
+   <li>印刷してある部分に一通り目を通したが、全然、頭に入ってこない。</li>
+   <li><a href="diary2007_09.html#d22-bem">前に到達していた地点</a>
+    から遥に後退してしまった気分。 Lynch でやり直すか？</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d6-shopping" name="d6-shopping"></a>
+  久しぶりに、月一恒例の買い物に出かける。
+ <ul>
+  <li>確かに、いつもよりも人出が多い（と言っても、非常識な程ではない）。</li>
+  <li>見返してみると、５月以来かな。
+  <ul>
+   <li><a href="diary2007_02.html#d6-shopping">2/6/2007</a>:２月</li>
+   <li><a href="diary2007_03.html#d6-shopping">3/6/2007</a>:３月</li>
+   <li><a href="diary2007_04.html#d3-shopping">4/3/2007</a>:４月</li>
+   <li><a href="diary2007_05.html#d1-shopping">5/1/2007</a>:５月</li>
+   <li><a href="diary2007_11.html#d6-shopping">11/6/2007</a>:１１月</li>
+   <li><a href="diary2008_06.html#d3-shopping">6/3/2008</a>:２００８年６月</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d5" name="d5"></a>11/5 (Mon)</h2>
+<ul>
+ <li><a id="d5-planning" name="d5-planning"></a>
+  [phys]（短期的）研究計画を立てる。
+ <ul>
+  <li>月間と、それから導いた週間を、目に見える形にしておく。</li>
+  <li>自分では自己評価は低いと思っている（自惚れたりしていないの意）が、
+   計画と実際の進捗を見た場合、やっぱり自分を多少、過大評価しているのだろうか、
+   と思ったりした。（計画通り進んでいない……）</li>
+  <li>と言いながら、まぁそんなこともないと、一方では思っているけど。
+  <ul>
+   <li>つまり、物事が計画した通り進んだら逆に面白くない、
+    と根本的に思っている所がある。</li>
+   <li>なので、計画を立てることに、あまり熱中しないように気を付けている。</li>
+   <li>というか、そんな大層なことではなくて、
+    単に、本当にやりたいことや、やるべきことは、
+    計画を立てることではない、ということだけど。</li>
+  </ul>
+  </li>
+  <li><a href="#d13-twobody">11/13/2007</a>: なかなか思い通りにはならないな。</li>
+  <li><a href="#d26-planning">11/26/2007</a>: 本当に思い通りにはならないぞ。</li>
+ </ul>
+ </li>
+ <li><a id="d5-ryuon" name="d5-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>ノート改訂（note/20070913-brownian/brownian.tex）。
+   <ul>
+    <li>週末の赤入れ。月刊レポートの内容反映。まぁそのあたり。
+     久しぶりに登録しておく。</li>
+    <li><font color="green">
+     brownian.tex: 1.4 2007/11/05 22:29:07 ichiki Exp</font></li>
+    <li><a href="diary2008_04.html#d15-ryuon">4/15/2008</a>: update.</li>
+   </ul>
+   </li>
+   <li>implicit scheme の debug.
+    走るようになった。</li>
+   <li>検証 run - DNA 編。
+   <ul>
+    <li>dna.scm にデータを書いて、開始。</li>
+    <li>bonds のパラメータがうまく渡っていない。
+     調べると、頭の中とコードが食い違っていた。
+     しかるべく修正し、 debug 完了。</li>
+    <li>run に戻る。今度は <b>F</b><sup>B</sup> 構成時の
+     Cholesky および eigenvalue 処理でこけている。
+    <ul>
+     <li>symmetry check はパス。
+      overlap check から、こいつが原因のようだ。</li>
+     <li>FENE には natural length がない（のを不思議に思ってたが）ので当然だが。</li>
+     <li>世間の皆はどうしてるかなと思って文献を調べたら、
+      <a href="http://link.aip.org/link/?JCPSA6/124/044911/1">Hsieh et al (2006) J.Chem.Phys.</a>
+      に出会う。やっぱり、どうもそういうものらしい。
+      （この論文、後できちんと読んでおこう。）
+     <ul>
+      <li><a href="diary2008_06.html#d17-ryuon">6/17/208</a>: 再読。</li>
+     </ul>
+     </li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+   <li>rmin の導入 in ryuon-libstokes
+   <ul>
+    <li>皆してるように、 Rotne-Prager 的に inner region に補正を入れて、
+     positive-definiteness を確保しないとダメみたい。
+    <ul>
+     <li>式をちょっと眺めてみる。 inner と outer で値が飛んでいるなぁ……</li>
+    </ul>
+    </li>
+    <li>オリジナルに当たってみる。
+    <ul>
+     <li><a href="http://link.aip.org/link/?JCPSA6/53/436/1">Yamakawa (1970)</a> をざっと見返す。
+      Rotne-Prager の hydrodynamic な再導出（および、物理量の計算）。
+      いわゆる「多重極展開で、粒子の有限サイズを考えるとどうなるか」という
+      クリアーな話。</li>
+     <li><a href="http://link.aip.org/link/?JCPSA6/50/4831/1">Rotne-Prager (1969)</a> の方は「positive-definite となれ！」
+      と唱えると、こうなります、という話。
+      outer だけでなく inner にも唱えると、例の inner form が出てくる、と。</li>
+     <li>この意味でいくと、有限サイズを考えた mobility matrix という文脈で
+      言及するばあいは &quot;Rotne-Prager-Yamakawa&quot; と、
+      positive-definite で inner まで考えた diffusion tensor という文脈で
+      言及するばあいは &quot;Rotne-Prager&quot; と呼ぶのが正しいのかな？
+      （したがって、私のやってるような文脈ではきちんと
+      Yamakawa を入れなきゃいけないのだな。）</li>
+     <li>ちなみに Yamakawa と言えば、
+      最近 WLC に手を出したりした関係で、
+      彼（とそのグループ）による膨大な論文群に圧倒されたばかり。
+      （圧倒されて過ぎて、まだ目を通していないし……）
+      それから氏が書かれた本 &quot;Modern Theory of Polymer Solutions&quot; が
+      <a href="http://www.molsci.polym.kyoto-u.ac.jp/archive.html">一般公開</a>
+      されていたのを見つけて（その序文を目にして）感動したのも、
+      つい最近のことだ（と言っても年のオーダーだが……）。
+     <ul>
+      <li><a href="diary2003_09.html#d29-makino">9/29/2003</a>:
+       Rotne Prager Yamakawa で検索したら。</li>
+      <li><a href="diary2004_02.html#d12-yamakawa">2/12/2004</a>:
+       Rotne-Prager-Yamakawa tensor。</li>
+     </ul>
+     </li>
+    </ul>
+    </li>
+    <li>あまり（単に数学的に）厳密になっても仕方ないので、
+     現実的に、最小距離を導入という形で実装する。
+    <ul>
+     <li>実装完了。（未チェック。）</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d5-waon" name="d5-waon"></a>
+  [en][SF][WaoN]<a href="http://waon.sourceforge.net/">WaoN</a>
+ <ul>
+  <li>rpm is built on openSUSE machine. 
+   it's in the <a href="http://sourceforge.net/project/showfiles.php?group_id=177685">download section</a>. (<a href="http://sourceforge.net/forum/forum.php?forum_id=752045">News</a>)</li>
+  <li>here's the <a href="http://waon.cvs.sourceforge.net/*checkout*/waon/waon/waon.spec">spec file</a>.</li>
+  <li>actually, this is my very first rpm build 
+   (and I'm not so sure it is fine...)</li>
+  <li><a href="diary2008_06.html#d15-kurt">6/15/2008</a>:
+   kurt rosenwinkel's solo.</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d4" name="d4"></a>11/4 (Sun)</h2>
+<ul>
+ <li><a id="d4-dst" name="d4-dst"></a>
+  day-light saving time が終わった。
+ <ul>
+  <li>朝が明るくなるのはうれしいが、帰宅時が真っ暗というのは……</li>
+  <li>今朝は初積雪。明日はもっと寒いらしい。</li>
+  <li>cf.
+   <a href="diary2007_11.html#d4-dst">11/4/2007</a>,
+   <a href="diary2006_10.html#d29-end_of_dst">10/29/2006</a>,
+   <a href="diary2005_10.html#d30-end_of_dst">10/30/2005</a>,
+   <a href="diary2004_10.html#d31-end_of_dst">10/31/2004</a></li>
+  <li><a href="diary2008_03.html#d9-dst">3/8/2008</a>: DST 再開。</li>
+ </ul>
+ </li>
+ <li><a id="d4-waon" name="d4-waon"></a>
+  [en][SF][WaoN]<a href="http://waon.sourceforge.net/">WaoN</a>
+  0.9 Released
+  (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=551903">Release Note</a>)
+ <ul>
+  <li>as promised
+   (cf.<a href="diary2007_10.html#d13-waon">10/13/2007</a>).</li>
+  <li>a patch for FreeBSD's ports has been submitted, too.
+   (cf.<a href="diary2007_10.html#d8-ports">10/8/2007</a>)
+  <ul>
+   <li>following <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/porters-handbook/port-upgrading.html">Chp. 10 Upgrading</a> of
+    <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/porters-handbook/">FreeBSD Porter's Handbook</a>.</li>
+   <li>At this time, I put man pages. Here's what I did:
+   <ul>
+    <li>1) list the files at MAN1 in Makefile</li>
+    <li>2) don't list them in pkg-plist
+     (cf.<a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/porters-handbook/makefile-manpages.html">5.9 Manpages</a>)</li>
+    <li>3) put INSTALL_MAN entries in do-install part in Makefile.</li>
+   </ul>
+   </li>
+   <li>PR: <a href="http://www.freebsd.org/cgi/query-pr.cgi?pr=ports/117833">ports/117833: [maintainer update] audio/waon update to 0.9</a></li>
+   <li>PS(11/6/2007): oh, now it is in freeze.
+    (&quot;<a href="http://lists.freebsd.org/pipermail/freebsd-ports/2007-October/044445.html">Ports freeze to start October 30</a>&quot;@freebsd-ports).</li>
+   <li><a href="diary2007_12.html#d16-waon">12/16/2007</a>:
+    it's in the ports tree.</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d3" name="d3"></a>11/3 (Sat)</h2>
+<ul>
+ <li>買い物に行って、ついでに外食。
+ <ul>
+  <li>結構、腹一杯になった。胃袋が小さくなったかな？（いいことだ。）</li>
+ </ul>
+ </li>
+ <li><a id="d3-ryuon" name="d3-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>brownian.c の debug 続き。
+   <ul>
+    <li>昨日の言う所の step 5。</li>
+    <li>行列の分離は古いコードと同じこと確認。</li>
+    <li>やっと見つけた。分離後の小行列の積で、 += すべき所を = していた
+     （手を抜いて local に for-loop で組んでいた）。お粗末。</li>
+    <li>直したら、チェック事項はすべてクリアした。</li>
+   </ul>
+   </li>
+   <li>BLAS 化。
+   <ul>
+    <li>件の行列積 for-loop は matrix.c の mul_matrices を使うべきだな、と思って
+     （そいつは BLAS or ATLAS 化されている（はずであった…））。</li>
+    <li>早速、今回のコードを mul_matrices 化して速度比べをしてみたら、
+     for-loop の方が速いことが判明。頭を抱える。</li>
+    <li>また降りる所まで降りて、地道にチェックの結果、
+     matrix.c に config.h を include していなかった、というオチであった。</li>
+    <li>include して libstokes をコンパイルしなおしておく。
+     これで、期待通りの速度が出た。めでたしめでたし。</li>
+   </ul>
+   </li>
+   <li>ついでに for-loop 版と BLAS 版の結果（数値）も比較しておく。
+   <ul>
+    <li>すると結構差が大きい（10<sup>-9</sup>程度）。</li>
+    <li>気になるので、ついでに何が悪いのか見極めておく。
+     (cf.<a href="diary2007_10.html#d2-ryuon">10/2/2007</a>)</li>
+    <li>結果、10<sup>-15</sup> 程度の差のある行列の積を２回で
+     10<sup>-12</sup> 程度に落ちたものを更に inverse すると、
+     最悪、そのくらいになってしまうらしい。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d2" name="d2"></a>11/2 (Fri)</h2>
+<ul>
+ <li><a id="d2-nr" name="d2-nr"></a>
+  Numerical Recipes の第３版が出たよというダイレクトメールが来てた。
+ <ul>
+  <li>C の第２版を持っている。本は大変有用で、DM の宣伝文句
+  <blockquote>
+   The Gold Standard for Scientific Computing
+  </blockquote>
+   に偽りはないと思うが、そのコードは使いたくない。
+   その原因のライセンスには、何らかの変更はあったのだろうか？
+   (cf.<a href="diary2001_09.html#d8-ALF">9/8/2001</a>)</li>
+ </ul>
+ </li>
+ <li><a id="d2-ryuon" name="d2-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>ノートの整理（note/20070913-brownian/brownian.tex）。</li>
+   <li>brownian.c の debug
+   <ul>
+    <li>lub はあっているようだ。
+     しかし minv は全然ダメ……降りられる所まで徹底的に降りたが、まだ辿り着けず。</li>
+    <li>帰宅後もう一踏ん張り。やっと手がかりを見つけた。
+     ODE 部と流体計算部で配列の並びが違うのが、どうやら原因らしい。
+    <ul>
+     <li><a href="diary2007_12.html#d11-ryuon">12/11/2007</a>:
+      BD implicit scheme で似たような感じ……</li>
+    </ul>
+    </li>
+    <li>一通り目を通して、問題を修正。</li>
+    <li>テストはまず minv に集中。
+     step 4 まではクリアした。 step 5 以降はまだ原因不明の問題あり。</li>
+    <li>lub は、修正後は未チェック。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d1" name="d1"></a>11/1 (Thu)</h2>
+<ul>
+ <li><a id="d1-mochio" name="d1-mochio"></a>
+  [blog]
+  「<a href="http://d.hatena.ne.jp/umedamochio/20070818/">「現代の若きエンジニアの物語」としても読める岡本かの子「老妓抄」</a>」@mochio(<a href="LOCAL/20071101-mochio-20070818.html">lc</a>)
+ <ul>
+  <li>月始め恒例の日記の<a href="diary2007_10.html#d20-bonsai">盆栽</a>。
+  <ul>
+   <li>公開日記も、研究日記も、月単位にしているので、
+    月始めには新しいページを一つ準備する。そのついでに、
+    ちょうどよい機会でもあるので、できる限り、これまで書き連ねた日記の
+    その月（今なら１１月）の記述を、最近から９７年まで順に眺めている。</li>
+  </ul>
+  </li>
+  <li>この過程で、今回は岡本敏子に引っかかって
+   （cf.<a href="diary2003_10.html#d17-okamoto_toshiko">10/17/2003</a>）、
+   そこから望夫さんの話を思い出して（頭の中では敏子さんの話と誤解していた）、
+   そのエントリーを探したけど、どうもその時は記録しなかったみたいなので
+   （論文の締切りで気持ちがバタバタしていたせいだろう）、
+   改めてここに記録しておこう。</li>
+  <li>記憶に残っていたのは、
+  <blockquote>
+   財をなした老妓が、
+   出入りの電気器具屋の青年に目をかけ生活の保証を与えて好きなことに没頭させたときに、
+   その青年にどういう変化が起こったかのくだり。
+  </blockquote>
+   というところ、「その青年」の変化ではなくて。
+   そういうことは実際にあったのかなぁと（私が）思ったこと。</li>
+  <li>その青年は、端的に言って研究者向きではなかったということだろう。
+   （まぁ研究者向きだったならば、そもそもお話が文学にならないよね。）</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Brownian dynamics
+  <ul>
+   <li>ノート（note/20070913-brownian/brownian.tex）の改訂。
+   <ul>
+    <li>月刊レポート用に書いた新しい記述を取り込む。</li>
+    <li>基本的に、その場の書きなぐりなので、
+     いろいろと重複部分があったり、理解が浅い部分があったり。
+     そういう所もまとめて、現状で一通りの筋としてまとめておこう。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]お勉強
+ <ul>
+  <li>ここ数日の収集文献を印刷しておく。</li>
+  <li>手持ちの読んでない文献の山を分類。
+   読むべきものの優先順位を見るのに必要だ。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+</body>
+</html>

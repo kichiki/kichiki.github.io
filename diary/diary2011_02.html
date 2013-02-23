@@ -1,0 +1,1035 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - February 2011</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <script type="text/javascript" src="LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2011年2月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+<div class="body">
+
+<br />
+
+<h2><a id="d27"></a>2/27 (Sun)</h2>
+<ul>
+ <li><a id="d27-gwaon"></a>[WaoN]最近、手元で <a href="http://waon.sourceforge.net/gwaon.html">gWaoN</a> が動かなくなっている問題。
+ <ul>
+  <li>最近は、家で coding してないので、ずっと放置状態だった問題。</li>
+  <li>今の開発環境は OS X の <a href="http://www.macports.org/">macports</a> なので、
+   ライブラリの整合性とか、そういう副次的な問題なのかなぁ、というのも、
+   放置の原因の一つ。
+  <ul>
+   <li>実際、なぜかしらないけど、最近 gkrellm がまた動かなくなってたり、
+    gnucash の起動におまじないが必要だったり。</li>
+   <li>端的に言うと、最近の gtk (というか gnome なのかな)から取り残されてる、と。</li>
+  </ul>
+  </li>
+  <li>しかし、一方で、音楽やりたい熱が高まってきていて、
+   どこが問題を起こしているのかだけでも突き止めよう、という気になった。</li>
+  <li>症状は、 <a href="http://waon.sourceforge.net/gwaon.html">gWaoN</a>
+   でファイルを開こうとすると、
+   file selector で「OK」ボタンを押した後に落ちる、というもの。 
+  <pre>
+% ./gwaon
+Xlib:  extension "RANDR" missing on display "/tmp/launch-Re9uRs/:0".
+/somewhere/check.wav
+channels = 2
+samplerate = 44100
+frames = 5906304
+<font color="red">Segmentation fault</font>
+  </pre>
+  </li>
+  <li>で、調査の結果、以下の通り：
+  <pre>
+% ./gwaon
+Xlib:  extension "RANDR" missing on display "/tmp/launch-Re9uRs/:0".
+＃以下は gwaon-menu.c の on_file_open_wav_sel_ok() の中
+/somewhere/check.wav
+channels = 2
+samplerate = 44100
+frames = 5906304
+＃ここで gwaon-wav.c の create_wav() に飛ぶ
+# check ao device
+0 :  type : 1
+0 :  name : MacOS X AUHAL output
+0 :  short name : macosx
+0 :  driver comment : 
+1 :  type : 1
+1 :  name : Null output
+1 :  short name : null
+1 :  driver comment : This driver does nothing.
+2 :  type : 2
+2 :  name : WAV file output
+2 :  short name : wav
+2 :  driver comment : Sends output to a .wav file
+3 :  type : 2
+3 :  name : RAW sample output
+3 :  short name : raw
+3 :  driver comment : Writes raw audio samples to a file
+4 :  type : 2
+4 :  name : AU file output
+4 :  short name : au
+4 :  driver comment : Sends output to a .au file
+＃この後 ao-wrapper.c の ao_init_16_stereo () に飛ぶ
+＃この後 ao_open_live() を call した後に &quot;Segmentation fault&quot; となる
+  </pre>
+   というように、 <a href="http://www.xiph.org/ao/">libao</a> の
+   ao_device を作る部分で問題が起きていた。(gtk とは関係ありませんでした。)
+  </li>
+  <li>ここで、コードの情報を一杯書き出すようにすると、あれれ、うまくいった。
+   (なんか、メモリ関係があやしいという症状だな)
+  <pre>
+% ./gwaon
+中略
+＃ここで gwaon-wav.c の create_wav() に飛ぶ
+中略
+# samplerate = 44100
+＃この後 ao_init_16_stereo () に飛ぶ
+＃以下は ao_open_live() の出したメッセージ
+ao_macosx ERROR: Unrecognized channel name "D?" in channel matrix "D?"
+ao_macosx WARNING: Input channel matrix invalid; ignoring.
+＃以下は print_ao_info() のメッセージ (verbose にしたので)
+[ao] type : 1
+[ao] name : MacOS X AUHAL output
+[ao] short name : macosx
+[ao] driver comment : 
+  </pre>
+   で、問題なく window が生成された。
+  <br />
+  <a href="images/20110227-gwaon-1.png"><!-- 800x623 -->
+   <img src="images/20110227-gwaon-1.png" width="200" height="156" /></a>
+  <a href="images/20110227-gwaon-2.png"><!-- 802x623 -->
+   <img src="images/20110227-gwaon-2.png" width="201" height="156" /></a>
+  </li>
+  <li>ってことで、怪しそうな fprintf() や verbose option をいくつか元に戻してみると、
+   うーむ、今度は動くぞ。</li>
+  <li>面倒だが、１つ１つ、追加して行ったコメント表示 statements を消して行くと、
+   見つけた。
+  <ul>
+   <li>gwaon-wav.c の create_wav() で ao device を初期化してる部分の
+    チェック用に書いててコメントアウトしていた以下の部分
+   <pre>
+  ao_initialize ();
+  print_ao_driver_info_list ();
+  ao_shutdown ();
+   </pre>
+    の有無が、落ちる／落ちないの違いを生んでいるようだ。
+    (少なくとも、今の私の OS X 10.5.8 では。)
+   </li>
+  </ul>
+  </li>
+  <li>という所で、時間切れ。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d25"></a>2/25 (Fri)</h2>
+<ul>
+ <li><a id="d25-papaya"></a>
+  今日の「<a href="http://www.1101.com/papaya/">パパイヤの世界がたのしくなるターン@1101</a>」
+ <ul>
+  <li>気付いたら、もう最終回だった！</li>
+  <li>local copies:
+   <a href="LOCAL/20110225-papaya-2011-02-16.html">1</a>,
+   <a href="LOCAL/20110225-papaya-2011-02-17.html">2</a>,
+   <a href="LOCAL/20110225-papaya-2011-02-18.html">3</a>,
+   <a href="LOCAL/20110225-papaya-2011-02-21.html">4</a>,
+   <a href="LOCAL/20110225-papaya-2011-02-22.html">5</a>,
+   <a href="LOCAL/20110225-papaya-2011-02-23.html">6</a>,
+   <a href="LOCAL/20110225-papaya-2011-02-24.html">7</a>,
+   <a href="LOCAL/20110225-papaya-2011-02-25.html">8</a>
+  </li>
+  <!-- local copies: -->
+  <li>youtube video list:
+  <ul>
+   <li><a href="http://www.youtube.com/watch?v=7I47hUdKtgE">世界がたのしくなるターン。【プロローグ】</a>
+    (<a href="LOCAL/20110225-papaya-00.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=fmCkO83ENyA">世界がたのしくなるターン。【第1回】</a>
+    (<a href="LOCAL/20110225-papaya-01.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=0X8vvtwigJk">世界がたのしくなるターン。【第２回】</a>
+    (<a href="LOCAL/20110225-papaya-02.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=78FYqwq8_7w">世界がたのしくなるターン。【第３回その１】</a>
+    (<a href="LOCAL/20110225-papaya-03-1.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=WGfCj-JSA6M">世界がたのしくなるターン。【第３回その２】</a>
+    (<a href="LOCAL/20110225-papaya-03-2.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=H8MGHAcZkaM">世界がたのしくなるターン。【第４回】</a>
+    (<a href="LOCAL/20110225-papaya-04.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=SYT0oZprNWI">世界がたのしくなるターン。【第５回】</a>
+    (<a href="LOCAL/20110225-papaya-05.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=xkz_8eGMZxs">世界がたのしくなるターン。【第６回その１】</a>
+    (<a href="LOCAL/20110225-papaya-06-1.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=ysXd--xymF4">世界がたのしくなるターン。【第６回その２】</a>
+    (<a href="LOCAL/20110225-papaya-06-2.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=zffGcU0ADC8">世界がたのしくなるターン。【エピローグその１】</a>
+    (<a href="LOCAL/20110225-papaya-07-1.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=z0PvXp782Ow">世界がたのしくなるターン。【エピローグその２】</a>
+    (<a href="LOCAL/20110225-papaya-07-2.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=YrvKwtLRdV8">世界がたのしくなるターン。【エピローグその３】</a>
+    (<a href="LOCAL/20110225-papaya-07-3.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=RRpum4kCdUA">世界がたのしくなるターン。【エピローグその４】</a>
+    (<a href="LOCAL/20110225-papaya-07-4.flv">lc</a>)</li>
+   <li><a href="http://www.youtube.com/watch?v=-DcOJw8CRFM">世界がたのしくなるターン。【エピローグその５】</a>
+    (<a href="LOCAL/20110225-papaya-07-5.flv">lc</a>)</li>
+  </ul>
+  </li>
+  <!-- youtube video list: -->
+  <li>さて、練習だ！</li>
+  <li><a href="#d17-papaya">2/17/2011</a>: いいもの、発見</li>
+  <li><a href="#d18-papaya">2/18/2011</a>: もう、回る気、十分！</li>
+  <li><a href="#d20-papaya">2/20/2011</a>: 週末は休みだった…。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d20"></a>2/20 (Sun)</h2>
+<ul>
+ <li><a id="d20-toshio_tsuzuki"></a>ぼくが影響を受けた５人から、三人目。
+ <ul>
+  <li>「ぼくが影響を受けた５人」シリーズの三人目は、
+   大学の恩師、都築俊夫先生。
+  <ul>
+   <li>うちの研究室は、いわゆる「さん付け」文化だった。「センセイ」呼びは、
+    現役研究者からは既に足を洗った人、という雰囲気の呼称みたいな。
+    そういう意味で、都築さんと書くことにする。</li>
+   <li>実際、大学院に上がって以来、都築さんからは常に「いちきさん」と言われていた。</li>
+   <li>これは、ある時、改めて後輩に指摘されて、気付いたこと。</li>
+   <li>それから、これも後で思ったが、決して「君」じゃないところには（一研究者としての
+    扱いというものと同時に）、男女平等的な意識も、あったのかもしれないなぁ。</li>
+  </ul>
+  </li>
+  <li><a href="diary2002_05.html#d27-tsuzuki">5/27/2002</a>
+   のブログ・エントリーに書いた、都築さんのことば。
+   そのエントリーで自分で文字に起こした文書を
+   <a href="LOCAL/20020527-tsuzuki.html">local copy</a>
+   に置いてるけど、ちょうど「影響を受けた５人」シリーズにふさわしい内容だし、
+   ここに引用しておく：
+  <blockquote>
+<b>感謝と提言</b>
+<br /><br />
+理学研究科教授 都築俊夫
+<br /><br />
+高知出身の いごっそう 。幼少期 はちきん 大叔母に連れ歩かれて「お大師さんが見てらっしゃるぜよ」、「龍馬 (りゅうま) のようになるがぜよ」と聴かされて育った。この大叔母が明治の中頃女だてらに尋常小学校を修め農村漁村で娘達にお針を手解きしながら字を教えていた本物の はちきん さんと知るは後のこと。母性原理の社会の中で、意識的にも無意識的にも父性原理で行動してきた遠因であろうか。新制中学 1 年の秋湯川秀樹先生がノーベル賞を受けられた。日本中で多くの青年が道を誤ったが、私もそのひとり。大学の理科系に入学した時縁者や村の人をがっかりさせたようだ。
+<br /><br />
+私は物性理論物理学、特に非線形物理学、秩序形成の物理学を研究してきた。独学です。しかし足を向けて寝ることができない恩師が 5 人います。御尊名は伏見康治先生(大阪大)、西山敏之先生(大阪大)、松原武生先生(京都大)、中嶋貞雄先生(東京大)、恒藤敏彦先生(京都大)です。どの先生も学問上国際的に高い達成をされましたが、不肖私は学問を継承できませんでした。伏見先生には今日に到るも社会に対する視点を教示いただいています。大学院修了間際の見知らぬ青年に「私を買って下さい」と言われ、数ヵ月後「機会を与えよう 2 年だけ」と助手に採用して下さった松原先生の御決断に唯々感謝申し上げるばかり。幸い 2 年後に中嶋先生の御推薦で九大に移ることができました。「本当に能力があれば機会を与えられることの意味は分かるはず」との先生の御言葉を以来実践しているつもり。徳のある人を真似る身の程知らずを痛感し放し。でも止めようとは思わなかった。神々に愛でられし恒藤先生は知と美の師でありました。恒藤・真木(和美)・都築 3 人組がインパクトを与えた時期もありました。金研の神田英蔵先生は助手期以来見知らぬ私に目を掛けて下さり、以来名前を覚えておられて、文など頂戴しました。本当に有り難いことでした。
+<br /><br />
+1974 年に東北大に来て間もない頃教授会で大学改革の議論がありました。私は「どの層が開放されてパワーとなるのか? 明治維新は下級武士と大地主の息子達が、敗戦後の改革では男のすべてが解放され、その時期に必要な情熱に溢れたパワーを得られた。今、男だけではパワーが足りない」と発言して変人と思われた。今大学改革が求められ声高に論じられているが、それを担う新たな層をどこに求めるか。それ無しには一時の改善に留まる。アメリカは達観している。現国民にほとんど期待していない。世界中の志のある若者を吸収し、その中の最良部に市民権を与えて国力化している。さすが移民の国。
+<br /><br />
+紙数が尽きた。全学から糾合して 大学者 の学部研究科を新たに作ろう。次代のリーダー達に高い視野に立った文明論を涵養しよう。東北大学が真に尊敬される大学となる要件。
+<br /><br />
+私達のセミナー室に揚げた芭蕉の句で筆を擱く。
+<br /><br />
+「草いろいろおのおの花の手柄かな」
+  </blockquote>
+  <ul>
+   <li>この文章自体は、私が研究室を離れてから目にしたものだけど、
+    それまで暗黙のうちに感じていたことで、その背後にこういう思いがあったのか、
+    と納得できた気がした。</li>
+   <li>それに、この文章が、更にその後の私自身に、大きく影響を与えた事は、確かだ。</li>
+  </ul>
+  </li>
+  <li>都築さんは、ぼくらが学生の頃は、ちょっと怖そうな先生という印象だったと思う。
+  <ul>
+   <li>でも、私自身は、怒られたことがなかったせいか、あんまりそう思ったことはない。</li>
+   <li>怒られなかったのは、きっと私自身に、都築さんがそうであったような
+    （古いタイプの）「理論家」の資質が微塵もなく、
+    都築さん自身が鍛えるに値しない、という事だったのだろうとは思う。
+   <ul>
+    <li>実際、セミナーなどで、そっち方面に強い学生のプレゼンへの突込みは、
+     鋭いものがあったし。</li>
+    <li>私は、計算機でやっていく指向だったので。</li>
+   </ul>
+   </li>
+   <li>あと、都築さん自身、非研究、非教育的な、
+    いわゆる雑用で忙しく、実際の研究は当時、研究室の助手だった早川さんとやっていた
+    といったこともあるのだろう。</li>
+  </ul>
+  </li>
+  <li>思い出、その１。
+  <ul>
+   <li>私は、D3の年から、早川さんの異動にくっついて京都に移ったので
+    (籍は東北大に残したままで、依託学生として)、
+    学位審査のためだけに冬の仙台に戻った（長期滞在のホテルに泊まった）。</li>
+   <li>審査の前に、一対一で発表練習を聞いてもらった時、
+    私が非専門家に分かりやすくと気をつかって、
+    (ちょっと余分な)たとえ話みたいな導入を入れたりしていたのだけど、
+    一通り終わった後、「あの部分は、必要ないのでは」と、やんわりと怒られた。</li>
+   <li>私の中で、必要以上にこちらが下手に出ることに対する問題意識を強く持つことになる
+    イベントだった。(星の王子様のなかで出てきた「飼い馴らされる」という単語の事を
+    その時強く連想した事を覚えている。)</li>
+  </ul>
+  </li>
+  <li>思い出、その２。
+  <ul>
+   <li>無事に審査が終わった後、バス停に歩いていたらちょうど都築さんと一緒になり、
+    その場で「よし、晩飯おごってやろう」と、中国酒家に連れて行ってもらったのは、
+    忘れられない思い出だ。</li>
+   <li>こういうこと、私もどこかで誰かに、してあげたいなぁと思った。</li>
+   <li>その時のはなしだったかな（他に、そういうはなしをする機会などなかったし）
+    研究室の人事について、研究室の雰囲気などについて人間的にちょっと難しいようなことも
+    あったかもしれないけど、(学問的に)面白い人を、その点だけで、意識的に、選んでいるから、
+    というようなことを言われたように思う。上の文書を読んだ時、
+   <blockquote>
+    「本当に能力があれば機会を与えられることの意味は分かるはず」
+    との先生の御言葉を以来実践しているつもり
+   </blockquote>
+    のことだったのかな、と思ったっけ。</li>
+  </ul>
+  </li>
+  <li>今、どうされているかは知らないが、
+   私がこんなへそ曲がりになった理由の１％くらいは、
+   こんな都築先生の熱い所が影響しているのかもしれない、と今更、思う。</li>
+  <li>前のエントリーへのリンク
+   (<a href="diary2002_05.html#d27-tsuzuki">5/27/2002</a>)
+   だけで三人目は終わりかなと思ってたけど、色々思い出してきて、ついつい書いてしまった。</li>
+  <li><a href="diary2011_01.html#d21-jessica">1/21/2011</a>:
+   今日のジェシカ「Recent Inspiration」から、私の大事な５人</li>
+  <li><a href="diary2011_01.html#d30-emerson">1/30/2011</a>:
+   ぼくが影響を受けた５人から、一人目。</li>
+  <li><a href="#d12-bill_evans">2/12/2011</a>:
+   ぼくが影響を受けた５人から、二人目。</li>
+  <li><a href="diary2011_03.html#d6-john_brady">3/6/2011</a>:
+   ぼくが影響を受けた５人から、四人目。</li>
+  <li><a href="diary2011_11.html#d4-whos_the_most_attracitve_person_for_you">11/4/2011</a>:
+   who's the most attractive person for you?</li>
+ </ul>
+ </li>
+ <li><a id="d20-papaya"></a>
+  今日の「<a href="http://www.1101.com/papaya/">パパイヤの世界がたのしくなるターン@1101</a>」
+ <ul>
+  <li>(付記：記事のlocal copyは<a href="#d25-papaya">2/25/2011</a>)</li>
+  <li>今日のツイート
+   (<a href="http://twilog.org/ichiki_k/date-110220">twilog 110220</a>)
+   からの引用：
+  <ul>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/39199947211411456">ichiki_k/status/39199947211411456</a>
+   <blockquote>
+    わくわくしながら、パパイヤの世界がたのしくなるターン
+    <a href="http://www.1101.com/papaya/">http://www.1101.com/papaya/</a>
+    に行ってみたら、<br />
+    週末休みだった…<br />
+    がっかり。<br />
+    その分、月曜たのしみだけど(^^)<br />
+    posted at 14:49:30
+   </blockquote>
+   </li>
+  </ul>
+  </li>
+  <li><a href="#d17-papaya">2/17/2011</a>: いいもの、発見</li>
+  <li><a href="#d18-papaya">2/18/2011</a>: もう、回る気、十分！</li>
+  <li><a href="#d25-papaya">2/25/2011</a>: 気付いたら、もう最終回だった！</li>
+ </ul>
+ </li>
+ <li><a id="d20-papers"></a>
+  「処女論文を笑う事は誰にも出来ない」ことについて。
+ <ul>
+  <li>今日のツイート
+   (<a href="http://twilog.org/ichiki_k/date-110220">twilog 110220</a>)
+   からの引用：
+  <ul>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/39197567648665600">ichiki_k/status/39197567648665600</a>
+   <blockquote>
+    んだんだ。<br />
+    という自分は…<br />
+    どこを１にするかによるが、プロシーにすると恥かしいな
+    <a href="http://bit.ly/fqrdDU">bit.ly/fqrdDU</a><br />
+    （他の偉そうなセンセーらも、ほらほら、晒してみそ、という煽り）<br />
+    RT @Mokanishi 処女論文を笑う事は誰にも出来ないと思う。<br />
+    どんな大研究者も最初の論文は苦労したはず。<br />
+    posted at 14:40:03
+   </blockquote>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d20-good_guys"></a>
+  「優秀な人ではなく良い人を人材として求めている」ことについて、パート２
+ <ul>
+  <li>今日のツイート
+   (<a href="http://twilog.org/ichiki_k/date-110220">twilog 110220</a>)
+   からの引用：
+  <ul>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/39185496559206401">ichiki_k/status/39185496559206401</a>
+   <blockquote>
+    今更だが、もっと最近にも似た話があった。<br />
+    ジェシカの言葉
+   <blockquote>
+    「新しい人材を招き入れるときは、家族としてメンバーに迎えられるかどうかが大きなポイント」
+   </blockquote>
+    <a href="http://bit.ly/eZ48pv">http://bit.ly/eZ48pv</a><br />
+    RT @akanets …"優秀な人ではなく良い人を人材として求めている"というツイート…<br />
+    posted at 13:52:05
+   </blockquote>
+   </li>
+  </ul>
+  </li>
+  <li><a href="#d17-good_guys">2/17/2011</a>:
+   「優秀な人ではなく良い人を人材として求めている」ことについて、パート１</li>
+ </ul>
+ </li>
+ <li><a id="d20-other_tweets"></a>
+  その他の今日のツイートから。
+ <ul>
+  <li>今日のツイート
+   (<a href="http://twilog.org/ichiki_k/date-110220">twilog 110220</a>)
+   からの引用：
+  <ul>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/39174306571362305">ichiki_k/status/39174306571362305</a>
+   <blockquote>
+    「万事が上手く」いかないから、腹を割らない（で表面的に合わす）
+    ってのも、しかしクソだよなぁ。<br />
+    それより、割られた腹がひどいってのも多いだろう
+    …そんなこと言われても、とかね<br />
+    RT @Kirokuro お互い腹を割って話し合えば物事が万事上手くいくとする
+    日本特有の思想。<br />
+    posted at 13:07:37
+   </blockquote>
+   <ul>
+    <li>本音を表明せずに、ナーナーとことを穏便に進めるのが、日本特有のやり方なのかな。
+     で、これって上に書いたような流れで形成されてしまったのかな、と。
+     もしそうなら、二歩後退してるんだなぁと思った、と。</li>
+    <li>腹割って話をして、さわやかな気分になれる人に、なりたいもんだと思った。</li>
+   </ul>
+   </li>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/39176225238810624">ichiki_k/status/39176225238810624</a>
+   <blockquote>
+「内閣支持率というくだらない数字」だとぼくも思うが、だからそんなの気にしなければ良いのに…「首相から衆議院解散権を剥奪」って実現しないと思うし RT @hoso9999 …そうすれば…4年間は…政治家は政策に集中出来…マスコミ政治部は一波乱起こしてここで稼ごうとしている。
+
+posted at 13:15:14
+   </blockquote>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d19"></a>2/19 (Sat)</h2>
+<ul>
+ <li><a href="d19-speakeg"></a>
+  [speakeg]今日の、つい金沢英会話サークル
+ <ul>
+  <li>先日(<a href="#d11-train_trip">2/11/2011</a>)、
+   この英会話サークル自体の名前をつけませんか、という意見があって、
+   ない知恵を絞って「SPEAKい〜じ〜」という、金沢の英会話グループにふさわしい名前を閃いた。
+   その場に居なかったメンバーも含めて、告知してみる。
+   まあ、一応、好評だったということにしておこう(^^)
+  <ul>
+   <li>ちなみに、いつもネーミングにはうるさいリッチも
+    「OK」を出してくれたというお墨付きの名前だ！</li>
+  </ul>
+  </li>
+  <li>ということで、以後は、ボチボチとこの名前を使って行く事にしよう！</li>
+  <li>今日のツイート
+   (<a href="http://twilog.org/ichiki_k/date-110220">twilog 110219</a>)
+   からの引用：
+  <ul>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/38972686671683584">ichiki_k/status/38972686671683584</a>
+   <blockquote>
+    SPEAKい〜じ〜 THX<br />
+    @miyakacchan @ak1202 @pierna07 @hasitetu @jh9sib @mojotakashi
+    @fredwing717 @prink-angel @casablanca1943 @zenkeirich @kaorie3jp<br />
+    posted at 23:46:27
+   </blockquote>
+   </li>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/38973141841743872">ichiki_k/status/38973141841743872</a>
+   <blockquote>
+    SPEAKい〜じ〜、<br />
+    メンバーリスト書いただけで貴重な１４０字をつかいますなぁ。<br />
+    ということで、今日はいろいろ復活された方がいらして、楽しかったです。<br />
+    次回は３／５です。また、よろしく！<br />
+    posted at 23:48:15
+   </blockquote>
+   </li>
+  </ul>
+  </li>
+  <li>付記：2/20/2011のツイート
+   (<a href="http://twilog.org/ichiki_k/date-110220">twilog 110220</a>)
+   からの引用：
+  <ul>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/39165193040695296">ichiki_k/status/39165193040695296</a>
+   <blockquote>
+    元歌（あるのかな？）希望です。<br />
+    あと、「けなるいじ〜」の解説も(^^;)<br />
+    RT @Miyakacchan テーマソングは「SPEAKい〜じ〜、い〜じ〜、けなるいじ～♪」
+    なんでしょうか？（笑）<br />
+    posted at 12:31:24
+   </blockquote>
+   </li>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/39180827690680320">ichiki_k/status/39180827690680320</a>
+   <blockquote>
+    完璧に参りました＞金沢弁<br />
+    RT @Miyakacchan<br />
+    （元歌） <a href="http://bit.ly/c5zSF">http://bit.ly/c5zSF</a>
+     <a href="http://bit.ly/gg5WOj">http://bit.ly/gg5WOj</a><br />
+    （意味） <a href="http://bit.ly/d5uQfD">http://bit.ly/d5uQfD</a><br />
+    QT @ichiki_k: 元歌希望。「けなるいじ〜」の解説も<br />
+    posted at 13:33:31
+   </blockquote>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d18"></a>2/18 (Fri)</h2>
+<ul>
+ <li><a id="d18-papaya"></a>
+  今日の「<a href="http://www.1101.com/papaya/">パパイヤの世界がたのしくなるターン@1101</a>」
+ <ul>
+  <li>今日のツイート
+   (<a href="http://twilog.org/ichiki_k/date-110218">twilog 110218</a>)
+   からの引用：
+  <ul>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/38429096186884096">ichiki_k/status/38429096186884096</a>
+   <blockquote>
+    よし、家帰ったらやってみよ〜<br />
+    <a href="http://www.1101.com/papaya/2011-02-18.html">http://www.1101.com/papaya/2011-02-18.html</a><br />
+    はっ！<br />
+    （家の人は、小出しにせずになんで全部やってくんないのぉ、と怒ってた。<br />
+    それが、あちらの、商売ってもんなんだろうけど、ね）<br />
+    posted at 11:46:25
+   </blockquote>
+   </li>
+   <li>一応、蛇足な解説：「はっ！」ってのは、気持ちで回っている音！</li>
+  </ul>
+  </li>
+  <li><a href="#d17-papaya">2/17/2011</a>: いいもの、発見</li>
+  <li><a href="#d20-papaya">2/20/2011</a>: 週末は休みだった…。</li>
+  <li><a href="#d25-papaya">2/25/2011</a>: 気付いたら、もう最終回だった！</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d17"></a>2/17 (Thu)</h2>
+<ul>
+ <li><a id="d17-papaya"></a>
+  今日の「<a href="http://www.1101.com/papaya/">パパイヤの世界がたのしくなるターン@1101</a>」
+ <ul>
+  <li>今日のツイート
+   (<a href="http://twilog.org/ichiki_k/date-110217">twilog 110217</a>)
+   からの引用：
+  <ul>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/38121837259014144">ichiki_k/status/38121837259014144</a>
+   <blockquote>
+    やばい、はまりそうな予感が<br />
+    …ナイショで練習しようっと。<br />
+    <a href="http://www.1101.com/papaya/">http://www.1101.com/papaya/</a><br />
+    posted at 15:25:28
+   </blockquote>
+   </li>
+  </ul>
+  </li>
+  <li><a href="#d18-papaya">2/18/2011</a>: もう、回る気、十分！</li>
+  <li><a href="#d20-papaya">2/20/2011</a>: 週末は休みだった…。</li>
+  <li><a href="#d25-papaya">2/25/2011</a>: 気付いたら、もう最終回だった！</li>
+ </ul>
+ </li>
+ <li><a id="d17-good_guys"></a>
+  「優秀な人ではなく良い人を人材として求めている」ことについて
+ <ul>
+  <li>今日のツイート
+   (<a href="http://twilog.org/ichiki_k/date-110217">twilog 110217</a>)
+   からの引用：
+  <ul>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/38154035559137280">ichiki_k/status/38154035559137280</a>
+   <blockquote>
+    「定義やルールにとらわれない誠実な人」<br />
+    なんてどうでしょう？<br />
+    （という答えを求められてる訳ではないでしょうが）<br />
+    RT @akanets 優秀な人、良い人、というものの定義はどのようなことなのであろうか。。。<br />
+    posted at 17:33:25
+   </blockquote>
+   </li>
+   <li><a href="http://twitter.com/#!/ichiki_k/status/38219137843073025">ichiki_k/status/38219137843073025</a>
+   <blockquote>
+    これ似た話があったなと調べたら、<br />
+    ぼくの場合は梅田望夫さんでした <a href="http://bit.ly/gBeY4X">http://bit.ly/gBeY4X</a><br />
+    ５年以上前ですが(^^)<br />
+    RT @akanets …"優秀な人ではなく良い人を人材として求めている"<br />
+    という内容のツイートを見かけたので、そこから連想してつぶやいたのでした。<br />
+    posted at 21:52:07
+   </blockquote>
+   </li>
+   <li><a href="diary2003_10.html#d23-mochio">10/23/2003</a>:
+    「大リーグ的人材活用のパラダイムシフトは日本企業にも起きるか」@mochio</li>
+  </ul>
+  </li>
+  <li><a href="#d20-good_guys">2/20/2011</a>:
+   「優秀な人ではなく良い人を人材として求めている」ことについて、パート２</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d13"></a>2/13 (Sun)</h2>
+<ul>
+ <li><a id="d13-playing_music"></a>音楽を演奏するプロジェクト
+ <ul>
+  <li>私の２０１１年の resolution の１つ。
+   (cf. <a href="diary2011_01.html#d3-resolution">1/3/2011</a>)</li>
+  <li>ターゲットを明確にすることからはじめよう（って、まだ始めてなかったのか…）</li>
+  <li>piano:
+  <ul>
+   <li><a href="http://en.wikipedia.org/wiki/My_Foolish_Heart_%28song%29">My Foolish Heart</a> (Victor Young)
+   <ul>
+    <li>「ビル・エヴァンス・ピアノ・ソロ曲集」にある。</li>
+    <li>その昔、この譜面通りには、弾けた。</li>
+   </ul>
+   </li>
+   <li>Waltz for Debby (Bill Evans)
+   <ul>
+    <li>「ビル・エヴァンス・ピアノ・ソロ曲集」にある。</li>
+    <li>その昔、この譜面通りには、弾けた。</li>
+   </ul>
+   </li>
+   <li><a href="http://en.wikipedia.org/wiki/I_Love_You_Porgy">I Loves You, Porgy</a> (George Garshwin)
+   <ul>
+    <li>「ビル・エヴァンス・ピアノ・ソロ曲集」にある。</li>
+   </ul>
+   </li>
+   <li>Dolphin Dance (Herbie Hancock)
+   <ul>
+    <li>JazzLife のピアノアレンジの楽譜がある。</li>
+    <li>その昔、この譜面通りには、弾けた。</li>
+   </ul>
+   </li>
+   <li>Everything I Love (<a href="http://en.wikipedia.org/wiki/Cole_porter">Cole Porter</a>)
+   <ul>
+    <li>bill evans の album の演奏がよい。</li>
+    <li>楽譜、なし。</li>
+   </ul>
+   </li>
+   <li>Blackbird (Lennon McCartney)
+   <ul>
+    <li>brad mehldau の vol. 1 の演奏がよい。</li>
+    <li>ギターのタブ譜がある。山下邦彦の解析本もある。</li>
+   </ul>
+   </li>
+   <li>John Boy (Brad Mehldau)
+   <ul>
+    <li>brad mehldau の highway rider の演奏がよい。</li>
+    <li>楽譜、なし。</li>
+   </ul>
+   </li>
+   <li>Sky Turning Grey (Brad Mehldau)
+   <ul>
+    <li>brad mehldau の highway rider の演奏がよい。</li>
+    <li>楽譜、なし。</li>
+   </ul>
+   </li>
+   <li>Holland (Sufjan Stevens)
+   <ul>
+    <li>brad mehldau の演奏がよい。</li>
+    <li>楽譜、なし。</li>
+   </ul>
+   </li>
+   <li><a href="http://en.wikipedia.org/wiki/Moon_River">Moon River</a> (Henry Mancini)
+   <ul>
+    <li>brad mehldau の演奏の譜面が JazzLife にあった。</li>
+    <li>ukulele 用のコード譜はある。</li>
+   </ul>
+   </li>
+   <li><a href="http://en.wikipedia.org/wiki/My_Romance_%28song%29">My Romance</a> (Richard Rogers)
+   <ul>
+    <li>brad mehldau の演奏、特にイントロ、がよい。</li>
+    <li>「ビル・エヴァンス・ピアノ・ソロ曲集」にある。</li>
+   </ul>
+   </li>
+   <li><a href="http://en.wikipedia.org/wiki/Autumn_Leaves_%28song%29">Autumn Leaves</a> (Joseph Kosma)
+   <ul>
+    <li>bill evans の演奏、特にイントロ、がよい。</li>
+    <li>「ビル・エヴァンス・ピアノ・ソロ曲集」にある。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li>guitar (ukulele):
+  <ul>
+   <li><a href="http://en.wikipedia.org/wiki/Moon_River">Moon River</a> (Henry Mancini)
+   <ul>
+    <li>ukulele で（フルートの田代さんと）演奏してもらった！
+     (<a href="http://www.youtube.com/watch?v=cWifRkasOYc">youbute</a>,
+      <a href="http://twitcasting.tv/noah3893/movie/702795">twitcasting</a>)</li>
+    <li>コード譜をネットでいくつか漁った。</li>
+   </ul>
+   </li>
+   <li>Blackbird (Lennon McCartney)
+   <ul>
+    <li>the beatles の original の演奏が、ただただ、最高。</li>
+    <li>タブ譜をネットでいくつか漁った。</li>
+   </ul>
+   </li>
+   <li><a href="http://en.wikipedia.org/wiki/Tears_in_heaven">Tears In Heaven</a> (Eric Clapton and Will Jennings)
+   <ul>
+    <li>つい金沢ギター部で教わった曲。</li>
+    <li>楽譜、なし。</li>
+   </ul>
+   </li>
+   <li><a href="http://en.wikipedia.org/wiki/Don%27t_Know_Why">Don't Know Why</a> (Jesse Harris)
+   <ul>
+    <li>なく子も黙る norah jones のヒット曲。</li>
+    <li>楽譜は知り合いから貰ったものがある。</li>
+   </ul>
+   </li>
+   <li>風をあつめて (細野晴臣)
+   <ul>
+    <li>なく子も黙る、細野晴臣の名曲。</li>
+    <li>楽譜は知り合いから貰ったものがある。</li>
+   </ul>
+   </li>
+   <li>三時の子守唄 (細野晴臣)
+   <ul>
+    <li>細野晴臣のギター一本の弾き語りの名曲。</li>
+    <li>昔、イントロ部分を必死に取ったものがあるはず。</li>
+   </ul>
+   </li>
+   <li>Wanderwall (Oasis)
+   <ul>
+    <li>ロックのクラシックらしいが、知ったのは brad mehldau 経由で。</li>
+    <li>楽譜、なし。</li>
+   </ul>
+   </li>
+   <li>Riverman (Nick Drake)
+   <ul>
+    <li>これも知ったのは brad mehldau 経由で。</li>
+    <li>楽譜、なし。</li>
+   </ul>
+   </li>
+   <li>Things Behind The Sun (Nick Drake)
+   <ul>
+    <li>これも知ったのは brad mehldau 経由で。</li>
+    <li>楽譜、なし。</li>
+   </ul>
+   </li>
+   <li>St. Patrick Day (John Mayer)
+   <ul>
+    <li>john mayer の曲。</li>
+    <li>タブ譜をネットでいくつか漁った。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d13-writing_books"></a>学問ネタで何か本を書くプロジェクト
+ <ul>
+  <li>私の２０１１年の resolution の１つ。
+   (cf. <a href="diary2011_01.html#d3-resolution">1/3/2011</a>)</li>
+  <li>改めて、能書き
+   (<a href="http://twitter.com/#!/ichiki_k/status/21574858718580736">ichiki_k/status/21574858718580736</a>)：
+  <blockquote>
+   マスとしてのPDとか（就職難の新卒大学生とか、先行きの怪しい大学教員とか）<br />
+   やっぱり、ぼくには、ピンと来ない。<br /><br />
+   そうじゃなくて、数は少ないけど、個として自立してて、
+   やる気があって、がんばっている人を、<br />
+   <font color="red"><b>空間も時間も越えて</b></font>、
+   助けになることがあるならばしたい、<br /><br />
+   という気がしてきた２０１１年。
+  </blockquote>
+  <ul>
+   <li>蛇足を承知で、自己解説。</li>
+   <li>私が（ある意味）孤独に研究していた粘性流体の話を、
+    学問的にも工学的にも大事だと思って、みんなのためになると思って、
+    結構魂を込めて書いたレビュー記事
+   <blockquote>
+    「<a href="http://kichiki.web.fc2.com/physics/papers-j.html#Busseikenkyu-200107">Microhydrodynamics of colloidal suspensions -- Stokesian Dynamics: The Next Generation --</a>」
+   </blockquote>
+    だけど、当時の私の感覚では、完全に無視されたという状況だった。</li>
+   <li>しかし今振り返ると（ありゃりゃ、１０年前の出来事になってしまうんだな）、
+    それでも少なからず(a few ってところだけど)何かしら与えられたモノは
+    あったのかも知れないな、と思うことはあった。
+   <ul>
+    <li>例えば、５年前の（従って、執筆後５年後の）感慨は
+     <a href="diary2006_06.html#d8-my_old_paper">6/8/2006</a>
+     にある。</li>
+    <li>ちなみに、原稿を書き上げたときの日記は
+     <a href="diary2001_04.html#d18-microhydrodynamics">4/18/2001</a></li>
+   </ul>
+   </li>
+   <li>このブログのあちこちに書いている通り、
+    私は手が遅い研究者であることを自覚しているから
+    (まるで <a href="#d12-bill_evans">bill evans のように</a>)、
+    簡単に色あせるようなことはしないように気をつけてきたし、
+    その意味で、すぐに誰か(と言っているのは、主に若い人のことを念頭に置いている、
+    つまり今、例えば大学院に上がったくらいの学生さん)の役に立たなくても、
+    １０年後（というのは、原稿を書いてから１０年経過した今なら、
+    結構リアルに想像できるタイムスケールだけど）の若い人たち
+    (それが、いわゆる大学の学生なのか、大学ってモノが機能しなくなっているのか、
+    知らないけれど)の役に立つかもしれない。
+    まず、そういう意味での「時間」を越えて、ということ。</li>
+   <li>基本、英語で書きたいなと思っている。これは
+   <blockquote>
+    broken english is our native language
+   </blockquote>
+    と（正確な文言ではないが、意味的に）言った、オランダの leen van wijngaarden
+    の精神を持って、国境のない科学者全体に向けて、という意味で、
+    「空間」を越えて、という意味。</li>
+   <li>まあ、改めて、偉そうに、言うことでもない、ごく当たり前のことだと思うけど。</li>
+  </ul>
+  </li>
+  <li>その１、私が物性研究に(日本語で)書いたレビュー
+   「<a href="http://kichiki.web.fc2.com/physics/papers-j.html#Busseikenkyu-200107">Microhydrodynamics of colloidal suspensions -- Stokesian Dynamics: The Next Generation --</a>」
+   の英語版を書く。
+  <ul>
+   <li><a href="diary2008_03.html#d31-microhydrodynamics">3/31/2008</a>:
+    「microhydrodynamics の英語版はないのか」という問い合わせ。</li>
+  </ul>
+  </li>
+  <li>その２、古典的な論文をじっくり腰を据えて解説する「読み物」的なもの。
+  <ul>
+   <li>とりあえず、パッと思いつく、あえて取り上げておきたいと思う論文は：
+   <ul>
+    <li>A. Einstein の、有効粘性率の論文。</li>
+    <li>Beenakker の２ページの簡潔な Ewald summation の論文。
+    <ul>
+     <li>Hasimoto の古典的な仕事についても。</li>
+    </ul>
+    </li>
+    <li>Saffman の、沈殿速度の濃度依存性に関する簡潔な議論の論文。</li>
+    <li>今井功の、 Stokes 近似と Oseen 近似の統一的な formulation
+     (彼の教科書から)を、英語で。</li>
+   </ul>
+   </li>
+   <li>これらも、結局は上のレビュー記事を書いたときに、
+    大事だなぁと思ったりしたものが、ほとんどだな。</li>
+  </ul>
+  </li>
+  <li>学術論文の（古いものの）著作権について、
+   特にその再利用などについての取り扱いはどうなっているのだろう？</li>
+  <li>と、今週末の weekend scientist プロジェクトは、ほとんど時間切れで、
+   能書きだけダラダラと書いて終わり、か。まあ何事も一歩一歩だ。
+  <ul>
+   <li>でも、昨日(<a href="#d12-bill_evans">2/12/2011</a>)
+    「ぼくが影響を受けた５人から、二人目」で、あらためて bill evans のビデオを
+    見たことは、良い意味で refresh というか revived というか、
+    刺激を受けたと思う。故に、今日、こういうことに時間を割いたような気がする。</li>
+  </ul>
+  </li>
+  <li><a href="diary2012_01.html#d1-resolution">1/1/2012</a>:
+   2012年の計 - 本は一般的なもので仕切り直し、研究は研究で何かやるぞ。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d12"></a>2/12 (Sat)</h2>
+<ul>
+ <li>今日はのんびりと過ごす一日。
+ <ul>
+  <li>昨日の遠足(^^)で少し疲れたし、
+   モンちゃんにもちょっとサービスした方がいいので。</li>
+ </ul>
+ </li>
+
+ <li><a id="d12-bill_evans"></a>ぼくが影響を受けた５人から、二人目。
+ <ul>
+  <li>「ぼくが影響を受けた５人」シリーズの二人目は、
+   jazz pianist の bill evans
+  <ul>
+   <li>思えば、私が影響を受けて、今の私が現実的に形作られてきたのは、
+    明らかに大学に入ってからの時期みたいで、この二人目もやはり
+    大学に入りたての頃に知った人物から。</li>
+   <li>bill evans は、大学の１年だな、友人が「いい」と自慢してたので、
+    カセット(!)にダビング(!!)してもらったのが、
+    &quot;Waltz for Debby&quot; だった。
+    その１曲目の &quot;My Foolish Heart&quot; に一撃でやられた、
+    特にあの三連符のところ（ほかの曲は、それほどピンとは来なかったかな）
+    それから、いろいろと聞いていった。（ちなみに、私は、
+    どうも riverside 時代のものよりも、中期トリオのちょっと軽めな奴が、好み）。
+    ちなみに jazz を聞いたのも、彼がはじめてじゃなかったかな。</li>
+   <li>当時、pioneer の LD プレーヤを持っていて、
+    いろいろと LD を買っていたが、その中に &quot;the universal mind&quot;
+    というビデオがあった。そこで bill が尊敬する兄 harry との対談の形で
+    いろいろ喋っているものだが、結構、そこで喋られていたことに、
+    深いレベルで影響を受けたと思う。</li>
+  </ul>
+  </li>
+  <li>youtube にあったビデオ：
+  <ul>
+   <li><a href="http://www.youtube.com/watch?v=sYXB6pQvJcg">Bill Evans 1966 Interview</a></li>
+   <li><a href="http://www.youtube.com/watch?v=YEHWaGuurUk">Bill Evans - The Creative Process and Self-Teaching</a></li>
+   <li><a href="http://www.youtube.com/watch?v=5QdM0oxWOZw">Bill Evans - The Creative Process and Self Teaching 2</a></li>
+   <li><a href="http://www.youtube.com/watch?v=Tq1H3ylU-vk">Bill Evans - The Creative Process and Self-Teaching 3</a></li>
+   <li><a href="http://www.youtube.com/watch?v=gxpPWGPDXrM">The Universal Mind of Bill Evans: Universal musical mind</a>
+    - 心ある素人の意見にはバカにできないものがある、という彼の言葉。
+   <ul>
+    <li><a href="diary2010_09.html#d12-kenmogi">9/12/2010</a>:
+     茂木健一郎の新卒一括採用についてのツイートから、
+     私の、うろ覚えな bill evansの「するどい素人が一番怖い（あなどれない）」
+     という言葉への言及。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li>大学の頃使ってた LD プレーヤはコンデンサがいかれたのかな、
+   絵が出ないまま放置されてる状態なので（今更、修理もできないだろうな、
+   どっかで一台調達したいなぁ）、上の youtube で一通り見返してみた
+   （で、最近の癖でつい dictation しようとしてしまうが、難しいなぁ）。
+   以下、改めて心に響いた内容：
+  <ul>
+   <li>問題に対して、正攻法で望むことをせずに、多くの人は最初から近似してしまう。
+    そうすると、どれだけ頑張っても、出来たような感触は得られるかも知れないが、
+    土台が曖昧なので、いずれ混乱して、どこにも行き着けない、と。</li>
+   <li>ほとんどの人は彼を天才というだろうが、
+    彼自身は、そういう天賦の才能に恵まれていないが故に、
+    時間をかけて解析 (analyze) することを習得していったと言っている。
+    それ故に、更に深く深く突き詰めていけた、と。
+    １つ１つのステップを、それぞれ無意識でできるようになるまで身につけて、
+    次のステップに進むということをした、と。
+    そうやって、本当に自分を表現できるようになったのは２８くらいだったかな、と。
+    今考えても、まじで凄い。
+   <ul>
+    <li>（それに感化されて、ある意味、真に受ける人間も、まぁ何だけど）</li>
+    <li>村上春樹が「走ること」(<a href="diary2010_10.html#d9-haruki">10/9/2010</a>)で色々と教えてくれていることの１つも、
+     ほとんど同じことだと思う。</li>
+    <li><a href="diary2007_10.html#d22-toots">10/22/2007</a>:
+     toots thielmans は今でも（当時）毎日練習している、という話。</li>
+    <li><a href="#d13-writing_books">2/13/2011</a>:
+     おこがましいが、私自身、研究者としては手が遅いタイプの人間だと思っている。</li>
+   </ul>
+   </li>
+   <li>すぐに克服できない問題を出来ないと認識してしまう人が多い。
+    問題を直視して、時間をかければ、解決できる問題もある。
+    それが彼の力だと、彼自身が認識している。</li>
+   <li>いつ何時でも、ステージに立つと瞬時に（お客に聞かせることができるレベルの）
+    演奏ができる。それがプロ。ここには絶対の自信がある。
+   <ul>
+    <li><a href="diary2004_01.html#d22-nonunif">1/22/2004</a>:
+     「プロとして、どんな状況であれ、こなさねばならないコトってのはあるんだよなぁ」
+     という私自身の自戒。</li>
+   </ul>
+   </li>
+   <li>バンドで演奏していて、(プロとしての、お客に聞かせることができるという
+    レベルをずっと越えた)すごいレベルの演奏ができることは、ごく稀にやってくる。
+    でも、それをもう一度やろうとしてもできるものじゃない、と。</li>
+   <li>音楽家を目指して NY に出た時、
+    純粋に音楽に精進していれば、きっと誰かに認められると信じてやってきた。
+    そういうやり方をずっとしてきた、と。</li>
+  </ul>
+  </li>
+  <li>当の LD を見てたのは、おそらく学部時代までだと思うが、
+   それでも、今に至るまで、私の考え方にすごく影響を与えていることは、否定できない。
+  <ul>
+   <li>ものごとを、論理的に、一歩一歩、攻略することは、できる、とか。</li>
+   <li>ずるをしないで、きちんと本質に挑むこと、とか。</li>
+   <li>まじめに精進していれば、きっと誰かから認めてもらえる、とか。</li>
+   <li>簡単に解決しない問題も、粘り強くアプローチしてみる、とか。</li>
+  </ul>
+  </li>
+  <li>bill evans に関する過去の記述：
+  <ul>
+   <li><a href="summaries.html#bill-evans">サマリー：Bill Evans</a></li>
+   <li><a href="diary2007_12.html#d8-lfe">12/8/2007</a>:
+    &quot;letter from evans&quot; is on-line.</li>
+   </ul>
+  </li>
+  <li><a href="diary2011_01.html#d21-jessica">1/21/2011</a>:
+   今日のジェシカ「Recent Inspiration」から、私の大事な５人</li>
+  <li><a href="diary2011_01.html#d30-emerson">1/30/2011</a>:
+   ぼくが影響を受けた５人から、一人目。</li>
+  <li><a href="diary2011_02.html#d20-toshio_tsuzuki">2/20/2011</a>:
+   ぼくが影響を受けた５人から、三人目。</li>
+  <li><a href="diary2011_03.html#d6-john_brady">3/6/2011</a>:
+   ぼくが影響を受けた５人から、四人目。</li>
+  <li><a href="diary2011_11.html#d4-whos_the_most_attracitve_person_for_you">11/4/2011</a>:
+   who's the most attractive person for you?</li>
+ </ul>
+ </li>
+
+</ul>
+
+<h2><a id="d11"></a>2/11 (Fri)</h2>
+<ul>
+ <li><a id="d11-train_trip"></a>ちょっと、大人の遠足っていう気分な一日。
+ <ul>
+  <li>電車で小松の先の粟津まで。</li>
+  <li>そういえば、金沢から JR の在来線、普通電車に乗るのって、初めてだ。</li>
+  <li>１１：０９発の福井行きに乗ったけど、
+   誰かさんは、文字通り、駆け込み乗車だった(^^)
+  <ul>
+   <li>その誰かさんは、帰りの駅のプラットフォームが寒いからと、
+    階段下のトンネルで電車を待ってた。</li>
+  </ul>
+  </li>
+  <li><a href="http://twitter.com/#!/ichiki_k/status/35888072365187072">ichiki_k/status/35888072365187072</a>
+  <blockquote>
+   電車、ごとごと。大人ばっかり、8人並んで、結構、奇妙な光景かも。<br />
+   posted at 11:29:17
+  </blockquote>
+  </li>
+  <li><a href="#d19-speakeg">2/19/2011</a>:
+   「SPEAKい〜じ〜」お披露目。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a><br />
+facebook: <a href="http://www.facebook.com/kengo.ichiki">Kengo Ichiki</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+</body>
+</html>

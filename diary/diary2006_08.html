@@ -1,0 +1,596 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - August 2006</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <link rel="alternate"  type="application/rss+xml" href="diary.rdf" />
+  </head>
+
+<body>
+
+
+
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top" name="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2006年8月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+<div class="body">
+
+<br />
+
+
+<h2><a id="d31" name="d31"></a>8/31(Thu)</h2>
+<ul>
+ <li>[FreeBSD]
+  出勤後、再起動したら (きちんと shutdown してあったにもかかわらず)
+  fsck がかかる
+ <ul>
+  <li>何かが本質的におかしいな</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d30" name="d30"></a>8/30(Wed)</h2>
+<ul>
+ <li>気分転換で web のスタイルを変えてみた
+ </li>
+ <li>[FreeBSD]
+  帰宅後、再起動したら X がこける
+ <ul>
+  <li>最初は X を疑ってた。 root なら立ち上がるなぁとか、
+   FontFreePath の警告って何だろうとか。
+   しかし原因は gnome (gnome-session) がこけるせいだった</li>
+  <li>で、 sawfish だけで立ち上げて、いろいろ見てみたら、
+   gnome のアイコンが認識されなくなってたりしている。</li>
+  <li>ports を部分的に再インストールしたりしてみたが埓が開かないので、
+   gnome2 を full に再インストール(をセットして就寝)</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d28" name="d28"></a>8/28(Mon)</h2>
+<ul>
+ <li>[FreeBSD]
+  <a href="http://www.freshports.org/math/vtk-python/">vtk-python</a>
+  in <a href="http://www.freshports.org/">ports</a>
+ <ul>
+  <li>although it is marked by &quot;BROKEN&quot;,
+   just the following patch for Makefile
+   (actually one option &quot;-DCMAKE_BACKWARDS_COMPATIBILITY=2.2&quot;)
+   can help the building:
+  <pre>
+*** ../vtk-python/Makefile      Thu Aug 17 17:04:46 2006
+--- Makefile    Mon Aug 28 14:58:03 2006
+***************
+*** 14,20 ****
+                tcl84:${PORTSDIR}/lang/tcl84 \
+                tk84:${PORTSDIR}/x11-toolkits/tk84
+  
+! BROKEN=               Does not build
+  
+  MASTERDIR=    ${.CURDIR}/../vtk
+  
+--- 14,20 ----
+                tcl84:${PORTSDIR}/lang/tcl84 \
+                tk84:${PORTSDIR}/x11-toolkits/tk84
+  
+! # BROKEN=             Does not build
+  
+  MASTERDIR=    ${.CURDIR}/../vtk
+  
+***************
+*** 36,42 ****
+                -DPYTHON_INCLUDE_PATH:PATH=${PYTHON_INCLUDEDIR} \
+                -DPYTHON_LIBRARY:FILEPATH=${PYTHON_LIBDIR}/config/lib${PYTHON_VERSION}.a \
+                -DTCL_INCLUDE_PATH:PATH=${TCL_INCLUDE_DIR} \
+!               -DTK_INCLUDE_PATH:PATH=${TK_INCLUDE_DIR}
+  
+  PLIST_SUB+=   VTK_PTH_LOCATION_DIR=${PYTHON_SITELIBDIR}
+  
+--- 36,43 ----
+                -DPYTHON_INCLUDE_PATH:PATH=${PYTHON_INCLUDEDIR} \
+                -DPYTHON_LIBRARY:FILEPATH=${PYTHON_LIBDIR}/config/lib${PYTHON_VERSION}.a \
+                -DTCL_INCLUDE_PATH:PATH=${TCL_INCLUDE_DIR} \
+!               -DTK_INCLUDE_PATH:PATH=${TK_INCLUDE_DIR} \
+!               -DCMAKE_BACKWARDS_COMPATIBILITY=2.2
+  
+  PLIST_SUB+=   VTK_PTH_LOCATION_DIR=${PYTHON_SITELIBDIR}
+  </pre>
+  </li>
+  <li>at least, it looks working properly.</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d25" name="d25"></a>8/25(Fri)</h2>
+<ul>
+ <li>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20060824-00000018-mai-soci">＜東和大＞学生確保難しく、０９年度末に廃校　福岡</a>」
+  @yahoo
+  (<a href="LOCAL/20060825-yahoo-20060824-00000018-mai-soci.html">lc</a>)
+ <ul>
+  <li>昔参加した国際会議(第一回とか銘打っていたと思うが)は
+   <a href="http://www.ualberta.ca/~ichiki/old-schedule.html#y1995-towa">1995 年</a>のことだったか</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d24" name="d24"></a>8/24(Thu)</h2>
+<ul>
+ <li>やっとこさ、日常に戻る
+ </li>
+ <li><a id="d24-tp" name="d24-tp"></a>[FreeBSD]
+  R-6.1 (the plain SMP kernel) on TP-R60 (9456-6KU)
+ <ul>
+  <li><b>CPU</b>: Two cores are working.
+  <ul>
+   <li>from dmesg,
+   <pre>
+CPU: Genuine Intel(R) CPU           T2400  @ 1.83GHz (1828.77-MHz 686-class CPU)
+  Origin = "GenuineIntel"  Id = 0x6e8  Stepping = 8
+  Features=0xbfe9fbff&lt;FPU,VME,DE,PSE,TSC,MSR,PAE,MCE,CX8,APIC,SEP,MTRR,PGE,MCA,C
+MOV,PAT,CLFLUSH,DTS,ACPI,MMX,FXSR,SSE,SSE2,SS,HTT,TM,PBE&gt;
+  Features2=0xc1a9&lt;SSE3,MON,VMX,EST,TM2,&lt;b14>,&lt;b15&gt;&gt;
+  AMD Features=0x100000&lt;NX&gt;
+  Cores per package: 2
+
+FreeBSD/SMP: Multiprocessor System Detected: 2 CPUs
+ cpu0 (BSP): APIC ID:  0
+ cpu1 (AP): APIC ID:  1
+   </pre>
+   </li>
+   <li>following from
+    http://lists.freebsd.org/pipermail/freebsd-hackers/2006-April/016093.html,
+    it seems that the SMP support of gkrellm is not working on FreeBSD yet.
+   </li>
+  </ul>
+  </li>
+  <li><b>WiFi</b>: ath (Atheros IEEE 802.11 wireless network driver) just
+   works fine:
+  <ul>
+   <li>1) put
+   <pre>
+    if_ath_load="YES"
+   </pre>
+    in /boot/loader.conf</li>
+   <li>2) run a script like
+    (for &quot;11b&quot; router with WEP)
+   <pre>
+kldload wlan_wep.ko
+ifconfig ath0 \
+ inet 192.168.0.123 netmask 0xffffff00 \
+ ssid abcde \
+ wepmode on \
+ wepkey 0x112233445566778899aabbccdd deftxkey 1 \
+ mode 11b
+route add default 192.168.0.1
+cp /etc/resolv.conf.home /etc/resolv.conf
+   </pre>
+   </li>
+   <li>from dmesg,
+   <pre>
+ath_hal: 0.9.16.16 (AR5210, AR5211, AR5212, RF5111, RF5112, RF2413, RF5413)
+ath0: &lt;Atheros 5212&gt; mem 0xedf00000-0xedf0ffff irq 17 at device 0.0 on pci3
+ath0: mac 10.3 phy 6.1 radio 10.2
+   </pre>
+   </li>
+   <li>
+    from &quot;pciconf -l -v&quot;
+   <pre>
+ath0@pci3:0:0:  class=0x020000 card=0x058a1014 chip=0x1014168c rev=0x01 hdr=0x00
+    vendor   = 'Atheros Communications Inc.'
+    device   = '11a/b/g Wireless LAN Mini PCI Adapter'
+    class    = network
+    subclass = ethernet
+   </pre>
+   </li>
+   <li>from &quot;ifconfig ath0&quot;
+   <pre>
+ath0: flags=8843&lt;UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500
+        ...
+        media: IEEE 802.11 Wireless Ethernet autoselect mode 11b (DS/11Mbps)
+        status: associated
+        ssid abcde channel 2 bssid ...
+        authmode OPEN privacy ON deftxkey 1 wepkey 1:104-bit txpowmax 36
+        protmode CTS burst bintval 100
+   </pre>
+   </li>
+  </ul>
+  </li>
+  <li><b>Ethernet</b>:
+  <ul>
+   <li>
+    from dmegs,
+   <pre>
+bge0: &lt;Broadcom BCM5751M Gigabit Ethernet, ASIC rev. 0x4201&gt; mem 0xee000000-0xee00ffff irq 16 at device 0.0 on pci2
+miibus0: &lt;MII bus&gt; on bge0
+brgphy0: &lt;BCM5750 10/100/1000baseTX PHY&gt; on miibus0
+brgphy0:  10baseT, 10baseT-FDX, 100baseTX, 100baseTX-FDX, 1000baseTX, 1000baseTX-FDX, auto
+   </pre>
+   </li>
+   <li>
+    from &quot;pciconf -l -v&quot;
+   <pre>
+bge0@pci2:0:0:  class=0x020000 card=0x208117aa chip=0x167d14e4 rev=0x21 hdr=0x00
+    vendor   = 'Broadcom Corporation'
+    device   = 'BCM5750A1M NetXtreme Gigabit Ethernet PCI Express'
+    class    = network
+    subclass = ethernet
+   </pre>
+   </li>
+   <li>from &quot;ifconfig bge0&quot;
+   <pre>
+bge0: flags=8843&lt;UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500
+        options=1b&lt;RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING&gt;
+        ...
+        media: Ethernet autoselect (100baseTX &lt;full-duplex&gt;)
+        status: active
+   </pre>
+   </li>
+  </ul>
+  </li>
+  <li><b>USB</b>: works fine (at least for HDD and Ethernet).
+  <ul>
+   <li>
+    from dmesg,
+   <pre>
+uhci0: &lt;UHCI (generic) USB controller&gt; port 0x1820-0x183f irq 16 at device 29.0 on pci0
+usb0: &lt;UHCI (generic) USB controller&gt; on uhci0
+usb0: USB revision 1.0
+uhub0: Intel UHCI root hub, class 9/0, rev 1.00/1.00, addr 1
+uhub0: 2 ports with 2 removable, self powered
+
+...
+   </pre>
+   </li>
+   <li>
+    from &quot;pciconf -l -v&quot;
+   <pre>
+uhci0@pci0:29:0:        class=0x0c0300 card=0x200a17aa chip=0x27c88086 rev=0x02 hdr=0x00
+    vendor   = 'Intel Corporation'
+    device   = '82801G (ICH7 Family) USB Universal Host Controller'
+    class    = serial bus
+    subclass = USB
+...
+   </pre>
+   </li>
+  </ul>
+  </li>
+  <li><b>Firewire</b>: works fine (at least for HDD).
+  <ul>
+   <li>
+    from dmesg,
+   <pre>
+fwohci0: &lt;1394 Open Host Controller Interface&gt; mem 0xe4301000-0xe43017ff,0xe4304000-0xe4307fff irq 17 at device 0.1 on pci21
+fwohci0: OHCI version 1.10 (ROM=0)
+fwohci0: No. of Isochronous channels is 4.
+fwohci0: EUI64 0a:00:06:e4:20:30:bf:0a
+fwohci0: Phy 1394a available S400, 3 ports.
+fwohci0: Link S400, max_rec 2048 bytes.
+firewire0: &lt;IEEE1394(FireWire) bus&gt; on fwohci0
+
+[when HDD is plugged in...]
+
+fwohci0: BUS reset
+fwohci0: node_id=0x8000ffc0, gen=3, non CYCLEMASTER mode
+firewire0: 5 nodes, maxhop &lt;= 4, cable IRM = 0 (me)
+firewire0: root node is not cycle master capable
+firewire0: bus manager 0 (me)
+firewire0: New S400 device ID:0010b9f701225a23
+...
+da0 at sbp0 bus 0 target 1 lun 0
+da0: &lt;Maxtor OneTouch 0000&gt; Fixed Direct Access SCSI-4 device
+da0: 50.000MB/s transfers
+da0: 286103MB (585938944 512 byte sectors: 255H 63S/T 36473C)
+...
+   </pre>
+   </li>
+   <li>
+    from &quot;pciconf -l -v&quot;
+   <pre>
+fwohci0@pci21:0:1:      class=0x0c0010 card=0x202e17aa chip=0x803a104c rev=0x00 hdr=0x00
+    vendor   = 'Texas Instruments (TI)'
+    class    = serial bus
+    subclass = FireWire
+   </pre>
+   </li>
+  </ul>
+  </li>
+  <li><b>Sound</b>: Intel's
+   <a href="http://www.intel.com/standards/hdaudio/">High Definition Audio</a>
+   is on it. Not perfect (such as recording) but it is working.
+  <ul>
+   <li>from &quot;pciconf -l -v&quot;
+   <pre>
+pcm0@pci0:27:0: class=0x040300 card=0x201017aa chip=0x27d88086 rev=0x02 hdr=0x00
+    vendor   = 'Intel Corporation'
+    device   = '82801G (ICH7 Family) High Definition Audio'
+    class    = multimedia
+   </pre>
+   </li>
+   <li>I tried &quot;hdac&quot; at
+    <a href="http://darkircop.org/hdac.tgz">http://darkircop.org/hdac.tgz</a>
+    (kldload hdac.ko). It works, but the volume is still a bit low
+    (even if the max volume 100 -- the beep is too loud...
+     (OK, &quot;xset b off&quot; and (setq visible-bell t) on emacs
+      would suffice))
+   <li>from dmegs,
+   <pre>
+pcm0: &lt;Intel 82801G High Definition Audio Controller&gt; mem 0xee240000-0xee243fff irq 17 at device 27.0 on pci0
+init 0xc3848380
+pcm0: Output Streams: 4, Input Streams: 4, Bidirectional Streams: 0
+pcm0: CORB Size: 256, RIRB Size: 256
+pcm0: &lt;audio&gt; at device 0:1 (no driver attached)
+pcm0: &lt;modem&gt; at device 1:2 (no driver attached)
+pcm0: Cap 441 sf e007f st 1
+pcm0: Set 0:3 10
+   </pre>
+   </li>
+  </ul>
+  </li>
+  <li><b>X</b>: works fine without DRI --
+   I didn't try it yet (agp looks inactive...)</li>
+  <li><b>Fingerpring device</b>:
+  <ul>
+   <li>it looks like this device can be used on FreeBSD
+    by ports/security/bsp_upektfmess
+    (See http://shapeshifter.se/articles/upek_touchchip_freebsd/)
+   </li>
+   <li>from dmesg
+   <pre>
+ugen0: STMicroelectronics Biometric Coprocessor, rev 1.00/0.01, addr 2
+   </pre>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d23" name="d23"></a>8/23(Wed)</h2>
+<ul>
+ <li><a id="d23-tp" name="d23-tp"></a>
+  朝の 8 時前にUPS の営業所にこちらから出向いて、念願の TP を手に入れた
+ <ul>
+  <li>本当に長かった</li>
+  <li><a href="diary2004_05.html#d11-tp">5/11/2004</a>:
+   これまでの TP 歴</li>
+  <li>どこにも記載のなかった firewire が付いていたのが良い誤算</li>
+  <li>HDD の interface が SATA になっていて、
+   R51 のそれをそのまま載せ替えられなかったのが悪い誤算。
+   あとでかい…
+   (だんだん大きくなってるのは貧乏になっている証拠かな、とは家の人の発言)</li>
+  <li><a href="diary2006_11.html#d30-interview">11/30/2006</a>:
+   projector から認識されず…</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d22" name="d22"></a>8/22(Tue)</h2>
+<ul>
+ <li>昨日逃した TP の再配達を間違いなく受け取るために、一日自宅待機
+ <ul>
+  <li>してたが、トラックは来なかった</li>
+  <li>web を見ると 3 時前に配達に来たけど不在との、ふざけた記録が</li>
+  <li>昨日の配達票にある 1-800 の番号に電話するも operator に継らず</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d21" name="d21"></a>8/21(Mon)</h2>
+<ul>
+ <li><a id="d21-post" name="d21-post"></a>日本に郵便物を発送、月末までに届くかな
+ <ul>
+  <li>付記: 8/28 無事に届いたらしい。
+   cf. <a href="https://em.canadapost.ca/emo/basicPin.do?trackingId=EE073134167CA&trackingCode=PIN&action=query&language=en&sblid=dcsubmitted">canadapost</a>
+   (<a href="LOCAL/20060828-canadapost.html">lc</a>)</li>
+  <li>←<a href="diary2006_09.html#d12-post">9/12/2006</a></li>
+ </ul>
+ </li>
+ <li>出がけに見たら玄関に UPS の配達票が貼ってあった
+ <ul>
+  <li>TP がもう来てたんだ…が逃した。曰く、UPS は 3 度配達を試みるとのこと。
+   明日の 2:00-5:00 の間に来る予定だと</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d19" name="d19"></a>8/19(Sat)</h2>
+<ul>
+ <li>あることをすっかり、本当に完璧に、忘れていて焦った
+ <ul>
+  <li>何とか挽回した(できた)と思う</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d18" name="d18"></a>8/18(Fri)</h2>
+<ul>
+ <li>夜メールで TP が発送されたとの知らせ
+ <ul>
+  <li>2,3 日とあったが、ここの配送関係はなめているので、
+   水曜あたりかなぁ</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d6" name="d6"></a>8/6(Sun)</h2>
+<ul>
+ <li><a id="d6-yasuo" name="d6-yasuo"></a>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20060806-00000061-mai-pol">＜長野県知事選＞新人の村井氏が初当選　田中氏の３選阻む</a>」@yahoo
+  (<a href="LOCAL/20060806-yahoo-20060806-00000061-mai-pol.html">lc</a>)
+ <ul>
+  <li>ありゃりゃ、まけちゃったのか</li>
+  <li>cf.<a href="diary2002_09.html#d1-yasuo">2002/9/1</a></li>
+  <li><a href="summaries.html#yasuo">サマリー: 田中康夫</a></li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d3" name="d3"></a>8/3(Thu)</h2>
+<ul>
+ <li>今日は雨  
+ </li>
+</ul>
+
+<h2><a id="d2" name="d2"></a>8/2(Wed)</h2>
+<ul>
+ <li>目の前で交通事故
+ <ul>
+  <li>いつも通る左折待ちする交差点、赤信号を二台目で待っていた。
+   左手からこれも左折待ちする車の列に二台パトーカーが居て、
+   「シートベルトしてるかな」とか「スピードに気を付けないと」とか思ってた。
+   信号が変わりそうになったのか、その左折待ちの列が動き始めた。
+   すると「キーっ」というタイヤのきしむ音が聞こえたかと思ったら、
+   目の前の、交差点の真中で、左から直進して来た車が
+   右手から左折しようとした車とガッチャンコ。</li>
+  <li>私的には「しまった、進路を塞がれた」という感じ。
+   直進してきた RV からは若いおねえちゃんが、
+   左折の乗用車からは引退した感じのおっちゃんが降りて来た。
+   しばらくして、私の前の車のおっさんが紙を片手に降りて
+   彼らのところに行った。証人とか必要なら、と行ったのかな。
+   でもすぐに戻って来た。必要無しということだったのかな。</li>
+  <li>さっき曲がって行ったばかりのパトカーは何も気づかずに行ってしまった模様。
+  </li>
+  <li>幸い、RV と中央分離帯の縁石の間が車一台分空いていて、
+   我々左折待ちの車列は当事者を置いて、日常に復帰していった。</li>
+  <li>実は先週もその通りで、その日の行きと帰りにそれぞれ事故現場に遭遇した。
+   どちらも今回と違って「事後」だったけど(でも事故車やドライバーは居た)。
+   交通事故は当事者の時間を全ての止めてしまうよなぁ、と思った。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d1" name="d1"></a>8/1(Tue)</h2>
+<ul>
+ <li>コンピュータ関係のトラブルでうんざり気味なんだが、
+  心機一転、pcmcia の firewire card を買ってみる
+ <ul>
+  <li>早くこれに気付くべきであった。そうすればi1200を引っ張り出すまでもなく
+   快適なHDD環境になれたんだ</li>
+  <li>が、同時に買った firewire/USB combo なexternal HDD drive
+   (160GB しか無かった、おまけに$229 CAD...まぁ時は金也)
+   だけが firewire では何故か認識せず</li>
+  <li>OS をversion upするべきかな?
+  <ul>
+   <li>ところで何にupすれば良いんだ?
+    今は6.1が最新RELEASEなのかな?</li>
+   <li>今手元では12/12/2005の7.0-CURRENTが動いている…
+    (これにした訳はXのdrmだったっけかな?)</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>stella と物理の議論
+ </li>
+ <li>[blog]先見日記、月曜日が選手交代の様子
+ <ul>
+  <li>実は今回の新メンバーのなかで一番好きだったのになぁ、残念</li>
+  <li>「<a href="">再び湾岸戦争について(いとうせいこう)</a>」@senken(<a href="LOCAL/20060801-senken-20060731.html">lc</a>)</li>
+  <li><a href="http://seikoito.ameblo.jp/">ブログ</a>
+   があるようなので、そっちに移行すればいいって話か、
+   一読者としては。</li>
+ </ul>
+ </li>
+ <li><a id="d1-tp" name="d1-tp"></a>
+  夜、一瞬の停電、R51はバッテリーで問題なかったが
+  マウントしてた HDD がダウン
+ <ul>
+  <li>普通に reboot すればいいと思ってたんだが、
+   shutdown で HDD にアクセスが出来ず、 reboot するところまで行かず。
+   やばいと思いつつも電源を一旦切って、すぐに入れ直すも、復帰せず…</li>
+  <li>i1200もうんともすんとも言わないし、本当にダルマさん状態だ。</li>
+  <li>ついに埃を被ってた 505EX にも手を伸ばした。
+   firefox が重すぎるので netscape を使っていたことを思い出した。
+   とりあえず使えるが、肝心の HDD が、
+   USB は使えるので enclosure に差してつないでみたけど、
+   version が古いせいか mount できない。</li>
+  <li>煮詰まって、とりあえず床についたが眠れず、降りて来て、
+   家の人用の dell で R60 を購入した。
+  <ul>
+   <li>付記 : lenovo は canadian をなめているな。
+    納品が 3-4 週間とかいうメールが翌日届いた。
+    tracking や今の状況を online で知る術は無く、電話番号。
+    だからって、アメリカから買おうものなら、関税ガッポリとられるし。
+    カナダって北米にあるヨーロッパ的な小さい田舎の国って感じなんだなぁ。
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+</body>
+</html>

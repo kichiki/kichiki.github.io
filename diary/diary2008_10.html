@@ -1,0 +1,2072 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - October 2008</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <link rel="alternate"  type="application/rss+xml" href="diary.rdf" />
+    <script type="text/javascript" src="LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+
+
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2008年10月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+<div class="body">
+
+<br />
+
+
+<h2><a id="d31"></a>10/31 (Fri)</h2>
+<ul>
+ <li><a id="d31-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>ev-dh の高速化。
+  <ul>
+   <li>詳細なテスト（<a href="#d30-ryuon">昨日</a>言っていた奴）。
+   <ul>
+    <li>full に粒子loopを回したときの粒子pairと、
+     gridを使ったときの粒子pairを、直接１対１比較するテスト。</li>
+    <li>問題なし。</li>
+   </ul>
+   </li>
+   <li>grid で NN list まで作るようにする。
+   <ul>
+    <li>実際に pair loop を使う場面で簡単になるように。</li>
+    <li>とりあえずできた。
+     ただし、周期系の実装はまだ不完全であることに注意。</li>
+    <li>performanceは、
+     test-all での結果によると、
+     N=1000 で既に高速になっていて、
+     実際にほぼ O(N) のスケーリングになっている。</li>
+   </ul>
+   </li>
+   <li>top level への組み込み。
+   <ul>
+    <li>brownian.c への組み込みに、いろいろと手こずったが、何とかできた。</li>
+   </ul>
+   </li>
+   <li>stokes3 でのテスト。
+   <ul>
+    <li>dWLC-noHI-EV で、 grid vs no-grid の速度の比較。</li>
+    <li>N=400 でも既に 1.6 倍くらい出ている。
+     N=884 なら３倍近い！（もちろん、 configuration に依存するけど。）</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d31-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li>robson での計算：
+   <ul>
+    <li><a href="#d29-nano">一昨日投入した</a>jobがずっと詰まっていたが、
+     やっと流れ始めたようだ。</li>
+    <li><a href="diary2008_11.html#d5-nano">11/5/2008</a>:
+     終了（予定どおり）。</li>
+   </ul>
+   </li>
+   <li>glacier での計算：
+   <ul>
+    <li>200系列（<a href="#d30-nano">10/30/2008</a>）の追加jobを流す。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>夜、職場の人たちと、ちょっとパブへ。
+ <ul>
+  <li>実は今夜はhalloween nightで、（飲み屋だったので子供ではなく）
+   若者のお化けがたくさん出現していた。で、後半、急に大音響で騒がしくなって、
+   話ができなくなった……。</li>
+  <li>帰宅は結局１１時になっていた。モンちは待ちくたびれていたみたい。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d30"></a>10/30 (Thu)</h2>
+<ul>
+ <li>久しぶりにサザエさんしてしまった。
+ <ul>
+  <li>ちょっと疲れが溜まってるかな。</li>
+ </ul>
+ </li>
+ <li><a id="d30-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>ev-dh の高速化。
+  <ul>
+   <li>並列化は簡単にはいきそうにないので（<a href="#d29-ryuon">10/29/2008</a>）、
+    本筋にタックル（<a href="#d27-ryuon">10/27/2008</a>）。</li>
+   <li>テスト場所でcoding開始。
+   <ul>
+    <li>一通り実装済み。</li>
+    <li>一通りテストを通過。</li>
+   </ul>
+   </li>
+   <li>libstokes に持っていく。
+   <ul>
+    <li>cvs treeに登録済み。</li>
+    <li>部品はできた。本体にどう組み込むか、ちょっと考えよう。</li>
+    <li>あと、もう少しテストで押さえておきたいことがいくつか。
+    <ul>
+     <li><a href="#d31-ryuon">10/31/2008</a>: チェック、完了！</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d30-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li>glacier での計算：
+   <ul>
+    <li>200系列も揃えておこう、ということで、まずは free を一本流しておく。</li>
+    <li><a href="#d31-nano">10/31/2008</a>: 200系列、追加のjobも投入。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d29"></a>10/29 (Wed)</h2>
+<ul>
+ <li><a id="d29-freebsd"></a>
+  [FreeBSD]gkrellmが<a href="#d9-gkrellm2">また</a>起動しなくなった。
+ <ul>
+  <li>原因に対する今の guess は、
+   gnome-session が session id を付けて管理しているみたいなのだけど、
+   その辺りのゴチャゴチャではないかな、と。</li>
+  <li>今の状況は、 network の関係なのか、 application の立ち上がりが一般に遅い
+   （time-out を待ってから来ている感じ）。
+   gnome-control-center とか gnome-session-properties とか起動しても、
+   反応なしなので、別の仕事をしていたら突然出てくる。</li>
+  <li>gkrellm (version 1 系) は、その辺をスルーするのか、起動してくれる。
+   実際、 version 1 系で足りないものって CPU の温度くらいなので、
+   まあ問題ないんだけど。</li>
+  <li>それから、今回の update でハマった点の一つが window manager.
+   前の処方（<a href="diary2004_01.html#d13-freebsd">1/13/2004</a>）をしてみるのだが、ここでも gnome-session-save が
+   （トロいせいなのか知らないが）きちんと記録してくれない感じ。
+   何度やっても metacity が上がってくる。
+   いろいろと調べたが、 gnome-wm という奴が仕切ってるみたいで、
+   そいつが環境変数を見てくれるようなので、
+   WINDOW_MANAGER に sawfish を指定してから gnome-session を起動するように
+   .xinitrc に書いた。これでとりあえず期待通りに動いてる。</li>
+  <li>ちなみに、その昔に引いていた <a href="http://www.freebsd.org/gnome/docs/faq2.html#q9">FAQ</a> は、順調に version up されているようで、
+   今はタイトルが
+  <blockquote>
+   9. What window managers work well with GNOME 2.22?
+  </blockquote>
+   と、さりげなく手が入っている（gnome の version が 2.4 から 2.22 になってる）。
+   しかし、その内容に一切変わりはない。</li>
+ </ul>
+ </li>
+ <li><a id="d29-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>並列化（OpenMP）。
+  <ul>
+   <li>ev-dhのOpenMP版：
+   <ul>
+    <li>さてさて、こいつは reduction を使えばいいのだな
+     （と<a href="#d28-ryuon">昨日の勉強から</a>）、
+     とやってみるが、文句を言われる。</li>
+    <li>調べてみたら、 reduction に配列は使えない（Cの場合）だと……ガックシ。</li>
+    <li>API version 3.0 (<a href="http://www.openmp.org/mp-documents/spec30.pdf">PDF</a>) でもそう書いてあった。 p.99 lines 32-33:
+    <blockquote>
+     Aggregate types (including arrays), pointer types and reference types
+     may not appear in a reduction clause.
+    </blockquote>
+    </li>
+    <li>ここに OpenMP を使うには、したがって、
+     （shared で済むように）多少冗長に書き直す必要があるが、
+     最終的な効率はどんなもんなのかなあ。</li>
+    <li><a href="#d30-ryuon">10/30/2008</a>: 素朴な高速化に戻る。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d29-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li>glacier の計算：
+   <ul>
+    <li><a href="#d24-nano">流していたjobs</a>が一通り終了していたので、回収。</li>
+    <li>freeを見るが、全然足りてないので、すべてcontinueしておく。</li>
+   </ul>
+   </li>
+   <li>robson の計算：
+   <ul>
+    <li>N=400のcylinder30を流してなかったので、入れておく。</li>
+    <li>夜中、確認したら、こちらも<a href="#d26-nano">10/26/2008</a>のjobsが一通り終了していたので、回収。
+    <ul>
+     <li>defaultのwalltimeは３日だな。</li>
+    </ul>
+    </li>
+    <li>こっちも足りてないので、５日ほどcontinueさせておく。
+    <ul>
+     <li><a href="#d31-nano">10/31/2008</a>: やっと流れはじめた。</li>
+     <li><a href="diary2008_11.html#d5-nano">11/5/2008</a>:
+      終了（予定どおり）。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+   <li>計算結果の解析。
+   <ul>
+    <li>現状で一通り。</li>
+    <li>やっぱり、まだまだ時間が足りないな。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d28"></a>10/28 (Tue)</h2>
+<ul>
+ <li><a id="d28-takahashi"></a>
+  [news]「<a href="http://www.chunichi.co.jp/s/article/2008102990020109.html">「プロの走りできなくなった」　マラソン高橋尚子、引退会見</a>」@chunichi(<a href="LOCAL/20081028-chunichi-2008102990020109.html">lc</a>)
+ <ul>
+  <li>「<a href="http://www.nikkansports.com/sports/news/p-sp-tp0-20081029-423812.html">尚子現役引退も「生涯ジョガー」宣言</a>」@nikkansports(<a href="LOCAL/20081028-nikkansports-p-sp-tp0-20081029-423812.html">lc</a>)</li>
+  <li>過去の link:
+  <ul>
+   <li><a href="diary2006_11.html#d19-marathon">11/19/2006</a>:
+    マラソンで、高橋尚子が負けたようだが……報道の偏り。</li>
+   <li><a href="diary2003_11.html#d16-koide">11/16/2003</a>:
+    何かのマラソンで惨敗したとき。</li>
+   <li><a href="diary2001_09.html#d30-takahashi">9/30/2001</a>:
+    高橋尚子、世界記録で優勝。</li>
+   <li><a href="diary2000_10.html#d17-takahashi">10/17/2000</a>:
+    国民栄誉賞に対して日本陸連のお節介。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d28-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>並列化（OpenMP）。
+  <ul>
+   <li>もうちょっとしっかり勉強してみる。つまり
+    tutorial ではなくて、きちんと API に目を通してみる、と。
+   <ul>
+    <li>version 3.0: <a href="http://www.openmp.org/mp-documents/spec30.pdf">www.openmp.org/mp-documents/spec30.pdf</a></li>
+    <li>version 2.5: <a href="http://www.openmp.org/mp-documents/spec25.pdf">www.openmp.org/mp-documents/spec25.pdf</a></li>
+   </ul>
+   </li>
+   <li>やっと、 private, shared, reduction が分かった（と思う）。
+   <ul>
+    <li>なんで非周期のA.xのOpenMP版が shared だけでうまく動いている訳を、
+     今の時点でやっと理解した、という意味。</li>
+    <li><a href="#d29-ryuon">10/29/2008</a>:
+     ev-dhに挑むが、あれ、reductionに配列は使えないのか……。</li>
+   </ul>
+   </li>
+   <li>library を使うときに、それがどこまで世話を焼いてくれるのかという点と、
+    そのレベルでの動作を説明するために導入された「用語」を習得するところが、
+    結構ハードルだよな。
+   <ul>
+    <li>今回は、 reduction って命名が、いまいちピンと来なかった（まだ来てない）。</li>
+    <li>race condition って奴も、これって一般的な用語なのかな。</li>
+    <li>自分で thread を起こして全部書く方が早いんじゃないか……
+     というのは、車輪の再発明だし、巨人の肩になぜ乗らん（<a href="diary2007_02.html#d27-genius">2/27/2007</a>）ということなんだろうが、
+     そこにはそれなりのコスト（学習プロセス）が必要だ、と。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li>robson, glacier の計算、現状を確認しておく。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d27"></a>10/27 (Mon)</h2>
+<ul>
+ <li>ニュース価値。
+ <ul>
+  <li>こんにゃくゼリーの話から、食べ物を詰まらせる話題が今、
+   価値があるということなんだろうが、ここまで露骨にされると
+   （台湾の出来事まで引っ張ってきている）、
+   ニュース（メディア）とは何なんだろうと思ってしまうな。</li>
+  <li>一方で、
+   「<a href="http://headlines.yahoo.co.jp/hl?a=20081027-00000195-jij-soci">安心して産める社会に＝「誰も責める気ない」−死亡妊婦の夫が会見</a>」@yahoo(<a href="LOCAL/20081027-yahoo-20081027-00000195-jij-soci.html">lc</a>)
+   のニュースは、すごいなと思った。
+  <ul>
+   <li>引用：
+   <blockquote>
+   「誰も責める気はない」と夫。
+   最初に断った同病院の当直医について「傷ついて辞めるようなことになったら意味がない。
+   絶対辞めないでほしい」と話した。<br />
+   「墨東病院の医師も看護師も本当に良くしてくれた。
+   彼らが傷つかないようにしてほしい」とした。
+   </blockquote>
+   </li>
+   <li>こういうことは俺にはできん、と思った。</li>
+   <li>こういう行動に駆り立てたものは、結局は（メディアが煽った）
+    バッシングなんだろうな。</li>
+   <li>このニュースで、本当にきちんと心に刻んでおかなければいけないことは、
+    しかし、上のことではなくて、
+   <blockquote>
+    夫は、医師不足や搬送システムなど浮き彫りになった問題について
+    「のど元過ぎれば忘れるのではなく、具体的な目標を持って改善に向かってほしい。
+    ……」と話した。
+   </blockquote>
+    の部分だろう。本当に、一過性ではない対応なり行動ができる「機関」が、
+    今の日本にあって欲しいものだ。
+    （なければ、どこかからか、出てきてほしいものだ。）</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d27-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>並列化（OpenMP）。
+  <ul>
+   <li><a href="#d26-ryuon">昨日</a>の続き。</li>
+   <li>非周期のA.xのOpenMP版：
+   <ul>
+    <li>うまくいかない原因、判明：
+    <ul>
+     <li>private にするべき配列を落としていた。</li>
+     <li>これで、結果は正しくなった。</li>
+    </ul>
+    </li>
+    <li>performance をチェック。
+    <ul>
+     <li>bench.c の ptime_ms_d() で計算時間を見ている
+      （これは getrusage() を使ってる）が、
+      どうも threads の全てを足し上げているみたいで、
+      うれしくない。どうしようかな。</li>
+     <li>付記：
+      &quot;<a href="http://lists.freebsd.org/pipermail/freebsd-threads/2008-October/004398.html">getrusage with pthreads</a>&quot;@freebsd-threads(<a href="LOCAL/20081103-freebsd-threads-004398.html">lc</a>)
+     <ul>
+      <li>&quot;<a href="http://lists.freebsd.org/pipermail/freebsd-threads/2008-October/004433.html">getting CPU time for particulat thread</a>&quot;@freebsd-threads(<a href="LOCAL/20081103-freebsd-threads-004433.html">lc</a>)</li>
+     </ul>
+     </li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+   <li>Brownian dynamics の bottle neck を探す。
+   <ul>
+    <li>（ちなみに、今の計算は no-HI なので、上の処方は全然効かない。）</li>
+    <li>ptime_ms_d() で順次積めていくと、 ev-dh.c にたどり着いた。
+    <ul>
+     <li>まあ、考えてみれば当たり前な訳だが。</li>
+     <li>直ぐに思いつくアイデアはあるが、
+      まずは並列化で遊んでみよう。</li>
+     <li><a href="#d30-ryuon">10/30/2008</a>: 並列化断念で、こっちに戻る。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+   <li>ev-dhのOpenMP版：
+   <ul>
+    <li>素直に for loop を並列化しようとするが、
+     またしても値がおかしい……。</li>
+   </ul>
+   </li>
+   <li>今日はここまで。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li>glacier での計算、現状を確認しておく。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d26"></a>10/26 (Sun)</h2>
+<ul>
+ <li><a id="d26-monton"></a>
+  [monton]快晴のもと、モンちの散歩。
+ <ul>
+  <li><a href="#d25-monton">昨日</a>から一転、雲一つない青空だ。</li>
+ </ul>
+ </li>
+ <li><a id="d26-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>並列化の話。
+  <ul>
+   <li>まずは簡単そうな OpenMP を考えてみよう。</li>
+   <li>OpenMP の情報収集：
+   <ul>
+    <li>GCC で使うには -fopenmp を付けるだけでよい。</li>
+   </ul>
+   </li>
+   <li>実験、開始。
+   <ul>
+    <li>まずは非周期のA.x部分をターゲットにする。</li>
+    <li>何か、うまくいかない。（performance ではなく、結果がおかしい。）</li>
+   </ul>
+   </li>
+   <li>今日はここまで。
+   <ul>
+    <li><a href="#d27-ryuon">10/27/2008</a>: つづき。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d26-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li>robson での計算：
+   <ul>
+    <li>追加のjobsを放流しておく（N=400の細い系列）。</li>
+    <li><a href="#d29-nano">10/29/2008</a>: jobs終了。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d25"></a>10/25 (Sat)</h2>
+<ul>
+ <li><a id="d25-monton"></a>
+  [monton]強風の中のモンちの散歩。
+ <ul>
+  <li>それも、すごく寒い。</li>
+  <li>吹きさらしのfarmよりも谷のravineの方がましだろうと、速攻で下に降りる。
+   しかし、あまりの強風でまわりの木もミシミシ言ってるし、枝がバラバラと落ちてくるし、
+   結局、倒木によって道が分断されていて（モンちが進めなかったので）そこで引き返した。</li>
+  <li>しかし、風で木が倒れるときって、落雷のようなすさまじい音がするのだな。
+   今日の散歩の間で２、３回聞いたし、一回は立っている木が実際に倒れていく瞬間を見た。</li>
+  <li><a href="#d26-monton">10/26/2008</a>: 一転の快晴。</li>
+  <li>付記（10/27/2008、月曜日）：道を塞いでいた倒木はきれいに除去されていた。</li>
+ </ul>
+ </li>
+ <li><a id="d25-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li>robson での計算：
+    最初に流していた jobs（<a href="#d21-nano">10/21/2008</a>）
+    が終わっていたので、結果を回収しておく。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d25-tatsuru"></a>[blog]
+  「<a href="http://blog.tatsuru.com/2008/10/26_1313.php">会議と書類の大学</a>」@tatsuru(<a href="LOCAL/20081025-tatsuru-26_1313.html">lc</a>)
+ <ul>
+  <li>引用：
+  <blockquote>
+   彼ら（文科省や大学基準協会）は大学に向かって
+   「まっとうな教育研究をすることよりも、
+   『まっとうな教育研究をしていることを証明する仕事』を優先させよ」と言っているのに等しい。
+   子どもがぴいぴい泣いているのを放っておいて、
+   「子どもをちゃんと育てていることを証明する書類」を書いている親や、
+   殺人事件が起きたときに、デスクにかじりついて
+   「凶悪犯をきちんと逮捕していることを証明する仕事」を書いている
+   警察官が不条理な存在であるということは誰にでもわかる。
+  </blockquote>
+  <ul>
+   <li>困ったものだが、適応主義者しかいない組織では、
+    まあ「彼ら」の言いなりなんだろう。
+    会議が多いとか、書類が多いとか、文句を言っている人ばかりで、
+    そういう「文句」=「問題」をどう克服するかという非適応主義者
+    （畳の上に碁石を置くような、あるいは、紙の外にはみだすように絵を描くような）を、
+    知らない。大学のセンセイは、もし本当に頭を売り物にしていて、
+    もし問題解決のプロフェッショナルを称するのなら
+    （研究とは、そもそも、分からないことを分かろうとする活動なわけで）、
+    その能力の１割でも使って（そういう犠牲をきちんと払って）、
+    何かするべきじゃないのかな。
+    あるいは、「彼ら」には愛想よく、裏で舌を出すような、したたかさを持つか。
+    （文句を言ってる人は、結局、裏も表も「適応」してるように見える、の意。）</li>
+  </ul>
+  </li>
+  <li><a href="theorems.html#follower">人生の定理</a>
+   破局の時には順応主義者でない人達が生き残れるチャンスがある(リップマン・ベアズ)</li>
+  <li><a href="diary2010_08.html#d15-mitsuhiro">8/15/2010</a>:
+   「２９学会長緊急声明」を見てがっかりしたこと</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d24"></a>10/24 (Fri)</h2>
+<ul>
+ <li><a id="d24-iga"></a>
+  家の隣のスーパーの話。
+ <ul>
+  <li>今日、モンちの散歩の後（最近は、夕方暗くなるのが早いので午前中に行っている）、
+   切れていたシャンプーをちょっと買いに行ったら、何と今月一杯で閉店だって……。</li>
+ </ul>
+ </li>
+ <li><a id="d24-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>並列化の話。
+  <ul>
+   <li>やっぱり遅いということと、
+    あと westgrid では並列化が一般的ということ、
+    そういう状況なので、ちょっと考えてみよう。</li>
+   <li>簡単な情報収集。
+    choice は、主に、 <a href="http://en.wikipedia.org/wiki/Message_Passing_Interface">MPI</a> か <a href="http://openmp.org/wp/">OpenMP</a> ということみたい。</li>
+  </ul>
+  </li>
+  <li>FreeBSD 7.1-BETA2 でも環境を再構築。
+  <ul>
+   <li><a href="#d23-freebsd">昨日</a>インストールした奴。</li>
+   <li>これって、速くなっているんだろうか？</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d24-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li>glacier での計算：
+   <ul>
+    <li><a href="#d23-nano">昨日</a>投入した job がすべて終了していた。
+    <ul>
+     <li>今度は walltime を陽に設定して再投入。</li>
+     <li>追加で、細いものも、直鎖から入れておく。</li>
+    </ul>
+    </li>
+    <li>さてここは何本まで job を流せられるのかな？
+    <ul>
+     <li>今のところ投入した１１本全部走っているな。</li>
+    </ul>
+    </li>
+    <li><a href="#d29-nano">10/29/2008</a>: 予定どおりjob終了。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d23"></a>10/23 (Thu)</h2>
+<ul>
+ <li>日本にお金を送る方法について。
+ <ul>
+  <li>何がいいのだろうかと色々と悩ましいのだが、
+   先日の銀行間の wire transfer は双方からそれなりの手数料を取られて頭に来たので、
+   別の方法を探していた。</li>
+  <li>で、今回はとりあえず郵便局で米ドル建ての money order を買って、
+   それを郵送することにする。999.99ドルまでで、手数料が一枚4.95なり。
+   registered mail で送ると送料が１４ドル少々。
+   安かったのか、そうでもなかったのか？</li>
+ </ul>
+ </li>
+ <li><a id="d23-freebsd"></a>
+  [FreeBSD]7.1-BETA2 をインストール。
+ <ul>
+  <li>何というか「ウキウキ watching」な気分になってしまって、
+   結局（<a href="#d12-freebsd">予定どおり</a>）clearn installしてしまった。
+   （<a href="#d20-freebsd">10/20/2008</a>）</li>
+  <li>今回は極力 package を使うようにして（-P オプション）、
+   結構短時間で、何とか使える環境にまで持ってこれた。</li>
+  <li><a href="#d24-ryuon">10/24/2008</a>: RYUON on FreeBSD 7.1-BETA2</li>
+ </ul>
+ </li>
+ <li><a id="d23-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>westgrid での環境構築(glacier)。
+  <ul>
+   <li>昨日の続き。</li>
+   <li>libstokes/test で詰まる。
+   <ul>
+    <li>うまく link できない。
+    <ul>
+     <li>色々と調べて、判明。
+      intel compiler で fortran の object (library) を
+      c のコードに link するには -lifort を付ける。
+      （gcc の -lg2c, gcc4 の -lgfortran に相当。）</li>
+    </ul>
+    </li>
+    <li>testが途中で止まる。
+    <ul>
+     <li>ちょうど ARPACK 絡みのテストで、
+      例の second の問題かと思って patch を当ててみたりする。
+     <ul>
+      <li>このパッチを当てると、「vectorが０だ」という文句ではなくて
+       &quot;Illegal construction&quot; というエラーに変わった。</li>
+      <li>source を調べてみたが、
+       どうもこのメッセージは ARPACK 由来でも私のコード由来でもない。</li>
+     </ul>
+     </li>
+     <li>色々と試行錯誤の末、原因が判明：
+     <ul>
+      <li>ARPACK 構築時に ifort の -fast option をやめて -O3 にしてみると、
+       うまく動いた。</li>
+      <li>そういえば、何か高度な optimization をしてるような message が出ていた。</li>
+     </ul>
+     </li>
+    </ul>
+    </li>
+    <li>testに戻ると、今度は NITSOL で &quot;Illegal construction&quot; が出た。
+    <ul>
+     <li>ははあん、ということで、粛々と -O3 で再コンパイル。</li>
+    </ul>
+    </li>
+    <li>ってことで、ようやく test 通過。</li>
+   </ul>
+   </li>
+   <li>stokes も無事、構築完了。
+   <ul>
+    <li>これで計算できるぜ。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li>環境設定も終わったので、<a href="#d23-nano">さっそく計算</a>。</li>
+ </ul>
+ </li>
+ <li><a id="d23-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li>robson での計算：
+   <ul>
+    <li>N=884 も終了していた。
+     （<a href="#d21-nano">10/21/2008</a> に投入したもの。）</li>
+    <li>１つ開いたので N=400, cylinder20 を投入しておく。</li>
+   </ul>
+   </li>
+   <li>glacier での計算：
+   <ul>
+    <li><a href="#d23-ryuon">環境設定も終わった</a>ので、さっそく計算。</li>
+    <li>robson で今日終わってた 884 をベースに、
+     広い cylinder の設定ファイルを準備。</li>
+    <li>さっそく４本ほど投入しておく。</li>
+    <li><a href="#d24-nano">10/24/2008</a>:
+     全部終わってた（default の walltime が短い）。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d22"></a>10/22 (Wed)</h2>
+<ul>
+ <li>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>westgrid 別のサーバー(glacier)での環境構築。
+  <ul>
+   <li>こいつは IBM のサーバーで Xeon 32-bit の cluster.
+    compiler は intel の icc, ifort.</li>
+   <li>まずは PATH とか LD_LIBRARY_PATH と、見える library とか調べる。</li>
+   <li>で、おもむろに、構築開始。
+   <ul>
+    <li>libstokes にて YG-slip が 18 次で文句を言われる。</li>
+    <li>仕方なくコメントアウトして、再 compile させる。</li>
+    <li>放っておいたら、 YH-slip でも文句を言われてた。
+     だけど、その後コンパイラが勝手に処理してくた様子で、そのまま進んでた。</li>
+    <li>なので、 YG-slip も元に戻しておく。</li>
+   </ul>
+   </li>
+   <li>今日はここまで。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d22-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li><a href="#d21-nano">昨日</a>投入の N=400 が終了した模様。
+   <li>こいつの最後の config を初期値に、広い方の設定ファイルを準備、
+    そのうち２つ、ジョブを入れておく。</li>
+   <li>で、現状をチェックしようとしたら showq が効かない……
+   <ul>
+    <li>qstat というコマンドなら使えた。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d21"></a>10/21 (Tue)</h2>
+<ul>
+ <li><a id="d21-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>westgrid の環境整備。
+  <ul>
+   <li>libstokes/test の実施：
+   <ul>
+    <li>ARPACK の second.f で gfortran が文句を言う。</li>
+    <li>web と lapack-3.1.1 を眺めると、
+     gfortran では internal etime を使うとよいらしいので、
+     しかるべく。</li>
+    <li>ってことで、テスト通過。</li>
+   </ul>
+   </li>
+   <li>stokes のインストール：
+   <ul>
+    <li>簡単に compile できた。</li>
+    <li>ついでに stnc.c に、また、 bug を一つ見つけた（例の型の間違い）。</li>
+    <li>４種類で stokes3 を実行するが、速度に差がつかないな……。</li>
+   </ul>
+   </li>
+   <li>job の投入方法を勉強。
+   <ul>
+    <li>こういうプロセスが、気持ちの上での一番のバリアだし、時間がかかる。</li>
+    <li>westgrid の web にある情報に目を通す。
+    <ul>
+     <li>知っておくべきは、投入は qsub, status の確認は showq.
+      まあ最低そんだけでいい、と。</li>
+    </ul>
+    </li>
+    <li>と、勉強も終わったことなので、
+     <a href="#d21-nano">さっそくjobを投入してみる</a>。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d21-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-cylinder @ westgrid
+  <ul>
+   <li><a href="#d21-ryuon">jobの投入法も学んだ</a>ので、
+    さっそく job を投入してみる。
+   <ul>
+    <li>どれくらいの速度で走っているのかな？</li>
+    <li><a href="#d22-nano">10/22/2008</a>: N=400 終了。</li>
+    <li><a href="#d23-nano">10/23/2008</a>: N=884 終了。</li>
+    <li><a href="#d25-nano">10/25/2008</a>: job 終了。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d20"></a>10/20 (Mon)</h2>
+<ul>
+ <li><a id="d20-freebsd"></a>
+  [FreeBSD]
+  7.1-BETA2 が出たみたい。
+ <ul>
+  <li>&quot;<a href="http://lists.freebsd.org/pipermail/freebsd-stable/2008-October/046037.html">FreeBSD 7.1-BETA2 Available</a>&quot;@freebsd-stable(<a href="LOCAL/20081020-freebsd-stable-046037.html">lc</a>)</li>
+  <li>そうか、 RC じゃないのか……。</li>
+  <li><a href="#d12-freebsd">10/12/2008</a>: 6.4-RC1 を install.</li>
+  <li><a href="#d23-freebsd">10/23/2008</a>: 7.1-BETA2 を install.</li>
+ </ul>
+ </li>
+ <li><a id="d20-murakami_haruki"></a>
+  [blog]「<a href="http://www.president.co.jp/pre/special/aiai/aiai/article/-ec89a08e8f/?tx_ttnews%5BbackPid%5D=13&cHash=70851126d1">村上春樹に会いに行く</a>」@aiaiときどきブログ(<a href="LOCAL/20081020-president-aiai21.html">lc</a>)
+ <ul>
+  <li><a href="diary2009_01.html#d7-tatsuru">1/7/2009</a>:
+   「内向き」で何か問題でも？@tatsuru.</li>
+ </ul>
+ </li>
+ <li>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>westgrid の環境整備。
+  <ul>
+   <li>libstokes の lub 関数用の厳密解計算ルーチンの compile が遅すぎるので、
+    手を入れる。
+   <ul>
+    <li>結局、 [XYZ]?.c と [XYZ]?-slip.c に手を入れる。</li>
+    <li>必要に応じて高次をコメントアウト。</li>
+    <li>これで４つの version すべてで、やっと compile が通った。</li>
+   </ul>
+   </li>
+   <li>ってことで、めでたく libstokes が完成した。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d19"></a>10/19 (Sun)</h2>
+<ul>
+ <li>[TV] monk の season 7 を見始める。
+ <ul>
+  <li>すると、何の前触れもなく、いきなり Dr Kroger が死んだことになってて、
+   何でだ？と思ってたら、最後に
+  <blockquote>
+   in loving memory of stankey kamel
+  </blockquote>
+   と出てきて、エーっと思って調べてみたら、役者さんが亡くなっていた。
+  &quot;<a href="http://www.efluxmedia.com/news_Stanley_Kamel_Dies_At_65_16182.html">Stanley Kamel Dies At 65</a>&quot;@efluxmedia(<a href="LOCAL/20081019-efluxmedia-news_Stanley_Kamel_Dies_At_65_16182.html">lc</a>)</li>
+  <li>しかし、だからといって、うーむ、 &quot;pretty woman&quot; はないと思うが……。
+   （ある意味、絶妙なのかもしれないし、役者の格としては、むしろ上がってるのだろうし、
+   なら他にどんな人をキャスティングできるんだ、とは確かに思うけど。）
+   失ってみて、はじめて、いかに重要だったかということが分かる、という
+   「風邪引きの法則」という奴かな。</li>
+ </ul>
+ </li>
+ <li><a id="d19-monton"></a>
+  [monton] モンちゃん、満一歳。
+ <ul>
+  <li>お誕生日プレゼントに、昨日買ってきたおもちゃをあげる。
+   やっぱり最近ちょっとマンネリだったみたいで、新しいおもちゃはすごくうれしいらしい。
+   よかった、よかった。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d18"></a>10/18 (Sat)</h2>
+<ul>
+ <li>およばれ。
+ <ul>
+  <li>alex の家に。私ははじめて。
+   新築の、モダンな、彼好みなのかな、といった感じの、すてきな部屋であった。</li>
+  <li>「車で来るな」というお達しなので、家から歩いて行く。３０分で着いた
+   （モンちの散歩の片道程度の距離、ということだ）。</li>
+  <li>が、飲みすぎた（他のみんなも、かなーり飲んでいたけれど）。
+   帰りも徒歩で帰ったのだが、ちょっと辛かった。
+   部屋に帰ってモンにただいまを言って、しばらく風呂場にいた辺りまでは記憶があるのだが、
+   その後がない。で、翌朝、目が覚めたら、ベッドに裸で寝てた。
+   まあ、それはいいのだけど、横を見ると、なぜかモンちも、いい子して寝てた。
+   （普段は、モンちは寝室に入れないで、別々に寝ている。）</li>
+  <li>翌日（日曜）は、午前中は完全にダウン、午後もかなり辛かった（二日酔い）。
+   こんなのは、どう考えても割に合わないので、もう、酒を飲むのは止めよう。
+   しかし、 physical な痛みとか困難には本当に弱いなと思った＞自分。
+   きっと、過労死とかしない（できない）タイプの人間だ。
+   頭が痛いとか（寝不足すら）耐えられない。
+   きっと重い病気になったら、あっという間に諦めそうで、逆に怖い。
+   普段から、体を大事にしていこう。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d17"></a>10/17 (Fri)</h2>
+<ul>
+ <li><a id="d17-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li><a href="http://www.westgrid.ca/">westgrid</a> の環境整備。
+  <ul>
+   <li>今更ながら、 website の文章に、
+    推奨されている compiler option を見つける。
+   <ul>
+    <li>うーむ、当たり前のことだったみたいだが、
+     64bit と 32bit は共存できなくて、
+     今まで必死に 32bit で compile したコードと
+     システムに入ってる 64bit の library を link させようとしていた、
+     というオチらしい。（<a href="#d15-ryuon">10/15/2008</a>）</li>
+   </ul>
+   </li>
+   <li>全部作り直し！
+   <ul>
+    <li>まず、手元に動くコードを作ることを first target にする。
+     「全部自分で準備する」アプローチ（<a href="#d16-ryuon">10/16/2008</a>）で、つまり、
+     既存の library との組み合わせは、後まわしにする。</li>
+    <li>gcc の version 3, 4 ぞれぞれに対して、
+     64bit と 32bit 版を作ってみる。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d16"></a>10/16 (Thu)</h2>
+<ul>
+ <li><a id="d16-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>三者会談。
+  <ul>
+   <li><a href="#d14-nano">一昨日</a>言っていたもの。</li>
+   <li>今後のことなど、いろいろと。</li>
+   <li>基本的に、規定路線で進めていきましょう、と
+    （若干、スピード・アップが必要だけど……）。</li>
+   <li><a href="diary2008_12.html#d22-discussion">12/22/2008</a>:
+    ２体厳密解の論文は、その後、音沙汰なし。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d16-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li><a href="http://www.westgrid.ca/">westgrid</a> の環境整備。
+  <ul>
+   <li>結局、全部自分で準備することにする。何が必要か、というと…
+   <ul>
+    <li>数学系：
+     <a href="http://www.netlib.org/blas/">BLAS</a>,
+     <a href="http://www.netlib.org/lapack/">LAPACK</a>,
+     <a href="http://www.caam.rice.edu/software/ARPACK/">ARPACK</a>,
+     <a href="http://users.wpi.edu/~walker/NITSOL/">NITSOL</a>,
+     <a href="http://www.gnu.org/software/gsl/">GSL</a></li>
+    <li>その他：
+     <a href="http://www.gnu.org/software/guile/guile.html">guile</a>,
+     <a href="http://www.unidata.ucar.edu/software/netcdf/">netcdf</a></li>
+   </ul>
+   </li>
+   <li>何とか、一通りはできた（gcc version 3 系だけ）。</li>
+   <li><a href="#d17-ryuon">10/17/2008</a>: 64bit 版で全部作り直し！</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d15"></a>10/15 (Wed)</h2>
+<ul>
+ <li><a id="d15-vtk"></a>
+  [FreeBSD]<a href="http://www.freebsd.org/ports/">ports</a>を見ていたら<a href="http://www.freebsd.org/cgi/cvsweb.cgi/ports/math/vtk5/">vtk5</a>何てのがあったので試してみた。
+ <ul>
+  <li>見てみたら version 5.0.3 という奴だった
+   （ちなみに、これまでは 4.4.2）。
+   <a href="http://www.freshports.org/math/vtk5/">freshport</a>
+   の log によると tcl と python bindings は既に含まれているとのことだったので、
+   ものは試し、と早速入れてみた。
+   既存の script (<a href="http://ryuon.cvs.sourceforge.net/viewvc/ryuon/stokes/python/stvis-vtk.py">stvis-vtk.py</a>) は何の問題なく動いている。
+   後で、何が新たに出きるようになったのか follow しておこう。
+   （どこかに分かりやすいまとめとか、ないかな？）</li>
+  <li>ちなみに <a href="http://www.vtk.org/">vtk.org</a> に行ってみると、
+   最新の release は既に 5.2 らしい。</li>
+  <li>vtk との付き合いも結構長くなった。はじまりは
+   <a href="diary2001_09.html#d3-alf">9/3/2001</a>あたりからかな？</li>
+  <li><a href="diary2008_11.html#d23-vtk">11/23/2008</a>:
+   vtk5@mac -- version 5.2.</li>
+ </ul>
+ </li>
+ <li><a id="d15-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li><a href="http://www.westgrid.ca/">westgrid</a> の環境整備。
+  <ul>
+   <li><a href="#d14-ryuon">昨日</a>の続き。</li>
+   <li>手元のコードは serial なので、まずは recommend されているサーバーでの
+    環境設定を目指す。
+   <ul>
+    <li>C コンパイラは xlc, gcc (version 3), gcc4 (version 4) がある。</li>
+    <li>まずは<a href="http://ryuon.sourceforge.net/libiter.html">libiter</a> を持っていって compile.
+    <ul>
+     <li>gcc, gcc4 とも、 compile 自体は通るが、
+      xlc はうまくいかない……。</li>
+    </ul>
+    </li>
+    <li><a href="http://www.caam.rice.edu/software/ARPACK/">arpack</a> はシステムに入ってるみたいだが、
+     link しようとするとダメと言われるので、自分で入れてみる。
+    <ul>
+     <li>fortran コンパイラは xlf, g77, gfortran とある。
+      build 自体は、まあ何とかなる。</li>
+    </ul>
+    </li>
+    <li>blas, lapack を使うには……
+    <ul>
+     <li>文章を読むと、 blas は ESSL とかいうのに入っているらしい。</li>
+     <li>lapack の方は既にインストールされているらしい。</li>
+     <li>が、 C から使うのに行き詰まる。
+      gcc (version 3) 用の libg2c はあるみたいだけど、
+      gcc4 (version 4) 用の libgfortran が見当たらない。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+   <li>ということで、結局、何一つ動くものができなかったという、今日一日。</li>
+   <li><a href="#d17-ryuon">10/17/2008</a>:
+    32bit で compile したものを 64bit と link しようとしていた？</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d14"></a>10/14 (Tue)</h2>
+<ul>
+ <li>[news]風通しの悪い組織は、本当に ugly なことが起きるようだ……。
+ <ul>
+  <li>と思ったのは、江田島の海自で起きた件（気分が悪いので、記事をコピーとかはしてない）。
+   これじゃ、暴走族とかヤクザ（あるいはカルト）と変わらんなあ。
+   思えば、時津風部屋で起きた話も、高校の野球部員がどうのこうのというのも、
+   全部、同じだよなあ。</li>
+  <li>こういう最低な状況って、実は、
+   日本のありとあらゆる組織に普通に起きていることなのか？</li>
+ </ul>
+ </li>
+ <li><a id="d14-eof"></a>
+  [phys]EOF
+ <ul>
+  <li>slip の勉強。
+  <ul>
+   <li>今日はざらっと Kim-Karrila に目を通しなおす。
+    やっぱりきちんと製本されている本はいいな。（<a href="#d12-looking_for_love">10/12/2008</a> の「私は LOVE を探しています」を参照。）</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d14-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>alex 帰国。今後の予定をちょっと議論。
+  <ul>
+   <li>木曜、お昼に３者会議をしましょう、と。
+   <ul>
+    <li><a href="#d16-nano">10/16/2008</a>: 三者会談、開催。</li>
+   </ul>
+   </li>
+   <li>それまでに、私の方からの持ち出し可能なネタを考えておかないといけない。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d14-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>confinement の debug -- dumbbell:
+  <ul>
+   <li>50-50-10-10 の計算 on BUE9:
+   <ul>
+    <li>siPC での計算。めちゃくちゃ遅い……しかし、特におかしな挙動はない。</li>
+    <li>ということは、 bug はない、ということか？</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li><a href="http://www.westgrid.ca/">westgrid</a> での計算環境を整えよう！
+  <ul>
+   <li>調べたら、何と前回は<a href="diary2008_03.html#d12-nano">3/12/2008</a>でありました。</li>
+   <li>まずは、そのときのおさらいから。</li>
+   <li><a href="#d15-ryuon">10/15/2008</a>:
+    環境整備、第１日目 --- 何も動かず。</li>
+  </ul>
+  </li>
+  <li>高速な implicit algorithm の実装：
+  <ul>
+   <li>長らく時間が開いて（<a href="diary2008_08.html#d11-ryuon">8/11/2008</a>以来）、
+    頭の cache がすでに飛んでいるので、
+    bottom-up しなおすことにする。</li>
+   <li>ということで、コードを見ながら今の実装をおさらい。</li>
+   <li><a href="diary2008_11.html#d8-ryuon">11/8/2008</a>: re-activate.</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d14-security_deposit"></a>
+  帰宅したら、前の家の大家から手紙が届いていた。
+ <ul>
+  <li>１０日と言っていた security deposit が、休日を挟んで、届いた、ということ。</li>
+  <li>額面を見ると、２００ドル引かれているだけで、ほっとする。
+   （もっとひどいことも起こり得ると心配していた。）</li>
+  <li>その後、家で話し合いの結果、その２００ドル
+   （カーペットのクリーニングというあちらの名目）も、こっちが払うべきものじゃない
+   （我々の入居時の condition はひどかった）、ということで、
+   一言、話を通しておきましょう、ということになる。
+   （早く終わりにしたいよお。）</li>
+  <li>付記（10/15/2008）：
+   大家に電話する。入居時の口約束（<a href="diary2007_03.html#d20-house">3/20/2007</a>）を remind したら、
+   何やらまたへんてこなことを言い出してきて、うんざりする。</li>
+  <li>（今回の引越しの経過は <a href="diary2008_09.html#d30-moving">9/30/2008</a>。）</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d13"></a>10/13 (Mon)</h2>
+<ul>
+ <li>カナダの thanksgiving で、今日は休日。
+ </li>
+ <li>[news]「<a href="http://headlines.yahoo.co.jp/hl?a=20081013-00000009-mai-bus_all">＜経団連＞移民受け入れ提言…人口減対策　定住前提に</a>」@yahoo(<a href="LOCAL/20081013-yahoo-20081013-00000009-mai-bus_all.html">lc</a>)
+ <ul>
+  <li>今更……と思う一方で、まあ動かないよりはましかと思ったり。
+   しかし、効果が出るのは少し先の話だろうし、
+   雰囲気として色々と抵抗が出るんじゃないかな。
+   それこそマスコミがイメージを打ってくれれば、コロッといくんだろうが。</li>
+ </ul>
+ </li>
+ <li>[news]&quot;<a href="http://www.bloomberg.com/apps/news?pid=20601103&sid=aajJvdNTpNtc&refer=us">Nobel Prize to Arch-Critic Krugman Is Blow to Bush</a>&quot;@bloomberg(<a href="LOCAL/20081013-bloomberg-20601103.html">lc</a>)
+ <ul>
+  <li>&quot;<a href="http://nobelprize.org/nobel_prizes/economics/laureates/2008/">The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 2008</a>&quot;@nobelprize.org(<a href="LOCAL/20081013-nobelprize-economics-2008.html">lc</a>)</li>
+  <li>すっかり見逃していたが、ノーベル経済学賞はクルーグマンだったのか。</li>
+  <li>付記：どうも、発表は経済が一番最後だったみたいで、
+   別に見逃していたわけではなかった。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d12"></a>10/12 (Sun)</h2>
+<ul>
+ <li>[SF][phys]
+  <a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li><a href="http://ryuon.sourceforge.net/docs/">RYUON - Documents</a>を久しぶりに update した。
+  <ul>
+   <li>と言っても <a href="http://ryuon.sourceforge.net/docs/manual/">User's Manual</a> の <a href="http://ryuon.sourceforge.net/docs/manual/node4.html">stokes3 に与えるパラメータの部分</a>だけ。</li>
+   <li>理論や algorithm などの詳細は section を切っただけ（<a href="http://ryuon.sourceforge.net/docs/manual/node37.html">Library for Stokesian Dynamics</a>）。
+    手元のノートから cut-and-paste すればいい話だけど、
+    こういうものは、整合性が一番骨が折れる。</li>
+  </ul>
+  </li>
+  <li>さて、 latex2html で web も update しておこうと思ったら、
+   うまく upload できない。
+  <ul>
+   <li>何でだと思って調べたら、どうも server などの構造が（大幅に）変わったようで、
+    アカウントの名前とアクセス先が前と違っていた。</li>
+   <li>SFのwikiの&quot;<a href="http://alexandria.wiki.sourceforge.net/Project+Web,+Shell,+VHOST+and+Database+Services#top">Project Web, Shell, VHOST and Database Services</a>&quot;から必要な情報
+   <blockquote>
+sftp NAME,PROJECT@web.sourceforge.net<br />
+cd htdocs<br />
+put hogehoge
+   </blockquote>
+    を得られたけど、SFの情報って何でこう分かりにくい構造なんだろうな。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d12-minegishi_toru"></a>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20081013-00000012-mai-soci">＜訃報＞俳優の峰岸徹さん　肺がんのため死去</a>」@yahoo(<a href="LOCAL/20081012-yahoo-20081013-00000012-mai-soci.html">lc</a>)
+ <ul>
+  <li>何から辿ったのか忘れたけど（もしかしたらガンを公表した時のニュースだったかな）、
+   しばらく前に彼のブログを見て、トライアスロンを（けっこうまじめに）やっている姿を見て、
+   「ほお」と思っていたのだけど……。</li>
+  <li><a href="summaries.html#obituaries">サマリ：訃報</a></li>
+ </ul>
+ </li>
+ <li><a id="d12-looking_for_love"></a>
+  &quot;I'm Looking for Love!&quot;
+  （あるいは、「記憶違いか、老化のはじまりか？」というタイトルのエントリー。）
+ <ul>
+  <li>ここ数日、引越しあとの段ボールから出して本棚に積んである本の中から
+   Love の弾性論の本を探しているのだが、ない。</li>
+  <li>過去のアマゾンのメールで Love とか 
+   &quot;Treatise on the Mathematical Theory of Elasticity&quot;
+   とかで grep しても出てこない。</li>
+  <li>前から欲しくて、確か、何かの機会に手に入れたと思ったのだけど……
+   気のせいだったか？ボケがはじまったか？
+   そうやって手に入れた本に、 Saffman の &quot;Vortex Dynamics&quot; や、
+   Lamb の &quot;Hydrodynamics&quot; や、
+   Lord Rayleigh の &quot;The Theory of Sound&quot; 
+   （Vol. 1 しかないけど……）は、確かにある。</li>
+  <li><a href="http://store.doverpublications.com/">Dover</a> と言えば、最近やっと Kim-Karrila の
+   &quot;<a href="http://store.doverpublications.com/0486442195.html">Microhydrodynamics</a>&quot; を手に入れた。
+   これ、パサデナに居たころに出版社（Butterworth-Heinemann）に問い合わせたのだけど、
+   その時すでに絶版だったもの。
+   ずっと長い間、東北大に居たころに取ったコピー
+   （「化学工学の第６講座専用」と本にラベルが付いている）を持ち歩いていたが
+   （オランダで leen と話をしたときに、「その本を持ってるか、持ってたら見せてくれ」
+   と聞かれて、そのコピーの束を見せたのだった）、それをやっと破棄できる。</li>
+  <li>しかし、 Love の本、確か買ったと思ったけどなあ。
+   あると思っていたものが、ないというのは、すごく悔しい。
+   （今は、もう既に Dover でも置いてないみたいで、中古しかないなあ……。）</li>
+ </ul>
+ </li>
+ <li><a id="d12-freebsd"></a>
+  [FreeBSD]夜、とうとうやっちまった。
+ <ul>
+  <li>見たら 6.4 の RC1 が出てたので
+   (&quot;<a href="http://lists.freebsd.org/pipermail/freebsd-stable/2008-October/045869.html">FreeBSD 6.4-RC1 available...</a>&quot;@freebsd-stable(<a href="LOCAL/20081012-freebsd-stable-045869.html">lc</a>))、我慢できなくなってしまったのだ。</li>
+  <li>本当は 7.1 を入れたいのだが、それはどうも更に一週間待ちらしいので……。
+   （多分、一週間後かそこらで、また、インストール大会をすると思う。）
+  <ul>
+   <li><a href="#d23-freebsd">10/23/2008</a>: 有言実行であったよ。</li>
+  </ul>
+  </li>
+  <li><a href="#d9-gkrellm2">10/9/2008</a>: clean install への衝動。</li>
+  <li>付記（10/13/2008）：インストール後、何とか作業環境が整った。</li>
+  <li><a href="#d20-freebsd">10/20/2008</a>: 7.1-BETA2 が出た。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d11"></a>10/11 (Sat)</h2>
+<ul>
+ <li>[news]「<a href="http://headlines.yahoo.co.jp/hl?a=20081011-00000070-san-pol">ノーベル賞余波　二重国籍禁止を撤廃　自民法務部会　国籍法改正検討</a>」@yahoo(<a href="LOCAL/20081011-yahoo-20081011-00000070-san-pol.html">lc</a>)
+ <ul>
+  <li>引用：
+  <blockquote>
+   ＰＴ（自民党法務部会の国籍問題プロジェクトチーム）では
+   「正直者と有名人がバカを見る制度だ」（河野氏）、
+   「二重国籍を積極的に認めた方が日本人が世界に雄飛しやすい」（猪口邦子衆院議員）
+   など改正論が根強い。
+  </blockquote>
+  </li>
+  <li>「正直者がバカを見る制度」は、何においても、正してほしいな。</li>
+ </ul>
+ </li>
+ <li>[news][phys]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20081009-00000050-scn-cn">英誌「大学ランキング」北京大学50位、東大は19位</a>」@yahoo(<a href="LOCAL/20081011-yahoo-20081009-00000050-scn-cn.html">lc</a>)
+ <ul>
+  <li>&quot;<a href="http://www.topuniversities.com/university_rankings/results/2008/overall_rankings/fullrankings">THE - QS World University Rankings 2008</a>&quot;
+   (<a href="LOCAL/20081011-topuniversities-2008.html">lc</a>
+    <a href="LOCAL/20081011-topuniversities-2008-2.html">lc</a>) だな。</li>
+  <li>いままで居たところを見ると、
+   <table border="1">
+    <tr><td>2008</td><td>2007</td><td>School Name</td><td>Country</td><tr>
+    <tr><td>5 	</td><td>7=	</td><td>CALIFORNIA Institute of Technology (Calt...	</td><td>United States</td><tr>
+    <tr><td>13= </td><td>15	</td><td>JOHNS HOPKINS University	</td><td>United States</td><tr>
+    <tr><td>25 	</td><td>25	</td><td>KYOTO University	</td><td>Japan</td><tr>
+    <tr><td>74 	</td><td>97=	</td><td>University of ALBERTA	</td><td>Canada</td><tr>
+    <tr><td>112 </td><td>102=	</td><td>TOHOKU University	</td><td>Japan</td><tr>
+    <tr><td>159 </td><td>126=	</td><td>The University of WESTERN ONTARIO	</td><td>Canada</td><tr>
+    <tr><td>200=</td><td>185=	</td><td>University of TWENTE	</td><td>Netherlands</td><tr>
+   </table>
+   ぎりぎり、全部入っていた。個人的な感覚でいうと、
+   ちょうど２００位だった Twente はもっと上だけどな。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d10"></a>10/10 (Fri)</h2>
+<ul>
+ <li>[blog][phys]
+  「<a href="http://mitsuhiro.exblog.jp/9897015/">Douglas Prasher博士のケース、ノーベル化学賞の裏側で、日本の科学</a>」@mitsuhiro(<a href="LOCAL/20081010-mitsuhiro-9897015.html">lc</a>)
+ <ul>
+  <li>&quot;<a href="http://www.npr.org/templates/story/story.php?storyId=95545761">Glowing Gene's Discoverer Left Out Of Nobel Prize</a>&quot;@npr(<a href="LOCAL/20081010-npr-95545761.html">lc</a>)
+  <ul>
+   <li>バスの運転手じゃなくて、車屋の送迎バンの運転手だって。</li>
+  </ul>
+  </li>
+  <li>ちなみに douglas prasher で検索してみたら
+   &quot;<a href="http://www.conncoll.edu/ccacad/zimmer/GFP-ww/history.html">GFP history</a>&quot;(<a href="LOCAL/20081010-zimmer-history.html">lc</a>)というページがあって、
+   <a href="http://www.conncoll.edu/ccacad/zimmer/GFP-ww/shimomura.html">osamu shimomura</a>(<a href="LOCAL/20081010-zimmer-shimomura.html">lc</a>) に次いで言及されていた
+   （<a href="http://www.conncoll.edu/ccacad/zimmer/GFP-ww/prasher.html">douglas prasher</a>(<a href="LOCAL/20081010-zimmer-prasher.html">lc</a>)）。
+   なので、業界で忘れられてた人という訳では全然なくて、
+   それにも関わらず職がなくなってしまうのかあ……と。</li>
+  <li>ついでに
+   「<a href="http://mitsuhiro.exblog.jp/9892675/">ブログの時間、下村博士のノーベル化学賞、わたくしは喜んでいます</a>」@mitsuhiro(<a href="LOCAL/20081010-mitsuhiro-9892675.html">lc</a>)</li>
+  <li>付記（10/11/2008）：「<a href="http://www.boston.com/news/local/massachusetts/articles/2008/10/11/van_drivers_work_in_mass_aided_nobel_winners/">Van driver's work in Mass. aided Nobel winners</a>」@boston(<a href="LOCAL/20081011-boston-van_drivers.html">lc</a>)</li>
+ </ul>
+ </li>
+ <li><a id="d10-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>confinement の debug -- dumbbell:
+  <ul>
+   <li>50-50-10-10 の計算 on BUE9:
+   <ul>
+    <li><a href="#d10-ryuon">昨日</a>の続き。</li>
+    <li>途中で止まっていた。 dt を 1/10 にするがダメ。</li>
+    <li>siPC で走らせてみる。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li><a id="d10-eof"></a>
+  [phys]EOF
+ <ul>
+  <li>slip の勉強。
+  <ul>
+   <li><a href="#d8-eof">先日</a>の続き。</li>
+   <li>積分方程式を、改めてきちんと押さえておく。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d9"></a>10/9 (Thu)</h2>
+<ul>
+ <li><a id="d9-gkrellm2"></a>
+  [FreeBSD]何かの拍子に gkrellm2 が、また、起動しなくなった。
+ <ul>
+  <li>今回は、外付け HDD のアクセス関係で freeze したのがきっかけになったみたい。
+   何なんだろうか？ gnome 関係なのかな？</li>
+  <li>何というか時間の無駄なので（原因をつきとめることが）、
+   またまた古い gkrellm に戻す（こいつは動くんだよな）。</li>
+  <li>gkrellm なしでは（タコ・メータなしの車に乗ってるようで）
+   落ち着かない体になっているので。
+   ちなみに、今乗ってる pontiac （マニュアル）にはタコ・メータは付いていない
+   （けど、車は音とか反応など付加情報があるからな）。</li>
+  <li>この仕事用マシン (TP-R60) は、ずっと 6.2 の pre-release なので
+   （cf. <a href="diary2007_01.html#d6-freebsd">1/6/2007</a>）、
+   いい加減、新しい release を clean install したいなと思っていたのだけど、
+   こういう時に限って、もうすぐ 7.1 が出るというではないか
+   （cf. <a href="http://www.freebsd.org/releases/7.1R/schedule.html">FreeBSD 7.1 Release Process</a>(<a href="LOCAL/20081009-freebsd-7.1R-schedule.html">lc</a>)）。
+   うーん、やっぱり、それまで待つのが、正解なんだろうな
+   （少なくとも RC が出るまでは）。</li>
+  <li><a href="#d12-freebsd">10/12/2008</a>: 6.4-RC1 が出てたので、思わず。</li>
+  <li><a href="#d29-freebsd">10/29/2008</a>:
+   7.1 clean install 環境でも、また起動不全……</li>
+ </ul>
+ </li>
+ <li><a id="d9-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>confinement の debug -- dumbbell:
+  <ul>
+   <li>実験の数値を調べる。
+   <ul>
+    <li>ついでに、<a href="#d9-nano">関連する新しい文献</a>をいくつか見つけた。</li>
+    <li>そのものの値だと、テスト用の短い chain にはでかすぎるので、
+     半分にスケール・ダウンしてテストすることにする。</li>
+   </ul>
+   </li>
+   <li>再計算：
+   <ul>
+    <li>BUE9 で dumbbell-50-50-10-10 を走らせておく。</li>
+    <li><a href="#d10-ryuon">10/10/2008</a>: 途中で止まってた。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d9-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li><a href="#d9-ryuon">ryuon dumbbell の debug</a> から、
+   DNA の実験の文献をしらべる。
+  <ul>
+   <li>cavity 系、 packed particle 系、その他、
+    いくつか新しい（知らなかった）文献を見つけた。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>
+  [phys]お勉強
+ <ul>
+  <li>最近の論文から、いくつかピックアップしておく。</li>
+ </ul>
+ </li>
+ <li>[blog][千夜千冊]
+  「<a href="http://www.isis.ne.jp/mnn/senya/senya1264.html">第千二百六十四夜　2008年10月7日 小林忠 墨絵の譜</a>」@senya(<a href="LOCAL/20081009-senya1264.html">lc</a>)
+ <ul>
+  <li>絵を、後でのんびりと見よう、という備忘録。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d8"></a>10/8 (Wed)</h2>
+<ul>
+ <li>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20081008-00000202-jij-soci">「受賞は天の導き」＝化学賞は全く意外−下村脩さんインタビュー・ノーベル賞</a>」@yahoo(<a href="LOCAL/20081008-yahoo-20081008-00000202-jij-soci.html">lc</a>)
+ <ul>
+  <li>「<a href="http://sankei.jp.msn.com/culture/academic/081009/acd0810090123000-n1.htm">【ノーベル化学賞】「やり遂げることが大切」喜びの下村さん会見</a>」@sankei(<a href="LOCAL/20081008-sankei-acd0810090123000-n1.htm">lc</a>)</li>
+ </ul>
+ </li>
+ <li><a id="d8-eof"></a>
+  [phys]EOF
+ <ul>
+  <li>slip の勉強。
+  <ul>
+   <li>ノートにある過去の記述（試行錯誤）を一通り見返す。
+   <ul>
+    <li>途中で、いろいろと確認していく。</li>
+    <li>が、やっぱりどれも筋が悪い
+     （だから、いつも宙ぶらりんになって、放置されるんだな）。</li>
+    <li>具体的に考える必要があるなあ、と丸を書く。
+     （これって、いつものパターンじゃん……。）</li>
+   </ul>
+   </li>
+   <li><a href="#d10-eof">10/10/2008</a>: 続き。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>stvis の confinement の表示の改良。
+  <ul>
+   <li>porous が、極めて見にくい。</li>
+   <li>新しいプラン：
+   <ul>
+    <li>chain の近くの porous particle のみ表示。</li>
+    <li>chain の手前にある particle は書かないか透明にする。</li>
+   </ul>
+   </li>
+   <li>帰宅後、一応、実装し終わる。
+   <ul>
+    <li>が、やっぱり見にくいなあ……。</li>
+    <li>どうするのがいいのだろうか？</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d8-seminar"></a>
+  [phys]<a href="http://www.cein.ualberta.ca/research/nint/theory-modeling-group/seminar/index.html">グループ・セミナー</a>。
+ <ul>
+  <li>明日だとばかり思っていたセミナーが「はじまりますよ」と突然、声を掛けられ狼狽する。
+  <ul>
+   <li>あぶないあぶない、また（<a href="diary2007_10.html#d18-seminar">10/18/2007</a>）すっぽかすところだった。</li>
+  </ul>
+  </li>
+  <li>お話は、「統計力学理論を分子動力学に組み込もう」という話。
+   それで今日はその２回目……
+  <ul>
+   <li>なんだけど、あれれ１回目（<a href="diary2007_06.html#d7">6/7/2007</a>）は、
+    どうもすっかり忘却していた模様で、「忘れてた」という記述すらない……。</li>
+   <li>一応、現状で走るものは出来ている（これはすごい）。
+    こいつと plain な分子動力学のスピードを比較しているが、
+    見たところ太刀打ちできてないし、近い将来、出来そうにない数字だ……。</li>
+   <li>今はこいつをどう optimize していくか、というところらしい。
+    が、素人目には、どんどん難しくなる方向に（複雑化する方向に）
+    流れているように見える。</li>
+   <li>optimize ってのは結局、 cheating か compromise な訳で、
+    bottom line としての「現状で走るもの」の抜本的な改善がないと、
+    その上でどんなに optimize を頑張っても（原理的に）難しいよなあ……。</li>
+   <li>というようなことを思いながら聞いていたが、
+    どうも発表者が honest すぎな面もあったようで、議論に際して、
+    そもそも「統計力学理論」が「分子動力学」に対して
+    圧倒的な advantage を持つ状況が山のようにある、という前提があるのだそうだ。
+    ある意味、ここのグループは、その「統計力学理論」の
+    一大拠点みたいなもんらしいし。</li>
+  </ul>
+  </li>
+  <li>以下、一般論。
+   多分に私自身の嗜好なんだけど（といつも書いているけど）、
+   何かグッとくるものが感じられなかった。
+  <ul>
+   <li>つまり、こういう「統計力学理論」で見ているものは、結局は熱平衡状態なんだよなあ、と。
+    平衡を押さえて非平衡を考えるというのは、（非平衡）統計力学の王道だけど、
+    それで到達できる非平衡ってどれくらい広いのだろう、という漠然とした疑問。</li>
+   <li>統計力学の世界と、流体力学の世界は、どうつながっているのか、
+    ということなのかな。</li>
+   <li>こういうことを以前 alex に喋ったことがあったけど、その時
+    「何となく（私が感じている）不満が分かってきた気がする」と言ってた。
+    （そんなら、それまでは、私が単なるイチャモンを付けているとでも思ってたのかな？）</li>
+  </ul>
+  </li>
+  <li><a href="diary2008_09.html#d12-seminar">9/12/2008</a>:
+   前回のグループ・セミナー</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d7"></a>10/7 (Tue)</h2>
+<ul>
+ <li><a id="d7-nobel"></a>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20081007-00000168-jij-soci">「受賞あるなら今年だと」＝「理論屋」に笑顔も−益川教授</a>」@yahoo(<a href="LOCAL/20081007-yahoo-20081007-00000168-jij-soci.html">lc</a>)
+ <ul>
+  <li>「<a href="http://headlines.yahoo.co.jp/hl?a=20081007-00000609-san-soci.view-000">【ノーベル物理学賞】関係者ら喜びの声「やっとという感じ」</a>」@yahoo(<a href="LOCAL/20081007-yahoo-20081007-00000609-san-soci.view-000.html">lc</a>)</li>
+  <li>「<a href="http://www.jiji.com/jc/p_archives?id=20081007213250-7320826&rel=y&g=pho">益川教授、喜びの会見</a>」@jiji(<a href="LOCAL/20081007-jij-20081007213250-7320826.html">lc</a>)</li>
+  <li>「<a href="http://www.jiji.com/jc/p_archives?id=20081007214230-7321138&rel=y&g=pho">笑顔で会見する小林名誉教授</a>」@jiji(<a href="LOCAL/20081007-jiji-20081007214230-7321138.html">lc</a>)</li>
+  <li>「<a href="http://mainichi.jp/select/wadai/nobel/news/20081008k0000m040114000c.html">ノーベル物理学賞：「びっくりした」　米の自宅で南部氏</a>」@mainichi(<a href="LOCAL/20081007-mainichi-20081008k0000m040114000c.html">lc</a>)</li>
+  <li>何で
+  <blockquote>
+   「去年までは絶対ないと思っていた。今年は可能性が高いと思っていた」
+  </blockquote>
+   と思ったのだろう？</li>
+  <li>ここずっと誰もが名前をあげる有名な人たちだ。
+   日本の物理業界（の素粒子の人たち）は大喜びだろう。
+   軽薄なブームとかではなく、この雰囲気を有効に使ってほしいものだと思う
+   （利己的にじゃなくて、利他的に）。
+  <ul>
+   <li><a href="diary2003_05.html#d13-scholar">5/13/2003</a>:
+    『将来なりたい職業、１位は「学者・博士」』を生かせたのか？</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d7-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li><a href="http://ryuon.sourceforge.net/stokes/">stokes</a>/<a href="http://ryuon.cvs.sourceforge.net/viewvc/ryuon/stokes/src/">src</a>/<a href="http://ryuon.cvs.sourceforge.net/viewvc/ryuon/stokes/src/stnc.c">stnc.c</a> の実装。
+  <ul>
+   <li><a href="#d6-stnc">昨日</a>の続き。完成した。
+    以下は help message:
+   <pre>
+> ./stnc -h
+stokes-netcdf utility tool
+$Id: stnc.c,v 1.1 2008/10/08 03:30:07 kichiki Exp $
+
+USAGE
+./stnc [OPTIONS]
+        -h or --help     : this message.
+        -i or --input    : input stokes-netcdf file
+        -o or --output   : output stokes-netcdf file
+        -i0 or --begin   : first step (default: 0)
+        -i1 or --end     : end step (default: the last step)
+   </pre>
+   </li>
+   <li>注意： <a href="http://www.unidata.ucar.edu/software/netcdf//docs/netcdf-c/nc_005fget_005fvar1_005f-type.html">nc_get_var1_*()</a> には、
+    単一変数でもきちんと index を渡す。その index は int ではなくて size_t で。
+   <ul>
+    <li>まず NULL を渡していたら fail して、
+     index を int で定義してたら FreeBSD では動いていたけど、
+     Linux に持っていったらこけて、一瞬焦った。</li>
+   </ul>
+   </li>
+   <li>既存の結果を全コピーすることは確認。</li>
+   <li>ってことで、本題（<a href="#d7-nano">nano/CF-porous</a>）に戻る。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d7-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-porous/FORCE
+  <ul>
+   <li>N=400, R=34.0, F=0.01:
+   <ul>
+    <li><a href="#d6-nano">10/6/2008</a>から。</li>
+    <li><a href="#d7-ryuon">完成した stnc</a> を使って、正しい結果の salvage.</li>
+    <li>継続しておく。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d7-eof"></a>
+  [phys]EOF
+ <ul>
+  <li>slip の理論関係をここに持ってくることにする。</li>
+  <li>まずは、先日読んだ Swan-Khair (2008) 
+    （<a href="#d3-reading">10/3/2008</a>, <a href="#d4-reading">10/4/2008</a>）
+    の内容をノート（note/20070607-slip/slip.tex）にまとめる。
+  <ul>
+   <li>ちなみにこのノートの来歴
+    （その昔、なぜか ryuon project で引き受けていた）：
+   <ul>
+    <li><a href="diary2007_06.html#d7-ryuon">6/7/2007</a>: 開始。</li>
+    <li><a href="diary2007_06.html#d8-ryuon">6/8/2007</a>:
+     自分の考えるようにしばらく進んでみる。</li>
+    <li><a href="diary2007_06.html#d11-ryuon">6/11/2007</a>:
+     既存の色々な定式化と比較。</li>
+    <li><a href="diary2007_06.html#d12-ryuon">6/12/2007</a>:
+     試行錯誤。</li>
+    <li><a href="diary2007_06.html#d14-ryuon">6/14/2007</a>:
+     既存の研究結果をまとめる。</li>
+    <li><a href="diary2007_06.html#d15-ryuon">6/15/2007</a>:
+     試行錯誤 -- F 版の多重極展開で途方に暮れる。</li>
+    <li>この後、２体の厳密解（cf. <a href="diary2007_06.html#d18-twobody">6/18/2007</a>）
+     の方に流れていって、そのまま放置されていた模様。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d6"></a>10/6 (Mon)</h2>
+<ul>
+ <li><a id="d6-moving_sale"></a>
+  moving sale で CD ラジオが売れた。
+ <ul>
+  <li>かおが<a href="diary2008_09.html#d21-moving">9/21/2008</a>に出してくれていたもの（引越しは<a href="diary2008_09.html#d30-moving">もうとっくに終わった</a>のだが）。</li>
+  <li>買っていただいた方は、こっちの medical に来られているお医者さんだそうだ。
+   しかし、&quot;japanese in edmonton&quot; と言っても本当に色々だ（当たり前だけど）。
+   州政府で働く若い人とか、 business school に来られている先生とか、
+   国際結婚してる奥さんとか、（日本に居場所のない国際放浪研究者とか……）。</li>
+  <li>あと残っているのはエアコンだけ。まあ、これからの季節、売れるわけはないな。</li>
+ </ul>
+ </li>
+ <li><a id="d6-brian_blade_fellowship"></a>
+  [music]brian blade fellowship &quot;season of changes&quot;
+  という曲は、最近の愛聴曲の一つ。
+ <ul>
+  <li>聞いているのは今年６月の village vangaurd でのライブ版で、
+   いつもの面子に kurt rosenwinkel 入りだ。</li>
+  <li>BBF （<a href="diary2008_07.html#d15-cds">7/15/2008</a>）の最新盤がこれみたいなので、
+   そっちもお金ができたら買っておかないといけないな。
+   他にも brad mehldau trio の live 盤とか
+   kurt rosenwinkel の live 盤とか（<a href="diary2008_07.html#d15-cds">7/15/2008</a>）、欲しいものリストに切りはないが……。
+   そうだ、そう言えば<a href="#d4-garage">つい先日</a>、散財したところだったよな。</li>
+ </ul>
+ </li>
+ <li><a id="d6-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>confinement 系の確認事項。
+  <ul>
+   <li>大丈夫たった、と思ってたら、全く同じ確認を一月前（<a href="diary2008_09.html#d5-nano">9/5/2008</a>）にもしていた……。</li>
+  </ul>
+  </li>
+  <li>CF-porous/FORCE
+  <ul>
+   <li>N=400, R=33.5, F=0.01:
+   <ul>
+    <li><a href="diary2008_09.html#d26-nano">9/26/2008</a>から。</li>
+    <li>エラーで停止していた（22143 step）。</li>
+   </ul>
+   </li>
+   <li>N=884, R=33.5, F=0:
+   <ul>
+    <li><a href="#d2-nano">10/2/2008</a>から。</li>
+    <li>HDD の問題で停止していたので、継続させておく。</li>
+   </ul>
+   </li>
+   <li>N=400, R=34.0, F=0.01:
+   <ul>
+    <li><a href="#d2-nano">10/2/2008</a>から。</li>
+    <li>HDD の問題で停止していたので、継続させよう……
+     と思ったら、結果が破損している模様。
+    <ul>
+     <li>ということで、
+      salvaging tool を書きはじめる（人はこれを泥縄と言う……）。
+      cf. <a href="#d6-stnc">ryuon 10/6/2008</a>.</li>
+    </ul>
+    </li>
+    <li><a href="#d7-nano">10/7/2008</a>: salvage して継続させる。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d6-stnc"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>stnc の tool を作る。
+  <ul>
+   <li>必要に迫られてから重い腰を上げるの図である。
+    cf. <a href="#d6-nano">nano 10/6/2008</a>.</li>
+   <li>何らかの事故で破損した stnc から、大丈夫な部分を salvage したり、
+    必要な部分だけを取り出したりするツール。
+   <ul>
+    <li><a href="http://ryuon.cvs.sourceforge.net/viewvc/ryuon/stokes/python/">python base</a> の <a href="http://ryuon.cvs.sourceforge.net/viewvc/ryuon/stokes/python/stncdump.py">stncdump</a> という plain text に dump するツールは
+     既にある。</li>
+    <li>今回は C で書こうと思っているので、書き下ろし。</li>
+   </ul>
+   </li>
+   <li>名前は <a href="http://ryuon.cvs.sourceforge.net/viewvc/ryuon/stokes/src/stnc.c">stnc.c</a> と決定。 <a href="http://ryuon.sourceforge.net/stokes/">stokes</a>/<a href="http://ryuon.cvs.sourceforge.net/viewvc/ryuon/stokes/src/">src</a> にて書き始める。
+   <ul>
+    <li>必要な routine を <a href="http://ryuon.sourceforge.net/libstokes.html">libstokes</a>/<a href="http://ryuon.cvs.sourceforge.net/viewvc/ryuon/libstokes/src/">src</a>/<a href="http://ryuon.cvs.sourceforge.net/viewvc/ryuon/libstokes/src/stokes-nc.c">stokes-nc.c</a> に追加。</li>
+   </ul>
+   </li>
+   <li>stnc の設計思想について、ちょっと考える。
+    （cf. <a href="diary2006_10.html#d11-NetCDF">10/11/2006</a>）
+   <ul>
+    <li>後付けの思想だけど、現状は
+     「配置など、結果に関する最小限の、しかし完全な set を記録」
+     という感じかな。</li>
+    <li>抜けているのはsimulation を走らすための設定の詳細。
+     （それらは入力ファイル scm file で指定されている。）
+     なので、 stnc だけで simulation を continue させたりは出来ない
+     （入力ファイルが必要）。
+    <ul>
+     <li><a href="diary2008_06.html#d2-ryuon">6/2/2008</a>:
+      stokes3 の BD の continuation.</li>
+    </ul>
+    </li>
+    <li>しかし、考えてみれば、これはそれほど悪い設計ではないかもしれない。</li>
+   </ul>
+   </li>
+   <li>今日はここまで。まだ compile も通していない。</li>
+   <li><a href="#d7-ryuon">10/7/2008</a>: 無事、完成。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20081007-00000000-oric-ent">津川雅彦、故・緒形拳さんの最期を綴る</a>」@yahoo(<a href="LOCAL/20081006-yahoo-20081007-00000000-oric-ent.html">lc</a>)
+ <ul>
+  <li>う、ショックだな。よく思い出せないけど、個人的な印象は、
+   やっぱり「必殺」なのかな？</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d5"></a>10/5 (Sun)</h2>
+<ul>
+ <li><a id="d5-monton"></a>
+  [monton]今日はモンを久しぶりに風呂に入れる。
+ <ul>
+  <li>えっと、もしかしたら、新宅では初めてかな。あと、耳掃除もしておいた。</li>
+  <li>それから、今日はモンちゃん領域をまた少し広げて、
+   arm chair （処分しなかった方、reclining する奴 -- <a href="diary2008_09.html#d28-moving">9/28/2008</a>）も含まれた。
+   そこに座ってると、膝に乗ってきてペタッと寝てしまう。だからそこに座る前に、
+   必要なものをすべてセットアップしておく必要があるのだが、
+   これがなかなか……「あ、あれが欲しい」とか、必ず出てくるのだなあ。</li>
+ </ul>
+ </li>
+ <li><a id="d5-guitar"></a>
+  [music]ギターに、本当に久しぶりに触る。
+ <ul>
+  <li>引越の荷物も、ゆっくりだが、だんだん片付いてきて、
+   ようやくギターを触ろうかなという気分的になった。</li>
+  <li>前に触ったのは<a href="diary2008_07.html#d8-guitar">7/8/2008</a>かな。
+   これじゃあ上達しないわな。</li>
+  <li>しかしリビングでやってると、モンがすごく不満らしく、
+   「何でモンちゃんと遊んでくれないですか？」と言ってくるので
+   （cf. <a href="diary2008_07.html#d15-senya">7/15/2008</a>）、
+   寝室に移動した。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d4"></a>10/4 (Sat)</h2>
+<ul>
+ <li><a id="d4-garage"></a>
+  車をガレージに持っていく。
+ <ul>
+  <li>エンジン始動の問題（cf. <a href="diary2008_09.html#d30-oil_change">9/30/2008</a>）。</li>
+  <li>以前の経験（<a href="diary2008_03.html#d8-oil_exchange">3/8/2008</a>）から、朝一番に行こうと早起き。
+   ８時すぎに店に着いたが、表示を見ると７時半から開いていた模様
+   （今回持ってきたのは南の canadian tire, <a href="diary2007_06.html#d8-car">バッテリを交換した</a>ところ）。</li>
+  <li>エンジン始動問題はスターター交換とのこと。これで全部込みで４００ドルだって。
+   （inspection に１００ドルちょい、スターター自体が２００ドルを切るくらい。）</li>
+  <li>ついでなので、ずっと前から言いつづけていた（<a href="diary2007_12.html#d3-snow">12/3/2007</a>） block heater の install と winder tire を手配する。
+   と、全部込みで１０００ドル少々になってしまった。
+   （ヒーターは５０ドル程度だったが、タイヤが一本８０ドルの４本、
+   labor もろもろで、その値段だって。安全を買うってことだけど、ちょっとつらい……。）</li>
+  <li>終わったのはお昼。待ち時間の間、
+   <a href="#d4-reading">持ってきた論文に目を通す</a>。</li>
+  <li>前のタイヤはいつのだったかな、と過去の記述を遡ってみたが、
+   もしかして <a href="diary2005_09.html#d26-tire">9/26/2005</a> か？
+   カナダ横断旅行前に確認した時（<a href="diary2006_12.html#d3-canadian_tire_after">12/3/2006</a>）は「まだ大丈夫」と言われたしな。
+   ってことは３年走ったことになるのか。
+   （そんでも「まだいけるよ」と店員には言われたが。）</li>
+  <li>出たついでに（いやいや、本当に不精者なので……）ジーンズを調達。
+   というのも、気がついたら手持ちのジーンズは全部大きな穴があいて、
+   外に履いていけるものがない状態だったので
+   （それなら、お前は何を履いて外に出ていたんだ、と言われそうだな）。
+   看板に jeans outlet とある店が目の前にあったので入ってみる。
+   そんなに品揃えがいいわけではなかった。とりあえず（よく分からないので）
+   levi's の棚を眺めて sale になっているものを２本
+   （３０ドルになってた５０５と６０ドルになってた５０１）、
+   あと regular price （７５ドル）の５２７（黒）を買った。
+   サイズは31/32（５０５は30/32）だった。昔のままだ、エヘン。</li>
+  <li>それから、モンちのご褒美も補給して、ガソリンを満タンにしてから、帰宅。
+   ちょっと散財したので、しばらくは倹約生活だな。
+  <ul>
+   <li><a href="#d6-brian_blade_fellowship">10/6/2008</a>:
+    欲しいものリスト、こんな時に限ってねえ……。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>夜、気がついたら外は雨が降っている。
+ <ul>
+  <li>ほんと、久しぶりじゃないかな。</li>
+ </ul>
+ </li>
+ <li><a id="d4-reading"></a>
+  [phys]お勉強
+ <ul>
+  <li><a href="http://dx.doi.org/10.1017/S0022112008001614">Swan, Khair (2008) JFM</a> にもう少し目を通す。
+  <ul>
+   <li><a href="#d4-garage">車の修理待ち</a>の間に、<a href="#d3-reading">昨日</a>の続きとして。</li>
+   <li>自分の文脈で、少し考えてみよう。</li>
+   <li><a href="#d7-eof">10/7/2008</a>: ノートにまとめ。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d3"></a>10/3 (Fri)</h2>
+<ul>
+ <li><a id="d3-kazu"></a>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20081003-00000023-nks-socc">清原氏引退してもカズは辞めない</a>」@yahoo(<a href="LOCAL/20081003-yahoo-20081003-00000023-nks-socc.html">lc</a>)
+ <ul>
+  <li>引用：
+  <blockquote>
+   若いころの節制と練習の積み重ねが長持ちの秘密だが、
+   カズ自身は「運だよ。オレはケガをしなかった。だから今でもプレーできる」と言う。
+  </blockquote>
+  <ul>
+   <li>やっぱり人間、<a href="diary2000_08.html#d3-tairyoku">体が資本だ</a>。
+    （see, also <a href="#d2-healing">10/2/2008</a>.）
+    スポーツ選手でケガが少ないというのは、
+    日に当たらない部分で日々の努力を怠ってないということの証なんだろう。
+    口先だけでできることではない。ハッタリではできることではない。
+   <ul>
+    <li><a href="diary2006_06.html#d8-my_old_paper">6/8/2006</a>:
+     ハッタリをかまさないという生き方。</li>
+    <li><a href="diary2008_06.html#d30-self_expression">6/30/2008</a>:
+     自己表現について。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li>「<a href="summaries.html#kazu">サマリー：三浦知良</a>」を作った。</li>
+ </ul>
+ </li>
+ <li><a id="d3-reading"></a>
+  [phys]お勉強
+ <ul>
+  <li><a href="http://dx.doi.org/10.1017/S0022112008001614">Swan, Khair (2008) JFM</a> に目を通す。
+  <ul>
+   <li><a href="diary2008_09.html#d26-twobody">9/26/2008</a>に入手したもの。</li>
+   <li><a href="#d4-reading">10/4/2008</a>: もうちょっと。</li>
+   <li><a href="#d7-eof">10/7/2008</a>: ノートにまとめ。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d3-twobody"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>さて、今の時点から（というのは、<a href="diary2008_09.html#d16-twobody">厳密解の論文</a>後という意味）、この課題に向けて、何ができるかを、一通りまとめておこう。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d2"></a>10/2 (Thu)</h2>
+<ul>
+ <li><a id="d2-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-porous/FORCE
+  <ul>
+   <li>N=884, R=33.5:
+   <ul>
+    <li>準備 - done.</li>
+    <li>BUE9 で平衡計算を流しておく。</li>
+    <li><a href="#d6-nano">10/6/2008</a>: 中断したものを継続。</li>
+   </ul>
+   </li>
+   <li>N=400, R=34.0:
+   <ul>
+    <li>準備 - done.</li>
+    <li>BUE9 で F = 0.01 を流しておく。</li>
+    <li><a href="#d6-nano">10/6/2008</a>: 中断、結果の破損を発見。</li>
+    <li><a href="#d7-nano">10/7/2008</a>: 破損部分をカットし、継続。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d2-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>諸般の事情（例えば <a href="diary2008_08.html#d8-nano">8/8/2008</a>）で長らく後回しになっているが、そろそろエンジンをかけ直す。</li>
+  <li>やることリストをまとめる。
+  <ul>
+   <li>高速な implicit algorithm の実装：
+   <ul>
+    <li><a href="diary2008_07.html#d14-ryuon">7/14/2008</a> に立てた plan.</li>
+    <li><a href="diary2008_08.html#d11-ryuon">8/11/2008</a> 以来、ちょっとご無沙汰であった。</li>
+   </ul>
+   </li>
+   <li>bead-spring for bead-rod の話：
+   <ul>
+    <li><a href="diary2008_06.html#d19-ryuon">6/19/2008</a>に
+     一通りの実装は終わっている。</li>
+    <li>具体的なテストをしよう。</li>
+   </ul>
+   </li>
+   <li>confinement の debug:
+   <ul>
+    <li>こっちは<a href="diary2008_06.html#d3-ryuon">6/3/2008</a>で止まっている。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>
+  [phys]お勉強
+ <ul>
+  <li>また、そろそろ、入力モードになってきた、かな。</li>
+  <li>今日の収穫をまとめておく。</li>
+ </ul>
+ </li>
+ <li><a id="d2-healing"></a>
+  体の、引越しモードからの、回復。
+ <ul>
+  <li>何が大変だったかといって、
+   <a href="diary2008_09.html#d28-moving">掃除によって</a>両手の指先が腫れ上がってパンパンになったこと。
+   それに加えて、<a href="diary2008_09.html#d17-garbage">引越しのかなり初期の段階で負った</a>左手親指の傷もあり、
+   何か本当に憂鬱だった。（コンピュータのキーを打つのも、というか、打つのが、
+   大変だったのだ。）
+   それも、ここにきてようやく癒えてきて、普通にギュッとしても痛くなくなってきた。</li>
+  <li>その他、全身の筋肉痛は（もともと体を鍛えるのは嫌いじゃない人間なので）、
+   これを期に筋トレを続けようかと思っている。（毎日の散歩も、なかなか、
+   体の再トレーニングへのよい prelude になっていると思うし。）
+   誰も頼りにできない自営業者は、<a href="#d3-kazu">体が資本</a>だから。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d1"></a>10/1 (Wed)</h2>
+<ul>
+ <li><a id="d1-october"></a>
+  １０月がはじまった。
+ <ul>
+  <li>どうみても october は８に関連し、
+   december は１０に関連するという漠然とした曖昧な「ずれ」の気分を持っていたのだが、
+   確か３月を１に数え始めていたからというような記述を塩野七生の本に見た気がする。
+   （cf. <a href="diary2002_10.html#d1-shiono_nanami">10/1/2002</a>）</li>
+  <li>付記：そうか、「七生」（ななみ）は
+  <blockquote>
+   7月7日の「生まれ」であることに由来する
+  </blockquote>
+   のか（<a href="http://d.hatena.ne.jp/keyword/%b1%f6%cc%ee%bc%b7%c0%b8">はてなキーワード > 塩野七生</a>）。
+   ってことは、おれのペンネームは「六生」だな。さて、何と読むか？
+   「ムツオ？」ひどすぎだな、せめて「ムショウ」くらいか。</li>
+ </ul>
+ </li>
+ <li><a id="d1-report"></a>
+  [phys]月刊レポート書き。
+ <ul>
+  <li>先月はサボったので（cf. <a href="diary2008_09.html#d10-a_busy_day">9/10/2008</a>）今回は２ヵ月分（なのに、すっぱり２ページなり）。</li>
+  <li>back-numbers:
+  <ul>
+   <li><a href="diary2008_12.html#d1-report">12/1/2008</a>: １２月号</li>
+   <li><a href="diary2008_11.html#d3-report">11/3/2008</a>: １１月号</li>
+   <li><a href="diary2008_10.html#d1-report">10/1/2008</a>: １０月号</li>
+   <li><a href="diary2008_08.html#d6-report">8/6/2008</a>: ８月号</li>
+   <li><a href="diary2008_07.html#d2-report">7/2/2008</a>: ７月号</li>
+   <li>これ以前は
+    <a href="diary2008_06.html#d2-report">６月号</a>のリンクから。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d1-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>CF-porous/FORCE @ BUE9
+  <ul>
+   <li>N=400, R=33.5 の平衡計算（dtがでかいもの）：
+   <ul>
+    <li><a href="diary2008_09.html#d30-nano">9/30/2008</a>にはじめたもの。</li>
+    <li>うーむ、やっぱり途中でダメだな。
+     ということは、前の奴が絶妙な choice だったわけだな。</li>
+   </ul>
+   </li>
+   <li>N=400, R=33.5 の平衡計算：
+   <ul>
+    <li>ってことで、<a href="diary2008_09.html#d26-nano">9/26/2008</a>にはじめて
+     <a href="diary2008_09.html#d30-nano">9/30/2008</a>に一旦止めていた run
+     を継続させる。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>何だか、ようやく日常が戻ってきた気がする。
+ <ul>
+  <li>とはいえ、まだ、ダンボールと暮らしているようなものだが。</li>
+  <li>アパートの横の IGA というスーパーに、
+   夕方（モンちの散歩が終わって、一段落した後）、はじめて行ってみる。
+   何というか、微妙な寂れ感がそこここに漂いまくっているが、
+   商品の品揃えや値付けは、普通のスーパーだった。
+   冬、雪に閉ざされて不精になっても、最低限、生きていけそうだ。</li>
+  <li>微妙な寂れ感といえば、このスーパーの並びに、
+   &quot;shoppers drug <i>world</i>&quot; という薬局兼コンビニみたいな店がある。
+   いっちょまえにも canadapost も入っている。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+</body>
+</html>

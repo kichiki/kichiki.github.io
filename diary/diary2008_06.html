@@ -1,0 +1,2571 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - June 2008</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <link rel="alternate"  type="application/rss+xml" href="diary.rdf" />
+    <script type="text/javascript" src="LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+
+
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2008年6月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+<div class="body">
+
+<br />
+
+
+<h2><a id="d30"></a>6/30 (Mon)</h2>
+<ul>
+ <li><a id="d30-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速な implicit algorithm の実装：
+  <ul>
+   <li><a href="#d27-ryuon">前回</a>のテストの続き：
+   <ul>
+    <li>N=100 で NITSOL がこける問題、解決。
+    <ul>
+     <li>問題は、またもや config の設定
+      （else if すべき所が一ヶ所 if だけになっていた、というおバカなもの）。</li>
+    </ul>
+    </li>
+    <li>以上で no-HI 版のテストは終了とする。</li>
+   </ul>
+   </li>
+   <li>HI 化：
+   <ul>
+    <li>ノートに戻って、定式化を確認。
+    <ul>
+     <li>ふむ、 right-hand side vector のみの変更で対応できる。</li>
+    </ul>
+    <li>しかるべく、実装。
+    <ul>
+     <li>できた。
+      straight chain の F の決め打ちで、しかも non periodic だけ。</li>
+     <li>ついでなので corrector step の初期と update の統合もしておく。
+      （詳しい理由は知らないけど、微妙に違うんだよな。
+      この違いについては、後でちょっと調べておこう。）</li>
+     <li>これまでのチェックで通ることを確認ののち、古い（非統合）コードは破棄。</li>
+    </ul>
+    </li>
+    <li>これで、一応 HI 化はできたはす。
+    <ul>
+     <li>不十分な点がもう一つ、
+      connector から position を作るのに、 COM を手で与えている。</li>
+    </ul>
+    </li>
+    <li>テスト：
+    <ul>
+     <li>既存のテストに flag_noHI を追加。
+      一通り走るようになった！！</li>
+     <li>と思っていたら、
+      何かの加減で check_fastSI_solve_cubic() が文句を言うようになった。
+     <ul>
+      <li>見ると、いろいろ下らない bug や、思い違いがあった。</li>
+      <li>それらを修正後も、まだどこかで nan になっている模様……。</li>
+     </ul>
+     </li>
+     <li><a href="diary2008_07.html#d3-ryuon">7/3/2008</a>: テストの続き。</li>
+    </ul>
+    </li>
+    <li><a href="diary2008_07.html#d2-report">今月はここまで</a>。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d30-clipper"></a>
+  [monton]
+  モンちゃんの散髪。
+ <ul>
+  <li>をするために、バリカンを買って帰る。
+   （あと、モンちゃんの暑さ対策として氷嚢を１つ。）</li>
+  <li>いくつか店を回って、結局４０数ドルの一番安い light duty という奴を買った。
+   他の店でみたものよりも、 quality はよさそうだったので。</li>
+  <li>で、さっそく試してみた。が、これがなかなか思うように刈れない。
+   本当は目の前、鼻の上の毛を（病院で刈られたように）切りたかったのだが
+   （モンちゃんは、おめめが大きいので、ハサミだとちょっと怖い）、
+   そんなことは不可能なほど、弱い。刈りやすそうな背中から試したが、
+   きちんと虎刈りになってしまった。ちょっと値が張るが、これからずっと使うわけだし、
+   返品して heavy duty のものを買ってこよう。</li>
+  <li>当のトラ・モンはまったく気にしていない様子だし、
+   明らかに涼しくなっただろうから、それはそれでよし、と。
+  <ul>
+   <li><a href="diary2008_07.html#d13-monton">7/13/2008</a>: 虎刈り？</li>
+  </ul>
+  </li>
+  <li><a href="diary2008_07.html#d4-clipper">7/4/2008</a>:
+   heavy duty に交換してきた。</li>
+  <li>今日の写真、氷嚢で遊ぶモンの図。<br />
+   <a href="images/20080701-monton-08_07_01-14_17_59_9862-600x800.jpg">
+    <img src="images/20080701-monton-08_07_01-14_17_59_9862-75x100.jpg"
+     width="75" height="100" /></a>
+   <br />
+   (<a href="diary2008_07.html#d1">2008/7/1</a>撮影)
+   <br />
+    背中の虎刈りはちょっと見えないな。
+    ちなみに、この氷嚢は数日後に穴があいた……。
+  </li>
+ </ul>
+ </li>
+ <li><a id="d30-self_expression"></a>
+  自己表現について。
+ <ul>
+  <li>というか、あれだ、「見てくれ」というか、ペルソナというか、
+   自分をどう見せたいかということについて。
+  <ul>
+   <li><a href="diary2002_08.html#d13-amo">8/13/2002</a>:
+    研究者の経営感覚。</li>
+   <li><a href="diary2002_08.html#d19-hakusho">8/19/2002</a>:
+    手品師のような教育。</li>
+  </ul>
+  </li>
+  <li>思わせぶりな発言（本質的なことは何も言わないでおいて）だとか、
+   やればできる（けどやらない）とか、
+   やればできる（と思って、とりあえずできたことにしておいて、良いの悪いのいう）とか、
+   そういうことはしてはいけないな、というか、してもいいけど、みっともないな、と思った。
+   広い意味での「はったり」なのかな。
+   まあ、多かれ少なかれ、みんなしていることだとは思うけれど。
+  <ul>
+   <li><a href="diary2004_02.html#d2-nikki">2/2/2004</a>:
+    自己宣伝が過剰な日記を見る気がしなくなった。</li>
+   <li><a href="diary2006_06.html#d8-my_old_paper">6/8/2006</a>:
+    ハッタリをかまさないという生き方。</li>
+   <li><a href="diary2008_07.html#d28-emails">7/28/2008</a>:
+    ハッタリではなくて、「有言実行」の有言として（かな）。</li>
+   <li><a href="diary2008_10.html#d3-kazu">10/3/2008</a>:
+    カズがあの年でケガが少ないということは、ハッタリでできることではない。</li>
+  </ul>
+  </li>
+  <li>そういうことをしないで、では、どうすればいいのか：
+  <ul>
+   <li>「思わせぶりな発言」は、まず、しない。
+    発言するなら、隠さずに言う。
+    隠さずに言うとボロがでそうなら言わない。
+    隠さざるを得ない内容なら言わない。
+   <ul>
+    <li>定理「<a href="theorems.html#consultant">囲い込まなければいけないような情報には、即物的で小さな価値しかない</a>」
+     (江島健太郎)</li>
+   </ul>
+   </li>
+   <li>「やればできるけどやらない」は、「自分にはできないんだ」と認識する。
+   <ul>
+    <li><a href="diary2007_02.html#d10-waon">2/10/2007</a>:
+     「できるけどやらない」は負け惜しみ。</li>
+   </ul>
+   </li>
+   <li>良いの悪いの言いたいのならば、自分できちんとできた後にする。
+    できないのならば、言わない。
+   <ul>
+    <li>評論家嫌い。（例えば<a href="diary2004_04.html#d28-kataoka">4/28/2004</a>）</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li>以上が文句。つまりは、あれだ、「良いの悪いの」言っているわけだ。</li>
+  <li>「じゃあお前は自分を人にどう示したいんだ」ということだな。
+  <ul>
+   <li>普通の（ハッタリ半分な人間の）主張を５割引きで聞くところを、
+    割引きなしで（せめて１割引き程度で）聞いてもらえるような、そういう人間になりたい。
+    信用してもらえる人間になりたい、ということだろうか。</li>
+   <li>さて、そうするためには、具体的に、どうすればいいのだろう？
+    （きちんと、日々、飢えることなく生きていくと同時に。）</li>
+   <li><a href="diary2008_08.html#d24-update">8/24/2008</a>:
+    「これまでの研究業績」という自己解説。</li>
+  </ul>
+  </li>
+  <li><a href="diary2007_03.html#d18-social_skill">3/18/2007</a>:
+   対人インターフェイス -- 関連事項として。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d29"></a>6/29 (Sun)</h2>
+<ul>
+ <li><a id="d29-present"></a>
+  [music]
+  ふと魔が差して、<a href="diary2007_10.html#d5-pandora">とうとう</a>
+  アンプをポチッとしてしまう。
+ <ul>
+  <li>一応、うちの人の許可はとった。<a href="#d6-forty">誕生日</a>プレゼントだって。
+   はやく来ないかなあ。しかし何か中学生のガキみたいだな。</li>
+  <li><a href="diary2008_07.html#d2-amp">7/2/2008</a>:
+   結局、直接、店に行って買ってきた。</li>
+ </ul>
+ </li>
+ <li><a id="d29-maceo"></a>
+  [music]
+  maceo parker band のライブにでかける。
+ <ul>
+  <li>今年の
+   <a href="http://www.edmontonjazz.com/jazzfestival.htm">eijf</a>
+   のトリを飾る、 maceo parker.
+   <a href="#d24-ticket">6/24/2008</a>にオーダーし、
+   <a href="#d27-ticket">6/27/2008</a>にピックアップしていたもの。</li>
+  <li>昨日 youtube で勉強したら、 JB のバンドに居た人で、
+   ジャズというよりも完璧にそっち系の人だ。</li>
+  <li>場所は whyte 沿いなので、最初、バスで行くかと言っていたけど、
+   時間（日曜の１０時開始）を考えると、どうも帰りの便がなさそうなので、
+   車で行く。幸い２ブロック程度はなれた道路に停められた。
+   会場は、 baltimore の funkbox （<a href="diary2003_09.html#d29-sco">9/29/2003</a>）の二階テラスなし、という感じ。
+   dance floor とそのまわりを囲むように小さなテーブルがちょこちょことある。</li>
+  <li>最初、テーブルに陣取ったが、始まってすぐに、もっと近くで見たい、聞きたい、踊りたい、
+   と言う人の強力な要請により、椅子とテーブルに別れを告げて、
+   前方に移動。 first set を耐える。
+   何というか、まあシャイなんだな、あとまわりの目をやっぱり気にしてしまうんだな、
+   体は多少揺すっていたけれど（そうしないと、逆に目立つ）、
+   ちょっとつらいものがありました。休憩で私は水、もう一人の人はビールを飲んで、
+   後半は私は後ろで休ませてもらうことにした。</li>
+  <li>ジャズフェスの volunteer の人たちが「ご苦労さま」の意味で招待されていたのかな？
+   そういう（年が我々よりもかなーり上の）人たちも結構いて、
+   その休憩中になんか抽選会みたいなことをやっていた。
+   そういう感じで、観客はいろいろで、人目を気にせずに自分なりにみんな楽しんでいた。
+   （この「人目を気にせずに自分なりに楽しむ」という姿勢が、
+   なんというか培われていないんだな、自分に（というか、おそらく日本人に）。）</li>
+  <li>演奏は、何というか、そうそう guitar の人はよかった。
+   あと maceo parker は、 enternainer なんだな。
+   一曲目、みんな何かまだ乗れていない状況で、ステージから消えたと思ったら floor の最前列を
+   サックス片手にカニさん歩きで横切り、盛り上げていた
+   （<a href="diary2003_11.html#d2-candy">candy dulfer がテーブルの間を歩き回ってブロウしていた光景</a>を思い出した）。
+   しかし正直なところ、しばらく funk 系は聞かなくてもいいや、という気持ち。
+   多分、個人的には david sanborn （<a href="diary1999_08.html#d20-david_sanborn">8/20/1999</a>）とか candy dulfer （<a href="diary1998_05.html#d25_candy">5/25/1998</a>）とかがギリギリの線で、
+   今回の maceo parker はボーダーのあっち側だったみたい。</li>
+  <li><a href="diary2008_07.html#d7-ticket">7/7/2008</a>:
+   この日手配した別のチケットが届く。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d28"></a>6/28 (Sat)</h2>
+<ul>
+ <li><a id="d28-monton"></a>
+  [monton]
+  最近のモンちゃん。
+ <ul>
+  <li>一階すべてを開放されたモンちゃんだが、実は最近、
+   少しトイレの精度が悪くなってきている。枠から少しはみ出ている。
+   （<a href="#d14-monton">6/14/2008</a>）
+   ウンチは前からはみ気味で、まあいいかと思っていたのだが、
+   最近はおしっこも。前足は入っているようなんだが、後ろ足が出ることがある模様で、
+   しかも最近、その頻度が高くなってきている。</li>
+  <li>ということでダンボールで、トイレに高さ５センチくらいの外枠を付けてみる。
+   どうなるかな？</li>
+  <li><a href="diary2008_07.html#d23-monton">7/23/2008</a>:
+   おしっこ問題でモンちゃんを病院へ連れていく。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d27"></a>6/27 (Fri)</h2>
+<ul>
+ <li><a id="d27-ticket"></a>
+  [music]
+  出掛けにチケットをピックアップしてきた。
+ <ul>
+  <li><a href="#d24-ticket">6/24/2008</a>にオンラインでオーダーしていたもの。</li>
+  <li><a href="#d29-maceo">6/29/2008</a>: ライブ当日。</li>
+ </ul>
+ </li>
+ <li><a id="d27-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速な implicit algorithm の実装：
+  <ul>
+   <li><a href="#d25-ryuon">テスト</a>のテストの<a href="#d26_ryuon">続き</a>の続き。</li>
+   <li>３次方程式の解法。
+   <ul>
+    <li>自分のコードにやっとこさ間違いを発見。
+     正直に書くと、 x<sup>y</sup> の計算で、結果を代入していなかった。
+     つまり
+    <blockquote>
+     x = pow (x, y);
+    </blockquote>
+     と書くべき所を
+    <blockquote>
+     pow (x, y);
+    </blockquote>
+     としただけで、のんびりしていた。 bug なんてこういうものだよね、
+     という教訓のために明記しておこう。</li>
+    <li>その後、 GSL と速度比べしたら、あれれ倍近く遅いや。</li>
+    <li>GSL のコードを見ると、きちんと戻り値で解の数を返しているので
+     （これが欲しかったのだ。
+     しかも後で見たらきちんと <a href="http://www.gnu.org/software/gsl/manual/html_node/Cubic-Equations.html">document</a> にも書かれているではないか……
+     手を抜かずにきちんと読みましょう）、 GSL のルーチンをそのまま使うことにする。
+    <ul>
+     <li><a href="diary2008_07.html#d26-ryuon">7/26/2008</a>:
+      挙動がちょっと不安定？</li>
+    </ul>
+    </li>
+    <li>一つ一つ bug を潰して行って、やっと６種類で妥当な結果を得る所まできた。
+     勝率１０割！！
+    <ul>
+     <li>FENE-Fraenkel では s を大きくとりすぎていて、
+      おかしい（精度が悪い）としばらく悩んだ。
+      論文に従って s=0.01 程度にしておく。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+   <li>高速 scheme と普通の非線形方程式解法（NITSOL and GSL）の比較：
+   <ul>
+    <li>これもなかなか骨が折れた。
+    <ul>
+     <li>ポイントは configuration を作る際、
+      FENE モデルでは bead distance を Q<sub>0</sub> よりも
+      小さく取らないといけないが、そこをしくじっていた。</li>
+    </ul>
+    </li>
+    <li>速度を比較したところ、本当に高速 scheme がダントツだな
+     （これを期待して頑張っていたわけだけど）。
+    <ul>
+     <li>N=3 だと 少なくとも３倍、全般的に５倍程度は出ている。</li>
+     <li>N=30 だと GSL が急に performance が悪くなる。
+      それでも NITSOL の３倍弱は出ている。</li>
+     <li>調子にのって N=100 も見てみると、
+      いくつかの場合 NITSOL がこけるなぁ……。</li>
+    </ul>
+    </li>
+    <li><a href="#d30-ryuon">6/30/2008</a>: noHI のテスト、終了。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d26"></a>6/26 (Thu)</h2>
+<ul>
+ <li><a id="d26-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速な implicit algorithm の実装：
+  <ul>
+   <li><a href="#d25-ryuon">昨日</a>の続き、テストのテスト。
+   <ul>
+    <li><a href="#d27-ryuon">6/27/2008</a>: さらに続き。</li>
+   </ul>
+   </li>
+   <li>全然テストになっていなかった
+    （つまり、勝率５割なんて大嘘だったということ、やれやれ）。</li>
+   <li>一般的な非線形解法の debug は、終わったかな。</li>
+   <li>一方、高速 scheme は全然ダメであることが判明：
+   <ul>
+    <li>調べてみたら、３次方程式が正しく解けていない。</li>
+    <li>自分でコードを書いているのだが（<a href="#d24-ryuon">6/24/2008</a>）、そいつがうまく動いていない模様。参ったね。</li>
+    <li>結局、これで一日潰す。しかもまだ動いていない……。</li>
+    <li>帰宅後、 GSL を覗くとあったよ。
+     <a href="http://www.gnu.org/software/gsl/manual/html_node/Cubic-Equations.html">gsl_poly_solve_cubic()</a>.
+     こいつは（当然）きちんと解けているな。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d25"></a>6/25 (Wed)</h2>
+<ul>
+ <li><a id="d25-reading"></a>
+  [phys]お勉強
+ <ul>
+  <li>NLD 問題：
+  <ul>
+   <li>気分転換に、時間を無理やりここに割く。</li>
+   <li>理論の論文にざっと目を通す。よく分からない。</li>
+   <li>差分法のおさらい：
+   <ul>
+    <li>以前一瞬やってる（<a href="diary2007_09.html#d21-bem">9/21/2007</a>）。
+     その時のテスト・コードを動くようにしておく。</li>
+    <li>1D は動いていて、 2D も組んではいる模様。動くのかな？</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d25-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速な implicit algorithm の実装：
+  <ul>
+   <li><a href="#d24-ryuon">昨日</a>の続き。</li>
+   <li>非線形解法のレベルでテスト。
+   <ul>
+    <li>３勝３敗、勝率５割だ！（悪いな -- 内二つは線形だし。）</li>
+    <li><a href="#d26-ryuon">6/26/2008</a>: 勝率５割なんて大嘘だった……。</li>
+    <li><a href="#d27-ryuon">6/27/2008</a>: さらに続き。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>ここ数日、二人共体調を崩している。
+ <ul>
+  <li>風邪で、かつ、のどが痛い。</li>
+  <li>前回の風邪の時に薬が切れていたので、帰宅時に買って帰る。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d24"></a>6/24 (Tue)</h2>
+<ul>
+ <li><a id="d24-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>dWLC の simulations:
+  <ul>
+   <li>CF-cylinder:
+   <ul>
+    <li><a href="#d17-nano">先週はじめた</a>計算、予定通り終了（ってことは、７日）。
+    <ul>
+     <li>もう一本は、この調子だと倍ちょっとかかりそうだな。</li>
+    </ul>
+    </li>
+    <li>結果は、ふむ、 d を大きくとりすぎていて面白くない
+     （し、分布がきれいではない == 相空間を十分走り回っていない）。</li>
+    <li>計算の追加を流しておく。これも一週間の予定（１００％で）。</li>
+    <li><a href="diary2008_07.html#d2-nano">7/2/2008</a>: 予定通り、終了。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d24-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速な implicit algorithm の実装：
+  <ul>
+   <li>さて、今度こそ本当に実装するぞ！
+   <ul>
+    <li>作業場にて実装開始。</li>
+    <li>まずは３次方程式の解から……。えっと、千里の道も一歩から、と。</li>
+    <li><a href="#d26-ryuon">6/26/2008</a>: バグっている。</li>
+   </ul>
+   </li>
+   <li>丸一日かかって（家に持ち帰って）、何とか書き上げた。
+   <ul>
+    <li>とりあえず straight chain の決め打ち
+    <ul>
+     <li><a href="#d11-ryuon">また</a>、である……後で一般化するのが、また大変なのは分かっているが……。</li>
+    </ul>
+    </li>
+    <li>あと、とりあえず noHI だけ。</li>
+    <li>ただし force law は ILC 以外６種類、一通り組みました。</li>
+    <li>対応する非線形解法アプローチも GSL multiroot 版と NITSOL 版とも組んだ。</li>
+   </ul>
+   </li>
+   <li>今のところ、全て未チェック。</li>
+   <li><a href="#d25-ryuon">6/25/2008</a>: チェック開始。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d24-ticket"></a>
+  [music]またチケットを手配。
+ <ul>
+  <li>文字通り<a href="#d23-sco">昨日の今日</a>ではあるが、いろいろな意味で正しいお金の使い方、ということで。
+   ここ（edmonton）では
+   <a href="http://www.edmontonjazz.com/jazzfestival.htm">こういう機会</a>
+   を逃すと何もないし。</li>
+  <li><a href="#d27-ticket">6/27/2008</a>: ピックアップしてきた。</li>
+  <li><a href="#d29-maceo">6/29/2008</a>: ライブ当日。</li>
+ </ul>
+ </li>
+ <li><a id="d24-general_relativity"></a>
+  [phys]一般相対性理論を勉強してみよう。
+ <ul>
+  <li><a href="#d20-general_relativity">と言って</a>から数日が経過した。
+   幸い（なのか残念ながらなのかは知らないが）刺激剤というよりは入眠剤になってるようで、
+   ベッドでパラパラ眺めるにはちょうど良い。</li>
+  <li>しかしこの内山さんの訳が、ちょっと辛いなあ。日本語がという話では当然なくて、
+   訳語がドイツ語系なところ。ふとみると英語版は dover から出ているみたい。
+   そっちで見るのがいいかな？</li>
+  <li>ちょっと調べてみたら、こいつ文庫になっているみたいだな
+   （amazon.co.jp: <a href="http://www.amazon.co.jp/gp/product/448009119X/homepage-22/">上</a>、<a href="http://www.amazon.co.jp/dp/4480091203/homepage-22/">下</a>）。
+   訳もそのままなのだろうか？</li>
+  <li>ちょっと調べてみたら<sup>２</sup>、
+   「<a href="http://www.isis.ne.jp/mnn/senya/senya0570.html">第五百七十夜 2002年07月01日 アルバート・アインシュタイン『わが相対性理論』</a>」@senya(<a href="LOCAL/20080624-senya0570.html">lc</a>)を発見した。
+  <ul>
+   <li>まずは些細なこと。引用：
+   <blockquote>
+    ボルツマンは「優美にすることは靴屋と仕立屋にまかしておけばいい」と言った。
+   </blockquote>
+   <ul>
+    <li>私の記憶にあるのは maxwell が boltzmann の書いたものを評して言った
+     「彼の書くものは長すぎて困る」というようなもの（出典はなにだったっけなあ）。
+     これを見て「いかん、俺は boltzmann タイプだな」と思ったので覚えている。</li>
+   </ul>
+   </li>
+   <li>で、本当にドンときたこと。引用：
+   <blockquote>
+    では最後に自慢話をひとつ。
+   <br />
+    　ぼくは自分が科学にまったく携わってこなかった者としては、
+    いちはやくアインシュタインの相対性理論を理解できた
+    数少ない一人だったのではないかと思っている。
+    これは湯川秀樹博士とのちょっとした蜜月が支えになったからなのだが
+    （このことについてはまた書くことにするが）、
+    明けても暮れても相対性理論に集中した濃厚な日々も役立っている。
+   <br />
+    　ずっとのちになって、当時、大阪大学理学部教授だった内山龍雄さんが
+    岩波新書に『相対性理論入門』（1978）を書くことになったとき、
+    内山さんから「どういうふうに書こうか悩んでいるんで、相談にのってよ」と言われ、
+    二人であれこれそのシナリオを練ったことがあるのだが、
+    そのとき内山さんは「君はどうしてそんなにおもしろく相対性理論のことが考えられるの？」
+    と聞かれた。正確ではないが、こんなふうに応えたのではないかとおもう。
+   <br />
+    　「アインシュタインがおもしろそうに考えたということばかりが気になってましたから」。
+   </blockquote>
+   <ul>
+    <li>いや本当に恐れ入るな、松岡さんには。
+     「いちはやく理解できた」ことにではなく、
+     「本物」な人の懐に飛び込む、その行動力なのか、人間的な魅力なのか、
+     そういうものについて。</li>
+    <li><a href="diary2008_04.html#d17-senya">4/17/2008</a>:
+     本格的で本気な人に沢山会ってきた人としての松岡さん。</li>
+    <li><a href="diary2008_03.html#d3-senya">3/3/2008</a>:
+     松岡さんのアンテナ（シェイクスピアのレコーダー）。</li>
+   </ul>
+   </li>
+   <li>ついでに、千夜千冊の今日のエントリー
+    「<a href="http://www.isis.ne.jp/mnn/senya/senya1249.html">第千二百四十九夜　2008年6月25日 三枝充悳 大乗とは何か</a>」@senya(<a href="LOCAL/20080624-senya1249.html">lc</a>)
+    からも引用：
+   <blockquote>
+    かつてぼくは「炭男」（すみおとこ）と称していたことがあるんだね。
+    「半巡通信」というたった８ページのパーソナルメディアを、最初は３００人に、
+    最後は４０００人に無料で送っていたころのことです。７年ほど続けたかな。
+    その「半巡通信」のなかで、「ぼくは炭男だ」と書いた。
+    その炭男が発火すると火元になる（笑）。
+   </blockquote>
+   <ul>
+    <li>考えてみると、この日記が私にとっての「パーソナルメディア」なんだな、
+     「無料で送って」いる。しかし私には、届けたいと思う明確なターゲットが
+     そもそも「３００人」もいないけれど。</li>
+    <li>そういえば、
+     自分がやりたいことをやるメディアとしての「雑誌」というのは大塚英志をみて
+     ふうんと思ったし（<a href="diary2003_04.html#d3-ootsuka">4/3/2003</a>）、
+     「ベンチャー」は近藤淳也をみて
+     ふうんと思ったし（<a href="diary2005_09.html#d5-kondo">9/5/2005</a>）、
+     「（私）学校」は西郷隆盛をみて
+     ふうんと思ったな（<a href="diary2006_12.html#d27-senya">12/27/2006</a>）。
+    </li>
+    <li><a href="diary2010_08.html#d4-kenmogi">8/4/2010</a>:
+     [blog]とりあえずぼくはロケットになろう@kenmogi</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li><a href="diary2008_07.html#d8-general_relativity">7/8/2008</a>:
+   「連星パルサーから一般相対性理論を実証」@/.jp.</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d23"></a>6/23 (Mon)</h2>
+<ul>
+ <li>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速な implicit algorithm の実装：
+  <ul>
+   <li>この際なので、いろいろな force laws についても、まとめておく。
+   <ul>
+    <li><a href="http://dx.doi.org/10.1016/S0377-0257(02)00132-5">Somasi et al (2002)</a> は、いわゆる Werner spring,</li>
+    <li><a href="http://dx.doi.org/10.1016/S0377-0257(03)00107-1">Hsieh et al (2003)</a> は Cohen's approximation,</li>
+    <li><a href="http://link.aip.org/link/?JCPSA6/124/044911/1">Hsieh et al (2006)</a> は FENE-Fraenkel を使っている。</li>
+    <li>ILC 以外は、代数的に計算できる。</li>
+   </ul>
+   </li>
+   <li>ここまでをノートにまとめて、今日は終わった……なかなか進まないな。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d23-sco"></a>
+  [music]ジョン・スコのライブ
+ <ul>
+  <li>のチケットをピックアップしに、出勤途中にシアターに寄る。
+   が、 box office はお昼からだった……。先週の box office のスケジュールは、
+   朝（9:30）から開いていたのになあ、スケジュールがその日ごとに変わるとは
+   思っていなかったぜ。</li>
+  <li>で出直して、４時すぎに再びピックアップしに行く。
+   box office は工事の関係で３階に移動していた。
+   ということで朝と合わせて、駐車場に２ドル×２を払ったことになる。
+   で、お金がもったいないなあということで一瞬バスで行こうかと言ったりもしたが、
+   やっぱり不精者なので車で行く。
+   駐車料金の上限が１５ドルだと表示にあったのを見ていたのだけど、
+   行ってみると実は６時以降は３ドルだった。
+   バスだと２．５ドル×２人の往復だったので、車で行ってよかった。</li>
+  <li>本題のジョン・スコ。
+   会場が階段状のシアターで（しかも結構こじんまりとしたもので）、
+   <a href="#d16-sco">後ろから２列目</a>というのも全然問題なかった。
+   というか、高さ的にも、方向的にも、ちょうどよい角度であった
+   （ジョン・スコの正面、という意味）。
+   前半、 bill stewart のドラムのセッティングが定まらず、というか、
+   演奏してたら、どんどんバスドラが前にすべっていって、困っていた。
+   スタッフに助けを求め、それからは大丈夫だったみたい。しっかりドンドン踏んでいた。
+   あと bill の頭のてっぺんにピンと立った髪が気になった（多分、そういうセットなんだろう、
+   きっと john への当てつけだ）。
+   それから steve swallow が集中してジッと john を見つめて弾いている様は、
+   実は<a href="diary2008_07.html#d15-monton_no_honki">家のモンちゃんが「遊んで！」と本気で顔をグッと寄せて迫ってくる</a>所そっくりだった。
+   彼はピックでベースを弾いているのかな？右手が上下に動いていた。
+   普通（なのかどうかはよく知らないが）みんなはジャコ風に指で弾いてるような気がするので、
+   なんとなく新鮮であった。まあ見た目の話。
+   出てくる音でそんなことは（少なくとも私には）分からない。</li>
+  <li>とかいう話は、どうでもいいことで、演奏の方。
+   いつもの &quot;a go go&quot; からの green tea とか、
+   スタンダードからは私の好きな cole porter の &quot;everything i love&quot; を演った
+   (cf. <a href="diary2000_06.html#d16-music">6/16/2000</a>.
+   まあ正直、やっぱり bill evans の演奏の方が好きではあるが)。
+   あと ray charles の曲とか、カントリー風の曲（カポ付けて弾いていた）とかもやったけど、
+   これらはちょっと今一だったかな（個人的には）。
+   あとサンプラーを駆使しようとしていて、こちらがドキドキするような瞬間もあった。
+   まるで <a href="diary1999_08.html#d18-zawinul">joe zawinul を見ている</a>気分だった。 MC でも言ってたけど、
+   後で amazon 見たら新しい CD が出ていた。そこからの曲がその手のものだったのかな、
+   &quot;Satisfaction&quot; と &quot;The Low Road&quot; という曲。
+   個人的には、ファンク系というの？そういう奴をバリバリ弾いているのが、やっぱり好だな。</li>
+  <li>アンコールは一曲、<a href="#d16-sco">例の</a> &quot;en route&quot; から wee を短めに演って終了。
+   何かちょっと物足りなかったかな。しかし、やっぱりライブはよい（５年ぶりだな、ふう）。</li>
+  <li>外に出たら、まだ明るい。小腹も減ったので、何か食べて帰ろうか、とちょっと
+   china town をうろつく。が、明るいので誤解してしまうが、気がついたら夜の１０時近くで、
+   開いているのは subway くらいだった。とぼとぼとシアターの駐車場に戻ると、
+   道で知り合いにばったり出会った。さすが大都会の edmonton.
+   ちょうど quebec への旅行に出かけるところだった模様。</li>
+  <li><a href="#d16-sco">6/16/2008</a>: チケットを手配。</li>
+  <li><a href="summaries.html#john-scofield">サマリー： john scofield</a></li>
+  <li><a href="#d24-ticket">6/24/2008</a>: 昨日の今日ではあるが。</li>
+  <li><a href="diary2010_09.html#d20-jazz">9/20/2010</a>:
+   Yoshio Suzuki x 3 Pianists @ kanazawa</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d22"></a>6/22 (Sun)</h2>
+<ul>
+ <li>今日はすごく曇り空。
+ <ul>
+  <li>昨日の天気はついていたと思った。</li>
+  <li>食料が尽きてきたので夕方、買い物に出かける。</li>
+  <li>どうも肉体的に昨日の疲れが響いているようで、８時すぎには本当に睡魔に襲われたので、
+   何も考えずにすぐに寝た。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d21"></a>6/21 (Sat)</h2>
+<ul>
+ <li>a day trip
+ <ul>
+  <li>家の人が最近参加している、とある音楽関係（？）のグループでバスをチャーターして
+   jasper に出かけるというツアー。ここに来て（ロンドン@オンタリオも含めて）観光なんて
+   どこにも行ってないので、もちろん初 jasper である。</li>
+  <li>朝７時集合、出発で片道５時間のドライブ、夜１０時帰還予定という強行軍
+   （<a href="http://maps.google.ca/maps?f=d&hl=en&geocode=&saddr=edmonton+alberta&daddr=jasper+alberta&sll=53.281571,-115.665695&sspn=3.035176,6.503906&ie=UTF8&ll=53.245495,-115.795898&spn=3.037508,6.503906&z=7">maps.google.ca</a>）。
+   予定通りに予定は遅れ、結局出発場所に戻ってきたのは真っ暗になった１１時半であった
+   （一年で一番日が長いシーズンなので９時すぎなら楽勝で明るかったのだけど）。</li>
+  <li>立ち寄ったのは３ヵ所:
+  <ul>
+   <li><a href="http://www.explorejasper.com/sights/malignecanyon.htm">maligne canyon</a>@explorejasper(<a href="LOCAL/20080621-explorejasper-malignecanyon.html">lc</a>)<br />
+    <a href="images/20080621-jasper-maligne-canyon.png">
+     <img src="images/20080621-jasper-maligne-canyon_t.png"
+      width="148" height="116" /></a>
+    <a href="images/20080621-jasper-maligne-canyon2.png">
+     <img src="images/20080621-jasper-maligne-canyon2_t.png"
+      width="148" height="115" /></a>
+    <br />
+    軽い昼食の後、上のレストランから下の 5th bridge まで、
+    岩の間を流れる川に沿っての trail を歩く。
+    途中、雪（氷）が残っているところが２ヶ所あった。
+    後半の道が急にさみしくなって、正しい道を歩いているのか不安になった。
+    （他の人もそう思ったみたいで、後続のグループでちょっとした行き違いがあった。）
+    ３０分程度の軽いハイキングということだったが、
+    （この時は）晴れて日差しがあったためか、予想の外疲れた。
+   </li>
+   <li>jasper town<br />
+    <a href="images/20080621-jasper-town.png">
+     <img src="images/20080621-jasper-town_t.png"
+      width="148" height="116" /></a>
+    <br />
+    （知らなかったのだけど）ちょうど今日が national aboriginal day だったようで
+    何かイベントが行われていた。ムースの皮の何やらをやっていた。
+    街自体は、いわゆる観光地のお土産屋が並んでいるだけ、という感じ。
+    どこでも食べることができるネスレのアイスを食べた。
+   </li>
+   <li><a href="http://www.explorejasper.com/sights/athabascafalls.htm">athabasca falls</a>@explorejasper(<a href="LOCAL/20080621-explorejasper-athabascafalls.html">lc</a>)<br />
+    <a href="images/20080621-jasper-athabasca-falls.png">
+     <img src="images/20080621-jasper-athabasca-falls_t.png"
+      width="148" height="115" /></a>
+    <br />
+    最終ポイント。水量があって、結構、豪快な滝だった（落差はそんなになかったけど）。
+    もう疲れていたので、我々は下までは降りずに帰ってきた。
+    その後、軽い食事をとって、帰路に就く。
+    ちなみに、食事は世話人の人が準備してくれた、いわゆるピクニック・ランチ的なもの。
+    それが、どれも、おいしかった。</li>
+  </ul>
+  </li>
+  <li>集合解散地点の駐車場の状況が不明だったのでバスで行ったのだが、
+   帰り着いたのが１１時半。ちょっと不安になったが、ここのバスは（特にメインの路線は）
+   結構遅くまで走っていて助かった（何でも２時くらいまであるとのこと）。
+   １０分程度の待ち時間で無事に来て、乗り継ぎも待ち時間なしで、無事に帰り着いた。</li>
+  <li>実は出発時点から（そして予定が遅れる度に）心配していたお留守番の子。
+   家に着いて真っ暗な家の中に向かって「ただいま」と呼びかけると、
+   パタパタと尻尾を振る音が聞こえてきて、やっと安心した（モンはほとんど吠えない子なので）。
+   一通りチェックすると、準備しておいたご飯（ドッグフード）には一切手をつけていなかった。
+   しかし我々が荷物を置いたりして一息ついていたら、急に食べ始めて、
+   あっという間に空にした。モンちゃんは結構、神経の細かい子らしい。
+   これからは、モンちゃん込みで色々と出かけることにしよう。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d20"></a>6/20 (Fri)</h2>
+<ul>
+ <li><a id="d20-reading"></a>
+  [phys]お勉強
+ <ul>
+  <li><a href="#d19-seminar">昨日のセミナー</a>に関連して、理論について、および数値解法について、
+   いくつか文献を印刷。
+ </ul>
+ </li>
+ <li><a id="d20-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>高速な implicit algorithm の実装：
+  <ul>
+   <li>つまり <a href="http://link.aip.org/link/?JCPSA6/124/044911/1">Hsieh et al (2006)</a> で使われている
+    <a href="http://dx.doi.org/10.1016/S0377-0257(02)00132-5">Somasi et al (2002)</a> および <a href="http://dx.doi.org/10.1016/S0377-0257(03)00107-1">Hsieh et al (2003)</a> のこと。</li>
+   <li>振り返ると、結構時間を費やしているな（毎度のことだが）。
+   <ul>
+    <li><a href="diary2007_05.html#d7-nano">5/7/2007</a>: 論文の印刷。</li>
+    <li><a href="diary2007_10.html#d12-ryuon">10/12/2007</a>: 勉強中。</li>
+    <li><a href="diary2007_11.html#d16-ryuon">11/16/2007</a>: 依然、勉強中。</li>
+    <li><a href="diary2007_11.html#d29-ryuon">11/29/2007</a>: まだまだ、勉強中。</li>
+   </ul>
+   </li>
+   <li>ここ数日 bead-rod を陽に考えたおかげか、今度こそ、頭に入ってきた。</li>
+   <li>揮発性メモリーから消える前にノートにまとめておく。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d20-general_relativity"></a>
+  [phys]一般相対性理論を勉強してみようかな。
+ <ul>
+  <li>と書くと、すごくチープに見えるな。
+   まあ、しかし当然、そういう青臭い話ではなくて、地味な地道なお話として。</li>
+  <li>一応、重力方程式とか勉強した身なのだが（学部の頃、たしか単位は取ったと思う）、
+   当然もうすっかり蒸発してしまっている。</li>
+  <li>その時お世話になった「場の古典論」を探しているのだが見つからない。置いてきたか？
+   ということで、かの wolfgang pauli が若干２０歳そこそこで書き上げたという本
+   （内山訳）を（いや、なぜかこっちは手元にあるんだな、講談社から出てたハードカバーが）
+   しばらく眺めてみることにしよう。</li>
+  <li>なんでまた、ということについて。
+   直接的には
+   <a href="http://link.aps.org/abstract/PRE/v50/p2696">Oettinger (1994)</a> の話がさっぱり分からなかった（<a href="#d18-ryuon">6/18/2008</a>）ということがあるのだけど、
+   多重極展開を遊ぶのにもちょうどよいかな、という想いが半分。
+   とはいえ、原因とか動機とかはどうでもいいことで、肝心なのは、やるかやらないかにある訳で。
+   まあ、ぼちぼちといきましょう。</li>
+  <li><a href="#d24-general_relativity">6/24/2008</a>: その後。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d19"></a>6/19 (Thu)</h2>
+<ul>
+ <li><a id="d19-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-rod の勉強：
+  <ul>
+   <li>もうちょっとお勉強、<a href="#d18-ryuon">パート２</a>
+    （きちんと、ぶっつかる所まで行っておく）。
+   <ul>
+    <li>なんというか、諦めの悪い性分だなあと思いつつ。</li>
+    <li>具体的に使ってる仕事を探してみる。
+     あんまりなかったけど、一つ見つけた。
+     ううむ、確かに、しち面倒くさいことをやっている（やる必要がある）みたい。</li>
+   </ul>
+   </li>
+   <li>やっぱり、尻尾を巻いておこう（少なくとも、しばらくは）。
+   <ul>
+    <li>うむ、確かに諦めの悪い性分だ。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li>bead-spring for bead-rod の話：
+  <ul>
+   <li><a href="http://link.aip.org/link/?JCPSA6/124/044911/1">Hsieh et al (2006)</a> の FENE-Fraenkel を実装してみよう。
+   <ul>
+    <li>第７の spring type を導入（既に６種類も実装している、ということ）。</li>
+    <li>こいつは３つパラメータが必要なので、 struct bonds に手を入れる。</li>
+    <li>guile parser も update.</li>
+   </ul>
+   </li>
+   <li>今日はここまで。</li>
+  </ul>
+  </li>
+  <li><a href="diary2008_10.html#d2-ryuon">10/2/2008</a>: 再始動。</li>
+ </ul>
+ </li>
+ <li><a id="d19-seminar"></a>
+  [phys]<a href="http://www.cein.ualberta.ca/research/nint/theory-modeling-group/seminar/index.html">グループ・セミナー</a>。
+ <ul>
+  <li>随分と久しぶりだな。
+   （<a href="diary2008_05.html#d2-seminar">5/2/2008</a>以来か？）</li>
+  <li>具体的なナノテクのプロセスに関連した話。
+   やっていることは結局 2D の輸送方程式を解きましょう、という話。
+   で、解いてるモデルの出所は Flory-Huggins と。</li>
+  <li>みんながどこに立っているのか、時々、よく分からなくなる。
+   一方では分子の詳細を見ていて、それが見えないとつまらないという世界にあり、
+   一方では現象論的な free energy をドンと持ってきて、それを解いている。
+   私には、このレベル（階層）の違いがとても大きく感じられる
+   （というか、つながってないと感じるし、大きなギャップがあると思う）。
+   それぞれはそれぞれ、きちんとした仕事をしているけど、
+   このグループ全体で、この両者が、本質的な所で意思疎通できているのかなと、ふと思った。
+   私自身が、その両方に不満を感じるような立ち位置にいるというのが、
+   この違和感の原因の一つなんだけど。</li>
+  <li><a href="#d20-reading">6/20/2008</a>: 関連する文献を取ってくる。</li>
+  <li><a href="diary2008_09.html#d12-seminar">9/12/2008</a>:
+   次回のグループ・セミナー</li>
+ </ul>
+ </li>
+ <li><a id="d19-waon"></a>
+  [SF][WaoN]
+  <a href="http://waon.sourceforge.net/gwaon.html">gWaoN</a> にちょっと手を入れてみる。
+ <ul>
+  <li><a href="#d15-kurt">6/15/2008</a> の「鍵盤を描こう」という話。</li>
+  <li>とりあえず（無理やり上書きで）書くところまではできた。</li>
+  <li>スナップショット：
+   <br />
+   <a href="images/20080619-gwaon.png">
+    <img src="images/20080619-gwaon_t.png"
+     width="200" height="156" /></a>
+   <br />
+   モードは &quot;PV-FFT&quot; で、鍵盤の他に
+   半音で平均された棒グラフも書いている（ちょっと見にくいね）。</li>
+  <li>レイアウトをもっときちんと定義して、
+   棒グラフの色を考えて、画面と周波数の関係をきちんと debug して、
+   それから octave removal を spectrum に課したいなあと思っている。
+   再生時に表示している current position の indicator が消えてしまうこと
+   （処理が追いついていない）も何とかしたい。
+   というか、描画全体に tune up する必要がある。
+   spectrogram を毎回計算しているのが、まずはおバカな所だ。
+   とか考えていたら、急に息切れしてきた……。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d18"></a>6/18 (Wed)</h2>
+<ul>
+ <li><a id="d18-headlight"></a>
+  車のヘッドライトが切れた。
+ <ul>
+  <li>ここ（カナダ）では、昼間も点灯することになっていて、
+   実際ここの車はエンジンをかけるとヘッドライトが点く。
+   私の車はもともとアメリカから持ってきたので、
+   ライトのスイッチを入れないと点かなかったのだが、
+   先日のチェックで（alberta の plate を取ったとき）交換しなければいけなくて
+   （cf. <a href="diary2007_06.html#d4-inspection">6/4/2007</a>）、
+   今はカナダ仕様になっている。</li>
+  <li>で、先日（２、３日まえ）、ふと、左のヘッドライトが切れていることに気づいた。
+   切れているのは一つだけなので、 fuse の問題ではないみたい。
+   昨日、マニュアルを引っ張り出してきて見てみると、電球（bulb）は自分で交換できるみたい。
+   ということで、今日、出勤前に canadian tire に立ち寄ってくる。
+   「９００６」という番号がマニュアルにあったので、それを頼りに探してみると、
+   一つ９ドルの安物から２５ドルのものまでいろいろあった（３、４種類）。
+   中くらいの１４ドルのものを買っておく。</li>
+  <li>帰宅後、ガレージにてゴソゴソと交換作業をする。
+   この作業自体はマニュアル化されてルーチン化されていて、
+   単純なものなのだが、ヘッドライトの裏の部分に手が入らず、結構てごずった。
+   が、何とか作業終了。切れたはずの bulb を見てみるが、（ハロゲン・ランプなので）
+   どこがダメになっているのかはっきりせず、一瞬、別の原因か？と冷や汗をかいたが、
+   エンジンをかけてみると、きちんと点いた。めでたしめでたし。</li>
+ </ul>
+ </li>
+ <li><a id="d18-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-rod の勉強：
+  <ul>
+   <li><a href="#d17-ryuon">bead-spring for bead-rod に進む</a>前に、もうちょっとだけ勉強しておこう、と。</li>
+   <li>一つの key paper として <a href="http://link.aps.org/abstract/PRE/v50/p2696">Oettinger (1994) Phys.Rev.E</a> を
+    （これまたもう一度）おさらい。
+   <ul>
+    <li>論文には結果の式は出揃っているみたいだけど、
+     途中がすっとばしてあり、しかも何か難解。
+     彼の本は手に入らないし、困ったなあ……。</li>
+    <li><a href="#d20-general_relativity">6/20/2008</a>: 
+     そうだ、一般相対性理論を勉強してみよう！</li>
+   </ul>
+   </li>
+   <li>とりあえず、式だけ書き出しておく。
+   <ul>
+    <li>こいつら、どう実装するのか、結構悩ましいな。</li>
+    <li>それに多分、 stiff な bead-spring がやっぱり正解みたいだな。</li>
+   </ul>
+   </li>
+   <li><a href="#d19-ryuon">6/19/2008</a>: もうちょっと、パート２。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d17"></a>6/17 (Tue)</h2>
+<ul>
+ <li><a id="d17-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li><a href="#d16-cake">お約束</a>の alex と話。
+  <ul>
+   <li>基本的に私の現状報告。あと論文執筆のプランなど。</li>
+   <li><a href="diary2008_08.html#d26-nano">8/26/2008</a>: 会議録論文の話。</li>
+   <li><a href="diary2008_08.html#d29-nano">8/29/2008</a>:
+    alex が原稿を上げてきたので、目を通す。</li>
+  </ul>
+  </li>
+  <li>dWLC の simulations:
+  <ul>
+   <li>CF-cylinder:
+   <ul>
+    <li>先週仕込んだ結果、もう一つも終了。
+     （ってことは７日か - <a href="#d10-nano">6/10/2008</a>）</li>
+    <li>結果を解析。平衡に行っているかどうかが（いつもの）懸念。
+     <a href="#d16-nano">前みたいに</a>、現状ではまず、
+     下限に注目しておくことにするか。</li>
+    <li>追加計算を仕込んでおく。（予定では一本は１週間、もう一本はそれ以上。）
+    <ul>
+     <li><a href="#d24-nano">6/24/2008</a>: 予定通り、一本終了。
+      もう一本は、倍ちょっとかかりそう……。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d17-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-spring for bead-rod の話：
+  <ul>
+   <li>bead-rod 後の、世間の流れとして。</li>
+   <li><a href="http://link.aip.org/link/?JCPSA6/124/044911/1">Hsieh et al (2006) J.Chem.Phys.</a> に（もう一度）目を通しておく。
+   <ul>
+    <li>初見（<a href="diary2007_11.html#d5-ryuon">11/5/2007</a>）ではスルーしていた部分にある、お話の背景が分かってきた。</li>
+    <li>ということで、またこいつを実装してみようかな。
+     （今回は、すでにパーツは全部そろっているはずなので、簡単だろう。）</li>
+    <li><a href="#d18-ryuon">6/18/2008</a>: 進む前に、もうちょっと。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d17-dinner"></a>
+  夕食。
+ <ul>
+  <li>知り合いと食べにでかける。前に我々が呼ばれたことがあるので、
+   本当ならば家に招待しなければならないのだけれど、なかなか家が片付かないので
+   （責任は我が家の構成員全員で１／３づつかな）、
+   どこかに食べにいこうということになったもの。
+   彼らのスケジュールが結構たて込んでいる関係で、急遽、今日になった。
+   別の知り合いを一人さそって（車の定員一杯）、
+   <a href="#d8-lunch">また</a> little india 辺りに行く。</li>
+  <li>これまた別の知り合いに聞いた、おいしいインド・レストランを目指したのだが、
+   結局見つけられず、先日の店と同じモールにある別の店を試す。
+   私的にはそんなに違いは感じられなかった（ナンは今回の店の方がふっくらしいて、
+   それが authentic なのか大衆向けなのかは知らないが、おいしかった）が、
+   かお曰く前の店の方がおいしかったそうな。
+   少なくとも料理のバリエーションは少し負けていた。</li>
+  <li>今日は夕刻、強烈な雷雨が来たのだが、それも上がって、
+   帰る頃（９時半）には晴れていた（まだ太陽は沈んでいない）。</li>
+ </ul>
+ </li>
+ <li><a id="d17-job"></a>
+  [job]
+  <a href="diary2008_02.html#d26-paperwork">しばらく前</a>に出していたロンドン（オンタリオ）の公募の結果が正式に届いた。
+ <ul>
+  <li>残念であったという結果は、既に先月、
+   こちらから問い合わせて informal には聞いていたけれど。</li>
+  <li>UWO での思い出は必ずしもよいものではなかったけれど、
+   物理だったし（一応、出身は物理なので）、
+   ナノだったし（現職がナノテクの研究所なので）、よい意味での知り合いも居たし、
+   「書類がとどいてませんよ」という<a href="diary2008_03.html#d17-arrangements">知らせ</a>もあったし、
+   結構、期待していたのだけど。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d16"></a>6/16 (Mon)</h2>
+<ul>
+ <li><a id="d16-apsnews"></a>
+  [news]
+  今月から何か紙がよくなってる<a href="http://www.aps.org/apsnews/">APS News</a>
+  から。
+ <ul>
+  <li>&quot;<a href="http://www.aps.org/publications/apsnews/200806/backpage.cfm">Physicists and Copyright-How to give away your birthright for what? (W. G. Unruh)</a>&quot;(<a href="LOCAL/20080616-apsnews-200806-backpage.html">lc</a>)</li>
+  <li>ほほう、Royal Society of London journals は copyright を要求しないのか。
+   知らなかった。</li>
+  <li>まあ response にあるように APS はかなり著者に自由度を与えていることは知ってる
+   （web に載っけてもいいとか preprint server に置いてもいいとか）。</li>
+  <li>この点、 AIP の Phys. Fluids はちょっと保守的だ。
+   cf. <a href="diary2003_10.html#d30-preprint">10/30/2003</a></li>
+  <li>こういう普段、あからさまな場所で話にのぼらないことを時々きちんと意識することは、
+   大事なこと都だろうという自分への remind.
+   （でも、普通は、 copyright transfer form は
+   ホイホイとサインして送っちゃうよな。）</li>
+ </ul>
+ </li>
+ <li><a id="d16-monton"></a>
+  [monton]
+  今日のモンちゃん
+ <ul>
+  <li>今日は注射の日。</li>
+  <li>暴れ度合いが減って、ずいぶんと大人になったと思う。
+   それでも診察台にのせられたときには、相変わらずチビッたけど。
+   獣医さん曰く「喜んでいるのではないか」と。めずらしいそうだ。</li>
+  <li><a href="diary2008_05.html#d12-monton">5/12/2008</a>:
+   マイクロ・チップが埋め込み、および注射。</li>
+ </ul>
+ </li>
+ <li><a id="d16-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>dWLC の simulations:
+  <ul>
+   <li>CF-cylinder:
+   <ul>
+    <li>先週仕込んだ結果、一つが終了。
+     （ってことは６日か - <a href="#d10-nano">6/10/2008</a>）</li>
+    <li>結果を解析。落ち着いたかなと思ったら、最後の最後にまた動き出している様子……。
+     endless だなあ。</li>
+    <li>現状では下限を見て、そういうものだ、という結論で置いておくのがいいのかな。
+    <ul>
+     <li><a href="#d17-nano">6/17/2008</a>: 似たように……。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-rod の実装：
+  <ul>
+   <li>ここ数日、モヤモヤと考えていたことを整理。
+   <ul>
+    <li>幾つかの高速化のアイデアと、
+     取り扱いの改善案（SCM での設定項目を増やすという話）。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d16-cake"></a>
+  ３時のおやつ。
+ <ul>
+  <li>もう随分と長いこと一日２食の生活をしている
+   （つまり、基本的に、職場で食べ物は口に入れない）。
+  <ul>
+   <li>時々変な顔をされることもあるが、逆にそんなに食うと太るよね。
+    こういうスタイルは、下手するともう１０年以上になるのではないかな。</li>
+   <li>まあ、いずれにしても、一日一食の森さんには負けますが……
+    って、そういう競争ではないね。流石に、一食には出来ないな、まだ若いし。</li>
+  </ul>
+  </li>
+  <li>出勤時に alex に「午後、部屋にケーキを食いにこい」と誘われたので、
+   ちょっと立ち寄る……つもりが、まあ終業時間までおしゃべりをして、一日終わったよお
+   （そうなるだろうとは思っていましたが）。</li>
+  <li><a href="#d17-nano">明日</a>、仕事の話をしましょう、と。</li>
+  <li>ケーキは、自家製セロリ（別の人の家の庭でとれたもの）を使った
+   「セロリ・ケーキ」（作ったのも彼ではない）。うまかった。</li>
+ </ul>
+ </li>
+ <li>最近ここもガソリンが随分と上がりましたね。
+ <ul>
+  <li>１リットル当たり、軒並み 133 セントのあたり。
+   いつも入れている safeway の gas station は、買い物で７セントの割引きなので
+   今日は 1.259 ドルで入れたことになるが、見れば去年の１０月は 0.875 ドルとかだったので、
+   まあ随分と上がったことになる。</li>
+  <li>ここでは通勤に使っているので、だいたい月に一回の給油という感じで、
+   ４０ドルから５０ドルといったところ。</li>
+ </ul>
+ </li>
+ <li><a id="d16-sco"></a>
+  [music]
+  ライブのチケットを手配。
+ <ul>
+  <li>実は、カナダに来てはじめてかな。
+   この週末から、いわゆる <a href="http://www.edmontonjazz.com/jazzfestival.htm">edmonton international jazz festival</a>(<a href="LOCAL/20080616-jazzfestival.html">lc</a>) というのがあって、
+   そのメイン・アクトの一つとして <a href="http://www.citadeltheatre.com/events.php?eventid=692&cat=30">john scofield trio が来る</a>(<a href="LOCAL/20080616-citadeltheatre-johnsco.html">lc</a>)ので、それをとった。
+   一人４０ドルなり。</li>
+  <li>何やら
+  <blockquote>
+   (his) music falls somewhere between post-bop, funk-edged jazz, and R & B.
+  </blockquote>
+   とある（し、一般論としてそうなんだ）けど、この面子
+   （Steve Swallow - bass, Bill Stewart - drums）で、それは無いでしょうね。
+   このトリオの CD &quot;en route&quot; は持っているな。あんまり愛聴盤ではないが。</li>
+  <li>john sco はこれで３度目だ。
+   （<a href="diary2003_09.html#d29-sco">9/29/2003</a> at baltimore,
+     <a href="diary1999_04.html#d24-sco">4/24/1999</a> at LA）
+   どっちも MMW というかそっち系だったけど、今回は jazz な john sco が聞けるだろう。
+   席が後ろから２列目というのが、ちょっと悲しいが……（出遅れたので、仕方ないか）。</li>
+  <li><a href="#d23-sco">6/23/2008</a>: ライブ当日。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d15"></a>6/15 (Sun)</h2>
+<ul>
+ <li><a id="d15-kurt"></a>
+  [blog][music][WaoN]
+  &quot;<a href="http://www.youtube.com/watch?v=rzR1tAo-gRU">Kurt Rosenwinkel - Untitled Improvisation</a>&quot;@youtube.
+ <ul>
+  <li>これは&quot;<a href="http://www.wbgo.org/blog/?p=460">Kurt Rosenwinkel WBGO Studio Session - On NPR Music</a>&quot;@wbgo/blog(<a href="LOCAL/20080615-wbgo-460.html">lc</a>) および &quot;<a href="http://www.npr.org/templates/story/story.php?storyId=89272919">Kurt Rosenwinkel: Jazz Guitar Alchemist</a>&quot;@npr(<a href="LOCAL/20080615-npr-89272919.html">lc</a>) だ。
+   誰か採ってくれないかなぁ
+  <ul>
+   <li>本当のはじめの部分（下の絵の左１／３くらい）：
+   <pre>
+E-|-----------------|---------------|------------|---------------
+B-|-8-7-6-5-4-3--3--|--6------------|---7--8---?-|-??--?-??---?--
+G-|-9-8-7-6-5-4-----|-7-757---7-7---|-79-97----?-|-??--?-??---?--
+D-|-7-6-5-4-3-2-----|---------5-4---|----------?-|-----?------?--
+A-|-8-7-------------|---------------|----------?-|-----?------?--
+E-|-----6-5-4-3--0--|-------5-----5-|--------6---|----8-----8----
+   </pre>
+   </li>
+   <li>えっと、まあ、このために <a href="http://waon.sourceforge.net/gwaon.html">gwaon</a> や <a href="http://waon.sourceforge.net/pv.html">pv</a> があるんだけれども、ギタリストじゃないので、やっぱりコードが難しい（見えない……）。
+   <br />
+    <a href="images/20080615-gwaon-kurt-solo.png">
+     <img src="images/20080615-gwaon-kurt-solo_t.png"
+      width="256" height="192" /></a>
+   </li>
+   <li>上の spectrum の下にも鍵盤を書いた方がいいな
+    （というか、この状態じゃ単なる絵に過ぎないな。）
+   <ul>
+    <li><a href="#d19-waon">6/19/2008</a>: とりあえず描いてみた。</li>
+   </ul>
+   </li>
+   <li><a href="http://waon.sourceforge.net/gwaon.html">gwaon</a> で遊びたい人は、
+    FreeBSD なら ports になってるし（<a href="diary2007_12.html#d16-waon">12/16/2007</a>）、
+    Ubuntu な人にも package が既にあるはずだし（<a href="diary2007_04.html#d19-waon">4/19/2007</a>）、
+    その他の Linux な人たちにも（<a href="diary2007_11.html#d5-waon">よく分かってないで作った</a>） rpm が
+    SF の <a href="http://sourceforge.net/project/showfiles.php?group_id=177685">download section</a> に置いてあるので、どーぞ。</li>
+  </ul>
+  </li>
+  <li>それから上の WBGO/BLOG をさらに読んでいて、スゴイのを見つけた。
+   &quot;<a href="http://www.youtube.com/watch?v=2kotK9FNEYU">Giant Steps</a>&quot;@youtube.
+   作った人は暇人だなと思うが、
+   一度こうやって作ったものは今後ずっと人々を楽しませてくれるわけだから、
+   正しいヒマの使い方だと思う。意図的なものではなく単にパクってきた譜面のせいだけど、
+   省略されたピアノ・ソロに強く哀愁を感じた。</li>
+  <li><a href="diary2011_04.html#d20-dont_be_sad">4/20/2011</a>:
+   Brad Mehldau の「Don't Be Sad」の動画。</li>
+  <li><a href="diary2011_12.html#d25-visualization">12/25/2011</a>:
+   GarageBand で Brad のイントロの可視化。</li>
+  <li><a href="diary2011_12.html#d29-waon">12/29/2011</a>:
+   WaoN 0.10 デモ・ビデオとして Kurt のソロギターの transcription を作ってみた</li>
+ </ul>
+ </li>
+ <li><a id="d15-est"></a>[news][music]
+  &quot;<a href="http://news.bbc.co.uk/1/hi/world/europe/7456031.stm">Jazz champion Svensson dies at 44</a>&quot;@bbc(<a href="LOCAL/20080615-bbc-7456031.html">lc</a>)
+ <ul>
+  <li>まだ４４歳。信じられない。
+   wikipedia にはスキューバをしていて、とあった。
+   スウェーデン人はタフにちょっとやんちゃしていたんだろうか、と勝手な想像。</li>
+  <li>EST は最近知った（と思って見返したら、最初に言及しているのは <a href="diary2004_11.html#d26-est">2004 年</a>か、あんまり最近じゃないか）。 CD は持ってない。</li>
+  <li>個人的なベストは（実際に jukebox を確認しないで記憶だけをたよりに考えると）
+   2003 年の jazzbaltica での nils landgren の vocal が入った（pat metheny 込みの）
+   &quot;Believe, Beleft, Below&quot; だな。
+   （調べてみたら、このライブは一部は youtube でも見れるみたい。例えば
+   <a href="http://www.youtube.com/watch?v=sc2mEtmxwDw">e.s.t. Believe Beleft Below</a>とか。）</li>
+  <li><a href="summaries.html#obituaries">サマリ：訃報</a></li>
+ </ul>
+ </li>
+ <li>wanderlust
+ <ul>
+  <li>英語のメールは web で書いても構わないのだが、
+   日本語はやっぱり emacs 上で書きたいということで、
+   未だに wanderlust を使っている。
+   （今時のみんなはメールをどうしてるのだろう？
+   web か thunderbird とかつかってんのかな？）</li>
+  <li>ここしばらく POP server へ接続が（Reading failed というメッセージが出て）
+   出来なくなっていたのだが、 .elmo/pop をきれいにしたら、正常に戻った。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d14"></a>6/14 (Sat)</h2>
+<ul>
+ <li><a id="d14-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-rod の実装：
+  <ul>
+   <li><a href="diary2007_02.html#d10-waon">やるならやっちまえ</a>、ということで、 HI 系に進もう。
+   <ul>
+    <li>まずはノートにまとめを書く。
+    <ul>
+     <li>式の上では問題なくできた（当たり前だけど）。</li>
+     <li>一部詰めていない点は残っているが、とりあえず置いておく。
+      （例の gradient 項の話）</li>
+     <li>no-HI で曖昧にしていた点（polydispersity）も、
+      この一般化で全てかたが付く。</li>
+    </ul>
+    </li>
+    <li>既存の no-HI 系とは独立に HI 系のコードを書き下ろす。
+    <ul>
+     <li>もちろん使えるパーツは使って、ということだが。</li>
+     <li>計算手順（計算する部分の切り分け方）を少し変えたりする。</li>
+     <li>とりあえず書き上げた。</li>
+    </ul>
+    </li>
+    <li>チェック：
+    <ul>
+     <li>これがまた結構、手間取った。
+      まあ今回は no-HI と one-by-one で詰めていけるので、比較的楽ではあったが。</li>
+     <li>今回も、結局は下らんことであった。
+      つまり（<a href="#d13-ryuon">またしても</a>）変数（vector）の入出力における上書きの手順の間違い
+      （本当は、頭の中で「こう組んだ」という思い込みと、実際の実装が別であった）。
+      トホホである（なんて、誰も言わんな）。</li>
+    </ul>
+    </li>
+    <li>今日は、とりあえず、目処が立った、というところまで。</li>
+   </ul>
+   </li>
+   <li>ちなみに今の HI 系の実装は、
+    本質的に <a href="http://link.aip.org/link/?JCPSA6/111/7614/1">Petera, Muthukumar (1999)</a> と同じ（はず）だが、
+    connector vector に対してではなく、
+    position vector に対して組んでいる。
+   <ul>
+    <li><a href="#d8-ryuon">6/8/2008</a>: bead-rod の古典的な論文を読む。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d14-monton"></a>
+  [monton]
+  最近のモンちゃん。
+ <ul>
+  <li>食欲も戻ってきたみたいで、だんだんいつものモンちゃんになってきた。</li>
+  <li>トイレも完璧になって（実は時々、はみションしてたりするけど……）、
+   とうとうリビングも（昼間は）全面開放された。
+  <ul>
+   <li><a href="#d28-monton">6/28/2008</a>: はみション対策。</li>
+   <li><a href="diary2008_07.html#d24-monton">7/24/2008</a>:
+    リビングを一時撤退。</li>
+  </ul>
+  </li>
+  <li>が、甘えっ子街道をまっしぐらに進んでいるみたいで、広い自由空間があっても、
+   おにいちゃんかおねえちゃんのどっちかにペタッとしてないといけないらしい。
+   誰かさんが時々（下で）一緒に寝ているせいではないかと、私は疑っている。
+   誰かさんは、拾い食いも巧妙に調教したり、なかなかの trainer だからなあ。</li>
+  <li>ご参考までに、拾い食いのトレーニング方法：
+  <ul>
+   <li>犬の嫌いな匂いスプレーを染み込ませた食べ物（例えば切干大根とか）を準備する。
+    それをさりげなく床の上に落として、犬に食べさせる。</li>
+   <li>（予定では）犬はそれを咥えるが、嫌な匂いが付いているので吐きだし、
+    以後、床に落ちているものは食べなくなるはずだったのだが……</li>
+   <li>注意点：犬にきちんと味覚が付いてからやりましょう！
+    「あれ、食べちゃった」と言って、さらにパワーアップしたものを準備して、
+    同じように落として、と繰り返していると、逆に、落ちたものを食べるという行動が
+    どんどん強化され、家のモンちゃんのような立派な scavenger になります！！
+    台所の友にお困りのご家庭のみなさまは、ぜひお試しを。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d13"></a>6/13 (Fri)</h2>
+<ul>
+ <li><a id="d13-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-rod の実装：
+  <ul>
+   <li>一般化されたコードの debug:
+   <ul>
+    <li>guile parser のテストコードを書く。テスト終了。</li>
+    <li>constraints がきちんと満たされているかを確認。
+     こまかい bug が一通り落ち、機能するよになった。</li>
+    <li>stokes3 で短い chain を走らせるが、おかしい。
+     一つ一つ押さえていって、
+     position の更新順序の間違い（上書き）を発見。お粗末。
+    <ul>
+     <li><a href="#d14-ryuon">6/14/2008</a>: 似たような間違い。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+   <li>これで bead-rod 系が走るようになった。
+    ただし no-HI 系のみ（つまり <a href="http://link.aip.org/link/?JCPSA6/90/5826/1">Liu 1989</a> ということ）。
+   <ul>
+    <li>既に定式化されていたとはいえ、
+     <a href="#d9-ryuon">6/9/2008</a>に思い立って一週間で動くものができたので、
+     よしとしよう（定量的な検証は、まだ、これからだけど）。</li>
+    <li><a href="#d8-ryuon">6/8/2008</a>: bead-rod の古典的な論文を読む。</li>
+    <li>さて、勝負はこれからだ、と。
+     「急がば回れ」が正しかったことをきちんと証明するためにはね、奥さん。
+     （cf. <a href="#d5-ryuon">6/5/2008</a>）
+    <ul>
+     <li>ちょっと無駄話。</li>
+     <li>普通の研究者は、何か（その人にとって）新しいことをはじめるとき、
+      どうアプローチするんだろう？
+      風見鶏のように人のことばかり気にしてフラフラしているのはみっともないが、
+      かと言って、人は人、自分は自分とまったく無視するのもバカだし、ということ。
+      <a href="#d8-mori">あさっての方向に走っていないか</a>を確認するためにも、
+      たまには人の振りを（意識的に）気にしてみようかな、と。
+     <ul>
+      <li><a href="diary2003_09.html#d29-nakahara">9/29/2003</a>:
+       たまには人の振り見よう企画。</li>
+     </ul>
+     </li>
+     <li>science ってのは、建前は、みんなが誰もまだやったことのない問題に
+      取り組んでいるわけだけど、各人の学習プロセスで、果たしてどこまで降りているのかな。
+      その深さが、実際にその人の発言の深さにつながるということは、
+      経験上、だいたい分かっているが（浅い人はやっぱり浅い、という意味）。</li>
+     <li>理論は、まあ式を追うというプロセスで最低限、
+      自分の足で立てるところまで来れるとおもうが、
+      計算をやっている人は、普通、どうしているんだろうな、と。
+      例えば私の今回の「急がば回れ」は、理論で式の導出を追うごとく、
+      既存の手法を自分で実装することで「自分の足で立っている」と思えるところまできたが、
+      みんながみんなそうしているようには思われないので。</li>
+     <li>理論でも、計算でも、（自分で降りることなく）
+      テーブルの上に並んだ最新の成果をつまんで（花屋がブーケを作るが如く）
+      というようなことをやると、まあ trend に乗ったそれらしいモノが一応できるのだろうが。
+      計算で言えば、どっかから既存のコードを取ってきて、理解せずに使う、というのかな、
+      よく分からんが。</li>
+     <li>計算物理が理論と同様の、科学としての検証可能性を保証しようと思ったら、
+      コードの公開は避けられないと思うが（<a href="http://ryuon.sourceforge.net/docs/manual/">RYUON マニュアル</a>、<a href="http://ryuon.sourceforge.net/docs/manual/node77.html">おくづけ</a>）、
+      現状は、コードは個人（or 研究グループ）に所有されていて、
+      何か新しいことをやりたいと思ったときに、やっぱりちょっと手が出せないし、
+      それだけでなく、下手すると第三者による検証もできない、と。</li>
+    </ul>
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d13-kenn"></a>
+  [blog]
+  「<a href="http://japan.cnet.com/blog/kenn/2008/05/23/entry_27001743/">長瀬弘樹という作曲家のこと</a>」@kenn(<a href="LOCAL/20080613-kenn-27001743.html">lc</a>)
+ <ul>
+  <li>以下、引用：
+  <blockquote>
+   長瀬「僕はもう、大衆芸術家の道をひたはしってるからｗ。
+   でも、こびるのとはちょっと違うんだよね。また考え方が変わった。
+  <br />……中略……<br />
+   　作曲家になりたての頃は、とにかく「大衆にうける」ってことだけしか考えてなかった。
+   逆にいえば、大衆をばかにしてたんだよね。
+  <br />……中略……<br />
+   　大衆というものを勝手に自分で設定して、ここで落としとけばいいやってやってて、
+   でも、それが全然決まらなかった。
+   ３年くらいやってて、大衆なんてものを勝手に作ることは間違ってるんじゃないかと思い始めた。
+  <br />……中略……<br />
+   　なんかね、ほんとに自分の心からでてるものじゃないな
+   と実感するようになったの。これやればうけるだろうとか、そう思った時点で
+   自分の価値観の範疇をでてるんだよね。
+  <br />……中略……<br />
+   　大衆というものを客体化しちゃいけないということかな。
+  <br />……中略……<br />
+   　自分が大衆にならなきゃいけないということだね、簡単にいえば。
+   大衆としての自分が、大衆として、「大衆的」じゃないものを作る、
+   そう思うようになってから徐々に認められるようになった。
+  <br />……中略……<br />
+   　自分が大衆になって、今まででは売れそうもないものを作るというニッチの理論だね、
+   誰もが言ってることだけど。
+  <br /><br />
+   江島「新人だと、奇抜さに走ると見透かされちゃうことが多いじゃない？
+   目立つためにやったんだろうなって。」
+  <br />
+   長瀬「だからね、それは目立つためだけに奇をてらってて、底があさいからだよ。
+  <br />
+   　……中略……
+   なんていうかな、「あれ？これ、今までやっててもおかしくなかったし
+   本人にすごくあってるけど新しいね」というところにもっていくということかな。
+   なんでいままでやってなかったの？っていう。」
+  </blockquote>
+  </li>
+  <li>大衆つながり、ということで。
+  <ul>
+   <li><a href="#d12-senya">6/12/2008</a>:
+    大衆化で失われるもの。働くこと（by 森）は大衆化なのかな？</li>
+   <li><a href="#d8-mori">6/8/2008</a>: 働くということ（森博嗣）。</li>
+   <li><a href="diary2008_07.html#d15-speed_of_learning">7/15/2008</a>:
+    知識と知恵とか、学習の効率とか、モヤモヤと。</li>
+   <li><a href="diary2008_07.html#d28-emails">7/28/2008</a>:
+    売れるかどうかは分からない、というのは経営感覚がないということかな。</li>
+  </ul>
+  </li>
+  <li>「古い知り合いの成功譚」を読むと、その人がブレイクする以前の、
+   書き手の態度がどういうものだったのかが気になる（のは、下世話なのかな）。
+  <ul>
+   <li>何か条件反射的に、今まで存在も知らなかった親戚が急に名乗り出てきた、
+    みたいなステレオタイプな光景が頭に浮かんできてしまう。</li>
+   <li>例えば tatsuru さんも言っていたように
+    （<a href="diary2008_05.html#d13-tatsuru">5/13/2008</a>）
+   <blockquote>
+    貧しいとき、病めるときには、
+    かつての知友は知らない顔をして通り過ぎてゆき、
+    どこの家のドアも開かない。
+   </blockquote>
+    というようなこと。
+   </li>
+   <li>頑張っている人間への本当のサポートというのは、まあ難しいものではありますが。
+   <ul>
+    <li>おだてたり、甘やかすのが正解とは思わないけれど。</li>
+    <li>「忙しい」と言い訳して今の優先順位を下げることは、
+     結局、「何もしない」を積極的に選択していることと同じだと思うし
+     （例えば、
+     「<a href="theorems.html#present">現在にないものは永久にない</a>（岡本太郎）」
+     や
+     「<a href="summaries.html#busy">サマリー：忙しいということ</a>」）。</li>
+   </ul>
+   </li>
+   <li>けなすより、褒めるのは難しい
+    （という当たり前のことは、日々実感している -- 例えば
+    <a href="summaries.html#education">サマリー：教育について</a>）。</li>
+   <li><a href="diary2009_04.html#d4-senya">4/4/2009</a>:
+    「有名人」が「無名人」であったころのことを綴ったものにだって
+    意外にも多くのヒントが詰まっている(松岡正剛)。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d12"></a>6/12 (Thu)</h2>
+<ul>
+ <li><a id="d12-atlas"></a>
+  [FreeBSD][coding]
+  ATLAS-3.8.2
+ <ul>
+  <li>The patch has been committed.
+   (cf. <a href="#d5-atlas">6/5/2008</a>, <a href="#d7_atlas">6/7/2008</a>)</li>
+  <li>See
+   <a href="http://www.freebsd.org/cgi/cvsweb.cgi/ports/math/atlas/">freebsd.org</a>, 
+   <a href="http://www.freshports.org/math/atlas/">freshports</a>.</li>
+ </ul>
+ </li>
+ <li><a id="d12-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-rod の実装：
+  <ul>
+   <li>任意の constraint への一般化：
+   <ul>
+    <li>bead から connector への変換だけでよい。</li>
+    <li>実装は比較的 straightforward。
+     予定通り、すんなりとは動いてくれない（動かないことが予定通り、の意）。</li>
+    <li>いつものようにゴニョゴニョして最後には動くところまで持ってくる。</li>
+    <li>で、結局 tridiagonal scheme （<a href="#d10-ryuon">6/10/2008</a>）は排除
+     （straight のみにしか使えないので）。
+     今は <a href="http://ryuon.sourceforge.net/libiter.html">libiter</a> を使っている。</li>
+   </ul>
+   </li>
+   <li>コード（メインとテスト）を作業場から ryuon/libstokes へ移動。</li>
+   <li>次は integrator:
+   <ul>
+    <li>実はここ数日、頭の中に置いてモヤモヤと考えていた。
+     で初手は、既存のスキームに後付けで補正を噛ます、
+     という方向でいこうという気になっている。</li>
+    <li>初期値と非拘束な最終値の両方が必要なので、
+     上の階層で一括して、とはいかなかった。
+     今のところ、各 scheme に処理を追加しておく。</li>
+   </ul>
+   </li>
+   <li>guile の parser:
+   <ul>
+    <li>書き上げた。</li>
+    <li>途中、 BeadRod の初期化方法を変更。
+     こういうのは、実際に使ってみる局面にならないと、何が正しいのか分からないよな。
+    <ul>
+     <li>こういうのを人は「頭が悪い」と言うのだろうな、と。
+      そう言われたくない「頭の悪い」人は、そう言われないようにと、
+      どんどん何もしない人になっていくのだろうな、と。
+      だから、やっぱり<a href="theorems.html#kawakami-hiromi">川上弘美</a>は正しいのだ、と。</li>
+    </ul>
+    </li>
+    <li>stokes3 にも反映させる。今日はここまで。
+     integrator と parser は未チェック。</li>
+   </ul>
+   </li>
+   <li>帰宅後、 commit しておく。</li>
+   <li>試しに、 planar flow （<a href="#d3-nano">6/3/2008</a>）を走らせてみるが、
+    これまた予定通り、うまく動いていない
+    （動かないことが予定通りということです。ってクドい。）
+   <ul>
+    <li>軽く見返すと、いくつか trivial な間違いを見つけた。</li>
+    <li>しかし、これだけですんなり動くわけがないのが、 debug の楽しいところ
+     （半分本音 -- <a href="summaries.html#debug">サマリー：デバッグ</a>）。
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d12-senya"></a>
+  [blog][千夜千冊]
+  「<a href="http://www.isis.ne.jp/mnn/senya/senya1247.html">第千二百四十七夜　2008年6月12日 中西悟堂 かみなりさま</a>」@senya(<a href="LOCAL/20080612-senya1247.html">lc</a>)
+ <ul>
+  <li>引用：
+  <blockquote>
+   何度かその前を通っているうちに、ふと表札を見ると「中西悟堂」とある。
+   引っ越して５年もたってからのことだ。それまではまったく気がつかなかった。
+   ああ、あの鳥センセーだと懐かしく、よほど覗いてみるか、
+   「こんにちは」とでも言ってみたかったのが、その勇気がないままになった。
+   それからしばらくしての昭和６０年（１９８５）、８９歳で悟堂センセーは逝ってしまった。
+   ぼくが表札を見たころは７７歳か７８歳くらいのときだったろう。
+  </blockquote>
+   松岡さんも<a href="diary2003_06.html#d19-a_story">こういうこと</a>
+   をしていたのだな、と。</li>
+  <li>「日本野鳥の会」というみんなが表面的にだけ知っている組織の裏側に、
+   こういう人物が存在していたのというのが、素直なおどろき。
+   メディアって何でも表層化、矮小化、軽薄化させてしまうものなのかな。
+   （まあ、それが大衆化なんだろうな。で森さんは「大衆化」を成した、と。
+   （んな皮肉を言わなくてもいいのだけど、未だに<a href="#d8-mori">何かうまく噛み砕けていないのだな</a>……））
+   そのプロセスで失われてしまう、しかし大事なものを感じさせる何かは、
+   地味に（地道に）拾っていくしかないんだろうな。
+   （<a href="diary2004_04.html#d15-control_info">4/15/2004</a>）
+  <ul>
+   <li>付記（6/13/2008）：全然関係のない話（でもないかな）。
+    「立つ鳥後を濁さず」という言葉は、あれは下らないよな。
+    置いていかれた人たちの側のエゴだけが聞こえてくる。
+    「立つ鳥後を省みず」と言った<a href="theorems.html#matsumoto">松本眞さん</a>
+    （cf.<a href="#d1-ryuon">6/1/2008</a>）の観察の方が、多分、より真実に近いだろう。
+    この「真実」も下らないと思うけど。こちらからは逆に、
+    軽薄に、要領よく、都合よく、渡り歩く人間の側のエゴを感じる。
+   <ul>
+    <li><a href="diary2006_06.html#d8-my_old_paper">6/8/2006</a>:
+     いわゆる「研究日記」について感じていること。</li>
+   </ul>
+   </li>
+   <li>そうそう、松本さんの<a href="http://www.math.sci.hiroshima-u.ac.jp/~m-mat/PROFILE-PERSON/proverb.html">ことわざ</a>(<a href="LOCAL/20020228-matumoto-proverb.html">lc</a>)が<a href="diary2002_02.html#d28-proverb">あれから</a>２つ増えていたことを発見した。</li>
+   <li><a href="#d13-kenn">6/13/2008</a>:
+    大衆芸術家の道、長瀬弘樹という作曲家のこと（kenn）。</li>
+   <li><a href="diary2008_07.html#d3-glenn_gould">7/3/2008</a>:
+    わかりやすいネタに注目するな。</li>
+  </ul>
+  </li>
+  <li>ところで、「ロハス」ってなに？
+   wikipedia 様曰く、
+   「<a href="http://ja.wikipedia.org/wiki/LOHAS">LOHAS</a>」。
+   日本語の変な略語じゃなくて、 Lifestyles Of Health And Sustainability 
+   という英語の略語なのか。
+  <ul>
+   <li>なんて言っていたら、家の人に「今頃……」とか言われてしまった。
+    まあ流行に乗り遅れるまいとアクセクする人間ではないのです。</li>
+  </ul>
+  </li>
+  <li>以下、備忘録として。</li>
+  <li>「<a href="http://www.isis.ne.jp/mnn/senya/senya1246.html">第千二百四十六夜　2008年6月06日 マックス・エルンスト 百頭女</a>」(<a href="LOCAL/20080612-senya1246.html">lc</a>)</li>
+  <li>「<a href="http://www.isis.ne.jp/mnn/senya/senya1245.html">第千二百四十五夜　2008年6月03日 内藤湖南 日本文化史研究</a>」(<a href="LOCAL/20080612-senya1245.html">lc</a>)</li>
+ </ul>
+ </li>
+ <li><a id="d12-sufjan_stevens"></a>
+  [music]
+  sufjan stevens の holland という曲。
+ <ul>
+  <li>brad mehldau の最近のレパートリーで、私も結構気に入っている曲。
+   てっきりオランダのことだと思ってたが、
+   <a href="http://en.wikipedia.org/wiki/Holland,_Michigan">michigan の街の holland</a> なのだと michigan でのコンサートで彼が言っていた。</li>
+  <li>で、 <a href="http://en.wikipedia.org/wiki/Sufjan_Stevens">sufjan stevens</a> って何者だろうと思ったら、いわゆるインディ系みたいで、
+   家にいる詳しい人（特に下手な男性ボーカル系に詳しい
+   cf. <a href="diary2008_04.html#d7-josh_rouse">4/7/2008</a>）にきいてみたら、
+   まさに彼女の favorites の一人らしい
+   （で、以前、彼女が私に何曲か聞かしてくれたときに、何か悪く言ったらしい……）。</li>
+  <li>何でも彼は、全米５０州のそれぞれにアルバムを出す予定なんだそうだ。
+   曲じゃなくてアルバム。まさに life work だな（年に一枚でも５０年！）。
+   彼の出身が michigan で、まずは <a href="http://en.wikipedia.org/wiki/Michigan_%28album%29">michigan</a> は出てて、その中に holland もある、と。
+   まあ、ツアーをやる musician なら、その土地々々の空気を感じることもできるだろう。</li>
+  <li>youtube さまにお伺いを立てたら、
+   いくつか引っかかって、オリジナルと思われる
+   <a href="http://www.youtube.com/watch?v=zjllcAmngpA">holland</a> も聞いてみた
+   （イメージ・クリップ付き）。
+   brad mehldau の演奏はオリジナルと同じ空気だった。</li>
+  <li>そういえば、 beatles の有名な &quot;black bird&quot; という曲があるが、
+   あれが私の頭に入ってきたのは、実は amazon の視聴で聞いた
+   brad mehldau の &quot;Volume 1&quot; （これ、まだ持っていないんだな）
+   での演奏（の、テーマの初めの半分くらい）だった。
+   あれもアレンジ（というか、雰囲気）はオリジナルと同じだよね。
+   そういう認識をもつ前に、実は既に、耳にタコができるほど jaco の
+   &quot;word of mouth&quot; は聞いていたのだけど、
+   あっちはずっと別物という認識だ。</li>
+  <li>同じ beatles の曲でも largo の &quot;dear prudence&quot; は、
+   ちょっと雰囲気が違う。けど、こっちは、個人的には両方ありだ。
+   つまり素敵な２つの曲という認識。</li>
+  <li><a href="diary2008_07.html#d2-amp">7/2/2008</a>:
+   sufjan stevens のCDを一枚、図書館で借りてきた。</li>
+  <li><a href="diary2008_07.html#d15-library">7/15/2008</a>:
+   今度は無事に &quot;michigan&quot; を借りてきた。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d11"></a>6/11 (Wed)</h2>
+<ul>
+ <li>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20080611-00000013-flix-movi">水野晴郎、戸籍上の名前を改名していた！恐るべし『シベ超』への愛！今日都内で会見</a>」@yahoo(<a href="LOCAL/20080611-yahoo-20080611-00000013-flix-movi.html">lc</a>)
+ <ul>
+  <li>私にとっての水野晴郎はゴールデン・タイムの映画（曜日は覚えてない）の解説者だ
+   （淀川さんと荻さん、あと高島忠夫の時代）。
+   うわさの「シベリア超特急」は見たことないので知らない。
+   （日本を離れた後だったからだろうか？）</li>
+ </ul>
+ </li>
+ <li><a id="d11-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-rod の実装：
+  <ul>
+   <li>これまでのところをノートにまとめておく。</li>
+   <li>straight chain の決め打ちだったものを一般化する必要がある。
+   <ul>
+    <li>ノートのまとめで、基本的な構造はクリアーになってきた。
+     原理的な困難はなさそう、ということ。</li>
+    <li>文献を調べてみると、しかし closed link な時に効率が悪くなるとかで、
+     いろいろと亜種が開発されているみたい（全部 MD の話）。</li>
+   </ul>
+   </li>
+   <li><a href="#d24-ryuon">6/24/2008</a>: 
+    「高速な implicit algorithm の実装」でも、最初は straight chain 決め打ち。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d10"></a>6/10 (Tue)</h2>
+<ul>
+ <li><a id="d10-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>dWLC の simulations:
+  <ul>
+   <li>CF-cylinder:
+   <ul>
+    <li>延長してた計算が終了。解析してみると、さらに一段、緩和している模様。
+     つまり時間が全然足りていなかったのか。</li>
+    <li>別の計算を追加（d を振る、 N を振る）。</li>
+    <li><a href="#d16-nano">6/16/2008</a>:
+     N=157, 50000 steps が１００％で回して６日。</li>
+    <li><a href="#d17-nano">6/17/2008</a>:
+     N=200, 50000 steps が１００％で回して７日。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d10-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-rod の実装：
+  <ul>
+   <li>tri-diagonal の解法
+   <ul>
+    <li>wikipedia にあった <a href="http://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm">Thomas algorithm</a> というのを実装しておく。</li>
+    <li>ちなみに <a href="http://www.nr.com/">numerical recipes</a> には tridag というルーチンが、
+     <a href="http://www.gnu.org/software/gsl/">GSL</a> には <a href="http://www.gnu.org/software/gsl/manual/html_node/Tridiagonal-Systems.html">tridiag</a> というルーチンがある。
+     上の Thomas algorithm との関係は調べてない。</li>
+    <li><a href="#d12-ryuon">6/12/2008</a>: 一般化により、結局、不採用。</li>
+   </ul>
+   </li>
+   <li><a href="http://link.aip.org/link/?JCPSA6/90/5826/1">Liu (1989)</a> を実装しようと結局丸一日費やすが終了せず、家に持ち帰る。
+   <ul>
+    <li>うまく動かず、ああでもない、こおでもない、とテストコードを書きまくる。
+     最終的に動く所まできたが、オチはメモリ確保でのサイズ間違い……。
+     まあこういうものだ。</li>
+    <li>これで Lagrange multiplier を求めるところまで完成。
+     非線形方程式の解法には（今のところ） Liu (1989) のものと <a href="http://users.wpi.edu/~walker/NITSOL/">NITSOL</a>。</li>
+   </ul>
+   </li>
+   <li>さて本題の stokes3 にどう組み込むか、それが悩みどころだ。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d9"></a>6/9 (Mon)</h2>
+<ul>
+ <li><a id="d9-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-rod の実装：
+  <ul>
+   <li>実際に手を（コードを）動かして見ないと理解できない（頭な）ので、
+    まず実装してみよう。</li>
+   <li><a href="#d13-ryuon">6/13/2008</a>: no-HI は出来た。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>家に着いたら、隣の隣の家が重機によって壊されていた。
+ <ul>
+  <li>先日、家の前庭を測量しているあやしいおっさんたちが居て、
+   何してるのか聞いたら、彼らは市から派遣された人たちで、
+   その建て替えためにやってるのだ、と
+   （スペースが充分にあるか、とかいう類のことなのか、と勝手に解釈した）。</li>
+  <li>こっちの家全般にそうなのだが、いわゆるツーバイフォーってやつなのかな、
+   規格の角材を組み合わせだけの構造で（私は専門家ではないので知らないが、
+   家の（元）専門家の人が「壁構造」とかって言っていたような気がする）、
+   まあ紙でつくった模型みたいに、あっけなく解体された。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d8"></a>6/8 (Sun)</h2>
+<ul>
+ <li><a id="d8-lunch"></a>
+  <a href="#d6-forty">バースデー</a>を祝って、外食に出かける。
+ <ul>
+  <li>いろいろと悩んだ結果、インド・バフェに行く（悩んだのはかおだけど）。
+   店に着いたのが１時半、そのとき広い店に客は２組。
+   彼らもわたしたちが食べ始めたころには店を出て行ったので、ほとんど貸切状態。
+   だからといって、バフェの料理がなくなってたりするようなことはなく、
+   また、それぞれ、それなりにおいしかった。
+   貧乏性なので、例によって例のごとく、食べ過ぎーー。
+   まったく、学習しない人間×２である。</li>
+  <li>帰りにペットショップによって、モンちゃん用のトリートを買って帰ってあげる。</li>
+  <li><a href="#d17-dinner">6/17/2008</a>: インド・バフェ、パート２。</li>
+ </ul>
+ </li>
+ <li><a id="d8-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bead-rod の勉強（<a href="#d5-ryuon">先日のつづき</a>）。
+   ちょっと腰を据えて、大事そうな（古典的な）論文を読む。
+  <ul>
+   <li><a href="http://link.aip.org/link/?JCPSA6/90/5826/1">Liu (1989) J.Chem.Phys.</a></li>
+   <li><a href="http://link.aip.org/link/?JCPSA6/111/7614/1">Petera, Muthukumar (1999) J.Chem.Phys.</a></li>
+  </ul>
+  </li>
+  <li><a href="#d13-ryuon">6/13/2008</a>: no-HI 系、実装完了。</li>
+  <li><a href="#d14-ryuon">6/14/2008</a>: HI 系、実装開始。</li>
+ </ul>
+ </li>
+ <li><a id="d8-mobile"></a>
+  携帯電話の料金を top-up しておく。
+ <ul>
+  <li>つまりは<a href="diary2008_03.html#d11-mobile">あれから</a>既に３ヵ月たったということだ。光陰、矢のごとし。</li>
+  <li>今回はだいだい２０ドルくらい残っていた計算
+   （ということは、この３ヵ月は支払いの２５ドル分は使ったということか）。
+   ちなみに、 expire 前に補充すれば balance は keep されることは確認した。
+   （<a href="diary2007_06.html#d7-car">以</a><a href="diary2007_09.html#d15_cellphone">前</a> expire させたのは、もったいなかったな、ということ。）</li>
+  <li><a href="diary2008_09.html#d8-mobile">9/8/2008</a>:
+   おバカなことに、また expire させてしまった……。</li>
+ </ul>
+ </li>
+ <li><a id="d8-tax"></a>
+  tax return のお金が入っていた。
+ <ul>
+  <li><a href="diary2008_04.html#d24-tax">4/24/2008</a>に仕上げた件、
+   そのときに自分で計算（して請求）した額よりも１割弱も多いぞ、といううれしい驚き。
+   きっと CRA の人たちがセーミツに計算してくれた結果だろう。
+   <a href="diary2006_06.html#d9-tax">２年前</a>にはそのセーミツな計算によって払いが足りんと言われたが、
+   よかったよかった。</li>
+ </ul>
+ </li>
+ <li><a id="d8-mori"></a>
+  [blog]
+  「<a href="http://blog.mf-davinci.com/mori_log/archives/2008/06/05/index.php">働いても働いても 2008年06月05日（木曜日）</a>」@mori(<a href="LOCAL/20080608-mori-20080605.html">lc</a>)
+ <ul>
+  <li>国語の時間。今日は
+   <a href="#d5-fujitani">自分の頭が自覚以上に悪いことを認めて</a>、
+   一読して全然分からなかった森さんの書いたことを、自分に分かるように噛み砕いてみる。
+  <ul>
+   <li>まず一番のポイントは、「働く」ことと「好きなことをする」ことは別なことだという点。
+    なので「私は一所懸命、自分の信じることを全力でやっているのですが、
+    ぜんぜん豊かになりません」と言い換えれば、あのように（森さんに）文句は言われない。
+    （そのかわりに、
+    まるでサハラ砂漠の真ん中から明後日の方向に必死に走っていく人を見るように、
+    「大変だね」とか「それはかわいそうに」と（冷笑つきで）言われるか、
+    もしかしたら憐れんでもらえるかもしれない。）
+   <ul>
+    <li><a href="#d13-ryuon">6/13/2008</a>:
+     あさっての方向に走っていないか確認。</li>
+   </ul>
+   </li>
+   <li>「仕事」とは、そもそも需要があって成立するわけで、他者との関係以外には存在しない。
+    だから自分の意思とか嗜好とか趣味とは関係ないし、
+    自分を客観的に見ないとコントロールできるものではない。
+    もし客観視しない人間がうまくいっているケースがあったとしたら、
+    それは偶然であり、宝くじに当たったようなものだ。
+    （まねをして出来るものではないし、その意味では天才的とも言えるかな。）</li>
+   <li>自分を客観視できない人間は、
+    問題の原因を自分と他人の関係（の不一致）に求めることができず、
+    ある人は「自分の頑張りが足りない」と思い、より力を込めて明後日の方向に走りつづけ、
+    ある人は原因を単に他者に押し付けることになりがち。
+   <ul>
+    <li>付記：このへんはミヤダイだな。
+     cf. <a href="diary2003_06.html#d14-miyadai">6/14/2003</a></li>
+   </ul>
+   </li>
+   <li>ある人は、仕事とやりたいことが一致していたり、似ている場合があるかもしれない。
+    しかし、それが必ずしもハッピーな状況であるとは限らないし、
+    むしろ逆に不幸な状況も十分にありうる。</li>
+   <li>別に自己満足が悪いと（森さんは）言っているわけではない。
+    彼は（たしか）書くことが好きなわけではないと言っていたし、
+    毎日々々更新されている日記だって「仕事」として（お金をもらって）
+    書いていると言っている。
+   </li>
+  </ul>
+  </li>
+  <li>なるほど。つまり有り体にいうと、
+   「お金が欲しければ働けばいいじゃん」ということか。
+  <ul>
+   <li>別にパートだろうがバイトだろうが派遣社員だろうがポスドクだろうが、
+    仕事は探せばあるものだ、と。</li>
+  </ul>
+  </li>
+  <li>過去の森語録：
+  <ul>
+   <li><a href="diary2007_08.html#d27-mori">8/27/2007</a>:
+    仕事とはすべて「労働」である</li>
+   <li><a href="diary2008_04.html#d19-mori">4/19/2008</a>:
+    憧れで仕事をする人間に欠けているもの</li>
+   <li><a href="summaries.html#jobs">サマリー：職業について</a></li>
+  </ul>
+  </li>
+  <li>ちなみに私は「働いても働いてもお金が貯まりません」というような愚痴は言ってないと思う。
+  <ul>
+   <li>まあ、「頑張ってはいるつもりなのですが、なかなか落ち着けません」とは言ってるかな。
+    「もう引越しは嫌だ」とか「一息つきたい」とか。
+    終わるときまで落ち着くことがないのが人生なのかもしれないが。
+    不可能な目標設定をしては不幸になるな。</li>
+  </ul>
+  </li>
+  <li>こうしてみると私は、確かに自分を客観的に見ることは、比較的、弱いかもしれないな。
+  <ul>
+   <li>まあ、そういう自覚は既にあって、だから<a href="http://d.hatena.ne.jp/kichiki/archive">このように</a>日記を書いているのだけれど。</li>
+  </ul>
+  </li>
+  <li><a href="#d12-senya">6/12/2008</a>:
+   大衆化で失われるもの。働くこと（by 森）は大衆化なのかな？</li>
+  <li><a href="#d13-kenn">6/13/2008</a>:
+   大衆芸術家の道、長瀬弘樹という作曲家のこと（kenn）。</li>
+  <li><a href="diary2008_09.html#d10-a_busy_day">9/10/2008</a>:
+   某業界の場合は、本当に売り手市場なんだって。</li>
+ </ul>
+ </li>
+ <li><a id="d8-descartes"></a>
+  [blog]
+  遊学「ルネ・デカルト」
+ <ul>
+  <li>引用：
+  <blockquote>
+   こうして私の愛読書は、一巡してふたたび遺稿『精神指導の規則』にまいもどってきた。
+   ここにはデカルトの生涯にわたる「精神と事物との格闘の軌跡」が読める。
+   この格闘というのは、自然物や事物に犯されそうになった風前の精神が、
+   いっそ犯されるままのほうがどれほど気楽であろうかとあきらめた矢先、
+   相手の一点を凝視したとたんにこれをはねかえしていくという、その格闘のドラマである。
+   これはほとんど「数学の倫理主義」ともいうべき緊張力である。
+  <br /><br />
+   規則第八に曰く、「探求すべき事物の系列に於いて、
+   我等の悟性の充分に直感しえぬ何ものかがあらわれたならば、そこに停まるべきである」。
+  <br /><br />
+   まったくその通りだ！デカルトは「街をうろつく前に街をうろつく方法」
+   を知っていたのではなく、「街をうろつけなくて街をうろつく方法をつくった哲学者」
+   であったのだ。
+  </blockquote>
+  </li>
+  <li>これまで出会ってきた人の中に、
+   自分で作ったルールにバカみたいに従っている人間が、少数だが複数いた。
+   その人たちはどうもその自分の作ったルール（に従っている自分）に、
+   ある種、陶酔しているようだった。またある人物は、私からは同じ種類に見える
+   別のそういう人物のことを小バカにしているように見えた。
+   その人たちが何でそういうルールを自分に課すに至ったか、
+   という（青臭く、ちょっと恥ずかしいと想像される）話は、
+   その人たちから聞いたことはなかった（し、こっちも聞いたりしなかった）。
+   そういう人は、ちょっと苦手なのだけど、それは何でだろうな？</li>
+  <li>ふと不安になって、自分にはこんな子供じみたところはないかな、
+   と思い巡らせてみたりする。だけど多分、ないと思う。
+   元々、そういうタイプの人間じゃないからな……
+   むしろ、行き当たりばったり的だから、という意味。
+   全然 secure な人生ではない。</li>
+  <li>何で唐突に「デカルト」なんですかって、奥さん？
+   それはね、禅僧に限らず人間とは日々<a href="summaries.html#seigow-yugaku">座る</a>ものなんですよ。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d7"></a>6/7 (Sat)</h2>
+<ul>
+ <li><a id="d7-atlas"></a>
+  [FreeBSD][coding]
+  <a href="http://math-atlas.sourceforge.net/">ATLAS</a> 3.8.2 is just out.
+ <ul>
+  <li>I found it just after sending <a href="#d5-atlas">the patch for 3.8.1</a>
+   to the port maintainer... what a timing.</li>
+  <li><a href="https://sourceforge.net/project/shownotes.php?group_id=23725&release_id=605088">Release Notes</a> say there are several bug fixes, 
+   so let's try again.</li>
+  <li>It looks OK for 3.8.2, so I made a patch (from 3.8.0 to 3.8.2) 
+   and sent it again.</li>
+  <li>ところで（と急に日本語）、件の maintainer の方
+   （は、たまたま日本のひとなのだけど）、実は先日までここ、
+   つまりカナダの、アルバータ州の、エドモントンに、これまた偶然に来ていて、
+   conference で私の同僚と出会って喋り、その同僚に職場にまで連れてこられた（？）
+   のだそうだ（という返信をいただいた）。
+   しかし世界は狭すぎるね。いやいや、まったく、悪いことはできないもんだな
+   （って、何も悪いことなどしてないですけれど、もちろん）。</li>
+  <li><a href="#d12-atlas">6/12/2008</a>: committed.</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d6"></a>6/6 (Fri)</h2>
+<ul>
+ <li><a id="d6-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>code の手入れ：
+  <ul>
+   <li>stokes/src/<a href="http://ryuon.cvs.sourceforge.net/ryuon/stokes/src/stokes3.c?view=markup">stokes3.c</a> の BD-nl-solver の parsing に間違いがあった。</li>
+   <li><a href="#d5-atlas">atlas が upgrade できた</a>のを受けて、やっと octave も upgrade できたので、
+    stokes/octave も通るようにしておく。</li>
+   <li>linux (bue9) で stokes 系の update.
+    しかし swig が軒並みダメ（python 以外は全滅）。何で？</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d6-forty"></a>
+  大台が、とうとう、やってきた。
+ <ul>
+  <li>まあ、何の努力をしないでも、自然に、自動的に、やってくるものである。</li>
+  <li>さして自慢できるものもないが、
+   「回り道」に関してはかなり独走状態で独壇場ではなかろうか、
+   とは<a href="#d5-ryuon">昨日も</a>思ったばかりだな。
+  <ul>
+   <li>あ、「回り道」はきちんと戻ってきてはじめて「回り道」になるんであって、
+    そうでなければ「迷い道」かな。まあいいけど。</li>
+  </ul>
+  </li>
+  <li><a href="diary2006_06.html#d6-birthday">6/6/2006</a>:
+   これまでの誕生日</li>
+  <li><a href="#d8-lunch">6/8/2008</a>: バースデー・ランチ。</li>
+  <li><a href="#d29-present">6/29/2008</a>: プレゼント。</li>
+  <li><a href="diary2008_07.html#d17-nomo">7/17/2008</a>: 野茂、引退。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d5"></a>6/5 (Thu)</h2>
+<ul>
+ <li>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>dWLC の simulations:
+  <ul>
+   <li>CF-cylinder:
+   <ul>
+    <li>結果の回収。</li>
+    <li>解析。
+     transient を除き、初期配置より random number の方が重要なんだな。</li>
+    <li>こういう当たり前なことばかりで、自分のアホさを目の当たりにする日々だが、
+     日々賢くなっているのだと思うことにしよう。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d5-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>nonlinear solver の組み込み、続き。
+  <ul>
+   <li><a href="http://users.wpi.edu/~walker/NITSOL/">NITSOL</a> の C-wrapper (<a href="http://ryuon.cvs.sourceforge.net/ryuon/libstokes/src/nitsol_c.c?view=markup">nitsol_c.c</a>) を書く。</li>
+   <li>bd-imp で <a href="http://www.gnu.org/software/gsl/">GSL</a> / NITSOL 両方を呼べるようにコードの統一化。</li>
+   <li>チェック：
+   <ul>
+    <li>test/<a href="http://ryuon.cvs.sourceforge.net/ryuon/libstokes/test/check-bd-imp-nitsol.c?view=markup">check-bd-imp-nitsol.c</a> をしかるべく update.
+     結果は確認した。</li>
+   </ul>
+   </li>
+   <li>performance:
+   <ul>
+    <li>GSL vs NITSOL で速度の比較。非周期の N=20 の場合で４倍から７倍くらいでている。
+     N が大きいともっと開くかな？</li>
+    <li>今回の構造変更による performance up は、しかし見られなかった。残念。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li>bead-rod model の勉強：
+  <ul>
+   <li><a href="#d3-nano">先日</a>の結果から、
+    （今更ながら）その重要性に気づいた、ということ。</li>
+   <li>文献を（再）収集。いろいろと妄想中。
+    しかしまずは既存の方法を実装してから、かなあ……</li>
+   <li>『世間では「急がば回れ」と言いますがねえ奥さん、
+    最近ちょっと回り過ぎではないですか？』
+    などと自問してしまう<a href="#d6-forty">４０</a>目前の今日この頃。
+    （cf. <a href="#d5-fujitani">藤谷さんの日記</a>。）
+   <ul>
+    <li><a href="#d13-ryuon">6/13/2008</a>: さて、回って来ました。</li>
+    <li><a href="diary2008_07.html#d15-speed_of_learning">7/15/2008</a>:
+     知識と知恵とか、学習の効率とか、モヤモヤと。</li>
+    <li><a href="diary2008_08.html#d29-detour">8/29/2008</a>:
+     小島直記「回り道を選んだ男たち」は読めなかったよ……。</li>
+   </ul>
+   </li>
+   <li><a href="#d8-ryuon">6/8/2008</a>: 古典論文に目を通す。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d5-fujitani"></a>
+  [blog]
+  <a href="http://www.ficciones.jp/shimokitazawa_nikki.html">藤谷さん</a>の日記
+  (<a href="LOCAL/20080605-shimokitazawa_nikki.html">lc</a>)
+ <ul>
+  <li>どこの誰とも知らない横丁の奥さんに
+   <a href="#d5-ryuon">呼びかけたくなるような日</a>に読むと、
+   うんうん、そうだそうだ、と頷いてしまうよね：
+  <blockquote>
+   人間としても、自分の頭が自覚以上に出来が悪いことを、
+   僕はもっと認める必要があるのかもしれない。
+  <br /><br />
+   そこを励ましてくれるのが川上弘美氏の言葉で、
+   この小説は「小説ってのはこういうことを書くとばかにされるものかな」と思っていない、
+   そこがいい、という意味のことを書いてくれている。
+   ……
+   川上氏はまた、集中しなさいとも書いてくれた。
+  <br /><br />
+   辻原登氏の選評は大半を費やして『棺桶』を激賞してくれている。
+   過褒です……というのは表向きの謙遜で、ほんとうはうるっと来るくらい有難かった。
+   ……
+   これを読むと真面目な気持ちになる。
+  </blockquote>
+   （みなさんご承知のことだとは思いますが、この「引用」は自分用に切り刻んでいるので、
+   正しい文脈とかは本文に当たってくださいね。）
+  <ul>
+   <li><a href="diary2010_06.html#d8-mitsuhiro">6/8/2010</a>:
+    柳田さんの本音。<li>
+  </ul>
+  </li>
+  <li>そこに唐突に出てきた平野さんも、
+   いつからかは忘れたし、何でまだ残しているのか分からないけど、
+   <a href="http://a.hatena.ne.jp/kichiki/">アンテナ</a>に入っているな。
+   ちょっと手入れをしておかないといかんな、アンテナも。</li>
+  <li>川上さんの方は名前は見たことあるなと思ったら、
+   少なくとも<a href="diary2008_02.html#d22-seigowchannel">ここ</a>では見ていたようだ。</li>
+  <li><a href="#d8-mori">6/8/2008</a>: 国語の勉強。</li>
+  <li>付記：川上さんの激励を<a href="theorems.html#kawakami-hiromi">定理</a>にしておく。</li>
+ </ul>
+ </li>
+ <li><a id="d5-atlas"></a>
+  [FreeBSD][coding]
+  upgrading <a href="http://math-atlas.sourceforge.net/">ATLAS</a> ports to 3.8.1.
+ <ul>
+  <li>For a quite long time, I've been stuck at ATLAS 3.6.0, 
+   because upgrading to 3.8.0 (the current version in ports)
+   failed during the build. 
+   it seems the same symptom here -- <a href="http://www.freebsd.org/cgi/query-pr.cgi?pr=ports/119845">PR - ports/119845</a>.
+  <ul>
+   <li>cf. <a href="http://lists.freebsd.org/pipermail/freebsd-ports/">freebsd-ports</a> ML;
+    <br />
+    <a href="http://lists.freebsd.org/pipermail/freebsd-ports/2007-December/045990.html">FreeBSD Port:atlas-3.8.0,1</a>(Dec 30 21:49:14 PST 2007)
+    <br />
+    <a href="http://lists.freebsd.org/pipermail/freebsd-ports/2008-January/046136.html"> FreeBSD Port:atlas-3.8.0,1</a>(Jan 6 18:05:04 PST 2008)
+   </li>
+  </ul>
+  </li>
+  <li>I thought I had tried before to compile the newer version by myself 
+   and found it failed. but today i tried again with 3.8.1, and somehow 
+   it is done! So I decided to upgrade the port.</li>
+  <li>It looks that some patches had already been applied at the main code, 
+   and the corrections for other patch looks straightforward.</li>
+  <li>It is now working (i guess). My system is FreeBSD 6.2-PRERELEASE 
+   (how lazy i am...) with intel core duo T2400 (32bit). 
+   i don't know anything about other systems.</li>
+  <li>Some notes:
+  <ul>
+   <li>Patch should be made by 
+   <pre>
+diff -ruN superedit.bak superedit
+   </pre>
+    I made a patch file with &quot;-rcN&quot;, 
+    the context output rather than the unified one 
+    (following my own old tips memo). I should update it.</li>
+  </ul>
+  </li>
+  <li>Ref:
+   <a href="http://www.freebsd.org/cgi/cvsweb.cgi/ports/math/atlas/">freebsd.org</a>, 
+   <a href="http://www.freshports.org/math/atlas/">freshports</a>.
+  </li>
+  <li><a href="#d6-ryuon">6/6/2008</a>: update octave code in ryuon-stokes.</li>
+  <li><a href="#d7-atlas">6/7/2008</a>:
+   the patch has been sent to the maintainer, and...</li>
+  <li><a href="#d12-atlas">6/12/2008</a>: committed.</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d4"></a>6/4 (Wed)</h2>
+<ul>
+ <li>[music]
+  今日の気になる曲。
+ <ul>
+  <li>9:30 切れの直前、（なよなよ系）男性ボーカル、特徴的なフレーズのリピート。</li>
+  <li>付記： Iron &amp; Wine の White Tooth Man という曲らしい。
+   （youtube にあったので、確認済み。）</li>
+ </ul>
+ </li>
+ <li><a id="d4-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>nonlinear solver の組み込み。
+  <ul>
+   <li>ふと思い立って、以前からやっておかなければと思っていたことに再びアタックする。
+   <ul>
+    <li>Newton-GMRES に関して以前調べたとき
+     （<a href="diary2007_11.html#d23-ryuon">11/23/2007</a>）に見つけた
+     <a href="http://users.wpi.edu/~walker/NITSOL/">NITSOL</a>
+     という library を使ってみようという話。</li>
+    <li>NITSOL の reference は以下のとおり：
+     <br />
+     M. Pernice and H.F. Walker,
+     SIAM J.Sci.Comput. (1998) <b>19</b>, pp.302-318:
+     <br />
+     &quot;NITSOL: A Newton Iterative Solver for Nonlinear Systems&quot;
+     <br />
+     (<a href="http://www.siam.org/journals/sisc/19-1/30384.html">http://www.siam.org/journals/sisc/19-1/30384.html</a>)
+    </li>
+   </ul>
+   </li>
+   <li>FORTRAN のコードを C から使う、という毎度ある事例で手こずるのだが、何とか出来た。
+   <ul>
+    <li>以前もはまって、解決したような気がしていたが、
+     その時の記述などが見当たらないので、また１から調べ直した。</li>
+    <li>ポイントを「<a href="#d4-fortran">FORTRAN のライブラリを C から使う事例の１つとして</a>」にまとめておく。</li>
+   </ul>
+   </li>
+   <li><a href="http://ryuon.sourceforge.net/libstokes.html">libstokes</a>
+    に登録しておく。
+   <ul>
+    <li>まだ top level （例えば stokes3 の level）から
+     使えるようにはなっていない。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d4-fortran"></a>
+  [coding]FORTRAN のライブラリを C から使う事例の１つとして。
+ <ul>
+  <li>FORTRAN の common block の C からの使い方：
+  <ul>
+   <li>FORTRAN の common block
+   <pre>
+      common /nitprint/ iplvl, ipunit
+   </pre>
+     へのアクセスは、構造体
+   <pre>
+extern struct {
+  int iplvl;
+  int ipunit;
+} nitprint_;
+   </pre>
+    を介して行える。</li>
+   <li>使い方の例 in C：
+   <pre>
+  nitprint_.iplvl = 1;
+  nitprint_.ipunit = 6;
+   </pre>
+   </li>
+  </ul>
+  </li>
+  <li>引き数に関数がある FORTRAN のルーチンの呼び方、および
+   FORTRAN で使われる関数の C での実装：
+  <ul>
+   <li>難しいと思い込んでいたが、普通に書いたら普通に出来た。</li>
+   <li>FORTRAN の subroutine
+   <pre>
+      subroutine nitsol(n, x, <font color="red">f</font>, <font color="red">jacv</font>, ftol, stptol, 
+     $     input, info, rwork, rpar, ipar, iterm, <font color="red">dinpr</font>, <font color="red">dnorm</font>)
+
+      implicit none  
+
+      integer n, input(10), info(6), ipar(*), iterm 
+      double precision x(n), ftol, stptol, rwork(*), rpar(*) 
+      double precision <font color="red">dinpr</font>, <font color="red">dnorm</font>
+      external <font color="red">f</font>, <font color="red">jacv</font>, dinpr, dnorm
+   </pre>
+    というものがあった場合、
+    つまり void 型の関数 f と jacb と
+    double を返す関数 dinpr と dnorm
+    があって、それぞれ FORTRAN では
+   <pre>
+      subroutine f(n, xcur, fcur, rpar, ipar, itrmf)
+      implicit none
+      integer itrmf, n, ipar(*)
+      double precision xcur(n), fcur(n), rpar(*)
+
+      subroutine jacv(n,xcur,fcur,ijob,v,z,rpar,ipar,itrmjv)
+      implicit none
+      integer n, ijob, ipar(*), itrmjv
+      double precision xcur(n), fcur(n), v(n), z(n), rpar(*)
+
+      subroutine dinpr( n, x, sx, y, sy )
+      integer n, sx, sy
+      double precision x, y
+
+      subroutine dnorm( n, x, sx )
+      integer n, sx
+      double precision x
+   </pre>
+    と定義されている場合を考える。
+   </li>
+   <li>（例１） C から nitsol() だけを呼びたい場合
+    （f と jacv は FORTRAN のものを使う）
+   <ul>
+    <li>FORTRAN の関数の C での function prototype declarations:
+    <pre>
+void nitsol_ (int *n, double *x,
+	      void (*f)(int *n, double *xcur, double *fcur,
+			double *rpar, int *ipar, int *itrmf),
+	      void (*jacv)(int *n, double *xcur, double *fcur,
+			   int *ijob, double *v, double *z,
+			   double *rpar, int *ipar, int *itrmjv),
+	      double *ftol, double *stptol,
+	      int *input, int *info, double *rwork, double *rpar,
+	      int *ipar, int *iterm,
+	      double (*dinpr)(int* N, 
+			      double* X, int* incX, 
+			      double* Y, int* incY),
+	      double (*dnorm)(int* N, double* X, int* incX));
+
+void fbratu_ (int *n, double *xcur, double *fcur,
+	      double *rpar, int *ipar, int *itrmf);
+
+void jacvbratu_ (int *n, double *xcur, double *fcur,
+		 int *ijob, double *v, double *z,
+		 double *rpar, int *ipar, int *itrmjv);
+
+// BLAS functions
+double
+ddot_(int* N, 
+      double* X, int* incX, 
+      double* Y, int* incY);
+double
+dnrm2_(int* N, 
+       double* X, int* incX);
+    </pre>
+    </li>
+    <li>C からの呼び出し：
+    <pre>
+  int n = MAXN;
+  double *x = (double *)malloc (sizeof (double) * MAXN);
+  double *rwork = (double *)malloc (sizeof (double) * LRWORK);
+  double *rpar = (double *)malloc (sizeof (double) * LRPAR);
+  double ftol = 1.0e-6;
+  double stptol = 1.0e-6;
+  int input[10];
+  int info[6];
+  int ipar[2];
+  int iterm;
+
+  nitsol_(&n, x, f_, jacv_, &ftol, &stptol, 
+          input, info, rwork, rpar, ipar, &iterm, ddot_, dnrm2_);
+    </pre>
+    </li>
+   </ul>
+   </li>
+   <li>（例２） C で f を定義したい場合
+   <pre>
+void <font color="red">f_c</font> (int *n, double *xcur, double *fcur,
+	  double *rpar, int *ipar, int *itrmf);
+     </pre>
+      という関数を書いて、以下のように普通に呼び出す。
+     <pre>
+  nitsol_(&n, x, <font color="red">f_c</font>, jacv_, &ftol, &stptol, 
+          input, info, rwork, rpar, ipar, &iterm, ddot_, dnrm2_);
+   </pre>
+   </li>
+  </ul>
+  </li>
+  <li>すべて GCC と GNU Fortran compiler の話。
+  <ul>
+   <li>他の環境は知らない。といっても、実際上何があるのかな？
+    Intel の compiler くらいかな、思いつくのは。</li>
+  </ul>
+  </li>
+  <li>references:
+  <ul>
+   <li><a href="#d4-ryuon">6/4/2008</a>: [ryuon] NITSOL の組み込み。</li>
+   <li><a href="diary2003_05.html#d8-matrix">5/8/2003</a>:
+    行列に関する(個人的な)混乱。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>
+  帰宅したらオランダから手紙が届いていた。
+ <ul>
+  <li>あちらが送ったという知らせを受けたのが 5/15 だったから、
+   結構かかったことになるな。やっぱり遠い（のか、カナダの郵便屋さんの問題なのか……）。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d3"></a>6/3 (Tue)</h2>
+<ul>
+ <li><a id="d3-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>dWLC の simulations は <a href="#d3-nano">Nano</a> に移行する。</li>
+  <li>confinement の debug:
+  <ul>
+   <li>CF-dumbbell:
+   <ul>
+    <li>まず過去の結果を確認。</li>
+    <li>いろいろとパラメータを振ってみるが、それぞれ停止してしまうな。</li>
+    <li>対策をいろいろと思案中。</li>
+   </ul>
+   </li>
+   <li><a href="diary2008_10.html#d2-ryuon">10/2/2008</a>: 再始動。</li>
+  </ul>
+  </li>
+  <li><a href="http://ryuon.sourceforge.net/docs/manual/index.html">RYUON-manual</a>:
+  <ul>
+   <li><a href="#d3-nano">Nano</a> から、
+    imposed flow parameters の指定方法について、
+    その度に手で計算して確認していたことを、具体的に記述しておく。
+    （<a href="http://ryuon.sourceforge.net/docs/manual/node6.html">System Parameters</a>の部分。）</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d3-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>dWLC の simulations:
+  <ul>
+   <li>応用計算を <a href="#d3-ryuon">RYUON</a> からこっちに移行する。</li>
+   <li>CF-cylinder:
+   <ul>
+    <li>既存の結果を整理</li>
+    <li>足りない部分を（再）計算させるための準備。
+     新 stokes3 （正しく continue ができる）でやり直したいということもある。</li>
+   </ul>
+   </li>
+   <li>HI-Shear:
+   <ul>
+    <li>解析。統計平均をとらなければいけないな。</li>
+    <li>既存の論文を見て extensional flow もやることにする。</li>
+    <li>毎度のこと、どうパラメータを与えたらいいか迷うので、
+     今度こそきちんと documentation しておく(<a href="http://ryuon.sourceforge.net/docs/manual/index.html">RYUON-manual</a>)。</li>
+    <li>shear をベースに planar を一通り（20個）作り bue9 に回して計算開始。
+     が、しばらくすると悲鳴を上げている。</li>
+    <li>見てみると bond が伸びすぎ。
+     よく考えてみたら、 dWLC は単なる Hookean なので、当たり前だな……。</li>
+    <li>モデルにまた手を入れなければならないか。</li>
+    <li><a href="#d5-ryuon">6/5/2008</a>: 勉強、開始。</li>
+    <li><a href="#d12-ryuon">6/12/2008</a>:
+     できたてほやほやの bead-rod でテスト、予定通り（ダメだった）。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d3-shopping"></a>
+  久しぶりの第一火曜日の買い物。
+ <ul>
+  <li>やっぱり 10% はでかいよな、と。</li>
+  <li>見返してみると、<a href="diary2007_11.html#d6-shopping">去年の１１月</a>以来かな。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d2"></a>6/2 (Mon)</h2>
+<ul>
+ <li>朝オフィスにやってくると、各人の cubicle にネーム・プレートが付いていた。
+ <ul>
+  <li>ここの私たちの cubicle は、実験グループなどが labo に使うようような場所に
+   （理論グループなので）机を並べている。かつここの建物の security の堅さから、
+   この部屋に入るにはカード・キーによる承認が必要で、
+   つまり、ここへは部外者は入ってこれないことになっている。
+   そこにネーム・プレートをつけてもねえ（部屋の扉に付けるならまだしも）、
+   と隣人と苦笑する。他に金の使い方はないものか。</li>
+ </ul>
+ </li>
+ <li><a id="d2-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>BD の continuation:
+  <ul>
+   <li>stokes-nc への実装、つづき。
+    出来た。</li>
+   <li>チェック： CF-cylinder で 100 step を回した結果と 50 回で中断し、
+    更に 50 step 回した物を比較。問題無しってことで、よしとする。</li>
+   <li><a href="diary2008_10.html#d6-stnc">10/6/2008</a>: stnc の設計思想。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d2-report"></a>
+  [phys]月刊レポート書き。
+ <ul>
+  <li><a href="diary2008_05.html#d28-nanoforum">先日のポスター</a>
+   の内容をベースにした<a href="diary2008_05.html#d30-nano">ノート</a>をベースに、
+   省略したり落とされた結果も含めて書き上げる。</li>
+  <li>back-numbers:
+  <ul>
+   <li><a href="diary2008_07.html#d2-report">7/2/2008</a>: ７月号（およびこれ以降）</li>
+   <li><a href="diary2008_06.html#d2-report">6/2/2008</a>: ６月号</li>
+   <li><a href="diary2008_05.html#d1-report">5/1/2008</a>: ５月号</li>
+   <li><a href="diary2008_04.html#d1-report">4/1/2008</a>: ４月号</li>
+   <li><a href="diary2008_03.html#d3-report">3/3/2008</a>: ３月号</li>
+   <li><a href="diary2008_02.html#d1-report">2/1/2008</a>: ２月号</li>
+   <li><a href="diary2008_01.html#d7-report">1/7/2008</a>: １月号</li>
+   <li>これ以前は
+    <a href="diary2007_11.html#d30-report">１２月号</a>のリンクから。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d1"></a>6/1 (Sun)</h2>
+<ul>
+ <li>６月になってしまった。
+ <ul>
+  <li>いや、気が重い。何しろ<a href="#d6-forty">大台</a>だからなあ……。
+   （もちろん、半分は冗談。）</li>
+ </ul>
+ </li>
+ <li><a id="d1-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>BD の continuation:
+  <ul>
+   <li>（<a href="theorems.html#matsumoto">ことわざ集</a>で有名な松本さん
+    （cf.<a href="#d12-senya">6/12/2008</a>）の）
+    <a href="http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/efaq.html">MT-FAQ</a>を見ながら random number generator の状態をキープする（やっと）。実装完了。</li>
+   <li>stokes-nc に interface を実装中。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>今日の夕食は知り合いの家に呼ばれる。
+ <ul>
+  <li>基本的にホストのカップルともう一組のカップルと私たち。
+   プラス、ホストの元（および現）テナントの女の子たち。
+   カップルはかおの知り合いで、片方が日本人な国際カップル×２。
+   あと、ここカナダで現役バリバリのトライアスリートの人と、
+   モンよりも重そうな、毛沢東という名の老オス猫が居た。</li>
+  <li>最近は、気がつくと一番年長だったりすることが多かったりするのだけど、
+   今回は年齢レベルでも、あと風来坊レベルでも、我々と同等くらいだったこともあり、
+   社交下手な私でも少しのんびりできた、居心地のよい集まりだったかな。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+</body>
+</html>

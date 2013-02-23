@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - September 2012</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <script type="text/javascript" src="LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2012年9月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+<div class="body">
+
+<hr />
+
+<h2><a id="d10"></a>9/10 (Mon)</h2>
+<ul>
+ <li><a id="d10-weex"></a>今更 weex
+ <ul>
+  <li>OS X Lion にクリーンインストールしたせいで、
+   今までつかってた weex の exe がなくなったので、作り直そうとする。</li>
+  <li>configure など久しぶりで、ビルドにかなり手間取ったので、
+   備忘録的に、記録をとっておく。</li>
+  <li><a href="http://weex.sourceforge.net/">weex.sourceforge.net</a>
+   から source をダウンロード。
+   <a href="http://sourceforge.net/projects/weex/">sourceforge.net/projects/weex</a>/<a href="http://sourceforge.net/projects/weex/files/weex/2.6.1.5/">files/weex/2.6.1.5</a>/<a href="http://sourceforge.net/projects/weex/files/weex/2.6.1.5/weex-2.6.1.5.tar.gz/download">weex-2.6.1.5.tar.gz</a></li>
+  <li>普通に展開して、 configure しておく。
+  <pre>
+tar xvfz weex-2.6.1.5.tar.gz
+cd weex-2.6.1.5
+./configure --prefix ~/local
+  </pre>
+  </li>
+  <li>これで make; make install で終わればいいのだが、そうはいかなかった。
+  <ul>
+   <li>どうも __unix__ が定義されてないようで、
+    いろいろと define されるべきマクロが空になってるのが、原因。</li>
+   <li>@otaka_zenkei によると(<a href="https://twitter.com/otaka_zenkei/status/245155490013782017">otaka_zenkei/status/245155490013782017</a>)、
+    OS X は __APPLE__ らしいが、
+    2003年あたりのコードでは、そんな事知ったこっちゃない、と。</li>
+  </ul>
+  </li>
+  <li>面倒なので、 config.h の一行目にどーんと
+  <pre>
+#define __unix__
+  </pre>
+   してやる (^^)
+  </li>
+  <li>あと、 src/strlib.c の最初の方で定義してるマクロ G_VA_COPY が、
+   これもいろいろと時代的なものなのか、適切に定義されないので、
+   直接定義してみる。
+  <pre>
+<font color="red">//#if !defined (G_VA_COPY)
+//#  if defined (__GNUC__) && defined (__PPC__) && (defined (_CALL_SYSV) || defined (_WIN32)) || defined(__s390__)
+//#  define G_VA_COPY(ap1, ap2)     (*(ap1) = *(ap2))
+//#  elif defined (G_VA_COPY_AS_ARRAY)
+//#  define G_VA_COPY(ap1, ap2)     g_memmove ((ap1), (ap2), sizeof (va_list))
+//#  else /* va_list is a pointer */
+//#  define G_VA_COPY(ap1, ap2)     ((ap1) = (ap2))
+//#  endif /* va_list is a pointer */
+//#endif /* !G_VA_COPY */</font>
+<font color="green">#  define G_VA_COPY(ap1, ap2)     (*(ap1) = *(ap2))</font>
+  </pre>
+  </li>
+  <li>これで、ビルドは通り、
+   既存の configure file で無事にアップロードもできた。
+   めでたし、めでたし。</li>
+  <li>過去の記録：
+  <ul>
+   <li><a href="diary2004_01.html#d15-weex">1/15/2004</a>:
+    weex を install</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d9"></a>9/9 (Sun)</h2>
+<ul>
+ <li><a id="d9-brad"></a>[music]今週末の成果：ODE(brad mehldau)ソロ採譜（まだ途中）
+ <ul>
+  <li>ツイートから
+  <ul>
+   <li><a href="https://twitter.com/ichiki_k/status/243724950958112769">ichiki_k/status/243724950958112769</a>
+   <blockquote>
+    今夜はブラッド先生のソロを勉強した。<br />
+    と言っても、切り出した３０秒足らずのセグメントを<br />
+    我が <a href="http://waon.sourceforge.net/pv.html">http://waon.sourceforge.net/pv.html</a> で30%まで落としたものを繰り返し繰り返し。<br />
+    気づくと１時間ほど。<br />
+    オレって本当に経済的な奴だな。<br />
+    この調子でいくと６分半の曲でどれだけ楽しめるんだか。<br /><br />
+    2012年9月6日 - 23:58
+   </blockquote>
+   </li>
+   <li><a href="https://twitter.com/ichiki_k/status/243725381637648384">ichiki_k/status/243725381637648384</a>
+   <blockquote>
+    ブラッド先生、30%で聞き慣れてくると、それが普通になってくるが、<br />
+    改めてオリジナルのテンポで聞くと、もう超人的な演奏だ！となる。<br />
+    凄いよね、ほんと。<br /><br />
+    2012年9月7日 - 0:00
+   </blockquote>
+   </li>
+   <li><a href="https://twitter.com/ichiki_k/status/244660520282628097">ichiki_k/status/244660520282628097</a>
+   <blockquote>
+    今週末の成果。<br />
+    ブラッド先生の最新作 <a href="http://www.amazon.com/dp/B0071BY1ZQ">http://www.amazon.com/dp/B0071BY1ZQ</a><br />
+    のタイトル曲のソロのtranscription１コーラス目のAABAのAAの部分だけ。<br />
+    <a href="https://plus.google.com/106982159221100227627/posts/BXGJsjRPUJf">https://plus.google.com/106982159221100227627/posts/BXGJsjRPUJf</a><br />
+    <a href="https://twitter.com/ichiki_k/status/244660520282628097/photo/1/large">pic.twitter.com/UvvuSUXY</a><br /><br />
+    2012年9月9日 - 13:56
+   </blockquote>
+   </li>
+   <li><a href="https://twitter.com/ichiki_k/status/244724047005483008">ichiki_k/status/244724047005483008</a>
+   <blockquote>
+    Studying brad mehldau's solo;<br />
+    very beautiful but far beyond of my understanding (;_;)<br />
+    <a href="http://instagr.am/p/PWVHaAF5K0/">http://instagr.am/p/PWVHaAF5K0/</a><br /><br />
+    2012年9月9日 - 18:08
+   </blockquote>
+   </li>
+   <li><a href="https://twitter.com/ichiki_k/status/244730839336902656">ichiki_k/status/244730839336902656</a>
+   <blockquote>
+    今週末のプロジェクト、ブラッド先生のソロの勉強。<br />
+    ノートに書き出し眺めてみた（けど分かんない〜詳しい人教えて〜）<br />
+    彼はこれ137bpmとかで弾いてるんだよな。<br />
+    ぼくは１／３以上落としてやっとメロが採れるレベル。<br />
+    コンピングだれか採ってくんないかな<br />
+    <a href="http://instagr.am/p/PWVHaAF5K0/">http://instagr.am/p/PWVHaAF5K0/</a><br /><br />
+    2012年9月9日 - 18:35
+   </blockquote>
+   </li>
+   <li><a href="https://twitter.com/ichiki_k/status/244731863237812224">ichiki_k/status/244731863237812224</a>
+   <blockquote>
+    しかしこれでソロ１コーラスの１／４（AABAのA2だけ）<br />
+    前も書いたけど、まだまだ楽しめるね(^^;;<br />
+    今回のモティベーションの１つは、ソルフェージュ的なネタとして、<br />
+    今更ドナリーでもないだろうと思ったから。<br />
+    でこいつを採ってみるかと思ったんだけど、<br />
+    ま、無謀ですな（無謀好きなんですが）<br /><br />
+    2012年9月9日 - 18:39
+   </blockquote>
+   </li>
+   <li><a href="https://twitter.com/ichiki_k/status/244736935220879360">ichiki_k/status/244736935220879360</a>
+   <blockquote>
+    くだらないこと、<br />
+    ブラッド先生の ODE みた瞬間、<br />
+    ほぉさすがブラッド先生、数学にも詳しいのか、と思った。<br />
+    つぎは PDE だな、と（うそ）<br /><br />
+    2012年9月9日 - 19:00
+   </blockquote>
+   </li>
+   <li><a href="https://twitter.com/ichiki_k/status/244737833942777856">ichiki_k/status/244737833942777856</a>
+   <blockquote>
+    研究もそうだけど、<br />
+    そのものの価値というか良さというか、<br />
+    そういうものが簡単には分からないけど、<br />
+    本当に素晴らしいものに、<br />
+    ぼくは魅力を感じるし価値を置いてると思う。<br />
+    そういう意味で、世間の「かわいい」文化というか、<br />
+    薄っぺらい、その瞬間だけで分かる範囲でしか評価しない価値観は、<br />
+    最低だと思う<br /><br />
+    2012年9月9日 - 19:03
+   </blockquote>
+   </li>
+   <li><a href="https://twitter.com/ichiki_k/status/244751286413701120">ichiki_k/status/244751286413701120</a>
+   <blockquote>
+    ブラッド先生のODE採譜プロジェクト、<br />
+    ふと思い立ってググってみたら、<br />
+    才能ある方がバッチリ採譜してた<br />
+    <a href="http://chrisvikus.blogspot.ca/">http://chrisvikus.blogspot.ca/</a><br />
+    2008年のライブ版の方だけど <a href="http://www.youtube.com/watch?v=p6nBm8NNdm8">http://www.youtube.com/watch?v=p6nBm8NNdm8</a><br />
+    <a href="http://www.youtube.com/watch?v=Vre_dwV6eyQ">http://www.youtube.com/watch?v=Vre_dwV6eyQ</a><br />
+    来週の課題だな。<br /><br />
+    2012年9月9日 - 19:57
+   </blockquote>
+   </li>
+  </ul>
+  </li><!-- ツイートから -->
+  <li>音楽を勉強するプロジェクト references
+  <ul>
+   <li><a href="diary2012_08.html#d25-jazz">8/25/2012</a>:
+    Renaissance Man - Michael Brecker Transcription@youtube</li>
+   <li><a href="diary2012_08.html#d23-jazz">8/23/2012</a>:
+    KeithのU Dance</li>
+   <li><a href="diary2012_08.html#d14-jazz">8/14/2012</a>:
+    chordのnotationについて</li>
+   <li><a href="diary2012_07.html#d29-jazz">7/29/2012</a>:
+    今日の音楽修行の記録</li>
+
+   <li><a href="diary2012_01.html#d15-jazz">1/15/2012</a>:
+    bill evans の reflections in d の譜面、発見</li>
+   <li><a href="diary2012_01.html#d9-jazz">1/9/2012</a>:
+    bill evans の all of you</li>
+   <li><a href="diary2012_01.html#d5-jazz">1/5/2012</a>:
+    Brooklyn Sometimes のピアノのイントロ</li>
+   <li><a href="diary2012_01.html#d3-jazz">1/3/2012</a>:
+    【緩募】ジャズの演奏を一緒にコピーしたり勉強してくれる人</li>
+   <li><a href="diary2011_12.html#d29-waon">12/29/2011</a>:
+    Kurt Rosenwinkel の演奏</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d3"></a>9/3 (Mon)</h2>
+<ul>
+ <li><a id="d3-imagination"></a>想像力（の欠如）について。
+ <ul>
+  <li>ツイートから
+  <ul>
+   <li><a href="https://twitter.com/ichiki_k/status/242622059350482944">ichiki_k/status/242622059350482944</a>
+   <blockquote>
+    こういう想像力欠如な状況は、何が由来だろうなぁ<br />
+    RT @happyhapia 何にでもケチつける人って居る。<br />
+    一度やってみればいいんだよねえ、<br />
+    車内でベビーカーをたたんで持ち、<br />
+    さらにベビー用の荷物、自分の荷物、傘まで持って<br />
+    １０キロの赤ちゃんを抱っこして<br />
+    通路に立って1時間乗ってられるか<br /><br />
+    2012年9月3日 - 22:56
+   </blockquote>
+   </li>
+   <li><a href="https://twitter.com/ichiki_k/status/242622652232110080">ichiki_k/status/242622652232110080</a>
+   <blockquote>
+    想像力の欠如について、自問してみる。<br />
+    えっと、オレがアムウェイのディストリビューターだったら…、<br />
+    うーむ…、<br />
+    想像力、欠如してていいこともあるかも<br />
+    （ってか、想像できんなぁ…）<br /><br />
+    2012年9月3日 - 22:58
+   </blockquote>
+   </li>
+  </ul>
+  </li><!-- ツイートから -->
+ </ul>
+ </li>
+ <li>[blog]『<a href="http://www.katsuyan.me/ja/how-to-attract-talented-people">才能ある人材を惹きつけるために必要なモノ</a>』@katsuyan.me
+ <ul>
+  <li>ツイート<a href="https://twitter.com/ichiki_k/status/242439921405661185"></a>から
+  <blockquote>
+   『才能ある人材を惹きつけるために必要なモノ』<br />
+    <a href="http://www.katsuyan.me/ja/how-to-attract-talented-people">http://www.katsuyan.me/ja/how-to-attract-talented-people</a> @kn から<br />
+   <ul>
+    <li>『(才能を集めるには)才能ある人が抱える問題より難い問題を提供。</li>
+    <li>日常的な問題から「すごいアイディア」に発展させるプロセスは何年も必要。</li>
+    <li>長期間フォーカスするには情熱がないとできない』</li>
+   </ul>
+   2012年9月3日 - 10:52
+  </blockquote>
+  </li><!-- ツイートから -->
+  <li>時間がかかることに、それを自覚しながら、挑戦することの大切さ。
+   (逆に言うと、短期勝負ばかりやっている、考える事をしない、しかし
+    自分はがんばっていて、できると思っていることの、浅薄さ。)</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a><br />
+facebook: <a href="http://www.facebook.com/kengo.ichiki">Kengo Ichiki</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+</body>
+</html>

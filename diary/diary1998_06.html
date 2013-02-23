@@ -1,0 +1,723 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - June 1998</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <link rel="alternate"  type="application/rss+xml" href="diary.rdf" />
+  </head>
+
+  <body>
+
+
+
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+    
+
+    <h1><a id="top" name="top"></a> <img src="images/NIKKI.png"
+    width="166" height="57" alt="日記 - " />
+    1998年6月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+    
+    <a href="#d30">30</a> | <a href="#d26">26</a> <a href=
+    "#d24">24</a> <a href="#d23">23</a> <a href="#d22">22</a> | <a
+    href="#d18">18</a> <a href="#d17">17</a> <a href="#d16">16</a>
+    <a href="#d15">15</a> | <a href="#d13">13</a> <a href=
+    "#d12">12</a> <a href="#d11">11</a> <a href="#d10">10</a> <a
+    href="#d9">9</a> <a href="#d8">8</a> | <a href="#d5">5</a> <a
+    href="#d4">4</a> <a href="#d3">3</a> <a href="#d2">2</a> <a
+    href="#d1">1</a> | 
+     
+<div class="body">
+
+<br />
+    
+
+    <h2><a id="d30" name="d30"></a>6/30(Tue)</h2>
+
+    <ul>
+      <li>FDT fitting を他の 3D 結果についても見る
+      printout figures</li>
+
+      <li>Treecode の make_nnn
+      をコード中、コード終了</li>
+    </ul>
+    <hr />
+
+    <h2><a id="d26" name="d26"></a>6/26 (Fri)</h2>
+
+    <ul>
+      <li>
+        うだうだ、雑用と称した web めぐり 
+
+        <ul>
+          <li>田崎さんのページは勇気付けられる</li>
+
+          <li>復活</li>
+        </ul>
+      </li>
+
+      <li>FDT 始める</li>
+    </ul>
+
+    <h2><a id="d24" name="d24"></a>6/24 (Wed)</h2>
+
+    <ul>
+      <li>fmm treecode
+      何か、はっきりしないので、この辺で</li>
+    </ul>
+
+    <h2><a id="d23" name="d23"></a>6/23 (Tue)</h2>
+
+    <ul>
+      <li>FDT distrib を調べる F dist.
+      では無い事が判明、もう１つ free parameter が必要
+      そういう理論は無いか？</li>
+    </ul>
+
+    <h2><a id="d22" name="d22"></a>6/22 (Mon)</h2>
+
+    <ul>
+      <li>program の整理...GMRES は完成</li>
+
+      <li>これまでの pbc, mofr
+      関係をサブルーチン毎に整理して NR/src
+      にストア</li>
+
+      <li>finite 系の inverse でも GMRES
+      は問題なく動作する事を確認</li>
+
+      <li>今、スピードの比較プログラムを走らせている所
+      どの辺で cholesky に勝っていくのか注目。</li>
+    </ul>
+    <hr />
+
+    <h2><a id="d18" name="d18"></a>6/18 (Thu)</h2>
+
+    <ul>
+      <li>mofr の finite での振舞いを確認 -&gt;
+      やはり biconjugate gradient method で収束していた
+      但し、今回は６回の iteration が必要だった</li>
+    </ul>
+
+    <h2><a id="d17" name="d17"></a>6/17 (Wed)</h2>
+
+    <ul>
+      <li>m-of-r periodic でうまく行かない問題解決！
+      原因は波数部の self part M^(2)(r=0)
+      を補正項(iteration matrix)
+      でない方に入れていた事。補正項に入れるとうまくいった。
+      一方 NR の biconjugate gradient method
+      を使うと iteration 回数が１で収束していた！ -&gt;
+      使えそう。今後の課題。 GMRES の implementation
+      はまだ。</li>
+
+      <li>cichoki,felderhof,hinsen 1994 を読み中</li>
+    </ul>
+
+    <h2><a id="d16" name="d16"></a>6/16 (Tue)</h2>
+
+    <ul>
+      <li>足りない論文のコピー(Fast Multipole &amp;
+      Oscillon)</li>
+
+      <li>greengard の論文(comput. phys.)を読む</li>
+
+      <li>web 探索、nemo と starlab
+      を取って来る</li>
+
+      <li>gmres を色々調べていたが、力尽きた...</li>
+    </ul>
+
+    <h2><a id="d15" name="d15"></a>6/15 (Mon)</h2>
+
+    <ul>
+      <li>昨日家で調べた fast multipole expansion
+      の資料を漁る</li>
+
+      <li>図書館で文献コピー</li>
+
+      <li>
+        O(N) の情報を解読 
+
+        <ul>
+          <li>主にsangani &amp; mo
+          の論文と福井卓雄氏のホームページの知識から、 fast
+          multipole expansion formulation を実行</li>
+
+          <li>program を作ろうと試みるが、時期尚早と断念</li>
+        </ul>
+      </li>
+
+      <li>
+      西成さんのページに交通流の研究ノートが出てて、面白かった</li>
+    </ul>
+    <hr />
+
+    <h2><a id="d13" name="d13">6/13 (<span class=
+    "week-sat">Sat</span>)</a></h2>
+
+    <ul>
+      <li>
+        sangani &amp; mo の O(N) の Stokes
+        の部分を読むが、どうも O(N) の
+        説明の部分で肝心な点は尽きているようだ。あとは専門的な詳細
+        
+
+        <ul>
+          <li>
+          で、この事実(彼らの成功)を目の前にして、
+          私の戦略を少し練り直さなければならない</li>
+
+          <li>
+            彼らの構造はまとめると以下のようになる。 
+
+            <ul>
+              <li>1) Stokes interaction を spherical
+              harmonics を用いて (mobility form
+              で)構成できる solid particle, bubble /
+              periodic, non periodic ともに出来てる</li>
+
+              <li>2) lubrication も mobility form
+              で評価できる</li>
+
+              <li>3) 空間の祖視化により O(N) で
+              mobility matrix を構成できる</li>
+
+              <li>4) resistance 問題は GMRES により
+              iterative に解く
+              (したがって、このコストは # of iteration x cost
+              of Matrix form ~ O(N))</li>
+            </ul>
+          </li>
+
+          <li>
+            multipole expansion formulation
+            で上のシナリオを形にする事に
+            学問的意義があるか？ 
+
+            <ul>
+              <li>1) spherical harmonics
+              の使用は球形物体に限られるが、 multipole
+              expansion formulation
+              に留まっていれば、原理的に応用可能 (但し
+              lubrication
+              の定式化は不明...しかしSangani
+              らの本質的な寄与は この lubrication
+              のある種の multipole expansion formulation
+              だ)</li>
+
+              <li>2) 多くの問題は複雑な spherical harmonics
+              による展開係数はいらず、
+              より小数の係数のみで本質的に尽きる物が多いと期待できる。</li>
+
+              <li>3) 理論的に応用可能</li>
+
+              <li>4) 物理のモデルとしては、多分 multipole
+              expansion formalism の方が
+              単純でいい気がする。</li>
+
+              <li>5) pressure moments
+              の取扱の話がまだ生き残る</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        ここら辺で「物理屋」としての自覚を持つべきか? 
+
+        <ul>
+          <li>計算機屋としてやるには少しきつい気が、特に
+          sangani らの
+          仕事を発見してつくづく感じた</li>
+
+          <li>
+          化学屋とも何か違うかなと言う気が最近してるし(明確な違いは
+          言葉に出来る程はっきりしてない)</li>
+
+          <li>
+            で、物理屋として、何がしたいのか？ 
+
+            <ul>
+              <li>
+              やっぱり現象の背後にある物理法則の理解を目指したもの、か</li>
+
+              <li>粉体 -&gt; 非弾性粒子系 -&gt;
+              非平衡統計 -&gt;
+              非平衡熱力学(現象論)
+              というシナリオ、か?</li>
+
+              <li>
+                最近ひらめいたアイデアは、
+                「流動層は、粘性粒子(接触時に粘性抵抗を持つ
+                soft-core 系)の一種」
+                という特徴付け。 
+
+                <ul>
+                  <li>soft-core -&gt; hard-core
+                  の極限操作と</li>
+
+                  <li>inelastic -&gt; elastic
+                  の極限操作について詰めれば、面白い話に成りそう</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        ToDoList 
+
+        <ul>
+          <li>O(N) multipole formalism に、多分一週間かかる
+          (とりあえずのプログラムを組むのに...lubrication
+          抜き！)</li>
+
+          <li>iteration problem は、GMRES
+          とかの理論をもう少し follow する必要あり</li>
+
+          <li>u^\infty のでかい所での定常状態について、
+          底よりも天井の方がエネルギーの供給源と見倣すと、面白そう。
+          実際、思ったより定常状態と言えそうな状態である。</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2><a id="d12" name="d12"></a>6/12 (Fri)</h2>
+
+    <ul>
+      <li>FDT dist PD Caltech-4 3d の結果を見る range
+      を外れている物が多い(f 関係)ので、やり直し
+      3d の u^\infty
+      がでかい所である種の定常状態が達成されている様子
+      これは面白い</li>
+
+      <li>sangani &amp; mo よんでる とりあえず、Laplace
+      problem の部分の O(N) まで読み終った</li>
+    </ul>
+
+    <h2><a id="d11" name="d11"></a>6/11 (Thu)</h2>
+
+    <ul>
+      <li>
+        web を使った思考の整理について、少し考えた 
+
+        <ul>
+          <li>Mule のアウトラインモードの説明を探したい。
+          あと html モード。</li>
+        </ul>
+      </li>
+
+      <li>
+        FDT 
+
+        <ul>
+          <li>distrib の結果を見る</li>
+
+          <li>注目の R_11 だが、どうも x^2/(x+b)^3
+          とか何かでフィット出来そう</li>
+
+          <li>その時の平均、分散がどうなるかは、mathematica
+          で調べよう</li>
+        </ul>
+      </li>
+
+      <li>PD: caltech-4 の 3d
+      の結果に付いて分布を計算する sh script を
+      準備、裏で実行</li>
+
+      <li>
+        sangani O(n) を読む、結構深刻か？ 
+
+        <ul>
+          <li>web で情報を検索、
+          境界要素法は工学で人気な為か、情報は結構あった</li>
+        </ul>
+      </li>
+
+      <li>web と tex の相互関係をタグって見る</li>
+    </ul>
+
+    <h2><a id="d10" name="d10"></a>6/10 (Wed)</h2>
+
+    <ul>
+      <li>
+        FTS debug 終了 
+
+        <ul>
+          <li>effective viscosity alpha, beta, zeta
+          少なくとも希薄極限
+          の振舞いはあってそうだ(線形の傾きまでは...)
+          高濃度極限は、良く分からない...</li>
+        </ul>
+      </li>
+
+      <li>survey Sangani &amp; Mo's paper ... very impressive!</li>
+
+      <li>Eyink note の見直し</li>
+
+      <li>
+        FDT 
+
+        <ul>
+          <li>average.c を作成、vis.b266f3 に適用 -&gt;
+          何かおかしい</li>
+
+          <li>random.c を作成 -&gt; distrib.c average.c
+          は正しく動いている</li>
+
+          <li>結論: lubrication
+          の寄与などにより、揺らぎが極めて大きく
+          平均や分散が ill-defined になっているようだ
+          (少なくとも、分布の形は巾的である)</li>
+
+          <li>
+          ＜方針変更＞平均を取る事は断念し、分布の最確値?の傾向を
+          見る事にする</li>
+
+          <li>-&gt; dist.sh PD:Caltech-4 の 2d
+          について全て分布を計算！</li>
+        </ul>
+      </li>
+
+      <li>多重衝突のネタを考えつつ、文献検索をしつつ</li>
+    </ul>
+
+    <h2><a id="d9" name="d9"></a>6/9 (Tue)</h2>
+
+    <ul>
+      <li>
+        FTS の debug 
+
+        <ul>
+          <li>pbc 用にスカラー関数の定義を変更した store
+          routine のチェック</li>
+
+          <li>完全に conventional
+          なモノと一致した(pbc-chk.c)</li>
+
+          <li>L-Omega coupling
+          部分は、定義が良く分からないものの、
+          結果は正しい様だ。 alpha, beta
+          については、特に beta
+          が負になっている点がダメ</li>
+        </ul>
+      </li>
+
+      <li>昨日の john との議論のまとめ。 m-of-r
+      また、分からなくなって来た...</li>
+    </ul>
+
+    <h2><a id="d8" name="d8"></a>6/8 (Mon)</h2>
+
+    <ul>
+      <li>FTS periodic programing 自身の debug JFB etal
+      に対応する量を計算するプログラムを作る -&gt; F は
+      OK, L はほぼよさそう(非定量的),S
+      はダメ！</li>
+
+      <li>論文のコピー Zick &amp; Homsy, Nunan &amp; Keller,
+      Zuzovsky et al の３本</li>
+
+      <li>
+        john に再び会って、今日の議論のアポをとる 
+
+        <ul>
+          <li>john と議論 -&gt;
+          今日はあまり生産的ではなかった...</li>
+
+          <li>kim book elastisity を返す。</li>
+
+          <li>FTSP に付いては、Q
+          に対する条件(運動方程式)が欲しいそうだ</li>
+
+          <li>sundar
+          との違いについては、どうも私の思い違いらしい...</li>
+        </ul>
+      </li>
+    </ul>
+    <hr />
+
+    <h2><a id="d5" name="d5"></a>6/5 (Fri)</h2>
+
+    <ul>
+      <li>
+        <a id="d5-pressure_moments" name="d5-pressure_moments"></a>
+        pressure moments のノート整理、以前続行中！ 
+
+        <ul>
+          <li>けりをつけてしまうつもり。 dead line は
+          15:00 だな(diffusion の話は来週)</li>
+
+          <li>とりあえず、いける所まではいった</li>
+
+          <li>
+            ...邨先棡縲《trategy
+            を見つめ直す必要があるようだ 
+
+            <ul>
+              <li>1) F,T,S
+              以外のモーメントを導入すべきだ</li>
+
+              <li>2) 最初の項 Q^0
+              は一様振動モードだが、
+              体積保存物体では消える項
+              ２体の厳密解は、tr S と U, E
+              についてはあるが Q^0
+              との直接的カップリングは無い</li>
+
+              <li>3)
+              次のモードには、そもそも２体の厳密解が無い
+              袋小路だ！</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li>simulation results の整理 Caltech 4 の steps
+      結果(2d)を TeX に記入</li>
+
+      <li>FDT ... distrib.c
+      一般的な分布関数計算プログラムをつくる P(y)
+      鉛直分布、r11,f1,etc の分布をざっと計算
+      分布自身は巾的な感じ
+      ...意味する所は不明...揺らぎはでかいと言う事か？</li>
+    </ul>
+
+    <h2><a id="d4" name="d4"></a>6/4 (Thu)</h2>
+
+    <ul>
+      <li>FTS periodic programing &amp; debug ... JFB et al (88)
+      JFM 195 pp257-280 の結果を整理
+      計算すべき物をリストアップした</li>
+
+      <li>
+        Pozrikidis Sec.2.5 読む 
+
+        <ul>
+          <li>Stokes problem の multipole expansion で
+          point source の項は、第１項のみユニークで、
+          以降は point force の項に繰り込める</li>
+
+          <li>-&gt; resistance or mobility 問題の構造は、
+          strength of source と pressure
+          を含める形の拡張で終るのか?</li>
+        </ul>
+      </li>
+
+      <li>fluidized bed の論文読み "Fundamental ..." by YA
+      Liu et al. Powd.Tech.64(91)3</li>
+
+      <li>simulation results の整理</li>
+
+      <li>~/funtai/c/table.tex に使えそうなsimulation results
+      をまとめる</li>
+
+      <li>
+        FDT 解析 
+
+        <ul>
+          <li>vis-pos.c :
+          鉛直座標をカップルさせるプログラム。</li>
+
+          <li>
+          傾向は...やっぱり分布関数を計算した方がいいだろう。</li>
+
+          <li>平均を取るのは中間領域に限った方がいいかも</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2><a id="d3" name="d3"></a>6/3 (Wed)</h2>
+
+    <ul>
+      <li>Kim 本読書</li>
+
+      <li>m-of-r の収束に関して...Courant-Hilbert
+      を読む</li>
+
+      <li>m-of-r の収束に関して...sundar
+      の方法との相違に付いて集中</li>
+
+      <li>
+        program (period m-of-r) debug つづき 
+
+        <ul>
+          <li>rfl FT で floating exeption
+          の件、高濃度から攻めて行く</li>
+
+          <li>FTS
+          も同様に...結果、良く分からないけど</li>
+
+          <li>F は phi&gt;1.5 FT,FTS は phi&gt;2.0
+          で収束してるようだ</li>
+
+          <li>FT, FTS
+          については対応する固有値が無い気がする...??</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2><a id="d2" name="d2"></a>6/2 (Tue)</h2>
+
+    <ul>
+      <li>
+        van Kampen 
+
+        <ul>
+          <li>Ornstein-Uhlenbeck process の Doob's
+          theorem</li>
+
+          <li>...沈没</li>
+        </ul>
+      </li>
+
+      <li>
+        Ewald の note 整理 
+
+        <ul>
+          <li>real 部分は簡潔に、かつほぼ最終段階</li>
+
+          <li>reciprocal 部分もほぼ最終段階</li>
+
+          <li>recipro self 部分は手を入れ始め</li>
+        </ul>
+      </li>
+
+      <li>Kim 本の読書はとりあえず棚上げ！</li>
+
+      <li>john 用に Ewald note を copy,
+      コメントを付けてポストへ</li>
+
+      <li>simulation results の整理をとりあえずする
+      (その後時間があったら debug に戻る)</li>
+
+      <li>simulation results の整理、とりあえず一段落 PD
+      の DIR は作り直して、紙の上に書き出した</li>
+    </ul>
+
+    <h2><a id="d1" name="d1"></a>6/1 (Mon)</h2>
+
+    <ul>
+      <li>
+        m-of-r for periodic program 終了 
+
+        <ul>
+          <li>あと、チェック自身をしないといけない</li>
+        </ul>
+      </li>
+
+      <li>Courant &amp; Hilbert (phil の)をコピー</li>
+
+      <li>john にあって、今日のお昼、少し話をする事に
+      チェック自身をする</li>
+
+      <li>
+        FT の途中で Floating Exception で core dump
+        してる 
+
+        <ul>
+          <li>eigen value を見ると torque coupling
+          部分が発散している</li>
+
+          <li>...debug &amp;
+          もしかすると高濃度から攻めていった方がいいかも</li>
+        </ul>
+      </li>
+
+      <li>
+        john と議論; 今日の議論は身があった 
+
+        <ul>
+          <li>1) Ewald summation ... ３つの間違いを指摘 b
+          部分の lablacia term の取り扱いを指摘</li>
+
+          <li>2) periodic system の m-of-r
+          の収束性について john のコメントは、R
+          を考えるのと F を考える時で
+          本質的な違いは生じないか？
+          特に前者は６つの固有値に対し、後者は３つ？</li>
+
+          <li>3) pressure moment に関して質問 FTS の次
+          P は採り入れる事が簡単に出来るのか？ surface
+          の compression
+          を考えた時、形式はどう変わるか？ Sangutae Kim
+          のテキスト elastisity をしばらく借りる</li>
+        </ul>
+      </li>
+
+      <li>FDT はじめる
+      いろいろ、具体的な目標を立てるが、 simulation results
+      の整理を先にするべきであると認識</li>
+    </ul>
+    <hr />
+    
+    | <a href="#d30">30</a> | <a href="#d26">26</a> <a href=
+    "#d24">24</a> <a href="#d23">23</a> <a href="#d22">22</a> | <a
+    href="#d18">18</a> <a href="#d17">17</a> <a href="#d16">16</a>
+    <a href="#d15">15</a> | <a href="#d13">13</a> <a href=
+    "#d12">12</a> <a href="#d11">11</a> <a href="#d10">10</a> <a
+    href="#d9">9</a> <a href="#d8">8</a> | <a href="#d5">5</a> <a
+    href="#d4">4</a> <a href="#d3">3</a> <a href="#d2">2</a> <a
+    href="#d1">1</a> | 
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+  </body>
+</html>
+

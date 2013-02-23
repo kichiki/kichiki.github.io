@@ -1,0 +1,1097 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - July 2007</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <link rel="alternate"  type="application/rss+xml" href="diary.rdf" />
+    <script type="text/javascript" src="LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+
+
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top" name="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2007年7月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+<div class="body">
+
+<br />
+
+
+<h2><a id="d31" name="d31"></a>7/31 (Tue)</h2>
+<ul>
+ <li><a id="d31-discussion" name="d31-discussion"></a>
+  [phys]共同研究者と議論
+ <ul>
+  <li>ボスは多忙のため欠席。</li>
+  <li>こっちの進捗状況と、あちらのプラン、質問など。</li>
+  <li>こっちサイドは順調とは言いがたいが前進はしているので、
+   気を引き締めていこう。</li>
+  <li>最近のネタで
+   <a href="http://dfd2007.eng.utah.edu/">DFD</a>
+   (〆切が目前) に出したいなと思ったが、
+   全権限はボスが握ってるそうなので、メールしておく。
+  <ul>
+   <li>付記：翌日、ボスがやってきた。答えはノー。現時点で結果がない
+    (と彼の目には映ってる)ことと、財政的な問題。金回りの話は何故か全く蚊帳の外なので、
+    そう言われるとこちらには対処のしようもない。粛々と仕事をしていこう。</li>
+   <li><a href="diary2007_11.html#d17-aps_dfd">2007/11/17</a>:
+    もうすぐ DFD が始まる。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>Lamb の一般解の検証、続き。
+   <ul>
+    <li>XA での検証の続き。</li>
+    <li>２体の no-slip, perfect-slip, 一方が no-slip でもう一方が perfect-slip
+     まで確認。ここまでノート(lamb.tex)にまとめる。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d30" name="d30"></a>7/30 (Mon)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>Lamb の一般解の検証、続き。
+   <ul>
+    <li>週末の計算をノートにまとめる(lamb.tex)。</li>
+    <li>２体のチェックに進む。凄く苦労したが、やっと出来た。
+     問題は係数計算ではなくて、それから速度場を求める(テストのための)codeにあった。
+     右手系と左手系が混在していて、混乱した。</li>
+    <li>とりあえず XA の no-slip は確認。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>帰ったら、久しぶりに時計が届いていた。
+ <ul>
+  <li>yet another 4006 from US.
+   今度の奴は一通り揃っている不動品
+   (stem とか crown とか pusher が無いというようなことはない、の意)。
+   dial はそれなりにきれいだが、 SEIKO の emblem が歪んでる(何したんだろう？)。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d29" name="d29"></a>7/29 (Sun)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>Lamb の一般解の検証、続き。
+   <ul>
+    <li>式を何度も紙の上で検算。
+     １体問題の具体的な答えも、手で書き出してみる。
+     正しい。</li>
+    <li>code の方で、項を一つ一つチェック。
+     で、今回書いた係数処理 routines が bug っていた。
+     (だから、きちんと動く code を再利用する方がよいのだ……)</li>
+    <li>１体レベルで、F, T 問題は確認済み(S はまだ)。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d28" name="d28"></a>7/28 (Sat)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>Lamb の一般解の検証。
+   <ul>
+    <li>まず極座標成分で速度場を紙の上に書く。
+     そして、C で書く。</li>
+    <li>係数は昔書いた JHU のコードを再利用したかったが、
+     時間がもったいないので、また scratch から書いた。</li>
+    <li>まず１体。だが何かおかしい。</li>
+   </ul>
+   </li>
+   <li>lubrication-RG
+   <ul>
+    <li>古い folder から、その昔勉強した RG の論文群を更に発掘しておく。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d27" name="d27"></a>7/27 (Fri)</h2>
+<ul>
+ <li><a id="d27-twobody" name="d27-twobody"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>lubrication
+   <ul>
+    <li>Veysey-Goldenfeld (2007) から、関連しそうな論文をいくつか取って来る。</li>
+   </ul>
+   </li>
+   <li>係数計算 code に間違い発見(maxima, C とも)。
+   <ul>
+    <li>急に全てが怪しく見えて来たので、きちんとした検証を今のレベルでしておく。</li>
+    <li>Lamb の一般解の係数から速度場を計算する一般的な code を書く(Cで)。
+     まだ途中。</li>
+    <li><a href="diary2007_08.html#d1-twobody">8/1/2007</a>:
+     C への修正が不十分であった。</li>
+   </ul>
+   </li>
+   <li>working directory の整理。
+   <ul>
+    <li>TWO の下に slip 関連を置いておいたが、
+     TWO-SLIP を作って格上げ。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d26" name="d26"></a>7/26 (Thu)</h2>
+<ul>
+ <li><a id="d26-ooshida" name="d26-ooshida"></a>
+  大信田さんからメールが来た。
+ <ul>
+  <li>彼の企画した仮想研究会「塑性という名の動的機構」という
+   「<a href="http://www2.yukawa.kyoto-u.ac.jp/~busseied/">物性研究</a>」
+   での文章が添付されていた。講演者には見覚えのある名前が並んでる。
+   その昔、「粉体」という、物理に於いては新しい、従ってまだエライ人とか居なかった
+   subject の周辺に集まった人達の一部。
+   理論系物理屋は、表面的にどう振舞おうと、基本的に一匹狼だと思うけど、
+   まぁ何にでも分布や平均ってものはある。
+   その人達の今の重心(の一つ)がガラスということなのかな。
+   とは言え、こんなものは表面的に過ぎず、
+   各人の motivation はきっと昔から同じなんだろう。
+   これが研究者というものなんだろう、きっと。
+   &quot;slow science&quot; というのは、
+   なかなか良いキャッチ・フレーズではないか(今、作った)。
+   &quot;slow food&quot; とか &quot;slow life&quot; とか、
+   もうとっくに死語かもしれないが、そんなことを気にするようでは
+   この slow world は生きていけない。</li>
+  <li><a href="diary2006_04.html#d27-ooshida">4/27/2006</a>:
+   Ooshida T. さんの論文。</li>
+ </ul>
+ </li>
+ <li><a id="d26-twobody" name="d26-twobody"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>C 版を開始。
+   <ul>
+    <li>maxima は遅くてかつ低次で止まるので、
+     数値的に lubrication の捻出が不可能なため。</li>
+    <li>最初、 <a href="http://pari.math.u-bordeaux.fr/">PARI/GP</a>
+     で組み直してみたが、速度は体感的には変わらず
+     (コンパイラは試してない)。</li>
+    <li>なので、結局 C 。それでも最初 GMP を考えたが、多項式を目の前に断念。</li>
+    <li>ってことで、普通に浮動少数点。ついでに気になってた long double 版も書いてみた。
+    <ul>
+     <li>FreeBSD は
+      <a href="http://www.jp.freebsd.org/QandA/HTML/587.html">何か変態なこと</a>
+      になっているようで、
+      fpsetprec() で明示的に仮数部を 64 bit に指定する必要がある。
+      あとpowl()が見つからず、もう面倒なので、自分で普通に書いた、
+      どうせ整数しか引き数とらないし。</li>
+    </ul>
+    </li>
+    <li>速度は、しかし期待した程、速くない……
+     メモリー不足で止まらないのが advantage か。</li>
+    <li>簡単な cache も付けた。実計算では効果ないが、再計算が楽になる。</li>
+   </ul>
+   </li>
+   <li>lubrication
+   <ul>
+    <li>何気なく <a href="http://rmp.aps.org/">Rev.Mod.Phys.</a>
+     見てたら Goldenfeld の review を見つける。
+     彼が何で stokes flow? と思ったら、(その昔、近所で少し流行ってた)例の
+     RG のテクニックを stokes flow に使ってみた、という話らしい。</li>
+    <li>寝る前に横になって斜め読みしたところ、
+     stokes じゃなくて、 stokes 近似の有限 Re への展開の話。
+     例の <a href="diary2002_01.html#d21-andrea">Proudman-Peason 辺りの話</a>。
+     technical には流体で一つの潮流をなす boundary layer とかの
+     matched asymptotics の話
+     (なので、 lubrication theory には実はもろにかぶってくる話)。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d25" name="d25"></a>7/25 (Wed)</h2>
+<ul>
+ <li><a id="d25-morning" name="d25-morning"></a>
+  早寝早起きを試みる。
+ <ul>
+  <li>まぁいつも言ってる(だけ？)。</li>
+  <li>昨夜は１０時半ごろ就寝して、今朝は８時に起きた(ベッドを出た)。
+   ニワトリと卵ではないが、今回は「早寝」にポイントを置いてみる。
+   さて、どうなりますか。</li>
+  <li><a href="diary2007_08.html#d7-dogs">8/7/2007</a>:
+   早起き、継続中。</li>
+ </ul>
+ </li>
+ <li><a id="d25-twobody" name="d25-twobody"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>昨日までの結果を文章化(texノートにまとめ)。
+    散乱しつつあるノート群を整理、統廃合。</li>
+   <li>maxima の code の改訂。
+    E 問題の初期条件を正しくする。
+    これで再計算中(結局、終わらず。)</li>
+   <li>しかし、厳密解はこの漸化式で終わりではなくて、
+    次に lubrication theory が控えている……
+    <a href="#d21-twobody">発掘してきた論文</a>を、まずは眺める。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d24" name="d24"></a>7/24 (Tue)</h2>
+<ul>
+ <li>[phys]インフォーマル・セミナー
+ <ul>
+  <li>ボスと共同研究者を前に、私の進捗状況などを説明。</li>
+  <li>というか、あちらの頭の中にあるモヤモヤ・レベル(今後の展開、野望)と、
+   こちらの具体的な話(実現可能性とか、技術的困難とか)の摺合わせ。</li>
+  <li>目前に〆切の迫っている論文については、
+   私の方はもう少し定式化を粘ってみる、ということで。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>E 問題の漸化式の初期条件の間違い探しの続き。
+   <ul>
+    <li>昨日の計算を、確認をしながらノート(mofr.tex)に清書。</li>
+    <li>すると、問題の初期条件が期待されたものになった。</li>
+    <li>帰宅後、pmn, vmn の初期値を見ると、それらしい。 Faxen も回復。</li>
+    <li>この結果を、既存のノートに赤入れしておく。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d23" name="d23"></a>7/23 (Mon)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>E 問題の漸化式の初期条件の間違い探しの続き。
+   <ul>
+    <li>まず、昨日の考察をノートにまとめる(新たに mofr.tex)。</li>
+    <li>Felderhof (1976) 再読、
+     Faxen's law が F, T, S まであるじゃん。</li>
+    <li>imposed flow のことを陽に考えてみる。
+     と、ここから一つ見落としていた項が出て来る。
+     が、計算間違いか知らないが、まだ結果が合わない。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>栄養不足になりそうだったので、簡単に買物に寄って帰る。
+ <ul>
+  <li>最近帰り道に、来るときとは別の経路(一瞬川を渡ってまたすぐに戻って来るような)
+   を通ってる。距離的にはどうなんだろう、少し長くなるのかな。
+   時間はしかし圧倒的に早いみたい。 whyte は早く走れないからな。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d22" name="d22"></a>7/22 (Sun)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>method of reflections によるチェック。
+    まず X の U problem で。
+    XA12 は OK.
+    XG12 にずれを発見する。</li>
+   <li>既存の結果といろいろ比較すると、
+    E 問題の recurrense relation の初期条件、および
+    そこから書き下した S の Faxen's law がおかしい。</li>
+   <li>現時点で、手がかりはない。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>最近ちょっと仕事が押して来て、休日に時計を触れない。
+ <ul>
+  <li>いろいろとやりたいブツが溜っているんだが……</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d21" name="d21"></a>7/21 (Sat)</h2>
+<ul>
+ <li>飢えそうだったので、簡単に買物に出かける。</li>
+ <li><a id="d21-twobody" name="d21-twobody"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>poly-slip を再計算、続き。
+    21以降を仕切り直し。しかし 23次で lisp が hang up。</li>
+   <li>昔の folder 群から lubrication の古い論文を発掘する。
+   <ul>
+    <li><a href="#d25-twobody">7/25/2007</a>: まずは眺める。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d20" name="d20"></a>7/20 (Fri)</h2>
+<ul>
+ <li>[news]
+  &quot;<a href="http://www.expressnews.ualberta.ca/article.cfm?id=8608">Game over -- scientists solve checkers (Ryan Smith)</a>&quot;
+  @ualberta(<a href="LOCAL/20070720-ualberta-8608.html">lc</a>)
+ </li>
+ <li>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20070721-00000029-jij-int">ライターと母乳、機内持ち込みOK＝8月4日実施−米運輸当局</a>」@yahoo(<a href="LOCAL/20070720-yahoo-20070721-00000029-jij-int.html">lc</a>)
+ <ul>
+  <li>禁煙の機内にライターを持ち込む必要が、理解できない。
+   航空会社はライターを何に使って欲しいんだ？
+   (どういう人達が「ライターを持ち込めるようにしろ」と要求しているのだろうか？)</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>m2c.py を poly 化。</li>
+   <li>poly-slip を再計算、昨日の続き。
+    k=21 が一つ山みたいなので、 20 までにして、 FTS 全部を仕上げる。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d19" name="d19"></a>7/19 (Thu)</h2>
+<ul>
+ <li>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20070719-00000116-jij-soci">河合隼雄氏が死去＝元文化庁長官、教育にも尽力−ユング派心理学の第一人者</a>」@yahoo(<a href="LOCAL/20070719-yahoo-20070719-00000116-jij-soci.html">lc</a>)
+ </li>
+ <li>[phys]
+  workshop - day 2
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>slip-poly.mac の改訂。
+   <ul>
+    <li>debug 及び今後のメンテのため、
+     漸化式の計算ルーチンを一元化する。</li>
+    <li>debug に手間取ったが(幾つか間違いを見つけた)、
+     no-slip とのチェック済み、
+     slip で mono-slip とのチェック済み。</li>
+   </ul>
+   </li>
+   <li>poly-slip を再計算。
+    まず k=21 まで。
+    XA 終了、今 YA の途中。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d18" name="d18"></a>7/18 (Wed)</h2>
+<ul>
+ <li><a id="d18-workshop" name="d18-workshop"></a>
+  [phys]
+  workshop - day 1
+ <ul>
+  <li><a href="diary2007_09.html#d14-seminar">9/14/2007</a>:プレゼン考。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>WORK/src/RYUON/TWO/MAXIMA に書き散らしたコードを整理。</li>
+   <li>poly-slip 化する (slip-poly.mac)。
+    とりあえず XA, XG は出来た。</li>
+   <li>maxima の結果から latex を吐く script (m2tex.py) を書く。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d17" name="d17"></a>7/17 (Tue)</h2>
+<ul>
+ <li><a id="d17-seminar" name="d17-seminar"></a>
+  [phys]
+  グループセミナー
+ <ul>
+  <li>今週は明日からの workshop のために、木曜から火曜に変更。
+   あと、９月までセミナーは夏休みだって。</li>
+  <li><a href="diary2007_09.html#d13-seminar">9/13/2007</a>:再開。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>maxima で Λm,n の簡単化を模索。
+    いろいろ考えたが、時間切れで、適当なところで切り上げる。</li>
+   <li>m2c.py を新しい出力形式に対応させる。</li>
+   <li>結果を C に実装。１１次まで、FTS まで(mono-slip)。
+    XA では、前の実装との比較済み。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d16" name="d16"></a>7/16 (Mon)</h2>
+<ul>
+ <li>今日は曇空、少し過ごしやすい(湿度はその分高めだが)</li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>maxima で no-slip, slip とも FTS まで組む(mono-slip)。
+    チェック済み。</li>
+   <li>Felderhof の parameter を検証。
+    簡略化には貢献しないので、今のままで行く。</li>
+   <li>結果をノートにまとめる。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d15" name="d15"></a>7/15 (Sun)</h2>
+<ul>
+ <li><a id="d15-8306" name="d15-8306"></a>
+  時計、 8306 を overhaul
+ <ul>
+  <li><a href="diary2007_06.html#d19-watch">前</a>に手に入れた
+   薄型の automatic。こいつはこれまで触って来たものと違い、初体験。
+   しかもカンペ(seiko の technical document)が見当たらなかったので、
+   一歩々々慎重に進めなくてはならず、疲れた。
+   幸い、部品の紛失(落したり、飛ばしたりって奴)も発生せず、何とか組み上げられた。
+   こいつ、手巻きが付いているのだけど、これが異常に重たい。何か変なことしてるかな？</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d14" name="d14"></a>7/14 (Sat)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>定式化。
+    slip の初期条件を計算。
+    足りなかった E 問題を済ませる
+    (m 依存性が無いので X,Y,Z どれでも同じ)。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>夕方からグループの BBQ
+ <ul>
+  <li>何か最近 event 尽くし。しかし、それはもしかして短い夏を楽しまないと、
+   あっと言う間に冬になってしまうことの暗示かと思ったり。</li>
+  <li>家の人はここ数日の猛暑の中の庭仕事でグロッキーとおっしゃるので、単独参加。
+   他にも、家族はすでに vacation に行ってるとかいう人達も数人。
+   やっぱりそういう時期らしい。</li>
+  <li>久しぶりに alchohol を摂取。しかし暑かった。</li>
+  <li>当初は、部外者はみんな international だねと口をそろえていたけれど、
+   後半、ふと気が付くと、大量のウクライナ勢に日本人３人という構図になっていた。
+   あちらの伝統はよく分からないが、宴は endless な雰囲気だったので、適当に退散した。
+   あの後、いつまで続いたのだろう？</li>
+  <li>london の研究室にもポスドク２人がウクライナ(どっちも台湾に居た経験がある)、
+   ボスの旦那もウクライナ系だったような。ウクライナ人の研究者に会ったのはカナダが
+   はじめてだったけど、 edmonton はまた特に多いようだ。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d13" name="d13"></a>7/13 (Fri)</h2>
+<ul>
+ <li><a id="d13-farewell_lunch" name="d13-farewell_lunch"></a>
+  送別昼食会
+ <ul>
+  <li>同じグループのポスドクの送別会を兼ねて、昼食を食べに皆で出かける。
+   上を除いてほとんどのメンバーが居たみたいで、総勢１６人(だったかな)。</li>
+  <li>聞けば、彼はここは１年で、今度はオーストラリアだそうだ。
+   そこもポスドクらしいけれど benefit とかも付いてて、今よりも待遇はいいらしい。
+   母国にも近いようだし、気候もここほど寒くないようで、 happy そうだ。</li>
+  <li>寿司を食べながら、国際的な放浪研究稼業についてとりとめもなく喋る。
+   年金とか、融通のきく国ときかない国とか。そもそも団体交渉力が脆弱な階層であり、
+   まぁ普通に言って、とても大変である。</li>
+  <li>その彼は、実は学位を twente で取ったそうで、何というか、
+   世界は狭いという感じがする。</li>
+  <li>しかし今日の集い、彼の送別会なのか、みんなで寿司を食べる会なのか、
+   よく分からなかった。そういうものなのだろうか？
+  <ul>
+   <li><a href="diary2009_01.html#d15-farewell_dinner">1/15/2009</a>:
+    自分の番。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>定式化。
+    maxima で、まず no-slip を全て書く。
+    slip の初期条件を計算(途中)。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>今日もまた時計が届いた。
+ <ul>
+  <li>貧乏なのに、ちと買い過ぎ。
+   だが 6138 と 4006 が (それぞれ) \$100 以下で買えるチャンスは、
+   最近なかなか無いので……(と言い訳)。</li>
+  <li>4006 はちょっとくたびれているけど、前の奴とは違って、
+   きちんと date が pusher で進められる。</li>
+  <li>6138-0011 は、実はケースだけなぜか別に持っていて、
+   前から欲しいと思っていたモデル。
+   dial の赤が飛んでしまっているが、状態はとてもよいもの。
+   bezel は回転するのかと思ってたけど、そうではなかった。</li>
+  <li>bezel と言えば、別に持ってる 6138-3000 が、ひどい状態で、
+   crown (originalではない) は stem に半田付けかな、しかも少し angle が付いてるし、
+   automatic plate のネジが紛失したようで、足りない部品は知らん顔して恐怖のボンド攻撃、
+   ダイアルも足が切られててボンド、おまけに bezel までケースにボンド。
+   この bezel は、本来、どうやって固定するのだろうかと、ずっと悩んでいる。
+   グッと押し込むとパチンとはまるのかと思ったけど、そうでもなさそう……
+   それとも、押し込みが足りない？</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d12" name="d12"></a>7/12 (Thu)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>m2c.py の改良。高次まで含め、全て対応。但し mono-slip まで。
+    mono-, poly-disperse でチェック終了。</li>
+   <li>定式化に戻る。
+    maxima で YA を実装、チェック済み。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>前にもらっていた RISM の文章を印刷しておく。</li>
+ </ul>
+ </li>
+ <li>今日も一つ時計が届いた。
+ <ul>
+  <li>これも cuckoo だけど、オルゴールが付いている奴。
+   外装はこっちの方が better だけど、こっちは鎖が一つだけで、
+   pendulum も weight も何も無い。 bellow もないのは、そういうものなのかな？
+   良く分かっていない。扉が二つあって cuckoo の他におじさんも出て来るみたい。
+   どう機能するのかは、まだ不明。</li>
+  <li>ちなみに昨日の奴は、現在もコート掛けにかかった状態で、５倍速でどんどん稼働中。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d11" name="d11"></a>7/11 (Wed)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>厳密解の実装に向けて、m2c.py の改良。
+    maxima の出力形式が(高次だと式をまとめたりされるので)面倒、何かと苦労する。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>共同研究者と議論
+  <ul>
+   <li>グループの molecular level の計算コードをもらう。
+    これを使って hydro と繋ぎましょうという話。</li>
+   <li>予定が遅れているので、気を引き締めて。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d11-watch" name="d11-watch"></a>
+  また時計が届いた。
+ <ul>
+  <li>一つは(前に買ったことのある)フィリピンから 8110,
+   もう一つはアメリカからやってきた(無惨に壊れている) cuckoo clock.</li>
+  <li>腕時計もマンネリ化してきたので(慣れて来た、の意)、
+   別の方向の一つということで、家に一つあってもいいかな、と cuckoo clock に手を出した。
+   当然、 mechanical movement な奴。実は、前に london に居るとき、
+   movement だけは手に入れていたのだけど、
+   何がどうなって、全体として機能するのか、さっぱり見当も付かなかったので、
+   ボロでも一つ形になっている奴を手に入れようと落したもの。
+   競り値の何倍もの送料を取られたけど、きちんと weight も含まれていたので、
+   まぁ妥当なところだろう。
+   フイゴが破れている bellows を二つともはずして
+   (しかし木ネジで思いっきり固定されていて、
+   そこに小さいけど穴は開いてるし、おまけに少し割れかかってる……
+   これくらいのアバウトさで OK な世界も、気楽でいいな)、
+   鎖をただしく掛けて、 weight を下げると、 movement は問題なく動きはじめた。
+   正時と３０分には正しく cuckoo も出て来て、 hummer も振れた
+   (裏蓋をはずしているので、 gong が鳴るのはまだ聞いていない)。
+   pendulum がないので時間は５倍くらいで進んでる。
+   このブツは、どうも落下したみたいで、外装の飾りがバラバラに割れている。
+   しかし、安物なのか知らないが、木工のレベルは極めて悪い。
+   ここら辺に凝るというのも一つの方向性なんだろう。</li>
+  <li>ちなみに、マンネリ化打破のもう一つの方向性は、
+   不動品の再生プロジェクト。欠落部品とかあると簡単には手が出ないけど
+   (技術を上げて、別作できるようになるのは、遠い夢だが)、
+   よい部品屋を見つけてあるので、今後はこっちに進めてみようと思っている
+   (ボロ時計購入はしばらく止めて)。</li>
+  <li>もちろん、 watchmaking の究極のゴールは、
+   scratch から全部自分で作ること。
+   例えば馬鹿みたいに高い perpetual calendar とか minute repeater とか、
+   機構は分かっているのだから、
+   自作するのは不可能ではなかろうと、心の片隅で思ってる。
+   有限の時間と衰える肉体で可能かという現実的な問題はあるけど。
+   実際、最近、視力に不安を感じつつある(まぁ起きてる時間のほとんどを、目前２０センチ先の
+   LCD を凝視続けているので、一種の職業病だろうけれど)。これで手先が不安になったりすると、
+   まぁ無理だよな
+   (と、先日の<a href="diary2007_06.html#d25-age">計算の出来ない研究者</a>
+   と似たようなことを考えたり)。
+   やりたいことは、やりたいときに、やったほうがよい。</li>
+  <li>8110 の方は、現物をみて CITIZEN の emblem が欠落していることに気づいた。
+   後で web の画像を確認しても、別にごまかしていたりした訳ではなさそう。
+   その他 dial の程度はひどいが、 case も movement も完璧なのでよしとする。
+   あ、ちなみに crown は別物で、小さくて巻きにくい
+   (だいたい 8110 の手巻きは重いけれど)。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d10" name="d10"></a>7/10 (Tue)</h2>
+<ul>
+ <li><a id="d10-feng_etal_2006" name="d10-feng_etal_2006"></a>
+  [phys]ある文献を発見。
+ <ul>
+  <li><a href="http://dx.doi.org/10.1017/S0022112006001066">Feng et al. (2006) JFM vol.563 pp.97-122</a>.
+   その昔 <a href="diary2004_05.html#d4-nonunif">referee にボロ糞に言われた</a>
+   我々の論文に関連した、別のグループの論文。
+   reject 食らった私の<a href="diary2004_03.html#d5-nonunif">JHU の第２報</a>
+   が深く関連しているのだが、あれは結局日の目を見てない。
+   (まぁ我々も掘り下げが足りなかったとは思うが。)
+  <ul>
+   <li><a href="diary2010_10.html#d9-haruki">10/9/2010</a>:
+    ちょっと昔を振り返ってみた</li>
+  </ul>
+  </li>
+  <li>しかし<a href="http://www.ualberta.ca/~ichiki/papers.html#ichiki2004">私の論文</a>の reference が間違っている。本文中は正しいのに。
+   これでは ISI の web of science を使っても読者は論文にたどり着けない……。
+  <ul>
+   <li><a href="diary2008_09.html#d2-jcr">9/2/2008</a>:
+    journal citation report と被引用数。</li>
+  </ul>
+  </li>
+  <li>その鬼のような referee が「仲間内でしか引用されないような糞論文」
+   と言っていたこともあって、うれしくなって、ちょっとばかり宣伝した。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>速度場の多重極展開を、１体問題の厳密解から逆に辿って、 FTS まで書き出す。
+    Faxen も推察(厳密な導出は後で)。</li>
+   <li>厳密解に戻る。
+    係数 f の実装を目指す。
+    maxima の結果から C の code を吐く script を python で書く。
+    低次は work するが、高次だと maxima が式をまとめるので
+    parsing がなかなか難しい……</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d9" name="d9"></a>7/9 (Mon)</h2>
+<ul>
+ <li>今日は肌寒い。風も強い。
+ </li>
+ <li><a id="d9-diary" name="d9-diary"></a>
+  日記の upload がまた滞っている。
+ <ul>
+  <li>今見たら<a href="diary2007_06.html#d17">6/17</a>分までしか上がってない。
+   日々手元に書き貯めているけれど、やっぱり、それはそれ、
+   最終的に表に出してもよい状態に仕上げる時間が、最近取れなかった。
+   どれくらいの人達に心配をかけていたか知らないけれど、
+   なかなか日々淡々と暮らして行くことは難しい。</li>
+  <li>毎日必ず、継続して書くということは、
+   これもやっぱり森博嗣によって肯定的に考えるようになったこと。
+   (まぁ彼のは「商品」としての「目的」がある訳だが。)
+   ざっと見ると
+   <a href="diary2006_11.html#d13">11/13/2006</a>から
+   「毎日」続いているようだ。</li>
+  <li><a href="diary2007_05.html#d19-diary">5/19/2007</a>:
+   日記の更新が滞っている。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>境界条件に使う３つの scalar について、ノートに決定稿をまとめた。</li>
+   <li>slip の１体問題の解を書き下す。問題無し。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d8" name="d8"></a>7/8 (Sun)</h2>
+<ul>
+ <li><a id="d8-7005_2000" name="d8-7005_2000"></a>
+  久しぶりに時計に触る。
+ <ul>
+  <li>
+   <a href="images/20070708-7005-2000.jpg">
+    <img src="images/20070708-7005-2000_t.jpg"
+     align="right" /></a>
+   昨夜、寝る前に開けた 7005-2000 を、一通り分解して、清掃して、組み立てた。
+   もとの状態が、特にケースとダイアルがひどいので、そんなに見栄えはよくならないが、
+   きちんと動く状態にすると、それだけで気分はよい。
+   こいつ、movementはダイアル面から取り出すタイプのケース。
+   メッキは stainless steel と違って、地金が見える程擦り切れたら見るのも哀しくなる。
+   (stainless steel なものは、業者がこれでもかと磨き上げたりする
+    (削るに近かったりするのかな)ので、
+    それはそれで悲しい状態なのかもしれない。)
+   それ位、長く使われることは想定されていなかいということなのだろう。
+   こういう状態のものの再生に、
+   簡単メッキ・キットみたいなのを使ったりしている人も居るみたいだが、
+   さすがにそこまで手はまわらない。
+   同じ型をwebで検索してみたら、皆さんとてもきれいなものを持っていらっしゃる。
+   うらやましい。
+   こいつ automatic だけど、手巻きが付いていないので面倒だ。
+   最近、手持ちの可動な時計のネジ巻きが毎日の朝の儀式になっているけど
+   (１０分くらいはかかるかな)、こういうタイプはケースをしばらく振らないといけない。</li>
+  <li><a href="diary2007_06.html#d8-watch">6/8/2007</a>:
+   シンガポールから。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d7" name="d7"></a>7/7 (Sat)</h2>
+<ul>
+ <li>出不精な人間なので、午前中に気合いを入れて買物に出かける。
+ <ul>
+  <li>ちなみに「気合い」の入れ方は、「腹が減ったので外食するぞ！」という、
+   一番効果的なやつを使ってみた。</li>
+  <li>しかし、おかげて、３時ごろに帰宅後、今日一日終わった感じ。</li>
+ </ul>
+ </li>
+ <li>日本の TV 番組を見る。
+ <ul>
+  <li>情熱大陸を２本(いつ頃のものか良く分かってないが)。
+   どちらとも音楽系。一人はアンジェラ・アキ、もう一人は菊地成孔。</li>
+  <li>どちらも「日記をまめに書く」ということを強調していた
+   (のは演出なのかどうか知らんが…)。</li>
+ </ul>
+ </li>
+ <li><a id="d7-twobody" name="d7-twobody"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>ここまで来たら拡張簡単、
+   dropletの場合を考えてみる。
+   (昔、試みて結局<a href="diary2002_02.html#d6-alf">中座してた</a>ネタ。)</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d6" name="d6"></a>7/6 (Fri)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>maxima で programming.
+    例の簡単な漸化式の解が Keh-Chen と一致することを確認。
+    slip length が違う場合の解を書いてみる (XA部)。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d5" name="d5"></a>7/5 (Thu)</h2>
+<ul>
+ <li>また別の約束で、今日も(比較的)早起き。
+ <ul>
+  <li>予想を越えて時間を食ってしまったが、まぁそれはそういうことで。天気がよい。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://www.cein.ualberta.ca/research/nint/theory-modeling-group/seminar/index.html">グループ・セミナー</a>。
+ <ul>
+  <li>分野違いで、(守秘義務とかで)詳細がはぶかれると、
+   ほんとうにチンプンカンプンであった。
+   まぁ、このグループの幅広さは毎回実感できているので、それが収穫か。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>漸化式に突入。
+    Keh-Chen より簡単な式を見つけた。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d4" name="d4"></a>7/4 (Wed)</h2>
+<ul>
+ <li>約束があると思って早起きして出かけるが、間抜けなことに昨日だった。
+ <ul>
+  <li>私は当事者ではなかったので、そもそもテキトーだったけど。
+   それに、おかげて比較的早起きできたので、よしとしよう(でも、とても眠かった…)。</li>
+ </ul>
+ </li>
+ <li><a id="d4-report" name="d4-report"></a>
+  [phys]毎月恒例、月刊レポートを書く。
+ <ul>
+  <li>back-numbers:
+  <ul>
+   <li><a href="diary2007_04.html#d3-ryuon">4/3/2007</a>: ４月号</li>
+   <li><a href="diary2007_05.html#d1-report">5/1/2007</a>: ５月号</li>
+   <li><a href="diary2007_06.html#d1-report">6/1/2007</a>: ６月号</li>
+   <li><a href="diary2007_07.html#d4-report">7/4/2007</a>: ７月号</li>
+   <li><a href="diary2007_08.html#d1-report">8/1/2007</a>: ８月号</li>
+   <li><a href="diary2007_09.html#d6-report">9/6/2007</a>: ９月号</li>
+   <li><a href="diary2007_10.html#d1-report">10/1/2007</a>: １０月号</li>
+   <li><a href="diary2007_10.html#d31-report">10/31/2007</a>: １１月号</li>
+   <li><a href="diary2007_11.html#d30-report">11/30/2007</a>: １２月号</li>
+  </ul>
+  </li>
+  <li>ボス、および共同研究者にメールしておく。
+   すると程無く共同研究者がやって来る。しばし議論する。
+   主にあちらの進捗状況を聞く。その後が本当の共同研究なので。
+   彼が貯めた山程ある論文のPDFを一式もらう。</li>
+ </ul>
+ </li>
+ <li><a id="d4-rent" name="d4-rent"></a>
+  夕方、大家が現れる。
+ <ul>
+  <li>フフフ、来ると思っていたよ、目的はチェックだろ、という感じ
+   (先月分までしか手渡していなかった)。
+   色々な意味でナーナーなんだが、それが悪いとも言えるし、良いとも言える。</li>
+  <li><a href="diary2007_08.html#d2-rent">8/2/2007</a>: ８月分。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d3" name="d3"></a>7/3 (Tue)</h2>
+<ul>
+ <li>ということで、今日は休暇開け。
+ <ul>
+  <li>頭がすっきりしないのは、そのせいか、それともここ数日の進展状況のせいか？</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>p部の div の係数の計算ではまっている。
+    もう時間切れなので、ほとんど追い詰めることを諦めていたのだが、
+    最後にもう一度、別の方法でやってみる。
+    すると違う形になった(これは良いサイン)。
+    maxima さんにお伺いをたてると、やっと期待する答えが出て来た。</li>
+   <li>もう一つの懸案(「構造的に怪しい」部分)
+    rot のq部も詰める、もしかしたら何かmiracleなキャンセルとか出るのかな、と。
+    すると期待通り、二つあった項のうち一方が消えた。
+    しかし、残った方の答えがまだおかしい。
+    ここまで来たのならと執念で手繰って行くと、
+    元の計算に間違い発見。
+    一瞬、先の奇跡が消えるかと焦ったが、そいつは依然生き残り、大団円。</li>
+   <li>最後の最後、境界条件の式まで持って行くと、
+    Keh-Chen の表式は完璧に正しかった。
+    ただ１点、粒子指数の付き方に違いがあっただけ。
+    (うれしいような、悲しいような…)</li>
+   <li>self の slip の記述も詰めて、
+    この時点でノートを登録
+   <ul>
+    <li><font color="green">
+     twobody.tex: 1.1 2007/07/03 22:57:30 ichiki Exp</font></li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d2" name="d2"></a>7/2 (Mon)</h2>
+<ul>
+ <li>今日はカナダ・デイの振り替え休日。
+ </li>
+ <li><a id="d2-twobody" name="d2-twobody"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li><a href="diary2007_06.html#d27-twobody">前に見つけた</a> Keh-Chen の間違いは、
+    自分の計算間違いであった。
+    しかし目標の表式は手に入れた。</li>
+   <li>展開後の処理。
+    どうもうまくいかない。
+    構造的に怪しい…</li>
+   <li>このアプローチがきちんとworkするか、速度場で確認計算。
+    昔の自分の結果が出て来なくて焦るが、
+    最近のノートに一ヶ所符号の間違いがあったため。
+    修正したら、きちんとworkした。</li>
+  </ul>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d1" name="d1"></a>7/1 (Sun)</h2>
+<ul>
+ <li>休日
+ <ul>
+  <li>どうりで夜ドンドンとうるさかった訳だ。
+   昨夜もドンドン鳴ってたが、それは前夜際か何かかな。
+   いずれにせよ、家からは音だけで、何も見えない。
+   前のアパートでは、とりあえず見えてたな、そういえば。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>slip の厳密解
+  <ul>
+   <li>p の計算、完了。χ部も程なく完了。
+    次は、球面調和関数展開の適用。</li>
+  </ul>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+</body>
+</html>

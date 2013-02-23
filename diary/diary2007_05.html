@@ -1,0 +1,1873 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="fb:admins" content="712852254" />
+    <title>Open Diary - May 2007</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <link rel="alternate"  type="application/rss+xml" href="diary.rdf" />
+    <script type="text/javascript" src="LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+
+
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2007年5月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+<div class="body">
+
+<br />
+
+
+<h2><a id="d31"></a>5/31 (Thu)</h2>
+<ul>
+ <li><a id="d31-drivers_license"></a>
+  免許の変更
+ <ul>
+  <li>本当に自分でもあきれるが
+   (cf.<a href="#d1-fedex">5/1/2007</a>: first try)、
+   重たい腰を上げて、やっと免許を alberta にする
+   (手続きを済ませる)。</li>
+  <li>プレートも変更しようとしたけど、
+   順番待ちでいつになるか分からんと脅されたので、
+   今度、朝一番に出直すことにする。
+   ちなみに、プレートが今度の私の誕生日に切れる、という deadline が全ての駆動力。</li>
+  <li>一旦家に戻って保険屋に電話したら(こっちも変更しないといけない)、
+   何やらあちらのシステム・トラブルとかで、何も出来ないらしい。
+   いずれにせよ、今日一日で済ませることは原理的に不可能であった訳だ。</li>
+  <li><a href="diary2007_06.html#d4-inspection">6/4/2007</a>:
+   3rd attempt</li>
+  <li><a href="diary2007_06.html#d5-plate">6/5/2007</a>:
+   alberta plate ゲット</li>
+ </ul>
+ </li>
+ <li>備忘録、運転を便利にするから危険になる
+ <ul>
+  <li>運転をしていると、本当に片手を耳に当ててる人が多いと感じる。
+   これは絶対にオートマが悪いと思う。
+   本来、運転を楽にするために導入されたものが、
+   それによって手持ち無沙汰になり、携帯に手を出してるという図式。
+   皮肉といえば皮肉だが、愚かだ。</li>
+  <li>今私が乗ってる車はマニュアルだけど
+   (別に嗜好があってそうしているわけではない。嫌いじゃないけど)、
+   これだと実質、運転しながら飲物も飲めない(町中走行中)。
+   これくらいの集中(専念すること)は、
+   運転という行為の持つ責任を考えると、要求されてしかるべきだと思う、
+   当り前のことだが。
+   極悪非道のように言われる飲酒運転
+   (こっちでもCMでアピールしてる)と全く同じレベルだという認識がないのかな。</li>
+  <li>携帯が一種の中毒性を持っているので、
+   原理的に出来ないようにするしか、実際に抑止することはできないだろう。</li>
+ </ul>
+ </li>
+ <li><a id="d31-mgp"></a>
+  プレゼン・データの整備
+ <ul>
+  <li>PDF にしてくれ、という要望があったので、調べてみる。
+  <ul>
+   <li>mgp2ps は、昔よりも随分ときれいな絵が出来るけど、
+    イメージのスケールがちょっとずれるのかな？</li>
+   <li>なので、<a href="http://member.wide.ad.jp/wg/mgp/">magicpoint</a>
+    が作ってくれた jpeg (-D option) を直接まとめる方向でいく。</li>
+   <li><a href="http://koan.studentenweb.org/software/">jpeg2pdf</a>
+    という奴を ports で入れる。まぁこれで十分だ。</li>
+  </ul>
+  </li>
+  <li>ついでに、前のプレゼンでも作った flash を作ろうと昔の記述を探す。
+  <ul>
+   <li><a href="diary2003_09.html#d17-ming">9/17/2003</a>
+    にある通りで問題ないけど、今回は pdf からじゃなくて
+    <a href="http://member.wide.ad.jp/wg/mgp/">magicpoint</a>
+    の作った jpeg からなので、一応手順を書いておく。</li>
+   <li>1) jpeg は JPG という directory を掘って入れておく</li>
+   <li>2) <a href="http://www.swftools.org/">swftools</a> を
+    ports で入れおく。</li>
+   <li>3) SimpleViewer.swf, PreLoader.swf, loading.swf を <a href="http://www.quiss.org/swftools/pdf2swf_usage.html">pdf2swf usage</a> からもらって来ておく。</li>
+   <li>その後、
+   <pre>
+jpeg2swf -o 20070524.swf JPG/*.jpg
+swfcombine -o 20070524_with_viewer.swf SimpleViewer.swf viewport=20070524.swf
+swfcombine -o 20070524_with_viewer_loader.swf PreLoader.swf loader=loading.swf movie=20070524_with_viewer.swf
+swfcombine --dummy `swfdump -XY 20070524.swf` 20070524_with_viewer_loader.swf -o 20070524_resize.swf
+   </pre>
+   </li>
+   <li>最後の 20070524_resize.swf が最終生成物。</li>
+  </ul>
+  </li>
+  <li><a href="diary2008_01.html#d10-seminar">1/10/2008</a>: seminar.</li>
+  <li><a href="diary2008_09.html#d8-seminar">9/8/2008</a>:
+   seminar at chem, UofA.</li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>0) 仕事
+  <ul>
+   <li>共同研究者と議論。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d31-report"></a>
+  [phys]今月の月刊レポートをまとめる。まだ途中
+ <ul>
+  <li><a href="diary2007_06.html#d1-report">6/1/2007</a>: 書き上げた。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d30"></a>5/30 (Wed)</h2>
+<ul>
+ <li><a id="d30-watch"></a>
+  昨日、時計が届いた。
+ <ul>
+  <li>
+   <a href="images/20070530-6138-8030.jpg">
+    <img src="images/20070530-6138-8030_t.jpg"
+     align="right" /></a>
+   昨年の夏以降、バタバタしていて遠ざかっていたが、
+   edmonton に落ち着いてはじめてのブツ。</li>
+  <li>
+   はるばるインドから。ものは seiko 6138.
+   おそらく crown と pusher (あと bracelet も) は original ではなさそうだが、
+   全体になかなかよい状態のものだ。
+   送料込みで \$94.23 CAD. まずまずお買い得だろう。</li>
+  <li><a href="diary2007_06.html#d1-watch">6/1/2007</a>: 4006</li>
+  <li><a href="diary2007_06.html#d8-watch">6/8/2007</a>:
+   8100, 7005, 6119, 2418</li>
+ </ul>
+ </li>
+ <li><a id="d30-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>共同研究者用のノート執筆。
+  <ul>
+   <li>昨日の続き。とりあえず書くことは書いて、この段階で渡しておく。</li>
+  </ul>
+  </li>
+  <li>0) 仕事
+  <ul>
+   <li>まず、何でも良いから結果を出してみる。</li>
+   <li>libstokes のコードに bug 発見。</li>
+   <li>visualization も、見やすいように手を入れる。</li>
+   <li><a href="diary2007_11.html#d27-nano">11/27/2007</a>: 再開。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d30-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bug fixed on bonds.c
+  <ul>
+   <li>周期系での処理。</li>
+   <li><a href="diary2008_01.html#d21-nano">1/21/2008</a>:
+    FENE で似たようなトラブル（無事 debug 済み）。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d29"></a>5/29 (Tue)</h2>
+<ul>
+ <li><a id="d29-mitsuhiro"></a>[blog]
+  「<a href="http://mitsuhiro.exblog.jp/6199328/">シンポジウム、学会の存在の効用、家具の衝動買い</a>」@mitsuhiro(<a href="LOCAL/20070529-mitsuhiro-6199328.html">lc</a>)
+ <ul>
+  <li>引用
+  <blockquote>
+   学会の存在の効用は、このような年会だけやってるのが、一番無難だと思います。
+   学会ゴロを作らないこと、これが一番大切です。
+  <br /><br />
+   学会ゴロという言葉を知らない若い人のために説明しますと、学会ごろつきの略称です。
+   特に学会の会長とかその周辺がなんらかの権力をふるい出すと、
+   ほんとうにろくなことがありません。
+   ……
+  <br /><br />
+   だから、わたくしも自分の研究者の一生とも言われるような期間、
+   そのような一種の「学会談合」がおきないような学会であらねばならない、
+   と不断に努力してきたものです。
+   ……
+  <br /><br />
+   つまり、学会の権威とか結束力とかそういう類のものは言葉が汚くてすみませんが、
+   「くそくらえ」という気持でした。
+   <em>研究者ひとりひとりが強ければいいはずです</em>。
+  <br /><br />
+   しかし、最近またぞや、そのあたりが非常に怪しくなってきています。
+   ……
+   個人よりも、学会のほうが安心できる、世の中らしいです。
+   わたくしなぞは、学会を代表してものをいう連中が
+   もっともまずい連中という信念でずっときたものですから。
+  </blockquote>
+  <ul>
+   <li><a href="theorems.html#goro">定理</a>にした。（2007/09/18）</li>
+  </ul>
+  </li>
+  <li>同感。「研究者ひとりひとりが強ければいいはず」だけど、
+   心細いから、あるいはもっとひどい場合は、一人じゃ何も出来ないから、
+   という理由で集まった集団ってのは、意味がない
+   (ってことは<a href="#d22-mitsuhiro">この間</a>の繰り返しだ)。
+  <ul>
+   <li><a href="diary2005_04.html#d3-snap_judgement">4/3/2005</a>:
+    人間、複数になると危なくなる。</li>
+  </ul>
+  </li>
+  <li>世間で「偉い」っていうのは management する層を指すけど、
+   それって要するにマネージャー(学校のクラブとかの)に過ぎないと思ってる。
+   その人が「本当に偉いんだ」と思いはじめると、困ったことが起きると思う。
+  <ul>
+   <li>一般論としては、「偉そうな人」には係わらない方がよいってことになるのかな。
+    <a href="#d26-senken">5/26/2007</a>の話も、私の中では本質的に同じこと。</li>
+   <li><a href="diary2007_04.html#d1-ten_years">4/1/2007</a>:
+    マネージングという仕事</li>
+  </ul>
+  </li>
+  <li>一瞬「学会ロゴ」を作ったらダメなのか、
+   そういえば物理学会はこのあいだ作ったばかりだなとか思ったのは内緒。</li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>共同研究者と議論。あちらの方向性を聞く。</li>
+  <li>compressibility
+  <ul>
+   <li>更に文献収集。一通り目を通す。
+   <li>共同研究者用のノート執筆。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d28"></a>5/28 (Mon)</h2>
+<ul>
+ <li>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20070528-00000024-mai-soci">＜ＺＡＲＤ＞坂井泉水さん死去　病院のスロープから転落</a>」@yahoo(<a href="LOCAL/20070528-yahoo-20070528-00000024-mai-soci.html">lc</a>)
+ <ul>
+  <li>「<a href="http://headlines.yahoo.co.jp/hl?a=20070529-00000000-sanspo-ent">ベールに包まれた坂井さんの生涯…素顔はシャイで気配りの人</a>」@yahoo(<a href="LOCAL/20070528-yahoo-20070529-00000000-sanspo-ent.html">lc</a>)</li>
+  <li>「<a href="http://headlines.yahoo.co.jp/hl?a=20070528-05273416-jijp-soci.view-001">ＺＡＲＤの坂井泉水さん死去</a>」@yahoo(<a href="LOCAL/20070528-yahoo-20070528-05273416-jijp-soci.view-001.html">lc</a>)</li>
+  <li>折しもテレビの古い「コナン」を見てたりした。</li>
+ </ul>
+ </li>
+ <li><a id="d28-reading"></a>[phys]お勉強
+ <ul>
+  <li><a href="diary2007_04.html#d23-reading">4/23/2007</a>
+   に借りた本の期限が来た。
+   その直後、目を通しただけで、手が回ってないなぁ。
+   online で renew しておく。</li>
+  <li><a href="diary2008_01.html#d29-reading">1/29/2008</a>:
+   歴史は繰り返す……。</li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>compressibility
+  <ul>
+   <li>文献探し。
+    記憶にある所から、芋づる式に膨大な数。流体おそるべし。
+    一通り目を通す。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>mobility in FTS
+  <ul>
+   <li>1) Batchelor-Green 1972
+   <ul>
+    <li>相反定理、ノート改訂。</li>
+    <li><font color="green">shear.tex: 1.5 2007/05/28 22:47:45 ichiki Exp</font></li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d27"></a>5/27 (Sun)</h2>
+<ul>
+ <li><a id="d27-senya"></a>
+  [blog]
+  「<a href="http://www.isis.ne.jp/mnn/senya/senya1186.html">ヘンリー・ペトロスキー 本棚の歴史</a>」@senya(<a href="LOCAL/20070527-senya-senya1186.html">lc</a>)
+ <ul>
+  <li>最近、また更新の頻度が上がって来てうれしい千夜千冊から、久しぶりに引用
+  <blockquote>
+   ひとつはペトロスキーが「コンピュータは福音であるとともに厄災を逃れられない」
+   と書いていることだ。厄災を逃れられないとは、
+   コンピュータはコンピュータ自身によって自分の誤りを気づかないという意味だ。
+   とくに設計がコンピュータに委ねられるようになって、
+   建築現場や工事現場の事故が多くなった。
+   そこでペトロスキーは、それはスリップ・スティックが使えなくなったからだと判断した。
+  <br />
+   　スリップ・スティックとは計算尺のことをいう。
+   かつてはエンジニアの誰もがもっていた武器だ。
+   このエンジニアたちは計算尺が有効数字３桁でしか精度をあらわさないことを
+   知ったうえで設計にとりくんでいた。
+   誤差は予想のなかなのだ。ところがコンピュータになって、
+   <em>この感覚が失われた</em>。
+   コンピュータが正しい計算をしていると思いこむばかりか、
+   自分も正しいと思ってしまう。ペトロスキーはそこに文句をつけた。
+  <br /><br />
+   　もうひとつは、『人はだれでもエンジニア』の最後の最後に、
+   ジョージ・サンタヤナの次の言葉を引いていることだ。
+   サンタヤナは『理性の生命』にこう書いていた。
+   「過去を記憶できない者は、罰として過去を繰り返す」。
+  <br />
+   　ペトロスキーはこの一文をあるところに見つけて、感動をおぼえ、
+   それが原文でどんな文脈にあるのかを調べた。そうしたら、その手前にこうあった。
+   「進歩とは、およそ変化からなるものとはほど遠く、よき記憶力によるものである」と。
+  </blockquote>
+  </li>
+  <li><a href="theorems.html#progress">定理</a>に追加。</li>
+  <li>やっぱり人間はどんどん機能低下している。
+   自分でもそのことは感じるが、それが経年変化なのか便利さから来る退化なのか、
+   判然とはしない。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d26"></a>5/26 (Sat)</h2>
+<ul>
+ <li><a id="d26-senken"></a>
+  [blog]「<a href="http://diary.nttdata.co.jp/diary2007/05/20070521.html">ひとりの充実(駒沢敏器)</a>」@senken(<a href="LOCAL/20070526-senken-20070521.html">lc</a>)
+ <ul>
+  <li>引用
+  <blockquote>
+   男性はやはり料理ができなくてはいけないと、僕は強く思う。
+   その方が便利だとか、女性の責務を軽減することができるとか、
+   そのような実際的な理由もあるが、何よりも重要なのは「自分のことは自分でこなす」という、
+   自明なまでの自己責任だ。ここを棚上げにしたまま、他人と関係をつくってはいけない。
+   自分がしなくても誰かがすればいい、という責任放棄だけは、
+   相手のためという以上に自分のためにしない方がいい。
+  </blockquote>
+  </li>
+  <li>同感。料理の他に、あと「トイレ掃除」も入れたいね。
+  <ul>
+   <li><a href="diary2007_06.html#d11-wc">6/11/2007</a>:トイレ詰まり解消</li>
+  </ul>
+  </li>
+  <li><a href="diary2007_02.html#d24-cooking">2/24/2007</a>:
+   料理をするということ</li>
+  <li><a href="#d29-mitsuhiro">5/29/2007</a>:
+   学会ゴロ(柳田充弘)</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>mobility in FTS
+  <ul>
+   <li>1) Batchelor-Green 1972
+   <ul>
+    <li>相反定理、古い文献を印刷。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d25"></a>5/25 (Fri)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>bug 発見 on periodic poly
+  <ul>
+   <li><a href="#d24-seminar">セミナー</a>用にデモを作ろうとしてて発見したもの。</li>
+   <li>おかしな結果を解析、あたりを付けてソースを見ると、見込み通り間違い発見。</li>
+   <li>修正すると、今まで出てなかった別の症状(core dump)が出る。</li>
+   <li>押えて行くと、実装時に省略できると思って table を準備していなかった状況が
+    実は起きていた、というオチ。</li>
+   <li>何事も、実際に動かしてみないと分からない、ということ。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>研究の打合せ
+ <ul>
+  <li>何というか、communicationは難しいものだな、と感じた。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d24"></a>5/24 (Thu)</h2>
+<ul>
+ <li><a id="d24-seminar"></a>[phys]
+  <a href="http://www.cein.ualberta.ca/research/nint/theory-modeling-group/seminar/index.html">group seminar</a>, 私の番
+ <ul>
+  <li>準備で丸二日を潰してしまった。audienceの背景が未知数だったけれど、
+   最低限の情報は伝わったのではないかな。</li>
+  <li>いつものように<a href="http://www.ualberta.ca/~ichiki/seminars/index.html">ここ</a>に置いておく。</li>
+  <li>帰宅後、一息つく。これでやっと 24 が見れる。</li>
+  <li><a href="#d10-seminar">5/10/2007</a>:グループセミナー</li>
+  <li><a href="diary2007_12.html#d4-seminar">12/4/2007</a>:
+   グループセミナー、セカンド・ラウンドへ。</li>
+  <li><a href="diary2008_01.html#d10-seminar">1/10/2008</a>:
+   グループセミナー、セカンド・ラウンド、発表。</li>
+  <li><a href="diary2008_04.html#d3-eof">4/3/2008</a>:
+   グループセミナー、３回目の発表。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d23"></a>5/23 (Wed)</h2>
+<ul>
+ <li><a id="d23-preparation"></a>
+  明日のセミナーの準備
+ <ul>
+  <li>で丸々潰れて、きちんと american idol を見れなかった(と、
+   <a href="diary2007_04.html#d24-tax">また</a>言っている)。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d22"></a>5/22 (Tue)</h2>
+<ul>
+ <li><a id="d22-mitsuhiro"></a>
+  [blog]「<a href="http://mitsuhiro.exblog.jp/6149127/">最近のヒット数、京大宇治時代？</a>」@mitsuhiro(<a href="LOCAL/20070522-mitsuhiro-6149127.html">lc</a>)
+ <ul>
+  <li>時々出て来るブログの「ヒット数」のネタ。
+   私はいつも一日一回のペースで見に行ってるので、この増減には関与していないのだけど、
+   自分で怒るよりも人に怒ってもらいたい人達の存在を感じる。
+  <ul>
+   <li>人気者になるための一つの鍵は、そういう大衆の怒りを感知し、
+    それを煽動することか。</li>
+   <li>個人的には、代弁者というものに対する不信感が強く、嫌いなので、
+    意見や怒りは、その出発点の、個人のレベルに常に置いておきたいと思っている。</li>
+  </ul>
+  </li>
+  <li>付和雷同と言うのだろう。
+   そういう人が何人集まっても、その集団は自立している一人に勝てない。
+   もともと自分の足で立ってる人間が、何かの機会で集まると、
+   何か有意義なことが起こり得るのだろう。
+   (それでも、何も起こらないかも知れないが。)
+  <ul>
+   <li><a href="diary2001_01.html#d17-individuals">1/17/2001</a>:
+    研究グループの activity は加算的ではなく乗算的であるか？</li>
+   <li><a href="diary2001_01.html#d2-takeshi">1/2/2001</a>:
+    漫才ブームという出来事についての北野武の話</li>
+   <li><a href="diary2007_05.html#d29-mitsuhiro">5/29/2007</a>:
+    「研究者ひとりひとりが強ければいいはずです」(柳田充弘)</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>2) 流れ
+  <ul>
+   <li>結果の解析、続き。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>mobility in FTS
+  <ul>
+   <li>1) Batchelor-Green 1972
+   <ul>
+    <li>まず数値的に押えることにする。</li>
+    <li>M^inf のアプローチを組んだ。
+     行列の対称性が破れている。</li>
+    <li>相反定理のおさらい。いくつか古い文献を取って来る。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d21"></a>5/21 (Mon)</h2>
+<ul>
+ <li>今日は休日
+ <ul>
+  <li>テレビにやっと DVD player を接続した。</li>
+ </ul>
+ </li>
+ <li>[FreeBSD] X.org の upgrade の続き
+ <ul>
+  <li>諸般の事情で upgrade 途中で強制終了してしまい、
+   再起動すると(予定通り) X なし環境へ直行してしまった。</li>
+  <li>全 upgrade はやめにして、 X だけまず上げようと予定変更。
+   入ったと思って startx するも module がないと文句を言われる。
+   新しい置き場所は /usr/local/lib/xorg/modules になってた。
+   (単純に X11R6->local ではダメ。)
+   そうしても、何故か i810 はもちろん kbd や mouse まで無い。
+   おかしいと思ったら top level の meta-port である x11/xorg が入っていなかった。</li>
+  <li>これを入れたらとりあえず X が戻って来た。
+   とりあえず、必要そうなものは全部動くようなので、
+   以後の upgrade はボチボチ行こう。</li>
+ </ul>
+ </li>
+ <li><a id="d21-sakai"></a>
+  [news]
+  「<a href="http://www.mainichi-msn.co.jp/photo/news/20070521k0000e040080000c.html">気象観測用気球：風に強い翼形開発　京大チーム</a>」@mainichi(<a href="LOCAL/20070521-mainichi-20070521k0000e040080000c.html">lc</a>)
+ <ul>
+  <li><a href="http://dailynews.yahoo.co.jp/fc/">yahoo news</a>から。</li>
+  <li>「だから何だ」という人もきっと居るんだろうけれど、
+   実際にブツを作ってしまう所がすごいと思う、酒井さん。
+   遥か昔、京大の人環に居たころのセミナーで、
+   地球気象のモデルとして回転系の流動挙動を実際に「見る」ために、
+   回転台に実験系を乗せて回して観測したビデオが記憶に残っている。</li>
+  <li><a href="diary2008_08.html#d14-nishinari">8/14/2008</a>:
+   ニュースに取り上げられる研究について、あれこれ。</li>
+ </ul>
+ </li>
+ <li><a id="d21-schrodinger"></a>
+  シュレーディンガーに引っかかる
+ <ul>
+  <li>ふと本棚に並んでた岩波文庫を手にして、朝永振一郎の以下のフレーズに目が止まる。
+  <blockquote>
+   シュレーディンガーは個性の強い学者である。
+   マトリックス力学の大うずにまき込まれずにこの人一人がドゥ・ブロイの仕事に深く注目した。
+   そして、物質波に対する波動方程式を作り上げ、それを解くことによって量子の問題に
+   答えが与えられることを示した。
+  </blockquote>
+  <ul>
+   <li>「量子力学と私」の中の「物理学界四半世紀の素描」から。
+    (cf.<a href="diary2000_10.html#d11-nobel">10/11/2000</a>)</li>
+  </ul>
+  </li>
+  <li>その後、しばらくして、別の場所に常備してある文庫本を手にして、
+   松岡正剛の以下のフレーズに、やっぱりそうなのかと思う。
+  <blockquote>
+   シュレーディンガーはこのほぼ中間にあって、ほとんどその姿勢をくずさなかった
+   稀有の科学者だった。
+  </blockquote>
+  <ul>
+   <li>(注)
+    量子力学の確立後の展開、
+    片やディラック、アンダーソン、片やパウリ、湯川秀樹があって、という文脈で。
+    (この分け方はピンと来ないけど。)</li>
+   <li>あと、ド・ブロイの方がシュレーディンガーよりも若いことを知った。
+    (「遊学」は年齢順に人物が並んでいる。)</li>
+  </ul>
+  </li>
+  <li>えっと、それだけ。</li>
+  <li><a href="summaries.html#seigow-yugaku">サマリー：「遊学」</a></li>
+ </ul>
+ </li>
+ <li><a id="d21-fujimoto"></a>
+  [blog]
+  「<a href="http://www.ne.jp/asahi/b/monkeybusiness/em0705/junks.html">帰りのバスで「グーグル八分とは何か」（吉本敏洋著）を読了。</a>」@fujimoto(<a href="LOCAL/20070521-monkeybusiness-em0705.html#20070520">lc</a>)
+ <ul>
+  <li>google八分の話。繰り返されるこの辺りのネタに、
+   「じゃあどうするか」という部分の話は何故かあまり目にしない。
+   これも繰り返しだが、自衛手段としてはやっぱり、
+   自分が大切だと思うことには
+   <a href="diary2006_12.html#d25-summaries">自分でリンクを張っておく</a>
+   ことが一番確実な手だろう。
+   世間はどうも、その手間を掛けられないみたいだけど。</li>
+  <li>皆が、与えられたフレームワークの中でどうするかばかり言ってることに、
+   どうなってんだと思う。(中身読んでないけど、
+   チーズが消えたっていうタイトルの本のことをいつも連想する。)
+   無自覚に手足を縛られているってことなのだろうか。
+   自分も気づかない<a href="summaries.html#shikouteishi">思考停止</a>は沢山あるし、
+   岡本太郎の「自由に描くことが一番難しい」という話もそうだなと思ったし、
+   誰だったっけ(hiram bullock?)ジャズ奏者が学校で生徒にアドリブを教えるとき
+   一番大変なのは「イド・ロック」(だったっけ？うろ覚え……
+   無意識に自分を縛る<a href="theorems.html#moral">道徳的観念</a>という感じかな)
+   を解くことだと言ってた。
+   村上春樹の話だったか、学校(高校？)で制服を止めようという機会に対して、
+   やっぱり制服も良いとか言い出して、結局、目の前にやってきた自由を(自分以外の周囲が)
+   取ることをしないかったという話もあったな。
+   不自由は、ある人達にとっては居心地がいいものなのかもしれない。
+   何もやりたいことを持っていない、あるいはまだ見つけていない、
+   というよりも選択することが出来ない、そういう人達。
+  <ul>
+   <li><a href="diary2008_07.html#d27-hiram_bullock">7/27/2008</a>:
+    訃報： hiram bullock.</li>
+  </ul>
+  </li>
+  <li>ネット・サービスを開発しようとする企業は、便利さを売ろうとしてるけど、
+   なんというか便利さってのは、やっぱりある部分の根源的な能力を損なっているという
+   要素があると思う。自転車に乗る人なら分かるだろうけど、
+   雨だからと２、３日バス通にしたり、車買って車通勤したりすると、
+   もう戻れなくなるって話。
+  <ul>
+   <li><a href="diary2005_07.html#d30-hatena">7/30/2005</a>:
+    囲い込みビジネス。</li>
+   <li><a href="diary2008_01.html#d1-blog">1/1/2008</a>:
+    依存したくないという気持ち。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d20"></a>5/20 (Sun)</h2>
+<ul>
+ <li>[FreeBSD] 連休の日曜日、例の upgrade が超ノロマなので、仕事にならず
+ <ul>
+  <li>勝手にやっててもらおうと思ってても、
+   wlan の接続状況が不安定なのか、時々見ると download で止まってたりするし……</li>
+  <li>結局、今日丸一日かかっても終了せず。
+   おまけに説明をきちんと読んでなくて、 gstreamer 全部 upgrade しちまってるし。
+   何か問題が起きるんだろうか？？</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>mobility in FTS
+  <ul>
+   <li>1) Batchelor-Green 1972
+   <ul>
+    <li>computer なしで出来ることをぼちぼちと。</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d19"></a>5/19 (Sat)</h2>
+<ul>
+ <li><a id="d19-diary"></a>
+  日記の更新(というか、upload)が、気が付くと滞ってるな、最近
+ <ul>
+  <li>ユーザー・フレンドリーを考えようとか
+   <a href="diary2006_12.html#d25-summaries">言ってた</a>のに、
+   そういうことが実は一番コストが高いんだなと実感している日々。
+  <ul>
+   <li><a href="diary2007_03.html#d18-social_skill">3/18/2007</a>:
+    雑感、対人インターフェイス</li>
+  </ul>
+  </li>
+  <li><a href="#d3-mori">MORI さんが言うように</a>、
+   「ユーザー・フレンドリー」は考えない方がよいのかな。
+  <ul>
+   <li>2007年05月14日の「<a href="http://blog.mf-davinci.com/mori_log/archives/2007/05/14/index.php">若いヒーロと読解力</a>」@mori(<a href="LOCAL/20070519-mori-20070514.html">lc</a>)にも、似たような statement がある。
+   <blockquote>
+    世の中にはいろいろな人がいる。どうしても肌が合わない人というのは、誰にでもいるものだ。
+    …
+    そういう人とは僕もあまり関わりたくないから、
+    「その人が僕の本を燃やして関係を絶ってくれる」ことは嬉しいことだ。
+     <br /><br />
+    どちらにしても、誤読する人というのは、どう書いても誤読する。
+    …
+    この場合、そのまま誤解してもらって、悪く悪く受け止めてもらって、
+    どんどん離れていってもらうのが望ましい。
+    これも悪い状況でもない（むしろ良い）。不愉快なことでもない。
+    過去10年間、この手法でどんどん良い環境に至っている。
+    <br /><br />
+    嫌いな人に嫌いだと言われるのはプラスだ。
+    嫌いな人から好きだと言われるよりグッドだと思う。
+   </blockquote>
+   </li>
+  </ul>
+  </li>
+  <li>という愚痴はともかく、実情は最近、研究方面で風呂敷を広げすぎて、
+   やりたいことと出来ることのバランスが崩れているせいだろう(作業量の話)。</li>
+  <li>と言っても、書くことに手が回らないというのではない。
+   研究部分は日々記録をつけている。これをしないと何も残らない無駄な作業をしてるだけになる。
+   手が回らないのは、「公開日記」への編集作業。
+   この時間は個人的には結構有意義で貴重なんだけど。</li>
+  <li>世の中、常に忙しくしている人が凄いという雰囲気があるけど(という認識が既に古いかな)、
+   そういうことなんか気にせず、他人からは無価値に見えるけれど
+   <a href="diary2007_01.html#d30-senken">本人にとって大事な部分にきちんと投資する</a>、
+   そういう時間管理、<a href="diary2007_03.html#d7-self_management">自己管理</a>
+   をしていかないといけないんだろう。</li>
+  <li><a href="diary2007_07.html#d9-diary">7/9/2007</a>:
+   また滞っていた。</li>
+ </ul>
+ </li>
+ <li><a id="d19-mori"></a>[blog]
+  「<a href="http://blog.mf-davinci.com/mori_log/archives/2007/05/16/index.php">楽しいエクササイズ</a>」@mori(<a href="LOCAL/20070519-mori-20070516.html">lc</a>)
+ <ul>
+  <li>えっと、また森博嗣さんの日記なんだけど、この今日のエントリーを読む前にちょうど
+   「<a href="http://www.ne.jp/asahi/beat/non/loco/loco00.html">機関車製作部</a>」
+   を眺めてて、「過去の散在」コーナーを見つけて、
+   やっぱりオークションでついつい落してしまうよなぁとか共感しつつ、
+   「<a href="http://www.ne.jp/asahi/beat/non/loco/loco0/index.html">過去の履歴</a>」(<a href="LOCAL/20070519-loco-loco0.html">lc</a>)の記述を見て、のけぞった。
+   (どれくらい本当か分からないが。)
+  <blockquote>
+   キットで５０万円。この購入には、奥様の理解の獲得が必須でした。
+   森の場合、５００円玉を貯金箱に３年間貯めるというデモンストレーションの結果、
+   手に入れました。
+  </blockquote>
+   さて、何日に一回５００円玉を入れたことになるでしょうか？とか書きそう。
+    答えはメールするな、という但し書き付きで。っことではなくて、記憶の片隅には
+   <a href="diary2007_03.html#d27-mori">庭園鉄道のために作家になったという話</a>
+   もあったし、そうか、こういう時代があったんだなと妙に安心したりもしたところだった。
+   その直後だけに、以下の記述に逆方向にのけぞった。
+  <blockquote>
+   小説関係では、相変わらず、仕事を断っている。
+   …
+   いずれも数百万円の小さな仕事で、気楽で楽しそうではあったけれど、
+   それに時間を取られるのは確実なので、いたしかたない。
+   一番大事なのはとにかく時間。捻出するわけにいかないから、
+   整理して、削れるものを削る以外にないのである。
+  </blockquote>
+   桁が違いすぎる。まぁこれを成功というんだろう。
+   <a href="summaries.html#life">人生の主導権</a>は
+   やっぱり(最低限の)お金だなと<a href="diary2003_09.html#d28-mochio">思う</a>。
+  </li>
+  <li>折も折、瀬名秀明さんのサイトも久しぶりに眺めてて、
+   <a href="#d19-sena">色々考えた</a>。</li>
+  <li><a href="diary2008_04.html#d19-mori">4/19/2008</a>:
+   プロフェッショナルというもの。</li>
+ </ul>
+ </li>
+ <li><a id="d19-sena"></a>[blog]
+  「<a href="http://news.senahideaki.com/article/39094472.html">研究者の作法</a>」@senahideaki(<a href="LOCAL/20070519-senahideaki-39094472.html">lc</a>)
+ <ul>
+  <li>引用
+  <blockquote>
+   文芸の世界ではこれらの作法(研究者の作法)は全く通用しないばかりか、
+   むしろこの作法を破らないと生き延びることができない、という現実だ。
+  <br /><br />
+   私はある時期から小説の巻末に参考文献一覧をつけるのをやめたが、
+   これは読者や評論家から強い批判があったためだ。
+   「文献一覧を載せなければ裁判で負けるほど、
+   この本は他の著書からぱくっているに違いない」と邪推されるのである。
+   研究において誠実であることを示す行為は、
+   他の社会にとっては悪事を覆い隠す兆候とみなされる。
+  <br /><br />
+   たぶんまだ多くの科学者は論文を書くときとマスメディアで語るときで
+   「研究者の作法」を変えていて、そのことに全く疑問を感じていないんだと思う。
+   論文は大切だけれど、まあテレビの取材は適当に学生に任せておけばいいよね、
+   忙しいし、という感じになってしまっている。
+   それが「不作法」であることを、科学者はいまどのくらい自覚しているだろう。
+   しかし自覚したとしても、
+   「作法」を守っていたら確実にメディア業界では飢えて死ぬのである。
+  </blockquote>
+  </li>
+  <li>揺れているなと感じた。(良い/悪いではなく。)
+   「小説の巻末に参考文献一覧をつけるのをやめた」ことは、
+   「論文を書くときとマスメディアで語るときで「研究者の作法」を変えて」いることに
+   ならないんだろうか？とか、
+   「「作法」を守っていたら確実にメディア業界では飢えて死ぬ」から、
+   どうするのかとか。</li>
+  <li>個人的には、
+   メディアが腐ってることや、大学が機能不全しているとかは事実なわけで、
+   自分が困ってなければそのまま隠遁するか、
+   自分で拠点を確立するかの選択しかないんじゃないかな。</li>
+  <li>それから、
+   彼が２００６年から東北大の機械工学科の特任教授とやらになっているらしいことを知る。
+   基本的にパンダなんだろうけど(それを承知で
+   <a href="summaries.html#hatahuri">旗振り役</a>
+   を買って出ていらっしゃるのだろうけど)、
+   薬学博士の彼が機械工学？トンペイのサイトはなぜか見えなかった。</li>
+  <li>えっと、個人的には、一山当てた後の身の振り方の一例として、
+   頭の中にカテゴライズされている。
+   <a href="#d19-mori">上の森さんの場合</a>(世間との関係を縮小していく方向)、
+   最近の望夫さんの場合(大学教授を目指さない方向)とかと関連して。
+   (慈善事業に進もうとする bill gates も、その周辺にフワフワしている。)</li>
+  <li><a href="diary2001_01.html#d28-sena">1/28/2001</a>:
+   「課外授業 ようこそ先輩」</li>
+  <li><a href="diary2010_07.html#d18-sena">7/18/2010</a>:
+   瀬名秀明の「八月の博物館」を読了</li>
+ </ul>
+ </li>
+ <li>[FreeBSD]長らく freeze されていた FreeBSD の ports が戻ってきた
+ <ul>
+  <li>X が 7.2 になることによるチェック作業だったらしい。
+   で、早速 background で upgrade していたら、
+   gnuplot が font が見つからないといって使えなくなったので、
+   しばし仕事が中断(そのために、日記の記述が突如充実しているのかもしれない)。</li>
+ </ul>
+ </li>
+ <li><a id="d19-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li><a href="http://ryuon.sourceforge.net/stokes/index.html">stokes</a>
+  <ul>
+   <li>visualization tools の update
+   <ul>
+    <li>stvis-vtk.py で画像出力の追加(--pic)。
+    <ul>
+     <li>基本的に画面キャプチャなので
+      <a href="#d12-nano">5/12/2007</a>
+      と同じ画像を吐く。</li>
+    </ul>
+    </li>
+    <li>stnc2pov.py で粒子に texture を貼る機能追加(--ball)。
+    <br />
+     <img src="images/20070519-stnc2pov.png" />
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d18"></a>5/18 (Fri)</h2>
+<ul>
+ <li>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20070518-00000155-sph-ent">女優の塩沢ときさん死去</a>」@yahoo(<a href="LOCAL/20070518-yahoo-20070518-00000155-sph-ent.html">lc</a>)
+ <ul>
+  <li>引用
+  <blockquote>
+   塩沢さんは３０歳で舌がん、５６歳で右乳がん、７６歳で左乳がんと、
+   ３度に渡ってがんを患ってきたが、３度とも手術で克服。
+  </blockquote>
+   壮絶な人生だったんだな。
+  </li>
+ </ul>
+ </li>
+ <li><a id="d18-crossing"></a>
+  whyte の踏切り
+ <ul>
+  <li>今日通ったときにちらっと見たら、北向きはすぐ先で終わってるみたい。
+   (そうなら、<a href="#d16-crossing">先日</a>の挙動は理解できる。)</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>stokes3
+  <ul>
+   <li>先日の continuation の機能チェック。
+    いくつか trivial なミスを修正し、完全性を確認した。</li>
+   <li>ついでに stncdump.py で quaternion も出力するようにしておく。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>2) 流れ
+  <ul>
+   <li>結果の解析、まず２つ。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d17"></a>5/17 (Thu)</h2>
+<ul>
+ <li><a id="d17-twobody"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>mobility in FTS
+  <ul>
+   <li>今のネタに関して、知合いの論文(Subramanian-Brady, JFM 2005)を見つけて読む。
+   <ul>
+    <li>これは彼の学位論文。ポスドクの仕事の方が先に論文になってるというのは、
+     仕上げるのが大変だったんだろう。投稿から最終版まで２年以上かかってる。
+     こういうのを見ると、なかなか一概に良い/悪いが言えないな
+     (ってのは<a href="diary2007_04.html#d20-email">この辺の話のこと</a>)。
+     しかし結果として、この論文はやっぱりこの辺りの話の milestone の論文に
+     なっている。</li>
+   </ul>
+   </li>
+   <li>1) Batchelor-Green 1972
+   <ul>
+    <li>今日の勉強の結果をまとめる。</li>
+    <li><font color="green">shear.tex: 1.4 2007/05/17 23:17:34 ichiki Exp</font></li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d16"></a>5/16 (Wed)</h2>
+<ul>
+ <li><a id="d16-crossing"></a>
+  今日は whyte で踏切りに止められた
+ <ul>
+  <li>のだけど、何故か先頭車両が 10m くらい踏切りを越えたところで止まって、
+   ありゃりゃと思ってたら引き返して行った。切り返しとかあるわけでもないだろうし、
+   何だったんだろうな。
+   (止まってた時間が３分かそこら、信号と変わらない位だったので lucky だったけど。)</li>
+  <li><a href="#d18-crossing">5/18/2007</a>: 北は行き止まり</li>
+ </ul>
+ </li>
+ <li>[phys]生物流体力学
+ <ul>
+  <li>昨日見つけた文献から、もうちょっと文献収集</li>
+  <li>印刷が出来なくてイライラ(紙じゃないと頭に入らない)、
+   ここの印刷のしきたりをやっと理解する。
+   研究所なんだから、こういうプロセスを研究者に対して最適化しようとか、
+   考えないのかな。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>厳密解の係数の計算。
+   job がまた止まってたので、再投入しておく。</li>
+  <li>mobility in FTS
+  <ul>
+   <li>1) Batchelor-Green 1972
+   <ul>
+    <li>ざっと進めて、 near-field の途中まで目を通す。</li>
+    <li><font color="green">shear.tex: 1.2 2007/05/16 23:28:11 ichiki Exp</font></li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d15"></a>5/15 (Tue)</h2>
+<ul>
+ <li><a id="d15-cdf"></a>
+  備忘録、
+  <a href="http://cdf.gsfc.nasa.gov/">CDF</a>
+  (Common Data Format)なんてのを発見
+ <ul>
+  <li><a href="http://www.unidata.ucar.edu/software/netcdf/">NetCDF</a>
+   との関係は
+   <a href="http://cdf.gsfc.nasa.gov/html/FAQ.html">FAQ @ cdf</a>
+   (<a href="LOCAL/20070515-cdf-FAQ.html">lc</a>)
+   の「8.」にまとめられている。</li>
+  <li>簡単に言うとほとんど同じで、
+   違いは親方が NASA (CDF) か NCAR (NetCDF) かってことかな。
+   あと世の中には NCSA の
+   <a href="http://hdf.ncsa.uiuc.edu/HDF5/">HDF</a>
+   (Hierarchal Data Format) ってのもあるそうだ。こっちはちょっと毛色が違うのかな？</li>
+  <li>使ってみなければ分からないこともあるだろうけれど、
+   今のところ、あえて CDF を使ってみようという動機は、見当たらない。
+  <ul>
+   <li>CDF は multi- and single file filing systems と言うが、
+    マルチに魅力は感じない。(逆にデータが分散する方が、ある意味、混乱しそう)</li>
+   <li>CDF は機械依存しないフォーマット以外に、機械依存フォーマットもあるってのも、
+    「機械依存しないフォーマット」がそもそもこの辺りの data format の要請だと思う。
+    (少なくとも、個人的には。)</li>
+   <li>あと、ものは知らないが HDF から CDF は使えないが、
+    NetCDF は使えるんだそうだ。</li>
+  </ul>
+  </li>
+  <li><a href="diary2004_05.html#d24-doi">5/24/2004</a>: octa の UDF</li>
+  <li><a href="diary2006_10.html#d11-NetCDF">10/11/2006</a>: NetCDF</li>
+ </ul>
+ </li>
+ <li>最近ちょっと働きすぎなので、ペースを落そうと思う。
+ <ul>
+  <li>自分で働かないと成果がでない(健全な)状況なので、
+   自分のトロさにいらいらするけれど、出来ないことを目指しても仕方ないので。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>粒子の向き
+  <ul>
+   <li>st != 0 の回転の運動方程式を正しく定式化する。
+   <ul>
+    <li>ために、力学の教科書を引っ張りだして来る。
+     剛体の力学、回転の自由度の慣性モーメントを、球の場合に一通り自分で計算。
+     なんだ、似たようなことをやってるんじゃん、という感じ。
+     つまり、あれだ、世の中すべて多重極展開。で、原島鮮の結果と一致したので一安心。</li>
+    <li><font color="green">mechanics.tex: 1.1 2007/05/16 06:42:20 ichiki Exp</font></li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>2) 流れ
+  <ul>
+   <li>Batchelor-Green (1972) を読んでて、急に覚醒したので、twobody で引き継ぐ。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]生物流体力学
+ <ul>
+  <li>彷徨っていたら、面白そうな文献を見つけた。
+   abstract しか見れないので、明日読んでみよう。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>現状で追加分を組み込む。
+  <ul>
+   <li>YC 145 まで追加。</li>
+   <li>YH 142 まで追加。</li>
+   <li>XM 139 まで追加。</li>
+   <li>YM 148 まで追加。</li>
+   <li>ZM 154 まで追加。</li>
+  </ul>
+  </li>
+  <li>bull が止まっているので、whale で続きを流しておく。</li>
+  <li>mobility in FTS
+  <ul>
+   <li>もともとの david とのネタ。その後バタバタしてて進んでない奴。
+    nano でやってる流れの話からなぜか「つながってきた」ので、こっちで引き継ぐ。</li>
+   <li>これまでの軌跡とこれからのプランを考える。</li>
+   <li>1) Batchelor-Green 1972
+   <ul>
+    <li>ノート開始。とりあえず一体問題の途中まで</li>
+    <li><font color="green">shear.tex: 1.1 2007/05/15 23:01:21 ichiki Exp</font></li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d14"></a>5/14 (Mon)</h2>
+<ul>
+ <li>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20070514-00000049-mai-soci">＜ジンベエザメ＞「遊ちゃん」死ぬ　大阪の水族館</a>」@yahoo(<a href="LOCAL/20070514-yahoo-20070514-00000049-mai-soci.html">lc</a>)
+ <ul>
+  <li>何か気持ち悪いニュース。引用
+  <blockquote>
+   館水槽での飼育日数は、初代遊ちゃんの３０５３日間に次ぐ、２５０５日間を記録。
+   海遊館には代わりに雄の「海くん」が運ばれ、１０日から一般公開されている。
+  </blockquote>
+   「代わり」の「海くん」は、どこから運ばれて来たのかな。
+  </li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>seminar の abstract を書く。</li>
+  <li>stokes3 の改良
+  <ul>
+   <li>F では flag_q を強制的に 0 にする。</li>
+   <li>結構手間取ったが、 continuation を実装した。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>2) 流れ
+  <ul>
+   <li>N=2 : Batchelor-Green (1972) をざっと眺める。 tough だ。
+    RYUON (Stokesian dynamics)は N=2 で厳密解になる(はずな)ので、原理的に問題ないはず。
+    チェックはしないといけないが。</li>
+   <li>チェックは大事だが boring なので、楽しむために、
+    しばらく色々パラメータを振って遊んでみる。
+    おもしろい。あとできちんと観察日記をまとめよう。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d14-apartment"></a>
+  前のアパートの管理会社からチェックが届いた
+ <ul>
+  <li>これで、 boardwalk との関係は完全に終了。
+   現場のスタッフはかなり事務的であったが、
+   組織としてはきちんと客のことを考えていたという印象。
+  <ul>
+   <li><a href="diary2006_12.html#d12-house_hunting">12/12/2006</a>:
+    アパートの応募書類を提出</li>
+   <li><a href="diary2006_12.html#d13-apartment">12/13/2006</a>:
+    アパート、審査通過</li>
+   <li><a href="diary2006_12.html#d18-apartment">12/18/2006</a>:
+    アパートに入居</li>
+   <li><a href="diary2007_04.html#d29-apartment">4/29/2007</a>:
+    アパートを引き払う</li>
+   <li><a href="diary2007_05.html#d14-apartment">5/14/2007</a>:
+    security depo の払い戻し届く</li>
+  </ul>    
+  </li>
+  <li>何とキッカリ２週間。ここ edmonton では(住宅不足なので)殿様商売なんだろうが、
+   しかしズルはしてないで(最低限の)仕事はきちんとしている。
+  <ul>
+   <li>その点、日本の不動産屋には、悪い印象しか持ってない。
+    特に学生街の学生相手の奴。
+    仙台では８年暮らしたが、不精者なのでアパートは２軒。
+    その２軒目のアパートを管理していた八木山の不動産屋からは結局、
+    敷金は一銭も戻って来なかった。あれは絶対 systematic にやってると思う。</li>
+   <li>最初のアパートは入学時に大学生協の紹介で入ったところ。
+    大屋さんが個人でやってて、何かと大変そうだったけど、今思えばすごくいい所だった。
+    結構ボロだったせいか、どんどんテナントが減っていって
+    (当時の新入生は、新しくてクリーンなところにばかり入っていってた)、
+    空いた隣の部屋も(ただで)使わせてもらってたりしてた。
+    そこを引越したのは、そのアパートを取り壊して建て替えるので
+    出ていかざるを得なくなったから。
+    大きくしたアパートに、しかし大屋さんは住むことは出来ないんだ、と言っていた。</li>
+   <li>京都でも、「不動産屋」は印象がよくない。
+    新しい不動産チェーンの方が、「チェーン」という拘束があるせいか、まだましだったと思う。
+    しかし、やっぱり個人の大屋さんがほとんど慈善事業のようにやってた、これもまたすごい
+    ボロ・アパートが、今にして思えば、良いところだった。
+    良いなと気づくのは、往々にして引越しで出ていく時だったりする。
+    ご近所さん(アパートの隣の家のおじさんとか)ときちんと話をする機会というのが、
+    実は、去る時がはじめてだったりするからなんだろう。</li>
+  </ul>
+  </li>
+  <li>あと、これも先日の引越しでバタバタした電話会社 telus から、
+   \$10 分の長距離電話代が、お詫びのしるしとして届いた。
+   使い方が面倒なので、実際に使うかどうかは不明だが、時間はかかったが
+   <a href="diary2007_04.html#d11-phone">最終的に</a>使える状態になったし、
+   まぁこれでよしとする。</li>
+ </ul>
+ </li>
+ <li><a id="d14-seiko6139"></a>
+  我慢できず、<a href="#d8-seiko6139">先日</a>止まったままになっていた 6139 を開けてみる
+ <ul>
+  <li>まだ机も準備出来てないんだが、放置しているのが忍び無いので、
+   仕事机にスペースを作ってちょっと開けてみた。
+   バランスが壊れたりしている訳ではなくて、安心した。</li>
+  <li>chrono が回っている状態では動くので、
+   どうも chrono 系のどっかの軸受けがずれたか何かその辺だ。
+   この dusty で雑然とした環境で触るのはここまでにして、
+   とりあえず、 chrono を回しながら main spring を解放しておこう。</li>
+  <li>ということで、バンドを付け替えて、 6138 を現役にする。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d13"></a>5/13 (Sun)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>粒子の向き
+  <ul>
+   <li>ノート改訂。
+   <ul>
+    <li><font color="green">quaternion.tex: 1.1 2007/05/14 06:12:19 ichiki Exp</font></li>
+   </ul>
+   </li>
+   <li>application (stokes)
+   <ul>
+    <li>stnc2pov.py の拡張の続き。
+     少なくとも、見掛け上、正しく動くようになった。</li>
+    <li><font color="green">stnc2pov.py: 1.5 2007/05/13 23:14:10 kichiki Exp</font></li>
+    <li><font color="green">stvis-vtk.py: 1.7 2007/05/13 23:13:47 kichiki Exp</font></li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+  <li>FFTスキーム
+  <ul>
+   <li>Deserno Holm (1998) を、もう少し読む。(手はまだ動かしてない。)</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d13-twobody"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/twobody/">twobody</a>
+ <ul>
+  <li>two-body にバグ発見
+  <ul>
+   <li><a href="diary2007_04.html#d12-twobody">前</a>の修正にミスがあった。
+    データベースには影響ない。</li>
+   <li><font color="green">two-body.c: 5.7 2007/05/14 07:05:20 ichiki Exp</font></li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d13-tv"></a>
+  [TV]
+  <a href="http://www.imdb.com/title/tt0164184/">The Sum of All Fears</a> (2002)
+ <ul>
+  <li>baltimore がけっこう出て来た。</li>
+  <li>お話は、ben affleck がカッコイイ役をやった映画、という感じ
+   (っていうか、そのままだな)。原作があるみたいなので
+   ben affleck 用映画ではないのだろうけど。</li>
+  <li>そういえば、前に<a href="diary2004_06.html#d6-birthday">飛行機で見た</a>
+   <a href="http://www.imdb.com/title/tt0338337/">paycheck</a>(2003)
+   も、Philip K. Dick 原作らしいので、 ben affleck と相性が悪い、ということかな。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d12"></a>5/12 (Sat)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>粒子の向き
+  <ul>
+   <li>quaternion を使って実装。(cf. Rapaport)</li>
+   <li>ノート書いた。(book/newbook/quaternion.tex)</li>
+   <li>application (stokes)
+   <ul>
+    <li>stvis-vtk.py を改訂。</li>
+    <li>stnc2pov.py は、まだ混乱中……(左手系なのですよ、POVRAY は)</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d12-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>2) 流れ
+  <ul>
+   <li>Russel の本から、もう少し狙いを定める。</li>
+   <li>粒子の回転が見えるようになったので、面白い。
+    <br />
+    <img src="images/20070512-stvis-vtk.png" />
+   <ul>
+    <li><a href="#d19-ryuon">5/19/2007</a>: povray で texture を貼る</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d11"></a>5/11 (Fri)</h2>
+<ul>
+ <li><a id="d11-karaage"></a>
+  日本語。「空揚げ」
+ <ul>
+  <li>「<a href="http://headlines.yahoo.co.jp/hl?a=20070511-00000036-mai-int">＜１セント硬貨＞受け取り拒否禁ずる州法案、提出へ　米ＮＹ</a>」@yahoo(<a href="LOCAL/20070511-yahoo-20070511-00000036-mai-int.html">lc</a>)
+   で目に付いた。「毎日新聞」提供の記事なので正しい用法なんだろうけど、
+   これまでずっと「唐揚げ」だと思ってた。中国式の揚げものと思いながら。</li>
+  <li>食い物の名前ネタ。
+   先日家でハンバーグを食べてて、そういえば大学の学食(生協)で
+   「ジャーマン・ハンバーグ」(ハンバーグの真中に半熟卵が乗ってるというか入ってる奴)
+   ってあったなぁと思いだしたのだが、
+   ふとその意味を考えて、自分の頭の中の映像が間違っていたことに気づいた。
+   その映像ってのは、なぜかチンギス・ハンが馬に跨って駈けまわっていた。
+   つまり今の今まで「ジャーマン・ハンバーグ」を、
+   「モンゴル風ハンバーグ」の意味でとらえていた。
+   まちがった擦り込みというか、思い込みというか、
+   <a href="diary2003_05.html#d16-gakumon_no_susume">思考停止</a>というか、
+   いろいろとあるものだ。
+  <ul>
+   <li><a href="summaries.html#shikouteishi">サマリー：思考停止</a></li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>FFTスキーム
+  <ul>
+   <li>朝、Deserno Holm (1998) に目を通す。
+    これは最近考えていたことの答えになるかも。</li>
+  </ul>
+  </li>
+  <li>RYUON/stokes
+  <ul>
+   <li>gen-config.py を整備。</li>
+   <li>stncdump.py に手を入れていて、
+    imposed flow の情報が stokes-nc に足りない事が発覚。対応した。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>2) 流れ
+  <ul>
+   <li>Kao, Mason (1975) を一通り読んでみた。</li>
+   <li>まずは monolayer N=10 に simple shear。
+    何かツボをはずしているな。一歩一歩。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d10"></a>5/10 (Thu)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>FFTスキーム
+  <ul>
+   <li>ノート書き、
+    昨日家で読んだ Fourier 解析の内容をまとめる。
+   <ul>
+    <li><font color="green">
+     fourier.tex: 1.1 2007/05/10 20:29:45 ichiki Exp</font></li>
+   </ul>
+   </li>
+   <li>文献収集
+   <ul>
+    <li>昨日の Kurzak-Pettitt (2006)から、見落としていた最近のものを。</li>
+    <li>そろそろ入力モードを終わりにして、具体的な計算モードに入ろう。</li>
+   </ul>
+   </li>
+   <li>帰宅後、実験 code を修正。
+    係数は押えてないが、正しい結果になった。</li>
+  </ul>
+  </li>
+  <li>stokes-nc に粒子サイズの情報を追加する。
+  <ul>
+   <li>長い間 todo list にあった案件。
+    これで RYUON がやっと完全に poly 対応となった。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>1) 障害物
+  <ul>
+   <li>まずは Nf=9, Nm=1 でいくつかテスト・ラン</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d10-seminar"></a>
+  [phys]グループセミナー
+ <ul>
+  <li>皆、ここに来て何か新しいことをはじめようとしている。</li>
+  <li>話は、自分の興味の対象からずいぶんと遠い話だった。</li>
+  <li><a href="#d24-seminar">次回は私</a>。どんな構成にしようかな。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d9"></a>5/9 (Wed)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>FFTスキーム
+  <ul>
+   <li>PME から FMM に飛び、更に文献収集。
+    裏島脱出はなかなか大変だ。</li>
+   <li>引続きノートを書く。
+    どうも、これまで曖昧にしていた部分に足をすくわれているようだ。
+    一つ一つ押えながら、まとめ中。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>計算プランを立てる。(具体的に動きはじめないと何も進まないので)</li>
+  <li>ノート改訂。
+   上記のプランを大雑把にまとめる。
+  <ul>
+   <li><font color="green">dna.tex: 1.1 2007/05/09 23:31:21 ichiki Exp</font></li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>帰りに近くのスーパーに買物に寄ったら、
+  駐車場に移動遊園地が来ていた
+ <ul>
+  <li>さて、今週末がターゲットなのか、先週末の名残なのか、どっちだろう？</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d8"></a>5/8 (Tue)</h2>
+<ul>
+ <li><a id="d8-seiko6139"></a>
+  今朝、愛用の6139を床に落してしまった
+ <ul>
+  <li>足を出したが間に合わず。
+   場所は洗面所だけど比較的軟らかそうな素材の床だったけど、
+   うぅむ、止まってしまった。何か大事な部品が壊れたりしていなければよいが…</li>
+  <li>英国からやって来たこいつはダイアルはかなりヘタッてるけど、
+   購入時から問題なく動いていたので、特に分解、掃除などはしていない。
+   それに、この家ではまだベンチが準備できてないので手が出せない……</li>
+  <li><a href="#d14-seiko6139">5/14/2007</a>: 開けてみた。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>FFTスキーム
+  <ul>
+   <li>文献をいくつか再発見、印刷。</li>
+   <li>昨日の続き。
+    素朴に組む(FFTなしで)。
+    Fourier 変換の complex と cos/sin 形式で、毎度混乱して、
+    陽に書き出して、正解に至るという「儀式」がまた繰り返された……。
+    FFT版と同じ感じになるが、つまりダメ。何か根本的に勘違いしている可能性が高い。</li>
+   <li>今日のところはあきらめて、ことの次第をノートにまとめる。
+     (book/newbook/fourier.tex)</li>
+   <li>帰宅後、また別の素朴な実装でやっと動くコードを得た。
+    (ここまでくれば後はラクだろう。)</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>ノート改訂、少しだけ。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d7"></a>5/7 (Mon)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>拘束系の実装 on RYUON
+  <ul>
+   <li>文献蒐集。
+    昨日見つけた論文から、最近のものをいくつか。</li>
+  </ul>
+  </li>
+  <li>FFTスキーム
+  <ul>
+   <li>とりあえず書いてみる。結果がおかしい。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d7-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>ノートを書きはじめる。
+  <ul>
+   <li>とりあえず、<a href="#d4-nano">金曜</a>に読んだ
+    <a href="http://dx.doi.org/10.1016/j.jnnfm.2005.05.011">Shaqfeh (2005)</a> の内容をさらに summarize。</li>
+  </ul>
+  </li>
+  <li><a href="diary2008_06.html#d20-ryuon">6/20/2008</a>:
+   <a href="http://dx.doi.org/10.1016/S0377-0257(02)00132-5">Somasi et al (2002)</a> および <a href="http://dx.doi.org/10.1016/S0377-0257(03)00107-1">Hsieh et al (2003)</a> のこと。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d6"></a>5/6 (Sun)</h2>
+<ul>
+ <li><a id="d6-ryuon"></a>
+  [phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>拘束系 on RYUON
+  <ul>
+   <li>slip B.C. を、今ごろやっと理解する。
+    Blake (1971) は単に -<b>f</b> を置いてお釣りを解いてるが、
+    お釣りなしでは slip にもなってなくて、
+    (fx, fy, -fz) ≠ -<b>f</b> を置く必要がある。当り前だ。
+    Cunha et al. (2002) の記述は間違いだね。(計算は正しいのだろうが。)</li>
+   <li>slip 版を修正。
+    これで、非周期、周期とも work した。</li>
+   <li>no-slip の周期版に進む。
+    が、やっぱりダメだ。計算ミスや実装ミスでもなさそう。
+    しばらく唸ってやっと理解した。
+    「Blake 解は周期系では境界条件を満たさない。」理由は強度が距離に依存するから。
+    分かってみれば自明なことだ。</li>
+   <li><a href="diary2007_04.html#d25-ryuon">他の妄想</a>の悪あがきも、結局ダメ。
+    驚きは起きなかった。
+    が、slip 2 walls の実装は出来たので、それでよしとするか。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d6-tv"></a>
+  [TV]
+  <a href="http://www.imdb.com/title/tt0290002/">meet the fockers</a> (2004)
+ <ul>
+  <li>途中から。
+   フィアンセ役の<a href="http://www.imdb.com/name/nm0001632/">teri polo</a>,
+   <a href="diary2005_07.html#d11-tv">前回</a>
+   は感じいいなぁと思ったけど、今回は何か印象が違う……
+   お話も何かつまらなかったな。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d5"></a>5/5 (Sat)</h2>
+<ul>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>拘束系 on RYUON
+  <ul>
+   <li>前回は<a href="diary2007_04.html#d28-ryuon">4/28/2007</a></li>
+   <li>一歩一歩、再確認。非周期は OK.
+    周期は NG. slip もダメ……</li>
+   <li>ふと、Cunha et al. (2002) の１つのポイント、
+    imaginary world と real world は完全に分離されているということを、
+    今ごろやっと理解した。(が、この知見は今の問題の助けにはならない。)</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d4"></a>5/4 (Fri)</h2>
+<ul>
+ <li><a id="d4-weather"></a>
+  <a href="#d2-weather">予想通り</a>(予報通り)今日も雨
+ </li>
+ <li><a id="d4-nano"></a>
+  [phys]nanoプロジェクト
+ <ul>
+  <li>文献の整理
+  <ul>
+   <li>electro-hydrodynamic equivalence に関する論文を一通り見る。</li>
+   <li><a href="http://dx.doi.org/10.1016/j.jnnfm.2005.05.011">Shaqfeh (2005) J.Non-Newtonian Fluid Mech.</a>
+    のレビューに一通り目を通す。疲れた……まぁこれまでの怠慢のツケだ。</li>
+   <li><a href="diary2008_01.html#d28-reading">1/28/2008</a>:
+    螺旋階段を登るように。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]お勉強
+ <ul>
+  <li>粉体の最近のレビュー(Aronson, Tsimring (2006) Rev.Mod.Phys.)が目に止まる。
+   とりあえず印刷。</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d3"></a>5/3 (Thu)</h2>
+<ul>
+ <li><a id="d3-yokoyama_knock"></a>[news]
+  「<a href="http://headlines.yahoo.co.jp/hl?a=20070503-00000019-mai-soci">＜訃報＞横山ノックさんが死去、前大阪府知事　７５歳</a>」@yahoo(<a href="LOCAL/20070503-yahoo-20070503-00000019-mai-soci.html">lc</a>)
+ <ul>
+  <li>「<a href="http://headlines.yahoo.co.jp/hl?a=20070504-00000007-nks-ent">談志、ノックさんからがん告白されていた</a>」@yahoo(<a href="LOCAL/20070503-yahoo-20070504-00000007-nks-ent.html">lc</a>)</li>
+  <li>「<a href="http://www.asahi.com/kansai/news/OSK200705040036.html">横山ノックさんの通夜、タレントや芸人が次々弔問に</a>」(<a href="LOCAL/20070504-asahi-OSK200705040036.html">lc</a>)</li>
+  <li><a href="summaries.html#obituaries">サマリ：訃報</a></li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>chain with poly code
+  <ul>
+   <li>poly-lub の debug の続き。
+    混乱を潜り抜けて、原因判明。
+    lubmin の処理が poly 化されていなかった。
+    「既に対応した」と思い込んでいたので、結構手間取ってしまった。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]nanoプロジェクト
+ <ul>
+  <li>poly-chain のテスト
+  <ul>
+   <li>７体 chain１本に１固定粒子のバリエーション
+    (固定粒子の粒径を振る)、小さめの粒子で斜め板。</li>
+  </ul>
+  </li>
+  <li>今後の展開を考える
+  <ul>
+   <li>文献から文献を集める。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a id="d3-mori"></a>
+  [blog]
+  「<a href="http://blog.mf-davinci.com/mori_log/archives/2007/04/28/index.php">お客様多数</a>」@mori(<a href="LOCAL/20070503-mori-20070428.html">lc</a>)
+ <ul>
+  <li>ちょっと前のエントリーだが頭に残ってるので、あからさまに記録しておく。</li>
+  <li>引用
+  <blockquote>
+   話は違うが、いつも心がけていることがある。それは、第一印象は悪い方が良い、ということ。
+  <br /><br />
+   あと、できるかぎり「初戦に負ける」ことも信条としている。
+  </blockquote>
+  </li>
+  <li>自分も「初めからハイで調子が良い、というような軽い人間」は「大嫌い」だけど、
+   大抵は「最初に良い印象を与えようと気を遣っている」と思うし、
+   「最初から本気」というか、基本的に「力を温存」したり
+   「出し惜しみ」したりしないような気がする。まぁ温存する程力も無いし、
+   そもそも出し惜しみする程の才能もないのだけど。
+   しかし実のところ口下手で社交的でもないので、結果として、
+   第一印象は悪く、初戦にも負けてるような気がする。
+   こういうことで、これまで良かったと思ったことは一度もないが、
+   さて、どんなもんだろうか？</li>
+  <li><a href="#d19-diary">5/19/2007</a>:
+   ユーザー・フレンドリーについて</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d2"></a>5/2 (Wed)</h2>
+<ul>
+ <li><a id="d2-weather"></a>
+  今日は小雨
+ <ul>
+  <li>硬派農家の人曰く、ここ２、３日はこんな感じだとか。</li>
+  <li><a href="#d4-weather">5/4/2007</a>: ここ２、３日はこんな感じだ</li>
+ </ul>
+ </li>
+ <li>[phys]生物流体力学
+ <ul>
+  <li>プロジェクト開始、というか復活というか(振り返ると７年前だ。
+   <a href="diary2000_05.html#d25-sim">5/25/2000</a>[応用計算計画]がこれ。)</li>
+  <li>昨日の論文のまとめ。</li>
+  <li>過去の試みを見返しながら、その辺りの最近の動向を見ようと、また、文献収集。</li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>Konrad Hinsen の HYDROLIB
+  <ul>
+   <li><a href="http://www.elsevier.com/locate/cpc">Comp. Phys. Comm.</a> の
+    <a href="http://cpc.cs.qub.ac.uk/cpc/">サイト</a>から
+    <a href="http://cpc.cs.qub.ac.uk/cpc/cgi-bin/showversions.pl/?catid=adbk&usertype=toolbar&deliverytype=view">コード</a>をダウンロードしてみた。
+    後で RYUON と比較してみよう。</li>
+   <li>付記：今は<a href="http://dirac.cnrs-orleans.fr/plone/software/hydrolib/">web site</a>もあるな。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]EXP project - 高次周期系論文
+ <ul>
+  <li>もう一本、昔見たことのある古い論文を remind しておく。</li>
+ </ul>
+ </li>
+ <li><a id="d2-constitution"></a>
+  憲法記念日なのか(日本はすでに３日)
+ <ul>
+  <li>「<a href="http://headlines.yahoo.co.jp/hl?a=20070503-00000201-yom-pol">首相、憲法改正に強い決意…施行きょう６０年で談話</a>」@yomiuri(<a href="LOCAL/20070502-yomiuri-20070503-00000201-yom-pol.html">lc</a>)</li>
+  <li>「<a href="http://blog.tatsuru.com/2007/05/03_1008.php">憲法の話</a>」@tatsuru(<a href="LOCAL/20070502-tatsuru-03_1008.html">lc</a>)
+  <ul>
+   <li>引用
+   <blockquote>
+    大学のゼミでも「もうすぐ憲法が改正されるんですよね」と
+    あたかも既成事実であるがごとくに語る学生がいて驚かされた。
+   <br /><br />
+    私は…(中略)…
+    私たちの時代を覆っている底知れない軽薄さに恐怖を覚える。
+   </blockquote>
+   </li>
+   <li>適応することが何よりも大事な人達を、
+    うまく日本社会はつくり出すことに成功したということなのかな。
+    つまり、「早いもの競争」ばかりの世の中ってことか。
+    (早く適応することで利することって、他になにがあるかな？)</li>
+   <li><a href="theorems.html#follower">定理：順応主義者</a></li>
+   <li><a href="diary2005_07.html#d26-asbest">7/26/2005</a>:
+    日本人の軽薄さ、アスベストに絡んで</li>
+   <li><a href="diary2004_05.html#d2-judgement">5/2/2004</a>:
+    簡単に良い悪いと言ってしまうこと</li>
+   <li><a href="diary2000_05.html#d16-osaragi">5/16/2000</a>:
+    日本人の軽薄さ、大仏次郎の言葉</li>
+  </ul>
+  </li>
+  <li>ということは、そうか、日本の皆様は今黄金週間真只中か。</li>
+  <li>付記：「<a href="http://www.miyadai.com/index.php?itemid=501">憲法記念日の新聞インタビューです</a>」@miyadai(<a href="LOCAL/20070503-miyadai-501.html">lc</a>)
+  <ul>
+   <li>引用
+   <blockquote>
+    護憲と対米自立は同時に成り立ちません。
+    重武装・自立か、軽武装・依存か。
+   <br /><br />
+    平和憲法を与えた米国が一九四八年に占領政策を転換すると、
+    吉田は「憲法上できない」と再軍備を拒否、代わりに基地提供を申し出る。
+    それが安保条約です。
+    復興優先で軍備に回す資金がなかったし、
+    米国の言うまま出兵して死者を出したくなかったし、
+    アジアを敵に回したくもなかった。
+   </blockquote>
+   </li>
+   <li>こうしてみると、対米追従しつつ(というか、その結果として)自衛隊を軍として
+    無し崩し的に出してる現状は、何をやっているんだということになるのか。
+    それとも対米自立を目指して動いているんだろうか？
+    今舵取りしてる人の「強い決意」には、
+    「死者を出したくない」とか「敵に回したくない」とかいうような
+    強い「意志」が見えない。</li>
+  </ul>
+  </li>
+  <li>付記：「<a href="http://kenmogi.cocolog-nifty.com/qualia/2007/05/post_de9d.html">それより６００年ばかり古いだけだよ</a>」@kenmogi(<a href="LOCAL/20070503-kenmogi-post_de9d.html">lc</a>)
+  <ul>
+   <li>引用
+   <blockquote>
+    和（やわら）ぐを以て貴（たっと）しとし<br />
+    Harmony is to be valued<br /><br />
+    人の違うことを怒らざれ。人皆心あり。心おのおのの執れることあり。
+    かれ是とすれば、われ非とす。われ是とすれば、かれ非とす。われ必ずしも聖にあらず。<br />
+    Nor let us be resentful when others differ from us.
+    For all men have hearts, and each heart has its own leanings.
+    Their right is our wrong, and our right is their wrong.
+    We are not unquestionably sages, nor are they unquestionably fools.
+   </blockquote>
+   </li>
+   <li>無教養な日本人なので、これを機会にリンクだけでも。
+   <ul>
+    <li><a href="http://ja.wikisource.org/wiki/%E5%8D%81%E4%B8%83%E6%9D%A1%E6%86%B2%E6%B3%95">十七条憲法</a>(<a href="http://en.wikisource.org/wiki/Seventeen-article_constitution">英訳</a>)@wikisource</li>
+    <li>ちなみに<a href="http://ja.wikisource.org/wiki/%E6%97%A5%E6%9C%AC%E5%9C%8B%E6%86%B2%E6%B3%95">こっち</a>が現行憲法</li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d1"></a>5/1 (Tue)</h2>
+<ul>
+ <li><a id="d1-fedex"></a>
+  朝一番で Fedex に書類を持って行く。
+ <ul>
+  <li>昨日、夜９時前に出来上がったんだが、電話してみたら全てのサービスは終わってて、
+   その日のうちに出来ることは何もない、と。(どうもカナダの Fedex は Fedex では
+   ない、ということか……)</li>
+  <li>出かけたついでに、CAA (ここでは AMA という) に寄って
+   免許とプレートの登録を済ませようとする
+   (cf.<a href="diary2007_04.html#d29-apartment">4/29/2007</a>)。
+   が、新しい住所を証明するものを持参してなくて、出直し。
+   あと、保険の方も先に手を打っておかないといけなかった。
+  <ul>
+   <li><a href="#d31-drivers_license">5/31/2007</a>:
+    免許変更を済ませた。</li>
+   <li><a href="diary2007_06.html#d5-plate">6/5/2007</a>:
+    alberta plate ゲット</li>
+  </ul>
+  </li>
+  <li>ついでに、canadian tire に行ってカードの借金を一部返して、
+   ついでに売出になっていた棚を書斎用に一つ購入。</li>
+ </ul>
+ </li>
+ <li><a id="d1-report"></a>
+  [phys]昨日書き始めた月刊レポートを仕上げて各位にメールしておく。
+ <ul>
+  <li>あと、今月の個人的な目標をあれこれ考える。
+   (公式な目標はレポートに書いてある。
+    水面下の試行錯誤する方向性とか、そういうレベルのこと。)</li>
+  <li>back-numbers:
+  <ul>
+   <li><a href="diary2007_04.html#d3-ryuon">4/3/2007</a>: ４月号</li>
+   <li><a href="diary2007_05.html#d1-report">5/1/2007</a>: ５月号</li>
+   <li><a href="diary2007_06.html#d1-report">6/1/2007</a>: ６月号</li>
+   <li><a href="diary2007_07.html#d4-report">7/4/2007</a>: ７月号</li>
+   <li><a href="diary2007_08.html#d1-report">8/1/2007</a>: ８月号</li>
+   <li><a href="diary2007_09.html#d6-report">9/6/2007</a>: ９月号</li>
+   <li><a href="diary2007_10.html#d1-report">10/1/2007</a>: １０月号</li>
+   <li><a href="diary2007_10.html#d31-report">10/31/2007</a>: １１月号</li>
+   <li><a href="diary2007_11.html#d30-report">11/30/2007</a>: １２月号</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]<a href="http://ryuon.sourceforge.net/">ryuon</a>
+ <ul>
+  <li>chain with poly code
+  <ul>
+   <li>debug. 別の等価な方法を実装、特異ではなくなるが、そもそも結果が変。</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>[phys]お勉強
+ <ul>
+  <li>生物系の文献収集</li>
+ </ul>
+ </li>
+ <li>いかん、年を取ったのか時間の過ぎるのがとても早くなっている
+ <ul>
+  <li>と、<a href="http://diary.nttdata.co.jp/writer_list.html">先見日記、執筆者の紹介</a>(<a href="LOCAL/20070501-senken-writer_list.html">lc</a>)を見て思う。</li>
+ </ul>
+ </li>
+ <li><a id="d1-the_bad_plus"></a>[music]
+  今日の帰りの車で流れて来た jazz piano trio によるカバー
+ <ul>
+  <li>いい曲なんだけど、何か自分の好みとは違う方向にアレンジされていた。
+   で、アナウンスで the bad plus と言われて納得した。
+   一回ライブ映像を見たんだけど、好みではなかった。
+   音楽(に限らず、本でも映画でも何でもだけど)で「好みではない」というのは、
+   こちら側の ability の問題も多分にあるので、彼らをけなしてる訳ではない。
+   (むかし「ダメ」と言ったものを最近になって「良いね」と言ったりすると、
+    怒られたりするので。)</li>
+  <li>曲は調べたら tears for fears の
+   &quot;Everybody Wants To Rule The World&quot;.
+   ちなみに、the bad plus のアルバムは&quot;prog&quot;という、もうすぐ出る新譜。</li>
+  <li><a href="diary2007_09.html#d25-the_bad_plus">9/25/2007</a></li>
+ </ul>
+ </li>
+ <li><a id="d1-shopping"></a>
+  簡単にではあるが、毎月のイベントを遂行して来た
+ <ul>
+  <li>今回は、家の近くの店で。</li>
+  <li><a href="diary2007_02.html#d6-shopping">2/6/2007</a>:２月</li>
+  <li><a href="diary2007_03.html#d6-shopping">3/6/2007</a>:３月</li>
+  <li><a href="diary2007_04.html#d3-shopping">4/3/2007</a>:４月</li>
+  <li><a href="diary2007_05.html#d1-shopping">5/1/2007</a>:５月</li>
+  <li><a href="diary2007_11.html#d6-shopping">11/6/2007</a>:１１月</li>
+ </ul>
+ </li>
+ <li><a id="d1-bookshelf"></a>
+  夜、買って来た棚を組み立てる
+ <ul>
+  <li>本棚ではなくて、ガレージとかに置くようなスチールの枠の棚。
+   heavy-duty なので本をいくら置いても問題ないという利点はあるが、
+   四方が open なのが実際に本棚として使うには問題かな。</li>
+  <li>とりあえず、何も考えずに箱に入っていた本を並べる。
+   色々と持ち歩いて来たなと思うが、一部は実家の倉庫に眠っている。
+   宝の持ち腐れでもったいないが、仕方が無い。
+   あると思った本が無いときに、無くなったのか、置いて来たのか分からなくて、
+   気持ち悪い。 Kubo-Toda-Hashitsume は、日本語を買ったので置いて来たのだったかな?</li>
+  <li>伏見康治の「確率論および統計論」とか、犬井、田辺、小野寺の「応用群論」とか、
+   寺沢寛一とか、そういう本を何で今の本屋は作らないのか(作れないのか)、
+   真剣に考える必要は無いんだろうか、と本を眺めながら思った。
+  <ul>
+   <li>絶版本を再版しろとか言う話ではなくて、現在現役の人達が今書くもので、という話。
+    例えば寺沢寛一の応用編とかの執筆者は当時いくつだったのだろう。</li>
+   <li>とか言いながら、言ってる本人がかなり裏島なので、
+    そっちのlocalな現状を分かってない、というのは正しいのだけれど。</li>
+  </ul>
+  </li>
+  <li><a href="diary2003_06.html#d4-magazine">6/4/2003</a>: 科学雑誌ピンチ</li>
+  <li><a href="diary2006_05.html#d19-chasm">5/19/2006</a>:
+   学術出版について、Gazeleyの本に絡んで昔できたことが今できない理由</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2012, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+</body>
+</html>
