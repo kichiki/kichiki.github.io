@@ -1,0 +1,14 @@
+
+2. Stokesian Dynamics: Review (1/2)
+
+Stokes approximation
+Stokes eq. (low Reynolds number approximation)
+
+    (for rigid particles)
+
+Particle-Particle Interaction
+(11N) linear eqs.:
+
+where the matrixdepends only on the configuration,
+same for resistance / mobility / mixed problems
+

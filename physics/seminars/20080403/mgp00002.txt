@@ -1,0 +1,12 @@
+
+1. EO/EP  &  micro/nanofluidics
+
+Micro/nanofluidic devices
+
+[Han (2004) in "Intro. Nanoscale Sci. Tech.]   
+
+[Harrison et al (1992) Anal.Chem.64, 1928-1932]   
+How to pump?
+by pressure
+by electric field
+

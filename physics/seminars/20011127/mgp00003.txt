@@ -1,0 +1,11 @@
+
+1. Model
+
+
+
+: effective (or virtual) mass of bubble
+: velocityof bubble
+: primary Bjerknes force
+: secondary Bjerknes force
+: drag force
+

@@ -1,0 +1,9 @@
+
+Cartesian Representation
+
+Eq.(2.11) in Thorne (1980)
+
+where
+
+
+

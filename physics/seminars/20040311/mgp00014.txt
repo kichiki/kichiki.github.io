@@ -1,0 +1,19 @@
+
+4. Conclusions
+
+Statistical Method:
+Formulate and Implement the Method
+Demonstrate for Linear Sinsoidal Non-Uniformity
+
+In the future work,
+More complicated non-uniformity (step, void, etc.)
+Higher correlation (pair-distribution, etc)
+
+Constitutive Relations:
+
+
+
+
+In the future work,
+Higher orders in k
+Interphase Force and Torque

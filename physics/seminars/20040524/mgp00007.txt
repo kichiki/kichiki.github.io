@@ -1,0 +1,10 @@
+
+分散系のストレスの構成方程式
+
+
+         : symmetic traceless tensor
+         : pseudo vector
+         : vector
+
+これを、で書く
+

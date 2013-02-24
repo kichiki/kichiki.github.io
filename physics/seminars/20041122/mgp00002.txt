@@ -1,0 +1,11 @@
+
+Objective
+
+Give the relation betwen the 2 major representations:
+Lamb's general solution
+multipole expansion of Oseen tensor
+
+Two references:
+S.Weinbaum, P.Ganatos, and Z-Y.Yan, Annu. Rev. Fluid Mech. (1990) 22, 275-316:
+the relation is given upto 2nd order (= FTS)
+K.S.Thorne, Rev. Mod. Phys. (1980) 52, 299-339, "Multiple expansions of gravitational radiation"

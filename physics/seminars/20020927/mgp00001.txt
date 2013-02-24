@@ -1,0 +1,16 @@
+
+Hydrodynamic Interaction among Particles in Stokes Flow
+
+Kengo Ichiki  
+
+Mechanical Engineering Department Fall 2002
+Friday Thermo-Fluids Seminars
+(September 27, 2002)
+
+Contents
+1. Introduction
+2. Stokesian Dynamics
+         Review / Questions / Answers
+3. Fast Multipole Method (FMM)
+4. Conclusions and Discussions
+

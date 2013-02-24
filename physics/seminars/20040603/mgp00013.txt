@@ -1,0 +1,13 @@
+
+In the future
+
+More complicated non-uniformity
+step, void (bubble), etc
+
+Non-uniformity on higher correlations (pair-distribution)
+normal stress difference
+non-Newtonian properties
+
+Closure for interphace force
+cf. extended Faxen relation (K.I and A.P, Phys. Fluids 2004)
+

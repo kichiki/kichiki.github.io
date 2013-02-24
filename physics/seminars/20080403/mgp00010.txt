@@ -1,0 +1,17 @@
+
+4. Extensions
+
+thickness of double layer
+Henry (1930)
+boundary conditions (constant charge)
+Teubner (1982)
+Anderson (1985)
+shape of the particle
+Morrison (1970)
+distortion of double layer
+Dukhin, Derjaguin (1974) theory for thin DL
+O'Brien, White (1978) numerical for arbitrary DL
+O'Brien (1983) theory for thin DL
+polarization of the particles
+Bazant, Squires (2004), Squires, Bazant (2004, 2006)
+

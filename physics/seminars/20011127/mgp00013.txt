@@ -1,0 +1,31 @@
+
+2. Python
+
+2.1 abstract
+from vtkpython import *
+
+"prepare data"
+"prepare actors"
+
+ # prepare renderer
+ren = vtkRenderer()
+win = vtkRenderWindow() # on-screen
+win.AddRenderer(ren)
+ # interactor
+iren = vtkRenderWindowInteractor ()
+iren.SetRenderWindow (win)
+
+ # actors
+ren.AddActor (streamersActor)
+ren.AddActor (sphereVActor)
+ren.AddActor (contourActor)
+ren.AddActor (sBarActor)
+ren.AddActor (axesActor)
+
+win.Render ()
+win.SetFileName ('%s.ppm' % arg)
+win.SaveImageAsPPM ()
+
+iren.Initialize ()
+iren.Start ()
+

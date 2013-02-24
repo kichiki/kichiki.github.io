@@ -1,0 +1,36 @@
+
+2-3. actors
+
+contour surface
+contour = vtkContourFilter ()
+contour.SetInput (fData)
+contour.GenerateValues (2, scalarmin, scalarmax)
+normals = vtkPolyDataNormals ()
+normals.SetInput (contour.GetOutput ())
+contourMapper = vtkPolyDataMapper ()
+contourMapper.SetInput (normals.GetOutput())
+contourMapper.SetLookupTable (lut)
+contourMapper.SetScalarRange (scalarmin, scalarmax)
+contourActor = vtkActor ()
+contourActor.SetMapper (contourMapper)
+contourProp =contourActor.GetProperty ()
+contourProp.SetOpacity (.1)
+
+scalar bar
+sBarActor = vtkScalarBarActor()
+sBarActor.SetLookupTable (lut)
+sBarActor.SetTitle ("Vr")
+sBarActor.GetPositionCoordinate().SetCoordinateSystemToNormalizedViewport()
+sBarActor.SetOrientationToVertical()
+sBarActor.SetWidth(0.17)
+sBarActor.SetHeight(0.8)
+
+axes
+axes = vtkAxes ()
+axesMapper = vtkPolyDataMapper ()
+axesMapper.SetInput (axes.GetOutput ())
+axesActor = vtkActor ()
+axesActor.SetMapper (axesMapper)
+axesActor.GetProperty ().SetLineWidth (3.0)
+
+

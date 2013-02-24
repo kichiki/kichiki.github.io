@@ -1,0 +1,10 @@
+
+2. How to calculate? (2)
+[Fixman (1986) Macromolecules 19, p.1204]
+O(2) approach - Chebyshev approx. (continued)
+      applying to the random vector,
+
+
+
+This algorithm contains only matrix-vector product!
+

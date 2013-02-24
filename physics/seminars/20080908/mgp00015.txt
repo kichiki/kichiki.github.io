@@ -1,0 +1,13 @@
+
+Discussions
+
+Electric field
+Electro-phoresis and Electro-osmosis
+mobility has NO size dependence!
+
+simple model / approximation
+EP : external force (without HI)
+EO : imposed flow
+
+Experimental inputs are necessary.
+

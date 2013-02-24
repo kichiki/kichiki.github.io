@@ -1,0 +1,27 @@
+<table width="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+ <tr>
+  <td align="left">
+e-mail:
+<a href="mailto:ichiki@kona.jinkan.kyoto-u.ac.jp">
+ ichiki@kona.jinkan.kyoto-u.ac.jp</a>
+<br>
+Copyright (C) 2000 Kengo Ichiki.
+<br>
+All rights reserved.
+  </td>
+  <td align="right">
+<?
+  require ('/usr/local/apache/cgi-bin/count.php3');
+
+  my_count ("20001120",
+    "katt077_",
+    $REQUEST_URI,
+    $REMOTE_HOST,
+    $REMOTE_ADDR,
+    $REMOTE_USER,
+    $HTTP_REFERER,
+    $HTTP_USER_AGENT);
+?>
+  </td>
+ </tr>
+</table>

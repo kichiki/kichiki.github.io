@@ -1,0 +1,18 @@
+
+3. Basic Theory - Electroosmosis
+
+Helmholtz-Smoluchowski formula
+
+
+obtained from the Stokes eq.
+
+
+Assumptions:
+Debye-Huckel approximation
+
+thin double layer
+
+
+
+[Squires, Quake (2005) Rev.Mod.Phys.77, 977-1026]   
+

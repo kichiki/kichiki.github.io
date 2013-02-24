@@ -1,0 +1,23 @@
+
+Overview
+
+1) prepare configurations  
+for each  
+(periodic B.C., random hard-core)
+2) solve the Stokes equation
+
+    for (F, T, E) problems
+
+(Mo-Sangani, 1994)   
+
+3) take the ensemble averaging
+
+4) apply the closure procedure
+
+Note:
+step 2) is the most time-consuming part
+step 3) can be done without re-doing step 2)
+
+Re = 0, Pe = ∞
+truncate at 5th order of the moments
+

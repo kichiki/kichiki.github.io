@@ -1,0 +1,14 @@
+
+Particles in a Fluid
+
+
+
+Kengo Ichiki
+November 9, 2004
+
+
+      1. Introduction       -- fluid mechanics
+      2. Theoretical work   -- method of reflections
+      3. Numerical scheme   -- fast multipole method
+      4. Recent work        -- nonuniform suspensions
+

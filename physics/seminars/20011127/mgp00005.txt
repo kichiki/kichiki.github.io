@@ -1,0 +1,12 @@
+
+1-2. hydrodynamic interaction
+
+Stokes approximation
+
+point force approximation and boundary condition on the spherical vessel
+
+
+(C.Maul & S.Kim, Phys. Fluids 6 (1994) p.2221)
+velocity of bubbles
+
+

@@ -1,0 +1,9 @@
+
+Simulation, Part II
+
+DNA in packed particles
+neutral system
+hydrodynamic interaction is included
+
+      ** movie **
+

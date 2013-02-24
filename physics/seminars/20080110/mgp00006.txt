@@ -1,0 +1,10 @@
+
+2. How to calculate? (2)
+
+Random vector
+
+O(3) approach:
+
+
+
+

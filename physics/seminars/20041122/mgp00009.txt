@@ -1,0 +1,8 @@
+
+Force density
+
+
+ are linear combination of  with 
+ are linear combinations of 
+Note: 
+=> force density is written by the linear combination of 

@@ -1,0 +1,19 @@
+
+3. Basic Theory - Zeta Potential
+
+
+[Masliyah, Bhattacharjee (2006)]   
+Problem - finite size of ions
+
+
+Stern layer
+where immobile ions are stuck at the surface
+Zeta potential
+the potential at which the no-slip B.C. is applied
+(= shear plane)
+
+Note: zeta potential is
+a general (phenomenological) parameter
+characterizing the surface properties
+both physically and chemically
+

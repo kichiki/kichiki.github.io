@@ -1,0 +1,12 @@
+
+Results : averages
+
+      Np  :  10 ~ 160,
+       :  0.01 ~ 0.50,
+      Nc  :  256 ~ 2048
+
+
+we take the limit  
+
+
+

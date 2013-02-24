@@ -1,0 +1,9 @@
+
+Results : closure coefficients of R
+
+
+
+in the limit of 
+
+In dilute limit:   
+

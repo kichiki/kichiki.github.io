@@ -1,0 +1,14 @@
+
+2. How to calculate? (1)
+[Grassia, Hinch, Nitsche (1995) J.Fluid Mech. 282, p.373]
+Gradient term - mid-point method:
+
+      1. Solve velocity for the initial config. as 
+
+
+      2. Solve velocity for the mid-point config. as 
+
+
+Actually, this gives 
+
+

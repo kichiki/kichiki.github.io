@@ -1,0 +1,8 @@
+
+Non-uniform averaging -- Basic idea
+
+
+W1           W2           W3
+
+
+

@@ -1,0 +1,20 @@
+
+Acoustic Lichtenberg Figures &       the visualization of their dynamics
+
+Kengo Ichiki / 27-11-2001
+Contents:
+PART I: Acoustic Lichtenberg Figures
+1. Model
+1-1. Bjerknes forces
+1-2. hydrodynamic interaction
+2. Discussions
+2-1. time average
+2-2. steady state for two bubbles
+PART II: Demonstration of VTK
+1. Examples
+2. Python
+2-1. outline
+2-2. preparing data
+2-3. actors
+3. Movies
+

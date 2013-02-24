@@ -1,0 +1,16 @@
+
+DNA models
+
+
+molecular model
+pros : detailed
+cons : too small
+
+dWLC model
+detailed enough
+large enough
+
+FENE chain model
+pros : large scale
+cons : bad (confinement)
+

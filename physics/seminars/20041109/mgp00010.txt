@@ -1,0 +1,8 @@
+
+3. Fast Multipole Method
+ [KI, J. Fluid Mech. (2002) Vol.452 p.231]  
+velocity momentis calculated by velocity derivative
+       
+
+velocity derivatives is defined by 
+

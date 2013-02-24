@@ -1,0 +1,13 @@
+
+3. Numerical scheme
+
+For many-body problems, computer simulation is important.
+
+Stokes equation
+
+Integral equation
+
+
+
+Boundary value problem
+

@@ -1,0 +1,20 @@
+
+2. Stokesian Dynamics: Review (2/2)
+
+Formulations of "Particle-Particle Interaction"
+
+Stokesian Dynamics (Brady and co-workers    [Annu. Rev. Fluid Mech. (1988) Vol.20 p.111])
+multipole expansion in real space (non-periodic and periodic systems)
+lubrication
+
+Multipole expansion in Fourier space
+Mazur & van Saarloos      [Physica A (1982) Vol.115 p.21]
+analytical, non-periodic systems
+Ladd      [J. Chem. Phys. (1988) Vol.88 p.5051]
+numerical implementation for periodic systems
+
+Sangani and Mo
+Lamb's solution with Hasimoto's periodic solution      [Phys. Fluids (1994) Vol.6 p.1637]
+lubrication      [Phys. Fluids (1994) Vol.6 p.1653]
+FMM      [Phys. Fluids (1996) Vol.8 p.1990]
+

@@ -1,0 +1,19 @@
+
+2. Stokesian Dynamics: Questions
+
+Stokesian Dynamics
+
+               
+: far field effect
+from the expansion with F, T, S
+: near field effect (lubrication correction)
+from the 2-body EXACT solution
+
+Questions:
+formulations are done up to FTS approximation
+beyond FTS [Q1]
+matrix-inversion takes many-body effect
+no proof [Q2]
+lubrication correction	
+how accurate (inaccurate)? [Q3]
+

@@ -1,0 +1,12 @@
+
+1-1. Bjerknes forces
+
+Keller-Miksis model
+
+
+
+primary Bjerknes force
+
+secondary Bjerknes force
+
+

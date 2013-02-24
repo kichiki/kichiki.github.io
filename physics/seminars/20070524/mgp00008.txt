@@ -1,0 +1,18 @@
+
+2. Boundary Value Problem
+
+Integral equation
+
+
+Boundary condition
+
+
+Mobility problem
+ex. sedimentation
+
+
+Resistance problem
+ex. porous medium
+
+
+

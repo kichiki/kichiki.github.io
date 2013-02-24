@@ -1,0 +1,16 @@
+
+1. Fluid Mechanics
+
+Fluids are characterized by 
+
+Equation of continuity:  
+for incompressible fluid 
+
+Momentum balance equation: Navier-Stokes equation
+
+
+Scaling velocity and length by 
+
+
+for water and 10 micro meter glass beads, Re = 3.27 x 10^-3.
+

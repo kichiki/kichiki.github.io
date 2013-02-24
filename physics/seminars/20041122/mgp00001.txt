@@ -1,0 +1,20 @@
+
+
+General solutions of the Stokes flow
+Lamb's solutions & multipole expansion
+
+
+
+
+Kengo Ichiki
+Department of Chemistry
+University of Western Ontario
+
+
+Partly supported by DOE grant FG02-99ER14966
+Andrea Prosperetti (JHU)
+
+
+
+November 22, 2004 at APS/DFD Seattle
+

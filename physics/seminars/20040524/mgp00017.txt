@@ -1,0 +1,15 @@
+
+今後やること
+
+
+より複雑な非一様性
+ステップ
+void, 気泡
+
+高次の相関に対する非一様性 (pair-distribution)
+normal stress difference
+non-Newtonian な性質
+
+(2 相間の) 力に対する closure との統一的な議論
+拡張された Faxen の法則との関連
+

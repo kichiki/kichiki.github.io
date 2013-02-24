@@ -1,0 +1,35 @@
+
+2-3. actors
+
+streamer
+seeds = vtkPointSource()
+seeds.SetRadius (0.8)
+seeds.SetCenter (0.0, 0.0, 0.0)
+seeds.SetNumberOfPoints (50)
+streamers = vtkStreamLine ()
+streamers.SetInput (fData)
+streamers.SetSource (seeds.GetOutput ())
+streamers.SetMaximumPropagationTime (2.0 / scalarmax)
+streamers.SetStepLength (5.0e-2 / scalarmax)
+streamers.Update ()
+streamersMapper = vtkPolyDataMapper ()
+streamersMapper.SetInput (streamers.GetOutput())
+streamersMapper.SetLookupTable (lut)
+streamersMapper.SetScalarRange (scalarmin, scalarmax)
+streamersActor = vtkActor()
+streamersActor.SetMapper (streamersMapper)
+
+spherical vessel
+sphereV = vtkSphereSource()
+sphereV.SetRadius (1.0)
+sphereV.SetCenter (0.0, 0.0, 0.0)
+sphereVMapper = vtkPolyDataMapper()
+sphereVMapper.ScalarVisibilityOff()
+sphereVMapper.SetInput (sphereV.GetOutput ())
+sphereVActor = vtkLODActor ()
+sphereVActor.SetMapper (sphereVMapper)
+sphereVProp = sphereVActor.GetProperty ()
+sphereVProp.SetOpacity (.1)
+sphereVProp.SetColor (0., 0., 0.5)
+
+

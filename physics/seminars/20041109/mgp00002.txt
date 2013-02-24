@@ -1,0 +1,19 @@
+
+1. Introduction
+
+Perspective of "many-particle systems"
+[Brady and Bossis, Annu. Rev. Fluid Mech.(1988) vol.20 pp.111-157] 
+molecular dynamics
+particles : atoms and molecules
+interaction : Lennard-Jones, hard-sphere, electrostatic, etc.
+Stokesian dynamics (Brownian dynamics)
+particles : protein, polymer, colloids, fibers, etc.
+(direct) interaction : van der Waals, DLVO, etc.
+medium : hydrodynamic and thermal forces
+granular dynamics
+particles : glass beads, sand grains, billiard balls, etc.
+interaction : elastic and inelastic collisions
+stellar dynamics
+particles : planets, stars, galaxies.
+interaction : gravitational force
+

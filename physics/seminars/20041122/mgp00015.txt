@@ -1,0 +1,12 @@
+
+Conclusion
+
+We obtain
+Cartesian representation of 
+force moments by Lamb's coefficients
+The equivalence of the two expressions is tested
+for force moments directly
+for velocity field
+
+Future plan:
+expression with force moments for mixture stress                 (cf. Tanksley-Prosperetti 2000)

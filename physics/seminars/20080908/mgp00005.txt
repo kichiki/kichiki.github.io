@@ -1,0 +1,12 @@
+
+DNA
+
+DNA for 12 bp (from 2BNA.pdb)
+
+size : 50bp ~ 50kbp
+contour length : 17nm ~ 17 micro m
+(1 bp = 0.34 nm)
+
+DNA is not flexible
+1 Kuhn length = 100 nm
+

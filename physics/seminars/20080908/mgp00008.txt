@@ -1,0 +1,11 @@
+
+Brownian force
+
+size of DNA in solution
+radius of gyration
+
+
+because of the Brownian force (thermal fluctuation)
+
+this is why bead-SPRING model works (entropic effect)
+

@@ -1,0 +1,15 @@
+
+4. Nanotechnology
+
+Experimental Results
+[Squires, Quake (2005) Rev.Mod.Phys.] 
+
+[Shaqfeh (2005) J.Non-Newtonian Fluid Mech.] 
+
+
+Simulation Results
+simple shear: 
+ => 
+pure strain: 
+ => 
+

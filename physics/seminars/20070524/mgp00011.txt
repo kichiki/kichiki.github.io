@@ -1,0 +1,19 @@
+
+3. Stokesian dynamics
+
+[KI (2002) J.Fluid Mech.]
+Bottleneck?
+
+
+
+inversion of matrix : 
+Iterative Method
+By CG-type iterative method
+matrix-vector product : 
+
+Fast Multipole Method
+[Greengard-Rokhlin (1987) J.Comp.Phys.]
+
+
+
+

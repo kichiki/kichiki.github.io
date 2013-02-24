@@ -1,0 +1,8 @@
+
+Velocity field
+
+Fourier coefficient of the velocity field
+
+is compared with that by Tanksley-Prosperetti (2000)
+
+non-uniform sedimentation problem 

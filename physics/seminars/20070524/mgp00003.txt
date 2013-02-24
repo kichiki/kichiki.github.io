@@ -1,0 +1,9 @@
+
+1. Multi-Scale in Fluids
+
+Navier-Stokes eq.
+
+Reynolds number : 
+
+[Batchelor "An Introduction To Fluid Dynamics"]
+

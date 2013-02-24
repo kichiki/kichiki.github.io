@@ -1,0 +1,15 @@
+
+Summary
+
+Brownian dynamics with dWLC model
+OK for long DNA (not by MD)
+good under confinement (not by bead-spring model)
+
+reproduce the existing results
+diffusion constant at equilibrium
+radius of gyration (end-to-end distance)
+extension in confinement
+
+simple EP/EO model
+size dependence on mobility
+

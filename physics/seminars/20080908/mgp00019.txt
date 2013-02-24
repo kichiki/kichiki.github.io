@@ -1,0 +1,14 @@
+
+Outlook
+
+What  Theor.& Comp.  can provide ?
+quantitative predictions
+diffusion constant, radius of gyration
+electro-phoretic mobility (passage time)
+detailed dynamics
+
+Especially,
+
+DNA-size dependence
+field strength dependence
+field orientation dependence

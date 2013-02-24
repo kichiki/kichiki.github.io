@@ -1,0 +1,10 @@
+
+Results, Part I
+
+What can be obtained by the simulation?
+
+diffusion constant
+
+end-to-end distance
+
+

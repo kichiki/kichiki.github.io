@@ -1,0 +1,16 @@
+
+Non-uniform ensemble averaging
+
+(K.I. & A.P., Phys. Fluids 2004)
+For an ensemble (Nc configs),
+plain ensemble average:
+
+non-uniform ensemble average:
+
+If we take
+
+
+
+
+
+

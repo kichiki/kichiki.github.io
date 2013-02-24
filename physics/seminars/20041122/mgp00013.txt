@@ -1,0 +1,7 @@
+
+Test - Force Moments
+
+Compare multipole expansion method and Mo-Sangani (1994)
+under periodic boundary condition (N = 1, n_max = 3)
+     
+     

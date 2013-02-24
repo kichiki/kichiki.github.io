@@ -1,0 +1,18 @@
+
+3. DNA model
+[Larson (2005) J.Rheol. 49, p.1]
+coarse graining
+      molecular level
+      bead-rod model
+      bead-spring level
+
+
+Other mechanisms
+      1. viscous drag
+      2. entropic spring
+      3. B  - Brownian force
+      4. HI - hydrodynamic interaction
+      5. EV - excluded volume
+      6. IV - internal viscosity
+      7. SE - self-entanglement
+

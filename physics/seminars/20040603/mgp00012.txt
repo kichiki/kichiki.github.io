@@ -1,0 +1,13 @@
+
+Conclusions
+
+1) Develop the non-uniform ensemble averaging technique
+no need to re-construct the ensemble
+uniform and non-uniform components are obtained independently
+
+2) Obtain the constitutive relations for S, R, and V,
+   and therefore,
+
+
+cf. M.Louge, Keynote Lecture K13
+

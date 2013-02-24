@@ -1,0 +1,18 @@
+
+3. Basic Theory - Electrophoresis
+
+Smoluchowski formula
+
+
+obtained from the slip B.C.
+
+=> the same assumptions:
+Debye-Huckel approximation
+thin double layer
+
+Note: Morrison (1970) showed
+it is valid for arbitrary shaped objects!
+
+
+[Squires, Quake (2005) Rev.Mod.Phys.77, 977-1026]   
+

@@ -1,0 +1,9 @@
+
+2-2. steady state for two bubbles
+
+Attracting two particles do not touch each other
+even in point force approximation
+
+
+
+

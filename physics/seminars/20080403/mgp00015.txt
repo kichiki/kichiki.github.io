@@ -1,0 +1,24 @@
+
+5. Discussions (continued)
+
+Multi-Scales:
+macro. theory (here)
+molecular theory!
+
+Similar phenomena:
+thermophoresis
+electro-acoustics
+electro-magneto-phoresis
+
+References
+Han (2004) in "Intro. Nanoscale Sci. Tech."
+Paul, Garguilo, Rakestraw (1998) Anal.Chem.70, 2459-2467
+Squires, Quake (2005) Rev.Mod.Phys.77, 977-1026
+Harrison et al (1992) Anal.Chem.64, 1928-1932
+Zeng, Harrison (2007) Anal.Chem.79, 2289-2295
+Masliyah, Bhattacharjee (2006) "Electrokinetic and Colloid Transoport Phenomena"
+O'Brien, White (1978) J.Chem.Soc.Faraday Trans.2 74, 1607-1626
+Squires, Bazant (2004) J.Fluid Mech. 509 p.217
+Bazant, Squires (2004) Phys.Rev.Lett. 92, 066101
+Squires, Bazant (2006) J.Fluid Mech. 560 p.65
+

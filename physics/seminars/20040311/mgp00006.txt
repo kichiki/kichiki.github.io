@@ -1,0 +1,9 @@
+
+2. Averages
+
+Force, Torque, and Shear problems
+
+9 components:
+    Uniform (0) and Non-Uniform (|| and )
+    for F, T, E
+

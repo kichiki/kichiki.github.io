@@ -1,0 +1,14 @@
+
+2. Stokesian Dynamics: Answer (2/3)
+
+[A2] Many-body effects and matrix-inversion
+[KI and John F. Brady, Phys. Fluids (2001) Vol.13 p.350]  
+Method of reflections in resistance form
+
+Iterative procedure for matrix-inversion
+
+Comparing two recursive relations,
+
+Limitation of the method of reflections
+(N=3, diverge for r < 2.1567)
+

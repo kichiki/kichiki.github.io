@@ -1,0 +1,17 @@
+
+4. Conclusions and Discussions
+
+Conclusions
+Give the answers on Stokesian Dynamics
+[A1] higher version is formulated
+[A2] taking all reflections and matrix-inversion is equivalent
+[A3] lubrication becomes worse for larg N
+Obtain O(N) scheme using FMM
+
+Discussions (future works)
+To make the MODEL
+using the particle-particle interaction
+Applications of the simple FMM for other problems
+vortices
+elastic problem
+

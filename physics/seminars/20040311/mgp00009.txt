@@ -1,0 +1,11 @@
+
+3. Constitutive Relation
+
+Navier-Stokes eq for viscous fluids
+
+
+
+Viscous Stress for Non-Uniform Suspensions
+
+
+

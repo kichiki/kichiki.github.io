@@ -1,0 +1,16 @@
+
+3. Stokesian dynamics
+
+[Brady, Bossis (1988) Annu.Rev.Fluid Mech.]
+Multipole Expansion
+
+
+Lubrication
+by 2-body EXACT solution
+
+(short range)
+
+
+
+
+

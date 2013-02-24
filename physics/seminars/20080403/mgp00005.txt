@@ -1,0 +1,14 @@
+
+3. Basic Theory
+
+Three fields:
+fluid velocity (Stokes eq.)
+
+
+electric field (Poisson eq.)
+
+ion density (Nernst-Planck eq.)
+
+
+
+

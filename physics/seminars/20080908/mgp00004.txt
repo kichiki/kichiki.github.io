@@ -1,0 +1,17 @@
+
+Theoretical Modeling
+
+
+Elements:
+DNA
+device (boundary)
+fluid
+electric field
+Mechanisms:
+DNA model
+Brownian force
+viscous force
+electro-phoresis
+electro-osmosis
+interactions
+

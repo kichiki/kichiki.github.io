@@ -1,0 +1,11 @@
+
+3. Fast Multipole Method
+
+[Greengard-Rokhlin (1987) J. Comput. Phys. vol. 73, 325] 
+
+direct calculation => 4 x 4 steps
+FMM calculation => 1 step
+
+
+
+

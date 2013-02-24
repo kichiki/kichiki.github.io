@@ -1,0 +1,11 @@
+
+Objective
+
+From Thorne (1980)
+Each major school of relativity theory has invented its own notation and formalism
+Regge-Wheeler harmonics
+Sachs-Pirani symmetric trace-free harmonics
+Mathews-Zerilli Clebsch-Gordon-coupled harmonics
+Newman-Penrose spin-weighted spherical harmonics
+
+Since 1966 people have stopped inventing new formalisms, but there has been no attempt at consolidation

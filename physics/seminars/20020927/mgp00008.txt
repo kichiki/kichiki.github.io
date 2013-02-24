@@ -1,0 +1,11 @@
+
+2. Stokesian Dynamics: Answer (3/3)
+
+[A3] Lubrication correction                             [KI, KQ.001 at APS/DFD (2001)]
+
+Stokesian Dynamics (SD) is EXACT for N=2,
+but is WORSE than the plain FTS (p=1) for N >= 7
+		
+Definition of "L" is consistent only for N=2,
+but is not for N > 2 in general
+

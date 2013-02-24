@@ -1,0 +1,13 @@
+
+Brownian Dynamics
+
+molecular dynamics (MD)  vs  Brownian dynamics (BD)
+
+Newton's equation (MD)
+
+
+integrate for mom. relax. time (0.5 ps)
+
+Langevin equation (BD)
+
+

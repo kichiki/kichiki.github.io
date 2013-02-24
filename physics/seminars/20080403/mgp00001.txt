@@ -1,0 +1,17 @@
+Electroosmosis (EO)
+and
+Electrophoresis (EP)
+
+- A Review of Classical Theories -
+
+
+Contents:
+1. EO/EP  &  micro/nanofluidics
+2. Phenomena
+3. Basic Theory
+4. Extensions
+5. Discussions
+
+April 3, 2008
+Kengo Ichiki   (UofA, NINT)
+

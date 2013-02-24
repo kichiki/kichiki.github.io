@@ -1,0 +1,35 @@
+
+2-2. preparing data
+
+points = vtkPoints ()
+velVector = vtkVectors ()
+vrScalar = vtkScalars ()
+for i in range (nx * ny * nz):
+    l = split (f.readline ())
+
+    x = float (l [0])
+    y = float (l [1])
+    z = float (l [2])
+    vx = float (l [3])
+    vy = float (l [4])
+    vz = float (l [5])
+
+    r = sqrt (x * x + y * y + z * z)
+    if r > 0.0:
+        ex = x / r
+        ey = y / r
+        ez = z / r
+        vr = vx * ex + vy * ey + vz * ez;
+    else:
+        vr = 0.0
+
+    dummy = points.InsertNextPoint (x, y, z)
+    dummy = velVector.InsertNextVector (vx, vy, vz)
+    dummy = vrScalar.InsertNextScalar (vr)
+
+fData = vtkStructuredGrid ()
+fData.SetDimensions (nx, ny, nz)
+fData.SetPoints (points)
+fData.GetPointData().SetVectors (velVector)
+fData.GetPointData().SetScalars (vrScalar)
+

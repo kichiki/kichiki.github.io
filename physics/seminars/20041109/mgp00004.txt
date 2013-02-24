@@ -1,0 +1,14 @@
+
+2. Stokes flows
+
+low-Reynolds-number flows
+
+
+point force F0 at x0 makes velocity field
+
+
+
+single-body problem: Stokes drag
+
+mobility and resistance
+

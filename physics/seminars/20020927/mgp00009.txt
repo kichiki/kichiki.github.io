@@ -1,0 +1,12 @@
+
+3. Fast Multipole Method (FMM)
+ [KI, J. Fluid Mech. (2002) Vol.452 p.231]  
+velocity momentis calculated by velocity derivative
+       
+
+FMM is simple:
+gathering particles in groups
+recursive calculations for BOTH the fieldand source
+	
+cf. FFT, tree code
+

@@ -1,0 +1,65 @@
+%% a sample for 'jletter.cls'
+%% Copyright (C) 2004 Kengo Ichiki <ichiki@mailaps.org>
+% $Id: jletter.tex,v 1.1 2004/03/26 20:23:22 ichiki Exp $
+%
+\documentclass{jletter}
+
+\makelabels
+
+\date{\today}
+
+%\address{
+%  Taniari Yamaari\\
+%  Department of XXX\\
+%  University of 凸凹\\
+%  1234 West XXX Boulevard\\
+%  XXX, AB 12345, USA}
+\address{
+  〒 987-6543\\
+  ■■市■■五丁目4番3号\\
+  ●●大学●●学部●●学科\\
+  山有谷有}
+
+\subject{□□大学□□学部□□学科 □□講座 教員公募について}
+
+\begin{document}
+\begin{letter}{
+    〒 123-4567\\
+    ○○市○○区○○一丁目2番3号\\
+    □□大学□□学部□□学科\\
+    学科長 △△△△ 様}
+  \opening{前略}
+
+%  アメリカ凸凹大学 Postdoctoral Fellow の山有谷有と申します。
+  ●●大学●●学部●●学科ポスドク研究員の山有谷有と申します。
+
+%  この度、貴学科の教官募集案内を拝見いたしました。
+%  是非貴学科の□□講座教員として選考して頂きたく、
+%  早速ですが応募書類を郵送申し上げます。
+%  ご査収のほどお願い申しあげます。
+
+  この度、貴学科□□講座の教員募集案内を拝見し、
+  是非応募させて頂きたく必要書類を準備いたしました。
+  つきましては、下記の通り応募書類を送付いたしますので、
+  ご査収のほどお願い申しあげます。
+
+  \closing{草々}
+
+  \note
+
+  \encl{}
+  \begin{enumerate}
+  \item 履歴書 \dotfill 1枚
+  \item 研究業績リスト \dotfill 1枚
+  \item 主要論文の概要 \dotfill 5枚
+  \item 今後の研究についての抱負 \dotfill 4枚
+  \item 今後の教育についての抱負 \dotfill 3枚
+  \item これまでの外部資金獲得実績 \dotfill 2枚
+  \item 照会可能者の連絡先 \dotfill 1枚
+  \end{enumerate}
+
+  \noteend
+
+\end{letter}
+
+\end{document}

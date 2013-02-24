@@ -1,0 +1,11 @@
+
+2. Stokesian Dynamics: Answer (1/3)
+
+[A1] Beyond FTS approximation   [KI, J. Fluid Mech. (2002) Vol.452 p.231]  
+
+
+
+
+Resistance function (N=2):
+
+

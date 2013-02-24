@@ -1,0 +1,22 @@
+
+1. Introduction
+
+Final goal:
+to understand "DISPERSED MEDIA" (suspensions, granular materials, etc)
+   to obtain the (good!) MODEL
+
+Unclear problems:
+non-Newtonian properties
+normal stress differences
+history dependence
+pattern formations (particle migrations)
+even in Stokes approximation (time reversal!)
+
+Two approaches:
+Macroscopic (two-fluid models)
+conservation laws & physical insights          make the MODEL
+Microscopic
+particle-particle interaction (building block)        derive the MODEL
+Prosperetti and co-workers [Int. J. Multiphase Flow (2001) Vol.27 p.237, etc],
+and my current work here
+

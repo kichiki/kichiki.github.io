@@ -1,0 +1,13 @@
+
+Why "non-uniformity" matters?
+
+We met non-uniform suspensions frequently:
+stratification in sedimentation
+particle migration in shear
+
+To close the constitutive relation, uniform suspension is TOO SIMPLE!
+
+
+We need    terms to determine the closure relation
+
+

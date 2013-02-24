@@ -1,0 +1,14 @@
+
+1-2. hydrodynamic interaction - 2
+
+Assume
+
+
+therefore,
+
+
+point force approximation:
+
+
+
+

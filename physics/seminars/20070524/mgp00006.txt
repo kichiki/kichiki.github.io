@@ -1,0 +1,20 @@
+
+2. Hydrodynamic Interaction
+
+Hydrodynamics
+Stokes eq.
+
+point force
+
+
+
+Stokes drag
+
+Electrostatics
+Poisson eq.
+
+
+point charge
+
+
+

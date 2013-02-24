@@ -1,0 +1,13 @@
+
+Outline
+
+1) Cartesian representation of spherical harmonics
+
+2) force density by Lamb's coefficients
+
+3) force moment by Lamb's coefficients
+
+4) test the relation
+
+
+In the following, we take =1 and a=1.
