@@ -1,0 +1,41 @@
+body {
+  font-family: arial,verdana,sans-serif;
+  font-size: 12px;
+}
+.navi {
+  text-align: center;
+  margin: 20px;
+}
+
+.center { text-align: center; }
+
+pre {
+  display: block;
+  margin: 20px;
+  padding: 5px;
+  font-style: normal;
+  border: 1px solid #AAA;
+  background:#EEE;
+}
+
+p {
+  margin: 0px 20px 20px 20px;
+}
+
+h2 {
+  margin: 10px;
+  padding: 5px 10px 5px 10px;
+  font-style: bold;
+  border: 1px solid #009;
+}
+
+h3 {
+  margin: 10px;
+  padding: 5px 10px 5px 10px;
+  font-style: bold;
+  border-bottom: 1px solid #009;
+}
+
+hr {
+  border: 2px solid #009;
+}

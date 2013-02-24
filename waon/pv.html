@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+    <title>pv - yet another phase vocoder</title>
+    <link rev="made" href="mailto:kichiki@users.sourceforge.net" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    </style>
+  </head>
+
+<body>
+
+<div class="center">
+<h1>pv - yet another phase vocoder</h1>
+</div>
+
+<p class="navi">
+<a href="index.html">WaoN</a>|
+<a href="gwaon.html">gWaoN</a>|
+pv
+<br />
+<a href="#news">News</a>|
+<a href="#what">what?</a>|
+<a href="#download">Download</a>|
+<a href="#install">Install</a>|
+<a href="#todo">ToDo</a>|
+<a href="#refs">Refs</a>|
+<a href="#history">History</a>
+</p>
+
+<hr />
+
+<a id="news" name"news"></a>
+<h2>What's new?</h2>
+<ul>
+ <li><a href="http://sourceforge.net/news/?group_id=177685">News @ SF</a></li>
+ <li>Nov. 4, 2007 :
+ <ul>
+  <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.9.tar.gz?download">waon-0.9</a> released. (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=551903">Release Note</a>)</li>
+  <li>add manual pages (waon.1, pv.1, gwaon.1).</li>
+  <li>clean the codes.</li>
+  <li>add the interactive curses mode with real-time time-strech
+   and pitch-shift.</li>
+  <li>add no-fft scheme (just for fun).</li>
+ </ul>
+ </li>
+ <li>Oct 9, 2007 :
+  <a href="http://sourceforge.net/forum/forum.php?forum_id=743713">ports for FreeBSD is now available</a>.
+ </li>
+ <li>Mar 10, 2007 :
+ <ul>
+  <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.8.tar.gz?download">waon-0.8</a> released. (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=492772">Release Note</a>)</li>
+  <li><b>rate</b> and <b>pitch</b> options can work together.</li>
+ </ul>
+ </li>
+ <li> March 1, 2007 :
+ <ul>
+  <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.7.tar.gz?download">waon-0.7</a> released!</li>
+  <li><a href="pv.html">pv</a>:
+   set hanning window as the default window.</li>
+ </ul>
+ </li>
+ <li><a href="#history">old news</a></li>
+</ul>
+
+<a id="what" name="what"></a>
+<h2>What is <b>pv</b>?</h2>
+<p>
+<b>pv</b> in WaoN project is yet another phase vocoder implementation
+for my understanding of the process behind WaoN and others.
+Here is what you can do:</p>
+<ul>
+ <li>time streching/shrinking without pitch changing
+  (by <b>rate</b> option)</li>
+ <li>pitch shifting without time streching
+  (by <b>pitch</b> option)</li>
+</ul>
+<p>Several schemes are implemented:</p>
+<ul>
+ <li>conventional phase vocoder</li>
+ <li>hop-fixed phase vocoder</li>
+ <li>hop-fixed phase vocoder by complex arithmetics</li>
+ <li>loose phase lock scheme in conventional phase vocoder</li>
+ <li>loose phase lock scheme by complex arithmetics</li>
+ <li>phase vocoder with frequency scaling</li>
+</ul>
+
+<a id="download" name="download"></a>
+<h2>Download</h2>
+<p>
+<b>pv</b> is included since Release 0.4.
+Please visit <a href="http://sourceforge.net/project/showfiles.php?group_id=177685">File Releases @ SF</a>.
+Or you can get directory from
+<a href="http://sourceforge.net/cvs/?group_id=177685">CVS Repository</a>.
+</p>
+
+<h2><a id="install" name="install">
+Installation</a></h2>
+<p>
+To install the program &quot;pv&quot;, 
+<ol>
+ <li>take a look at &quot;Makefile&quot; and edit it if necessary.</li>
+ <li>invoke &quot;make pv&quot;, for example.</li>
+ <li>you'll see an excutable &quot;pv&quot;. copy it wherever you want.</li>
+ <li>install man page &quot;pv.1&quot;.</li>
+</ol>
+</p>
+
+<h3>library</h3>
+<p>To build &quot;pv&quot;, you need the following libraries:
+<ul>
+ <li><a href="http://www.fftw.org/">FFTW</a></li>
+ <li><a href="http://www.mega-nerd.com/libsndfile/">libsndfile</a>
+  for audio input and output</li>
+ <li><a href="http://xiph.org/ao/">libao</a> for audio output</li>
+ <li><a href="http://www.mega-nerd.com/SRC/">libsamplerate</a>
+  for pitch-shift</li>
+</ul>
+</p>
+
+<a id="screenshot" name="screenshot"></a>
+<h2>Screenshot</h2>
+<p>Now, <b>pv</b> has CUI by curses. Here's the screenshot:</p>
+<pre>
+========== pv ==========
+ file       : test.wav
+ current    : 0000064512 / 0043885440
+ loop       : 0000000000 - 0043885439    < > by cur, [ { expand } ]
+
+ rate       : 1.0                        LEFT / RIGHT
+ pitch      : C  +0 ( +0)                UP   / DOWN
+
+ phase-lock : off                        L / N
+
+ window     : hanning                    W
+ fft-len    : 002048
+ hop(syn)   : 000512                     H / h
+ hop(ana)   : 000512
+ hop(res)   : 000512
+
+ status     : stop                       SPACE
+----------------------------------------
+ Welcome WaoN-pv in curses mode.
+</pre>
+<p>Here's a help screen:</p>
+<pre>
+$ ./pv --help
+WaoN-pv - yet-another phase vocoder, Version 0.9
+
+Copyright (C) 1998-2007 Kengo Ichiki &lt;kichiki@users.sourceforge.net&gt;
+Web: http://waon.sourceforge.net/
+
+WaoN-pv is yet-another phase vocoder, with which you can do time-strech 
+and pitch-shift an sound file.
+
+Usage: ./pv [option ...]
+
+Options:
+  -h, --help    print this help.
+  -v, --version print version information.
+OPTIONS FOR FILES
+  -i, --input   input file (default: stdin)
+  -o, --output  output file in flac (default: play audio by ao)
+FFT OPTIONS
+  -n            FFT data number (default: 2048)
+  -w --window   0 no window
+                1 parzen window
+                2 welch window
+                3 hanning window (default)
+                4 hamming window
+                5 blackman window
+                6 steeper 30-dB/octave rolloff window
+PHASE-VOCODER OPTIONS
+  -hop          hop number (default: 512)
+  -rate         synthesize rate; larger is faster (default: 1.0)
+  -pitch        pitch shift. +1/-1 is half-note up/down (default: 0)
+  -scheme       give the number for PV scheme
+                1 : conventional PV
+                2 : PV by complex arithmetics with fixed hops
+                3 : Puckette's loose-locking PV
+                4 : Puckette's loose-locking PV by complex with fixed hops
+                5 : PV with fixed hops by Ellis
+                6 : PV in freq. domain
+                7 : plain superimpose (no-FFT)
+                0 : interactive PV with curses (default)
+KEY BINDINGS IN CURSES MODE (with -scheme 0, the default)
+        SPACE        : play / stop
+        < >          : set loop range
+        [{ }]        : expand the loop range
+        L l          : phase-lock on / off
+        W w          : change window
+        H h          : hop-size up / down
+        UP / DOWN    : pitch up / down
+        LEFT / RIGHT : pitch up / down
+        R r HOME     : reset parameters
+        N n          : toggle for no-FFT mode
+        Q q          : quit
+</pre>
+
+<a id="todo" name="todo"></a>
+<h2>ToDo List</h2>
+<ul>
+ <li>a lot.</li>
+</ul>
+
+<a id="refs" name="refs"></a>
+<h2>References</h2>
+<ul>
+ <li><a href="http://crca.ucsd.edu/~msp/">M.S. Puckette</a>,
+  Proc. IEEE ASSP Workshop on app. of sig. proc. to audio and acous.,
+  New Paltz, NY, (1995):
+  &quot;<a href="http://crca.ucsd.edu/~msp/Publications/mohonk95.ps">Phase-locked Vocoder</a>&quot;</li>
+ <li>Jean Laroche and Mark Dolson,
+  IEEE Trans. Speech and Audio Processing, (1999) <b>7</b> pp.323-332:
+  &quot;Improved Phase Vocoder Time-Scale Modification of Audio&quot;</li>
+ <li><a id="dpwe" name="dpwe"></a>
+  D.P.W. Ellis:
+  &quot;<a href="http://www.ee.columbia.edu/~dpwe/resources/matlab/pvoc/">A Phase Vocoder in Matlab</a>&quot;</li>
+ <li><a href="http://www.surina.net/soundtouch/soundstretch.html">soundstretch</a> in <a href="http://www.surina.net/soundtouch/index.html">SoundTouch Audio Processing Library</a></li>
+ <li><a href="http://quitte.de/dsp/pvoc.html">pvoc</a> by Tim Goetze
+  (based on the code by Mark Dolson).</li>
+</ul>
+
+<a id="history" name="history"></a>
+<h2>History</h2>
+<ul>
+ <li> Feb 24, 2007 :
+ <ul>
+  <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.6.tar.gz?download">waon-0.6</a> released!</li>
+  <li>bug fixed on loose phase lock,
+   use <a href="http://xiph.org/ao/">ao</a> libary,
+   and pitch-shifting!</li>
+ </ul>
+ </li>
+ <li>Feb 13, 2007 : add my local phase vocoder code into WaoN <a href="http://sourceforge.net/cvs/?group_id=177685">CVS Repository</a>.</li>
+</ul>
+
+<hr />
+
+<p class="navi">
+<a href="#news">News</a>|
+<a href="#what">what?</a>|
+<a href="#download">Download</a>|
+<a href="#install">Install</a>|
+<a href="#todo">ToDo</a>|
+<a href="#refs">Refs</a>|
+<a href="#history">History</a>
+<br />
+<a href="index.html">WaoN</a>|
+<a href="gwaon.html">gWaoN</a>|
+pv
+</p>
+
+<div class="navi">
+<address>
+e-mail:
+  <a href="mailto:kichiki@users.sourceforge.net">
+  kichiki@users.sourceforge.net</a></address>
+Copyright (C) 2007 Kengo Ichiki.  All rights reserved.
+<br />
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177685&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo webstats for WaoN -->
+<a id="mws4533787" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGw2muJgKklQI670lSOsSY5vA" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533787"></script>
+<!-- END motigo webstats code -->
+</div>
+
+</body>
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+    <title>WaoN - a wave-to-notes transcriber</title>
+    <link rev="made" href="mailto:kichiki@users.sourceforge.net" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    </style>
+  </head>
+
+<body>
+
+<div class="center">
+<p>
+<img src="WaoN.gif" alt="WaoN" width="236" height="95" />
+<br />
+is a <span class="blue">Wa</span>ve-t<span class="blue">o</span>-<span class="blue">N</span>otes transcriber<br />
+</p>
+</div>
+
+<p class="navi">
+WaoN|
+<a href="gwaon.html">gWaoN</a>|
+<a href="pv.html">pv</a>
+<br />
+<a href="#news">News</a>|
+<a href="#what">WaoN?</a>|
+<a href="#demo">Demo</a>|
+<a href="#features">Features</a>|
+<a href="#platform">Platform</a>|
+<a href="#formats">Formats</a>|
+<a href="#screenshot">Screenshot</a>|
+<a href="#tips">Tips</a>|
+<a href="#download">Download</a>|
+<a href="#install">Install</a>|
+<a href="#bugs">BUGS</a>|
+<a href="#todo">TODO</a>|
+<a href="#links">Links</a>|
+<a href="#history">History</a>
+</p>
+
+<hr />
+
+<a id="news" name="news"></a>
+<h2>What's new?</h2>
+<ul>
+ <li><a href="http://sourceforge.net/news/?group_id=177685">News @ SF</a></li>
+ <li>Jan. 1, 2012:
+  add &quot;<a href="#demo">Demo</a>&quot; section.</li>
+ <li>Dec. 27, 2011:
+  <a href="http://sourceforge.net/projects/waon/files/waon/0.10/waon-0.10.tar.gz/download">waon-0.10</a> released. (<a href="https://sourceforge.net/projects/waon/files/waon/0.10/">Release Note</a>)
+ <ul>
+  <li>waon:
+   the quality of result is improved by cleaning up useless notes.</li>
+  <li><a href="gwaon.html">gwaon</a>:
+   horizontal keyboard is added on the spectrum pane.</li>
+ </ul>
+ </li>
+ <li>Nov. 4, 2007 :
+  <a href="http://prdownloads.sourceforge.net/waon/waon-0.9.tar.gz?download">waon-0.9</a> released. (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=551903">Release Note</a>)
+ <ul>
+  <li>add manual pages (waon.1, pv.1, gwaon.1).</li>
+  <li>clean the codes.</li>
+  <li><a href="pv.html">pv</a>:
+  <ul>
+   <li>add the interactive curses mode with real-time time-strech
+    and pitch-shift.</li>
+   <li>add no-fft scheme (just for fun).</li>
+  </ul>
+  </li>
+  <li><a href="gwaon.html">gwaon</a>:
+   update about window and the GUI, adding buttons for each function.</li>
+ </ul>
+ </li>
+ <li>Oct 9, 2007 :
+  <a href="http://sourceforge.net/forum/forum.php?forum_id=743713">ports for FreeBSD is now available</a>.
+ </li>
+ <li>Mar 10, 2007 :
+  <a href="http://prdownloads.sourceforge.net/waon/waon-0.8.tar.gz?download">waon-0.8</a> released. (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=492772">Release Note</a>)
+ <ul>
+  <li><a href="pv.html">pv</a>:
+   <b>rate</b> and <b>pitch</b> options can work together.</li>
+  <li><a href="gwaon.html">gWaoN</a>:
+   add pitch-shift scale.</li>
+ </ul>
+ </li>
+ <li>Mar 1, 2007 :
+  <a href="http://prdownloads.sourceforge.net/waon/waon-0.7.tar.gz?download">waon-0.7</a> released!
+ <ul>
+  <li>WaoN:
+  <ul>
+   <li>bug fixed for the procedure in phase-diff correction.</li>
+   <li>add two functionalities, drum-removal (by options <b>-psub-n</b>, <b>-psub-f</b>) and octave removal (by option <b>-oct</b>).</li>
+   <li>set hanning window as the default window.</li>
+   <li>set phase-diff correction as the default,
+    and cut --phase option and add <b>-nophase</b> option, instead.</li>
+  </ul>
+  </li>
+  <li><a href="pv.html">pv</a>:
+   set hanning window as the default window.</li>
+ </ul>
+ </li>
+ <li><a href="#history">old news</a></li>
+</ul>
+
+<a id="what" name="what"></a>
+<h2>What is <strong>WaoN</strong>?</h2>
+<p>
+WaoN is a <span class="blue">Wa</span>ve-t<span class="blue">o</span>-<span class="blue">N</span>otes transcriber,
+that is,
+the inverse of timidity by Tuukka Toivonen (and its descendants
+<a href="http://timidity.sourceforge.net/">
+timidity++</a>).
+<small>(&quot;WaoN&quot; also has a meaning of harmony of notes or chord
+in Japanese!)</small>
+My original intention is to pick up voicing of harmony
+from sound of my favorite pianists.
+(I have no talent to do so, but computer will :-)
+But there is no <strong>functional</strong> application of this kind
+on Unix platform,
+as far as I know.
+So I began writing this <strong>WaoN</strong> by myself.
+</p>
+<p>
+Currently, WaoN contains three programs:
+<ul>
+ <li>waon: transcriber (wav-to-mid converter)</li>
+ <li><a href="pv.html">pv</a>:
+  phase vocoder for time-streching and pitch-shifting</li>
+ <li><a href="gwaon.html">gwaon</a>: GUI for waon and pv</li>
+</ul>
+</p>
+<p>
+WaoN is released under the
+<a href="http://www.gnu.org/copyleft/gpl.html">
+GNU General Public License</a>.
+Here is the
+<a href="http://sourceforge.net/projects/waon/">Project Page @ SF</a>.
+</p>
+
+<a id="demo"></a>
+<h2>Demo</h2>
+<p>
+<iframe width="560" height="315" src="http://www.youtube.com/embed/lwOBIG7dlcQ" frameborder="0" allowfullscreen></iframe>
+<ul>
+ <li>the midi file is at <a href="https://docs.google.com/leaf?id=0BzlIRpeAn3g3ZjMyMjVhOTgtNmZhNS00YTBjLTlmZTAtOTA3ZmM2MmIxMzBm">Google Docs - KurtRosenwinkel-Improvisation.mid</a></li>
+ <li>kurt's play is taken from <a href="http://www.youtube.com/watch?v=rzR1tAo-gRU">youtube - Kurt Rosenwinkel - Untitled Improvisation</a></li>
+ <li>score image and audio are taken from <a href="http://www.apple.com/ilife/garageband/">GarageBand</a></li>
+ <li>images are composed by <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a> and <a href="http://www.gimp.org/">GIMP</a></li>
+ <li>video is encoded by <a href="http://ffmpeg.org/">FFmpeg</a></li>
+</ul>
+</p>
+
+<a id="features" name="features"></a>
+<h2>Features</h2>
+<ul>
+  <li>read wav file and write standard MIDI file format 0.</li>
+  <li>stdin/stdout can be used as input/output file.</li>
+  <li>no explicit limits of number of notes at a time or along the time.</li>
+  <li>patch file (wav) can be used.</li>
+  <li>pitch shift.</li>
+</ul>
+
+<a id="platform" name="platform"></a>
+<h2>Platform</h2>
+<p>
+I believe that WaoN is able to be built on any platforms, but
+I develop it on <a href="http://www.freebsd.org/">FreeBSD</a>.
+</p>
+<p>
+Currently, (to my knowledge) there are some packages:
+<ul>
+ <li><a href="http://www.freshports.org/audio/waon/">port</a> for
+  <a href="http://www.freebsd.org/">FreeBSD</a></li>
+ <li>rpm (for <a href="http://www.opensuse.org/">openSUSE</a>) is also in 
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=177685">download section</a>.</li>
+ <li><a href="http://packages.ubuntu.com/gutsy/gnome/waon">package</a> for
+  <a href="http://www.ubuntu.com/">Ubuntu</a>
+  by Jussi Schultink.</li>
+ <li>the site <a href="http://www.brummer.de.hm/">www.brummer.de.hm</a>
+  has <a href="http://www.brummer.de.hm/deb/waon_0.8-1_i386.deb">debian package</a> (ver. 0.8) for <a href="http://sidux.com/">sidux</a> 
+  with a script &quot;waonmidi&quot;.</li>
+ <li><a href="http://aur.archlinux.org/packages.php?ID=16494">package</a>
+  for <a href="http://aur.archlinux.org/">AUR</a>.</li>
+ <li><a href="http://src.gnu-darwin.org/ports/audio/waon/">package</a>
+  for <a href="http://src.gnu-darwin.org/">GNU-Darwin</a>.</li>
+</ul>
+</p>
+
+<a id="formats" name="formats"></a>
+<h2>Formats</h2>
+<p>
+WaoN's native format as sound-input is WAV,
+and that as  note-output is standard MIDI format 0.
+If you have <a href="#sox">SoX</a>, you can use almost all sound format
+as input.
+In addition, if you have <a href="#timidity">timidity</a> or some midi player
+which could read standard MIDI file from stdin, you can play resultant
+midi file on time.
+See also <a href="#tips">Tips</a>.
+</p>
+
+<a id="screenshot" name="screenshot"></a>
+<h2>Screenshot (&quot;WaoN&quot; is not a GUI application but ... :-)</h2>
+
+<h3>help</h3>
+<pre>
+$ ./waon --help
+WaoN - a Wave-to-Notes transcriber, Version 0.9
+
+Copyright (C) 1998-2007 Kengo Ichiki &lt;kichiki@users.sourceforge.net&gt;
+Web: http://waon.sourceforge.net/
+
+WaoN is a Wave-to-Notes transcriber,
+that is, a converter from sound file to midi file.
+
+Usage: ./waon [option ...]
+
+Options:
+  -h --help     print this help.
+  -v, --version print version information.
+OPTIONS FOR FILES
+  -i --input    input wav file (default: stdin)
+  -o --output   output mid file (default: 'output.mid')
+        options -i and -o have argument '-' as stdin/stdout
+  -p --patch    patch file (default: no patch)
+FFT OPTIONS
+  -n            sampling number from WAV in 1 step (default: 2048)
+  -w --window   0 no window
+                1 parzen window
+                2 welch window
+                3 hanning window (default)
+                4 hamming window
+                5 blackman window
+                6 steeper 30-dB/octave rolloff window
+READING WAV OPTIONS
+  -s --shift    shift number from WAV in 1 step
+                (default: 1/4 of the value in -n option)
+PHASE-VOCODER OPTIONS
+  -nophase      don't use phase diff to improve freq estimation.
+                (default: use the correction)
+NOTE SELECTION OPTIONS
+  -c --cutoff   log10 of cut-off ratio to scale velocity of note
+                (default: -5.0)
+  -r --relative log10 of cut-off ratio relative to the average.
+                (default: no relative cutoff
+                = absolute cutoff with the value in -c option)
+  -k --peak     peak threshold for note-on, which ranges [0,127]
+                (default: 128 = no peak-search = search only first on-event)
+  -t --top      top note [midi #] (default: 103 = G7)
+  -b --bottom   bottom note [midi #] (default: 28 = E1)
+        Here middle C (261 Hz) = C4 = midi 60. Midi # ranges [0,127].
+  -a --adjust   adjust-pitch param, which is suggested by WaoN after analysis.
+                unit is half-note, that is, +1 is half-note up,
+                and -0.5 is quater-note down. (default: 0)
+DRUM-REMOVAL OPTIONS
+  -psub-n       number of averaging bins in one side.
+                that is, for n, (i-n,...,i,...,i+n) are averaged
+                (default: 0)
+  -psub-f       factor to the average, where the power is modified as
+                p[i] = (sqrt(p[i]) - f * sqrt(ave[i]))^2
+                (default: 0.0)
+OCTAVE-REMOVER OPTIONS
+  -oct  factor to the octave removal, where the power is modified as
+                p[i] = (sqrt(p[i]) - f * sqrt(oct[i]))^2
+                (default: 0.0)
+</pre>
+
+<a id="tips" name="tips"></a>
+<h2>Tips</h2>
+<p>
+I think that the default setting (2048 samples for FFT, no window, etc)
+is enough to judge how "WaoN" works.
+</p>
+<p>
+Here are some more tips.
+</p>
+<dl>
+  <dt>Ex.1) if you need more resolution in time,
+    use -s (--shift) option as follows.</dt>
+  <dd>
+    $ ./waon -i waltz4DB.wav -o waltz4DB.mid -w 3 -n 4096 -s 2048</dd>
+  <dt>Ex.2) you can use stdin and stdout, so that you can use timidity
+    to play resultant midi file on time.</dt>
+  <dd>
+    $ cat dolphineD.wav | ./waon -i - -o - | timidity -id -</dd>
+  <dt>Ex.3) if you want to analyse MP3,</dt>
+  <dd>
+  <pre>
+ $ mpg123 -m -s reflectD.mp3\
+   | sox -t raw -r 44100 -s -w - -t wav -\
+   | ./waon -i -
+or
+ $ sox ~/MP3/Mulgrew.mp3 -t wav -\
+   | ./waon -i - -n 4096 -s 1024
+  </pre>
+  </dd>
+</dl>
+
+<a id="download" name="download"></a>
+<h2>Download</h2>
+<p>
+please visit <a href="http://sourceforge.net/project/showfiles.php?group_id=177685">File Releases @ SF</a>.
+</p>
+
+<h3>Changes</h3>
+<ul>
+ <li><a href="http://sourceforge.net/projects/waon/files/waon/0.10/waon-0.10.tar.gz/download">0.10</a> (<a href="https://sourceforge.net/projects/waon/files/waon/0.10/">Release Note</a>)
+ <ul>
+  <li>waon:
+   the quality of result is improved by cleaning up useless notes.</li>
+  <li><a href="gwaon.html">gwaon</a>:
+   horizontal keyboard is added on the spectrum pane.</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.9.tar.gz?download">0.9</a> (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=551903">Release Note</a>)
+ <ul>
+  <li>add mannual pages (waon.1, pv.1, gwaon.1).</li>
+  <li>clean the codes.</li>
+  <li><a href="pv.html">pv</a>:
+  <ul>
+   <li>add the interactive curses mode with real-time time-strech
+    and pitch-shift.</li>
+   <li>add no-fft scheme (just for fun).</li>
+  </ul>
+  </li>
+  <li><a href="gwaon.html">gwaon</a>:
+   update about window and the GUI, adding buttons for each function.</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.8.tar.gz?download">0.8</a> (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=492772">Release Note</a>)
+ <ul>
+  <li><a href="pv.html">pv</a>:
+   <b>rate</b> and <b>pitch</b> options can work together.</li>
+  <li><a href="gwaon.html">WaoN</a>:
+   add pitch-shift scale.</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.7.tar.gz?download">0.7</a> (<a href="http://sourceforge.net/project/shownotes.php?release_id=490505&group_id=177685">Release Note</a>)
+ <ul>
+  <li>WaoN:
+  <ul>
+   <li>bug fixed for the prodecure in phase-diff correction.</li>
+   <li>add two functionalities, drum-removal (by options <b>-psub-n</b>, <b>-psub-f</b>) and octave removal (by option <b>-oct</b>).</li>
+   <li>set hanning window as the default window.</li>
+   <li>set phase-diff correction as the default,
+    and cut --phase option and add <b>-nophase</b> option, instead.</li>
+  </ul>
+  </li>
+  <li><a href="pv.html">pv</a>:
+   set hanning window as the default window.</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.6.tar.gz?download">0.6</a> (<a href="http://sourceforge.net/project/shownotes.php?release_id=489024&group_id=177685">Release Note</a>)
+ <ul>
+  <li><a href="gwaon.html">gWaoN</a>:
+   use ao libary, loop-play, play-position indicator,
+   loose phase lock PV.</li>
+  <li><a href="pv.html">pv</a>:
+   bug fixed on loose phase lock, use ao libary, pitch-shifting.</li>
+  <li>WaoN:
+   get rid of my old sox-derived code.</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.5.tar.gz?download">0.5</a> (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=487059">Release Note</a>)
+ <ul>
+  <li><a href="gwaon.html">gWaoN</a> now has the audio playback function
+   with the real-time tempo-change by phase vocoder.</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.4.tar.gz?download">0.4</a> (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=486366">Release Notes</a>)</li>
+ <ul>
+  <li>two additional programs,
+   <a href="pv.html">pv</a> and <a href="gwaon.html">gWaoN</a>,
+   are added.</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.3.tar.gz?download">0.3</a> (<a href="http://sourceforge.net/project/shownotes.php?release_id=485092&group_id=177685">Release Notes</a>)
+ <ul>
+  <li>add &quot;--phase&quot; option to improve freq estimations
+   by phase-vocoder technique.</li>
+  <li>use <a href="http://www.mega-nerd.com/libsndfile/">libsndfile</a>
+   for input.</li>
+ </ul>
+ <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.2.tar.gz?download">0.2</a> (<a href="http://sourceforge.net/project/shownotes.php?release_id=449335&group_id=177685">Release Notes</a>)
+ <ul>
+  <li>stereo wav can be handled properly.</li>
+  <li>work with either FFTW version 2 or 3.
+   (thanks Victor Liu)</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.1a.tar.gz?download">0.1a</a> (<a href="http://sourceforge.net/project/shownotes.php?release_id=449327&group_id=177685">Release Notes</a>)
+ <ul>
+  <li>correct explanation of '-a' option.</li>
+  <li>add document &quot;INSTALL&quot;, revise documents.</li>
+  <li>modefy '-k' option.</li>
+ </ul>
+ </li>
+</ul>
+
+<a id="install" name="install"></a>
+<h2>Installation</h2>
+<p>
+To install the program &quot;waon&quot;, 
+<ol>
+ <li>take a look at &quot;Makefile&quot; and edit it if necessary.</li>
+ <li>invoke &quot;make waon&quot;, for example.</li>
+ <li>you'll see an excutable &quot;waon&quot;. copy it wherever you want.</li>
+ <li>install man page &quot;waon.1&quot;.</li>
+</ol>
+</p>
+<p>
+note:
+for DEC users, the following site would be useful;
+<a href="http://decwarch.free.fr/audio.html#WAON">
+The DECWindows Archive - Audio and Sound</a>
+by pmoreau@cena.dgac.fr
+</p>
+<h3>Library</h3>
+<p>
+For &quot;waon&quot;,
+you need <a href="http://www.fftw.org/">FFTW</a> library
+and <a href="http://www.mega-nerd.com/libsndfile/">libsndfile</a>.
+</p>
+
+
+<a id="bugs" name="bugs"></a>
+<h2>BUGS</h2>
+<ol>
+  <li>-</li>
+</ol>
+
+<a id="todo" name="todo"></a>
+<h2>TODO</h2>
+<ol>
+  <li>improve algorithms --
+   partly done by phase vocoder technique.
+   current focus is on time-domain.</li>
+  <li>give some examples and instructions.</li>
+</ol>
+
+<a id="links" name="links"></a>
+<h2>Links</h2>
+
+<ul>
+ <li><a href="http://sourceforge.net/projects/waon/">Project Page @ SF</a></li>
+ <li><a href="http://apps.linuxaudio.org/apps/all/waon">WaoN</a>
+  @ <a href="http://apps.linuxaudio.org/">apps.linuxaudio.org</a></li>
+</ul>
+
+<h3>Useful sites</h3>
+<ul>
+  <li><a href="http://linux-sound.org/">
+    Sound &amp; MIDI Software For Linux</a>
+    : an extensive list of softwares on unix (especially Linux) platform.</li>
+  <li><a href="http://www.wotsit.org/">
+    Wotsit's Format</a>
+    : yet another site on various formats (like MIDI, WAV, etc).</li>
+  <li><a href="http://www.ips.id.ethz.ch/~parish/midi/midi_file_format.txt">
+    standard MIDI Files 0.06</a></li>
+  <li><a id="sox" name="sox"></a>
+   <a href="http://sox.sourceforge.net/">SoX</a> - Sound eXchange</li>
+</ul>
+
+<h3>Similar projects</h3>
+<ul>
+  <li><a href="http://amc.sourceforge.net/">Automated Music Composition</a>
+   uses WaoN for Audio to Midi conversion
+   but with new sophisticated BPM detection.
+  </li>
+  <li>&quot;<a href="http://ppl.mines.colorado.edu/bill/ppl4.html">
+    A Parallel Conversion of WAV files to MID files</a>&quot;
+    by John Markus and William Lee Sims
+    (containing a source code
+    <a href="http://ppl.mines.colorado.edu/bill/section3_12.html">
+    Wav2Mid.c</a>).</li>
+  <li><a href="http://www.nerds.de/nerds/english/inst2midi.html">
+    Inst2Midi</a>, which converts a monophonic audio source
+    into MIDI Data. (on SGI)
+  <ul>
+   <li>cf.<a href="http://www.davecentral.com/projects/inst2midi/">
+    http://www.davecentral.com/projects/inst2midi/</a></li>
+  </ul>
+  </li>
+  <li>yet another
+    <a href="http://www.geocities.com/SiliconValley/Software/8918/linux/index.html">
+    wav2mid</a> by guenther.sohler@newlogic.at</li>
+  <li>sharewares on Windows...
+    <a href="http://www.dynasys.co.jp/WinSoft/Srt/">
+      Song Raita</a>,
+    <a href="http://www.pluto.dti.ne.jp/~araki/soft/st.html">
+      Saihu no Tatsujin</a>.</li>
+  <li><a id="timidity" name="timidity"></a>
+    <a href="http://timidity.sourceforge.net/">
+    timidity++</a>
+    - a MIDI to WAVE converter and player</li>
+  <li><a href="http://www.nongnu.org/fluid/">fluidsynth</a>
+   is a real-time software synthesizer,
+   render MIDI to audio using SoundFont instruments.</li>
+  <li><a href="http://home.sc.rr.com/cosmogony/ammfaq.html">The official alt.music.midi FAQ</a>:
+   this site has an extensive list of applications in Section 
+   <a href="http://home.sc.rr.com/cosmogony/ammfaq.html#2.07">2.07</a>.</li>
+</ul>
+
+<a id="history" name="history"></a>
+<h2>History</h2>
+<ul>
+ <li>Feb 24, 2007 :
+  <a href="http://prdownloads.sourceforge.net/waon/waon-0.6.tar.gz?download">waon-0.6</a> released!
+ <ul>
+  <li><a href="gwaon.html">gWaoN</a>:
+   use ao libary, loop-play, play-position indicator,
+   loose phase lock PV.</li>
+  <li><a href="pv.html">pv</a>:
+   bug fixed on loose phase lock, use ao libary, pitch-shifting.</li>
+  <li>WaoN:
+   get rid of my old sox-derived code.</li>
+ </ul>
+ </li>
+ <li>Feb 16, 2007 :
+  <a href="http://prdownloads.sourceforge.net/waon/waon-0.5.tar.gz?download">waon-0.5</a> released!
+ <ul>
+  <li>this release is for <a href="gwaon.html">gWaoN</a> functionality enhancement.</li>
+ </ul>
+ </li>
+ <li>Feb 13, 2007 :
+ <ul>
+  <li><a href="pv.html">pv</a> is added in the <a href="http://sourceforge.net/cvs/?group_id=177685">CVS Repository</a>.</li> 
+  <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.4.tar.gz?download">waon-0.4</a> released!</li>
+ </ul>
+ <li>Feb 10, 2007 :
+  <a href="gwaon.html">gWaoN</a> is in the <a href="http://sourceforge.net/cvs/?group_id=177685">CVS Repository</a>.</li> 
+ <li>Feb 8, 2007 :
+  <a href="http://prdownloads.sourceforge.net/waon/waon-0.3.tar.gz?download">waon-0.3</a> is out!
+ <ul>
+  <li>add &quot;--phase&quot; option to improve freq estimations
+   by phase-vocoder technique.</li>
+  <li>use <a href="http://www.mega-nerd.com/libsndfile/">libsndfile</a>
+   for input.</li>
+ </ul>
+ </li>
+ <li>Sep 22, 2006 :
+  <a href="http://prdownloads.sourceforge.net/waon/waon-0.2.tar.gz?download">waon-0.2</a> is out!
+ <ul>
+  <li>stereo wav can be handled properly.</li>
+  <li>work with either FFTW version 2 or 3.</li>
+ </ul>
+ </li>
+ <li>Sep 20, 2006 : move to
+  <a href="http://www.sourceforge.net">sourceforge</a>.</li>
+ <li>Feb 2, 2005 :
+   Victor Liu sent a patch for FFTW3. thanks!
+ </li>
+ <li>Jan 9, 2004 :
+   LOGO is made.
+ </li>
+ <li>Dec 21, 2003 :
+   update URLs of source and mirror site.</li>
+ </li>
+ <li>Mar 15, 2002 :
+ <ul>
+   <li>change URL.</li>
+   <li>revise and add some links only 
+     (again. no update on program, sorry.)</li>
+ </ul>
+ </li>
+ <li>Mar 4, 2000 :
+ <ul>
+   <li>long time no update...</li>
+   <li>revise and add some links only (no update on program, sorry.)</li>
+ </ul>
+ </li>
+ <li>Jan 10, 1999 :
+ <ul>
+   <li>start <a href="gwaon.html">gWaoN page</a>.</li>
+   <li>release version 0.1a.</li>
+ </ul>
+ </li>
+ <li>Jan 6, 1999 :
+   add <a href="#bugs">BUGS</a> section,
+   update <a href="#todo">TODO</a> list.</li>
+ <li> Dec 29, 1998 : first release of &quot;WaoN&quot;
+   version 0.1.</li>
+ <li>Dec 13, 1998 :
+ <ul>
+   <li>catch up with the state before the accident
+     around Dec 5, 1996, at last.</li>
+   <li>change the name of this project to &quot;WaoN&quot;
+     and focusing on non-GUI version.</li>
+ </ul>
+ </li>
+ <li>Nov 26, 1998 :
+ <ul>
+   <li>signed up geocities to have web page for this project.
+    <br />
+    but http://www.geocities.com/SiliconValley/Ridge/4180/ is removed
+    (I forgot the passward... Dec. 28, 2001)</li>
+   <li>delete programs by accident ;-&lt;</li>
+ </ul>
+ </li>
+ <li>Oct 1998 : start writing Gtk+ programs of GUI for 'wav2mid'.</li>
+ <li>Dec 5, 1996 : finish developing the first generation.</li>
+ <li>Dec 3, 1996 : start original program named 'wav2mid'.</li>
+</ul>
+
+<hr />
+
+<p class="navi">
+<a href="#news">News</a>|
+<a href="#what">WaoN?</a>|
+<a href="#features">Features</a>|
+<a href="#platform">Platform</a>|
+<a href="#formats">Formats</a>|
+<a href="#screenshot">Screenshot</a>|
+<a href="#tips">Tips</a>|
+<a href="#download">Download</a>|
+<a href="#install">Install</a>|
+<a href="#bugs">BUGS</a>|
+<a href="#todo">TODO</a>|
+<a href="#links">Links</a>|
+<a href="#history">History</a>
+<br />
+WaoN|
+<a href="gwaon.html">gWaoN</a>|
+<a href="pv.html">pv</a>
+</p>
+
+<div class="navi">
+<address>
+e-mail:
+  <a href="mailto:kichiki@users.sourceforge.net">
+  kichiki@users.sourceforge.net</a></address>
+Copyright (C) 1998-2008,2011 Kengo Ichiki.  All rights reserved.
+<br />
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177685&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo webstats for WaoN -->
+<a id="mws4533787" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGw2muJgKklQI670lSOsSY5vA" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533787"></script>
+<!-- END motigo webstats code -->
+</div>
+
+</body>
+</html>

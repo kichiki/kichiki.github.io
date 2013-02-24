@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+    <title>gWaoN - a gtk+ GUI frontend for WaoN</title>
+    <link rev="made" href="mailto:kichiki@users.sourceforge.net" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    </style>
+  </head>
+
+<body>
+
+<div class="center">
+<h1>gWaoN</h1>
+is a gtk+ GUI frontend for <a href="index.html">WaoN</a>
+</div>
+
+<p class="navi">
+<a href="index.html">WaoN</a>|
+gWaoN|
+<a href="pv.html">pv</a>
+<br />
+<a href="#news">News</a>|
+<a href="#what">gWaoN?</a>|
+<a href="#screenshots">Screenshot</a>|
+<a href="#download">Download</a>|
+<a href="#install">Install</a>|
+<a href="#instructions">Instructions</a>|
+<a href="#todo">ToDo</a>|
+<a href="#history">History</a>
+</p>
+
+<hr />
+
+<a id="news" name"news"></a>
+<h2>What's new?</h2>
+<ul>
+ <li><a href="http://sourceforge.net/news/?group_id=177685">News @ SF</a></li>
+ <li>Nov. 4, 2007 :
+ <ul>
+  <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.9.tar.gz?download">waon-0.9</a> released. (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=551903">Release Note</a>)</li>
+  <li>add manual pages (waon.1, pv.1, gwaon.1).</li>
+  <li>clean the codes.</li>
+  <li>update about window and the GUI, adding buttons for each function.</li>
+ </ul>
+ </li>
+ <li>Oct 9, 2007 :
+  <a href="http://sourceforge.net/forum/forum.php?forum_id=743713">ports for FreeBSD is now available</a>.
+ </li>
+ <li>Mar 10, 2007 :
+ <ul>
+  <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.8.tar.gz?download">waon-0.8</a> released. (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=492772">Release Note</a>)</li>
+  <li>pitch-shift scale is added.</li>
+ </ul>
+ </li>
+ <li><a href="#history">old news</a></li>
+</ul>
+
+<a id="what" name="what"></a>
+<h2>What is <i>gWaoN</i>?</h2>
+<p>
+gWaoN is intended to be a gtk+ GUI frontend for
+<a href="index.html">WaoN</a> (for a long long time).
+</p>
+<p>
+Right now, gWaoN can do the following:
+<ul>
+ <li>read an audio file (wav or flac) and analyze its spectrogram.</li>
+ <li>play the file through <a href="http://xiph.org/ao/">libao</a>.</li>
+ <li>change the playback speed and pitch by phase vocoder in real-time!</li>
+</ul>
+</p>
+
+<h2><a id="screenshots" name="screenshots">
+  Screenshot</a></h2>
+
+<h3>November 4, 2007 (Release 0.9)</h3>
+<table border="0">
+<tr>
+<td valign="top">
+<a href="images/20071104-gwaon-about.png">
+<img src="images/20071104-gwaon-about_t.png"
+ alt="gwaon 0.9, about window"
+ width="146" height="129" /></a>
+</td>
+
+<td valign="top">
+<a href="images/20071104-gwaon.png">
+<img src="images/20071104-gwaon_t.png"
+ alt="gwaon 0.9, analyze window"
+ width="200" height="156" /></a>
+</td>
+</tr>
+
+<tr><td>
+About window.
+</td>
+
+<td>
+Analyze window.
+</td>
+</tr>
+</table>
+
+<h3>February 16, 2007 (Release 0.5)</h3>
+<p>
+<a href="images/20070216-gwaon-0.5.png">
+<img src="images/20070216-gwaon-0.5_t.png"
+ alt="gWaoN 0.5" />
+</a>
+<br />
+0.5 Release.
+The vertical scale controls playback tempo.
+</p>
+
+
+<h3>February 10, 2007</h3>
+<table border="0">
+<tr><td width="30%">
+<a href="images/20070210-gwaon-plainFFT.png">
+ <img src="images/20070210-gwaon-plainFFT_t.png"
+  width="200" height="156" /></a>
+</td>
+
+<td width="30%">
+<a href="images/20070210-gwaon-FFTwPV.png">
+ <img src="images/20070210-gwaon-FFTwPV_t.png"
+  width="200" height="156" /></a>
+</td>
+
+<td width="30%">
+<a href="images/20070210-gwaon-PVFFT.png">
+ <img src="images/20070210-gwaon-PVFFT_t.png"
+  width="200" height="156" /></a>
+</td></tr>
+
+<tr><td>
+<b>1)</b>
+Spectrogram by plain FFT.
+</td>
+
+<td>
+<b>2)</b>
+Fine spectrogram with the Phase-Vocoder corrections.
+</td>
+
+<td>
+<b>3)</b>
+Averaged spectrogram with the Phase-Vocoder corrections.
+</td></tr>
+</table>
+
+<h3>Very Old Screenshot</h3>
+<p>
+<a href="images/gmidie.jpeg">
+<img src="images/gmidie_t.jpeg" alt="simple MIDI editor window image">
+</a>
+<br />
+not functional, just an image.
+</p>
+
+<h2><a id="download" name="download">
+  Download</a></h2>
+<p>
+<b>gWaoN</b> is included since Release 0.4.
+Please visit <a href="http://sourceforge.net/project/showfiles.php?group_id=177685">File Releases @ SF</a>.
+Or you can get directory from
+<a href="http://sourceforge.net/cvs/?group_id=177685">CVS Repository</a>.
+</p>
+
+<h2><a id="install" name="install">
+Installation</a></h2>
+<p>
+To install the program &quot;gwaon&quot;, 
+<ol>
+ <li>take a look at &quot;Makefile&quot; and edit it if necessary.</li>
+ <li>invoke &quot;make gwaon&quot;, for example.</li>
+ <li>you'll see an excutable &quot;gwaon&quot;. copy it wherever you want.</li>
+ <li>install man page &quot;gwaon.1&quot;.</li>
+</ol>
+</p>
+<h3>library</h3>
+<p>To build &quot;gwaon&quot;, you need the following libraries:
+<ul>
+ <li><a href="http://www.gtk.org/">Gtk+</a></li>
+ <li><a href="http://www.fftw.org/">FFTW</a></li>
+ <li><a href="http://www.mega-nerd.com/libsndfile/">libsndfile</a>
+  for audio input</li>
+ <li><a href="http://xiph.org/ao/">libao</a> for audio output</li>
+ <li><a href="http://www.mega-nerd.com/SRC/">libsamplerate</a>
+  for pitch-shift</li>
+</ul>
+</p>
+
+<a id="instructions" name="instructions"></a>
+<h2>Instructions</h2>
+<p>Here's a brief instruction to play.</p>
+<ul>
+ <li>1) load sound file (wav or flac, thanks to
+  <a href="http://www.mega-nerd.com/libsndfile/">libsndfile</a>.).
+  then, you'll get the big window</li>
+ <li>2) adjust the right position you want by the scale and scroller
+  at the bottom.</li>
+ <li>3) click the left button at some place to mark the position.
+  the power and phase spectrum at that point is shown upper two panels.</li>
+ <li>4) play chaning some parameters.
+  right now there are following key-bindings
+  (if the key is not working, try typing TAB to focus the main window
+   -- sorry but I do not know how to fix it):
+ <ul>
+  <li><b>SPC</b>                     : play/stop</li>
+  <li><b>p</b>, <b>P</b>             : change analysis mode.</li>
+  <li><b>w</b>, <b>W</b>             : change the window function.</li>
+  <li><b>Right</b>, <b>Left</b>      : change the FFT size by factor 2.</li>
+  <li><b>Q</b>, <b>q</b>             : toggle PV mode (no phase lock/loose phase lock)</li>
+  <li><b>h</b>, <b>H</b>             : change hop size for the Phase-Vocoder correction.</li>
+  <li><b>o</b>, <b>O</b>             : change the upper octave limit.</li>
+  <li><b>l</b>, <b>L</b>             : change the lower octave limit.</li>
+  <li><b>Up</b>, <b>Down</b>         : change the upper limit for the power spectrum</li>
+  <li><b>PageUp</b>, <b>PageDown</b> : change the lower limit for the power spectrum</li>
+ </ul>
+ </li>
+ <li>5) change the tempo and pitch by the vertical scales in the right
+  during the audio playback. you can play backward!</li>
+</ul>
+
+<a id="todo" name="todo"></a>
+<h2>ToDo List</h2>
+<p>
+<ul>
+  <li>add toggle for grid on/off</li>
+  <li>reconsider key-bindings</li>
+  <li>add a display mode to see the octave structure
+   for the spectrum-phase panel rotating 90-degree</li>
+  <li>conversion from WAV to MIDI (using WaoN function)</li>
+  <li>play-back function for the MIDI output</li>
+  <li>simple MIDI editor</li>
+  <li>etc...</li>
+</ul>
+</p>
+
+<a id="history" name="history"></a>
+<h2>History</h2>
+<p>
+<ul>
+ <li> Feb 24, 2007 :
+ <ul>
+  <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.6.tar.gz?download">waon-0.6</a> released!</li>
+  <li>loop-play, play-position indicator, loose phase lock PV.</li>
+ </ul>
+ </li>
+ <li> Feb 19, 2007 :
+ <ul>
+  <li>use <a href="http://xiph.org/ao/">libao</a> instead of
+   <a href="http://www.tux.org/~ricdude/EsounD.html">esd</a>
+   for audio output.
+  </li>
+ </ul>
+ </li>
+ <li> Feb 16, 2007 :
+ <ul>
+  <li><a href="http://prdownloads.sourceforge.net/waon/waon-0.5.tar.gz?download">waon-0.5</a> released!</li>
+  <li>audio-playback and real-time tempo-change (without pitch shift)
+   functions are implemented!</li>
+ </ul>
+ </li>
+ <li> Feb 10, 2007 : coming back!
+ <ul>
+  <li>put the code in <a href="http://sourceforge.net/cvs/?group_id=177685">CVS Repository</a>.</li>
+  <li>add <a href="#screenshots">screenshots</a>.</li>
+ </ul>
+ </li>
+ <li> Jan 10, 1999 : start this page.</li>
+</ul>
+</p>
+
+<hr />
+
+<p class="navi">
+<a href="#news">News</a>|
+<a href="#what">gWaoN?</a>|
+<a href="#screenshots">Screenshot</a>|
+<a href="#download">Download</a>|
+<a href="#install">Install</a>|
+<a href="#instructions">Instructions</a>|
+<a href="#todo">ToDo</a>|
+<a href="#history">History</a>
+<br />
+<a href="index.html">WaoN</a>|
+gWaoN|
+<a href="pv.html">pv</a>
+</p>
+
+<div class="navi">
+<address>
+e-mail:
+  <a href="mailto:kichiki@users.sourceforge.net">
+  kichiki@users.sourceforge.net</a></address>
+Copyright (C) 1998-2007 Kengo Ichiki.  All rights reserved.
+<br />
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177685&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo webstats for WaoN -->
+<a id="mws4533787" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGw2muJgKklQI670lSOsSY5vA" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533787"></script>
+<!-- END motigo webstats code -->
+</div>
+
+</body>
+</html>
