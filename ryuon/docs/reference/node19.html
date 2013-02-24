@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Algorithm</TITLE>
+<META NAME="description" CONTENT="Algorithm">
+<META NAME="keywords" CONTENT="reference">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="reference.css">
+
+<LINK REL="next" HREF="node20.html">
+<LINK REL="previous" HREF="node15.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node20.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html294"
+  HREF="node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html290"
+  HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html284"
+  HREF="node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html292"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html295"
+  HREF="node20.html">Conversions between Positions and</A>
+<B>Up:</B> <A NAME="tex2html291"
+  HREF="node13.html">General Configurations</A>
+<B> Previous:</B> <A NAME="tex2html285"
+  HREF="node18.html">Loop Configuration</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001013000000000000000"></A>
+<A NAME="sec:ref-bonds-groups-independent-bond-list-algorithm"></A>
+<BR>
+Algorithm
+</H2>
+Let us see the algorithm forming the independent bond list <TT>bonds</TT>[] 
+out of the set of particle indices <!-- MATH
+ $(\alpha_{i}, \beta_{i})$
+ -->
+<IMG
+ WIDTH="47" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$ (\alpha_{i}, \beta_{i})$">. 
+This is implemented in the routine <TT>BONDS_GROUPS_make(b, np)</TT>, 
+where <TT>b</TT> is a pointer of the struct <TT>BONDS</TT> 
+and <TT>np</TT> is <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ N$">, the number of particles in the system. 
+The routine returns the struct <TT>BONDS_GROUPS</TT>. 
+
+<P>
+At the very beginning, we sort the list of particle indices 
+<!-- MATH
+ $(\alpha_{i}, \beta_{i})$
+ -->
+<IMG
+ WIDTH="47" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$ (\alpha_{i}, \beta_{i})$"> as 
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:ref-bonds-groups-BONDS-sort-alpha-beta"></A><!-- MATH
+ \begin{equation}
+\alpha_{i} < \beta_{i},
+  \quad\text{ and }\quad
+  \alpha_{i} < \alpha_{i+1}.
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="52" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img60.png"
+ ALT="$\displaystyle \alpha_{i} &lt; \beta_{i},$">&nbsp; &nbsp; and&nbsp;<IMG
+ WIDTH="82" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img61.png"
+ ALT="$\displaystyle \quad \alpha_{i} &lt; \alpha_{i+1}.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.10)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+This is done by the routine <TT>BONDS_sort_by_ia(b)</TT>.
+
+<P>
+The first task is to decompose the particles into each group. 
+This is done by the following three steps:
+
+<OL>
+<LI>count the number of bonds for each particle (stored in <TT>nb[np]</TT>),
+</LI>
+<LI>obtain the bond indices for each particle (stored in <TT>bond[np][nb]</TT>),
+</LI>
+<LI>give independent group id for each particle (stored in <TT>gid[np]</TT>).
+</LI>
+</OL>
+In <TT>gid[np]</TT>, 0 is for the particles which is independent 
+and has no bond (that is, <!-- MATH
+ ${\tt nb}[i]$
+ -->
+<IMG
+ WIDTH="36" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img62.png"
+ ALT="$ {\tt nb}[i]$"> is 0 for the particle <IMG
+ WIDTH="8" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ i$">). 
+
+<P>
+The third step is the crucial one, where the redundant bonds are also detected. 
+Let us focus on the step. The core part of this is implemented in 
+the routine <TT>BONDS_GROUPS_gid_check()</TT>. 
+This routine is looking for the particles connected to 
+the particle ``<TT>i</TT>'' whose group id is ``<TT>ig</TT>.''
+
+<P>
+First, a bond on the particle <TT>i</TT> is picked. 
+The bond index is <TT>ib</TT>. 
+Either <!-- MATH
+ $\alpha_{\tt ib}$
+ -->
+<IMG
+ WIDTH="26" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img63.png"
+ ALT="$ \alpha_{\tt ib}$"> or <!-- MATH
+ $\alpha_{\tt ib}$
+ -->
+<IMG
+ WIDTH="26" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img63.png"
+ ALT="$ \alpha_{\tt ib}$"> is equal to <TT>i</TT> 
+and the other particle (connecting to <TT>i</TT>) is taken as <TT>k</TT>. 
+The group id <TT>gid[k]</TT> would be either one of the three cases:
+
+<OL>
+<LI><TT>gid[k] == -1</TT>,
+  where the particle <TT>k</TT> is not assigned yet,
+</LI>
+<LI><TT>gid[k] == ig</TT>,
+  where the particle <TT>k</TT> is already assigned to the same group <TT>ig</TT>, 
+</LI>
+<LI>otherwise,
+  the particle <TT>k</TT> belongs to another group (<!-- MATH
+ $\neq{\tt ig}$
+ -->
+<IMG
+ WIDTH="35" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img64.png"
+ ALT="$ \neq{\tt ig}$">).
+</LI>
+</OL>
+For the first case, we just add the particle <TT>k</TT> to the group <TT>ig</TT>, 
+that is, define as <TT>gid[k] = ig</TT>. We also need to check 
+the connection from the particle <TT>k</TT> by calling 
+<TT>BONDS_GROUPS_gid_check()</TT> recursively. 
+
+<P>
+For the third case, we need to merge the two groups into one. 
+In the present code, we change the latter group belonging to <TT>k</TT> 
+to the group <TT>ig</TT> belonging to the particle <TT>i</TT>. 
+This is done by the routie <TT>BONDS_GROUPS_gid_flip</TT>. 
+In this case, we don't need to check the connection for <TT>k</TT> further, 
+because <TT>k</TT> has been checked (and assigned to some group). 
+
+<P>
+The second case is the important one. 
+This means that the bond between the particles <TT>i</TT> and <TT>k</TT> 
+forms a loop inside the same group <TT>ig</TT>. 
+We identify the bond as redundant. 
+The redundant bonds are stored in the struct <TT>loop_bonds</TT> 
+(which is defined only for the internal use). 
+In this case, also, we don't need to check the connection. 
+
+<P>
+Therefore, after the third step to define <TT>gid[np]</TT>, 
+we also have the redundant bond list in the struct <TT>loop_bonds *lb</TT>. 
+With these results, we are able to construct 
+the struct <TT>BONDS_GROUP</TT> for each group 
+which has the following elements
+
+<UL>
+<LI><TT>np</TT>, the number of particles in the group,
+</LI>
+<LI><TT>ip[np]</TT>, the particle indices of the group particles,
+</LI>
+<LI><TT>bonds[np-1]</TT>, the independent bond list for the group.
+</LI>
+</UL>
+Note that, for the isolated particles (<TT>np = 1</TT>), 
+the independent bond list <TT>bonds</TT> is set by NULL. 
+The struct <TT>BONDS_GROUPS</TT> is a list containing 
+numbers of struct <TT>BONDS_GROUP</TT> in the system. 
+
+<P>
+This algorithm forming the independent bond list <TT>bonds</TT> 
+has recursive call and the cost would be <IMG
+ WIDTH="68" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.png"
+ ALT="$ O(N\ln N)$">. 
+But in the simulation, this is called only once at the beginning, 
+so that it doesn't matter. 
+
+<P>
+<HR>
+<A NAME="tex2html294"
+  HREF="node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html290"
+  HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html284"
+  HREF="node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html292"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html295"
+  HREF="node20.html">Conversions between Positions and</A>
+<B>Up:</B> <A NAME="tex2html291"
+  HREF="node13.html">General Configurations</A>
+<B> Previous:</B> <A NAME="tex2html285"
+  HREF="node18.html">Loop Configuration</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

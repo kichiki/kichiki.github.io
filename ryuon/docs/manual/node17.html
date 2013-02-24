@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Bond Parameters</TITLE>
+<META NAME="description" CONTENT="Bond Parameters">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node18.html">
+<LINK REL="previous" HREF="node16.html">
+<LINK REL="up" HREF="node16.html">
+<LINK REL="next" HREF="node18.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html393"
+  HREF="node18.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html389"
+  HREF="node16.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html383"
+  HREF="node16.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html391"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html394"
+  HREF="node18.html">Agnle Parameters</A>
+<B>Up:</B> <A NAME="tex2html390"
+  HREF="node16.html">Chain Interaction Parameters</A>
+<B> Previous:</B> <A NAME="tex2html384"
+  HREF="node16.html">Chain Interaction Parameters</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00316100000000000000">
+Bond Parameters</A>
+</H3>
+<PRE>
+	bonds      : bonds among particles, list in the following form
+	(define bonds '(
+	  (; bond 1
+	   0       ; 1) spring type
+	   (       ; 2) spring parameters (list with 3 elements)
+	    0      ;    fene = 0 means (p1, p2) = (A^{sp}, L_{s})
+	    1.0    ;    p1   = A^{sp}, scaled spring constant
+	    2.1)   ;    p2   = L_{s} / length, scaled max extension
+	   ((0 1)  ; 3) list of pairs
+	    (1 2)
+	    (2 3))
+	    -1)    ; 4) number of exclusion for lubrication
+	           ;    negative means all particles in the chain is excluded.
+	  (; bond 2
+	   2       ; 1) spring type
+	   (       ; 2) spring parameters (list with 3 elements)
+	    1      ;    fene = 1 means (p1, p2) = (N_{K,s}, b_{K})
+	    19.8   ;    p1 = N_{K,s}, the Kuhn steps for a spring
+	    106.0) ;    p2 = b_{K} [nm], the Kuhn length
+	           ;    note that, for dWLC (type == 6),
+	           ;    (p1, p2) = (k, r0 [nm]), where the potential is
+	           ;    (k/2) * (kT / r0^2) * (r-r0)^2
+	   ((4 5)  ; 3) list of pairs
+	    (5 6)
+	    (6 7))
+	    1)     ; 4) number of exclusion for lubrication
+	  (; bond 3
+	   7       ; 1) spring type (FENE-Fraenkel)
+	   (       ; 2) spring parameters (list with 4 elements)
+	    0      ;    fene = 0 means (p1, p2, p3) = (H, r0 [nm], tol)
+	    1.0e6  ;    p1 = H, the spring constant
+	    0.5    ;    p2 = r0 [nm], the natural length of the spring
+	    0.01)  ;    p3 = tol, the tolerance parameter "s"
+	           ;    note that, for FENE-Fraenkel (type == 7),
+	           ;    the scalar part of the force is
+	           ;    fr = H * (r/hat(r0) - 1.0) / (1 - ((1-r/hat(r0))/tol)^2)
+	           ;    where hat(r0) = r0 / L0 (L0 is given by "length" [nm])
+	   ((8 9)  ; 3) list of pairs
+	    (9 10))
+	    0)     ; 4) number of exclusion for lubrication
+	 ))
+	where spring types are
+	  0 : Hookean spring (Asp * (r - Ls)
+	  1 : wormlike chain (WLC)
+	  2 : inverse Langevin chain (ILC)
+	  3 : Cohen's Pade approximation
+	  4 : Warner spring
+	  5 : Hookean spring (Asp * r / Ls)
+	  6 : Hookean spring for dWLC
+	  7 : FENE-Fraenkel
+	flag_relax : #f stokesian dynamics,
+	           : #t relaxation dynamics for bonds.
+	gamma      : friction coefficient for the relaxation dynamics
+</PRE>
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

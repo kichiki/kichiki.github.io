@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Python</TITLE>
+<META NAME="description" CONTENT="Python">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node33.html">
+<LINK REL="previous" HREF="node31.html">
+<LINK REL="up" HREF="node30.html">
+<LINK REL="next" HREF="node33.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html574"
+  HREF="node33.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html570"
+  HREF="node30.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html564"
+  HREF="node31.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html572"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html575"
+  HREF="node33.html">Perl</A>
+<B>Up:</B> <A NAME="tex2html571"
+  HREF="node30.html">Wrappers</A>
+<B> Previous:</B> <A NAME="tex2html565"
+  HREF="node31.html">C</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00342000000000000000">
+Python</A>
+</H2>
+The same procedure can be written in <B>Python</B>[<A
+ HREF="node80.html#Python">24</A>]
+in the following:
+<PRE>
+# test code for libstokes
+# Copyright (C) 2006-2008 Kengo Ichiki &lt;kichiki@users.sourceforge.net&gt;
+# $Id: manual.tex,v 1.5 2008/10/12 20:16:53 kichiki Exp $
+
+import stokes
+
+sys = stokes.stokes_init()
+
+np = 8
+nm = 8
+stokes.stokes_set_np(sys, np, nm)
+
+sys.periodic = 1 # periodic boundary condition
+lx = 10.0
+ly = 10.0
+lz = 10.0
+stokes.stokes_set_l(sys, lx, ly, lz)
+
+ewald_tr = 60.25
+xi = stokes.xi_by_tratio(sys, ewald_tr)
+ewald_eps = 1.0e-12
+stokes.stokes_set_xi(sys, xi, ewald_eps)
+
+print 'xi =', xi
+
+sys.lubmin2 = 4.0000000001
+sys.lubmax = 4.0
+stokes.stokes_set_iter(sys, "gmres", 2000, 20, 1.0e-6,
+                       1, stokes.get_stdout())
+
+pos = stokes.darray(np*3)
+u   = stokes.darray(np*3)
+f   = stokes.darray(np*3)
+
+pos[ 0] = 0.0 # x component
+pos[ 1] = 0.0 # y component
+pos[ 2] = 0.0 # z component
+
+pos[ 3] = 5.0
+pos[ 4] = 0.0
+pos[ 5] = 0.0
+
+pos[ 6] = 0.0
+pos[ 7] = 5.0
+pos[ 8] = 0.0
+
+pos[ 9] = 0.0
+pos[10] = 0.0
+pos[11] = 5.0
+
+pos[12] = 5.0
+pos[13] = 5.0
+pos[14] = 0.0
+
+pos[15] = 0.0
+pos[16] = 5.0
+pos[17] = 5.0
+
+pos[18] = 5.0
+pos[19] = 0.0
+pos[20] = 5.0
+
+pos[21] = 5.0
+pos[22] = 5.0
+pos[23] = 5.0
+
+for i in range(np*3):
+    u[i] = 1.0
+
+print 'pos:'
+for i in range(np):
+    print i, pos[i*3], pos[i*3+1], pos[i*3+2]
+
+print 'u:'
+for i in range(np):
+    print i, u[i*3], u[i*3+1], u[i*3+2]
+
+stokes.stokes_set_pos(sys, pos)
+stokes.solve_res_3f(sys, u, f)
+
+nc_f = stokes.stokes_nc_init("test-stokes.res-3f.nc",
+                             np,
+                             0, # nf
+                             0, # version
+                             0, # flag_poly
+                             0, # flag_Q
+                             0, # flag_it (time-dependent imposed flow)
+                             0, # shear_mode
+                             0) # flag_BD
+# f0, x, u are active
+stokes.stokes_nc_set_f0(nc_f, f)
+stokes.stokes_nc_set_time(nc_f, 0, 0.0)
+stokes.stokes_nc_set_x(nc_f, 0, pos)
+stokes.stokes_nc_set_u(nc_f, 0, u)
+
+stokes.stokes_nc_free(nc_f)
+
+
+print 'f:'
+for i in range(np):
+    print i, f[i*3], f[i*3+1], f[i*3+2]
+</PRE>
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,604 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>xi3: Tuning Program for the Ewald Summation</TITLE>
+<META NAME="description" CONTENT="xi3: Tuning Program for the Ewald Summation">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node29.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="up" HREF="node3.html">
+<LINK REL="next" HREF="node27.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html498"
+  HREF="node27.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html494"
+  HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html488"
+  HREF="node25.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html496"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html499"
+  HREF="node27.html">Sample Run</A>
+<B>Up:</B> <A NAME="tex2html495"
+  HREF="node3.html">stokes: Stokesian Dynamics Simulator</A>
+<B> Previous:</B> <A NAME="tex2html489"
+  HREF="node25.html">Parameter Script</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00320000000000000000"></A>
+<A NAME="sec:xi3"></A>
+<BR>
+<TT>xi3</TT>:
+  Tuning Program for the Ewald Summation
+</H1>
+<TT>xi3</TT> in <B>RYUON-stokes</B> package
+is a tuning program for ewald summation parameter <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $">.
+
+<P>
+For simplicity, here we show the equation for F version.
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+6\pi\mu a
+  \bm{U}^\alpha
+  &=&
+  \bm{F}^\alpha
+  +
+  \sum_{\gamma}
+  {\sum_{\beta}}'
+  \bm{M}(\bm{r}_{\beta\alpha} + \bm{r}_\gamma)
+  \cdot\bm{F}^\beta
+  \\
+  &=&
+  \bm{F}^\alpha
+  \\
+  &&
+  +
+  \sum_{\gamma}
+  {\sum_{\beta\neq\alpha}}'
+  \bm{M}^{\rm real}(\bm{r}_{\beta\alpha} + \bm{r}_\gamma)
+  \cdot\bm{F}^\beta
+  \\
+  &&
+  +
+  \frac{1}{V}
+  \sum_{\lambda}
+  \sum_{\beta = 1}^{N}
+  \cos(\bm{k}_\lambda\cdot\bm{r}_{\beta\alpha})\
+  \tilde{\bm{M}}^{\rm recip}(\bm{k}_\lambda)
+  \cdot\bm{F}^\beta
+  \\
+  &&
+  -
+  \bm{M}^{\rm recip}(\bm{r} = \bm{0})
+  \cdot\bm{F}^\alpha
+  ,
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="59" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img53.png"
+ ALT="$\displaystyle 6\pi\mu a
+\bm{U}^\alpha$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="207" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img54.png"
+ ALT="$\displaystyle \bm{F}^\alpha
++
+\sum_{\gamma}
+{\sum_{\beta}}'
+\bm{M}(\bm{r}_{\beta\alpha} + \bm{r}_\gamma)
+\cdot\bm{F}^\beta$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2.20)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="25" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img55.png"
+ ALT="$\displaystyle \bm{F}^\alpha$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2.21)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="199" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.png"
+ ALT="$\displaystyle +
+\sum_{\gamma}
+{\sum_{\beta\neq\alpha}}'
+\bm{M}^{\rm real}(\bm{r}_{\beta\alpha} + \bm{r}_\gamma)
+\cdot\bm{F}^\beta$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2.22)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="265" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img57.png"
+ ALT="$\displaystyle +
+\frac{1}{V}
+\sum_{\lambda}
+\sum_{\beta = 1}^{N}
+\cos(\bm{k}_\la...
+...}_{\beta\alpha})\
+\tilde{\bm{M}}^{\rm recip}(\bm{k}_\lambda)
+\cdot\bm{F}^\beta$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2.23)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="141" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img58.png"
+ ALT="$\displaystyle -
+\bm{M}^{\rm recip}(\bm{r} = \bm{0})
+\cdot\bm{F}^\alpha
+,$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2.24)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+where <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ \gamma$"> is a index of lattice vector
+<!-- MATH
+ $\bm{r}_\gamma = (n_x l_x, n_y l_y, n_z l_z)^\dagger$
+ -->
+<IMG
+ WIDTH="140" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img60.png"
+ ALT="$ \bm{r}_\gamma = (n_x l_x, n_y l_y, n_z l_z)^\dagger$">
+for arbitrary integers <!-- MATH
+ $(n_x, n_y, n_z)$
+ -->
+<IMG
+ WIDTH="69" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img61.png"
+ ALT="$ (n_x, n_y, n_z)$">,
+<!-- MATH
+ $\bm{r}_{\beta\alpha} = \bm{x}^\alpha - \bm{x}^\beta$
+ -->
+<IMG
+ WIDTH="97" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img62.png"
+ ALT="$ \bm{r}_{\beta\alpha} = \bm{x}^\alpha - \bm{x}^\beta$">.
+The prime on the summation of particle <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img63.png"
+ ALT="$ \beta$"> in real-space lattice sum
+means that the self part (<!-- MATH
+ $\beta = \alpha$
+ -->
+<IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img64.png"
+ ALT="$ \beta = \alpha$">) is excluded
+for the primary cell <!-- MATH
+ $\bm{r}_{\gamma_0} = \bm{0}$
+ -->
+<IMG
+ WIDTH="52" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.png"
+ ALT="$ \bm{r}_{\gamma_0} = \bm{0}$">.
+The mobility matrix <!-- MATH
+ $\bm{M}(\bm{r})$
+ -->
+<IMG
+ WIDTH="44" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.png"
+ ALT="$ \bm{M}(\bm{r})$"> is so called
+Rotne-Prager-Yamakawa tensor given by
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\bm{M}(\bm{r})
+  &=&
+  \frac{3a}{4}
+  \left(
+    1
+    +
+    \frac{a^2\nabla^2}{6}
+  \right)^2
+  \bm{J}(\bm{r})
+  \\
+  &=&
+  \frac{3}{4}
+  \left[
+  \left(
+    \frac{a}{r}
+    +
+    \frac{a^3}{3r^3}
+  \right)
+  \bm{I}
+  +
+  \left(
+    \frac{a}{r}
+    -
+    \frac{a^3}{r^3}
+  \right)
+  \frac{\bm{rr}}{r^2}
+  \right]
+  \\
+  &=&
+  \left(
+    \frac{3a}{4}
+    +
+    \frac{a^3}{4}
+    \nabla^2
+  \right)
+  \left(
+    \bm{I}
+    \nabla^2
+    -
+    \bm{\nabla\nabla}
+  \right)
+  r
+  .
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="44" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$\displaystyle \bm{M}(\bm{r})$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="139" HEIGHT="62" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.png"
+ ALT="$\displaystyle \frac{3a}{4}
+\left(
+1
++
+\frac{a^2\nabla^2}{6}
+\right)^2
+\bm{J}(\bm{r})$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2.25)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="209" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img69.png"
+ ALT="$\displaystyle \frac{3}{4}
+\left[
+\left(
+\frac{a}{r}
++
+\frac{a^3}{3r^3}
+\right)
+\bm{I}
++
+\left(
+\frac{a}{r}
+-
+\frac{a^3}{r^3}
+\right)
+\frac{\bm{rr}}{r^2}
+\right]$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2.26)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="189" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img70.png"
+ ALT="$\displaystyle \left(
+\frac{3a}{4}
++
+\frac{a^3}{4}
+\nabla^2
+\right)
+\left(
+\bm{I}
+\nabla^2
+-
+\bm{\nabla\nabla}
+\right)
+r
+.$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2.27)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+Because it is long-range interaction proportional to <IMG
+ WIDTH="26" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img71.png"
+ ALT="$ 1/r$">,
+we need to take huge number of periodic images.
+The trick of Ewald summation technique is that
+using the identity
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+{\rm erfc}(x) + {\rm erf}(x) \equiv 1,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="132" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.png"
+ ALT="$\displaystyle {\rm erfc}(x) + {\rm erf}(x) \equiv 1,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(2.28)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+we split <!-- MATH
+ $\bm{M}(\bm{r})$
+ -->
+<IMG
+ WIDTH="44" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.png"
+ ALT="$ \bm{M}(\bm{r})$"> into two parts,
+<!-- MATH
+ $\bm{M}^{\rm real}$
+ -->
+<IMG
+ WIDTH="42" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img73.png"
+ ALT="$ \bm{M}^{\rm real}$"> and <!-- MATH
+ $\bm{M}^{\rm recip}$
+ -->
+<IMG
+ WIDTH="47" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img74.png"
+ ALT="$ \bm{M}^{\rm recip}$"> as
+<BR>
+<DIV ALIGN="CENTER"><A NAME="eq:xi3-M-real"></A><A NAME="eq:xi3-M-recip"></A><!-- MATH
+ \begin{eqnarray}
+\bm{M}^{\rm real}
+  &=&
+  \left(
+    \frac{3a}{4}
+    +
+    \frac{a^3}{4}
+    \nabla^2
+  \right)
+  \left(
+    \bm{I}
+    \nabla^2
+    -
+    \bm{\nabla\nabla}
+  \right)
+  r\
+  {\rm erfc} (\xi r),
+  \\
+  \bm{M}^{\rm recip}
+  &=&
+  \left(
+    \frac{3a}{4}
+    +
+    \frac{a^3}{4}
+    \nabla^2
+  \right)
+  \left(
+    \bm{I}
+    \nabla^2
+    -
+    \bm{\nabla\nabla}
+  \right)
+  r\ 
+  {\rm erf} (\xi r)
+  .
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="42" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$\displaystyle \bm{M}^{\rm real}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="243" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$\displaystyle \left(
+\frac{3a}{4}
++
+\frac{a^3}{4}
+\nabla^2
+\right)
+\left(
+\bm{I}
+\nabla^2
+-
+\bm{\nabla\nabla}
+\right)
+r\
+{\rm erfc} (\xi r),$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2.29)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="47" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img77.png"
+ ALT="$\displaystyle \bm{M}^{\rm recip}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="237" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img78.png"
+ ALT="$\displaystyle \left(
+\frac{3a}{4}
++
+\frac{a^3}{4}
+\nabla^2
+\right)
+\left(
+\bm{I}
+\nabla^2
+-
+\bm{\nabla\nabla}
+\right)
+r\
+{\rm erf} (\xi r)
+.$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2.30)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+Because the error function <!-- MATH
+ ${\rm erfc}(x)$
+ -->
+<IMG
+ WIDTH="47" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img79.png"
+ ALT="$ {\rm erfc}(x)$"> decays exponentially,
+we can truncate the lattice summation of <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ \gamma$"> for <!-- MATH
+ $\bm{M}^{\rm real}$
+ -->
+<IMG
+ WIDTH="42" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img73.png"
+ ALT="$ \bm{M}^{\rm real}$">
+at some point.
+Similarly, in reciprocal space, <!-- MATH
+ $\tilde{\bm{M}}^{\rm recip}(\bm{k})$
+ -->
+<IMG
+ WIDTH="68" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$ \tilde{\bm{M}}^{\rm recip}(\bm{k})$">
+decays exponentially in <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img81.png"
+ ALT="$ k$"> so that we can truncate the lattice sum
+of <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img82.png"
+ ALT="$ \lambda$"> at some point.
+
+<P>
+Mathematically, the parameter <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $"> introduced in
+Eqs. (<A HREF="#eq:xi3-M-real">2.29</A>) and (<A HREF="#eq:xi3-M-recip">2.30</A>)
+is arbitrary. It specify how fast <!-- MATH
+ $\bm{M}^{\rm real}(\bm{r})$
+ -->
+<IMG
+ WIDTH="61" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img83.png"
+ ALT="$ \bm{M}^{\rm real}(\bm{r})$"> decays
+and how slow <!-- MATH
+ $\tilde{\bm{M}}^{\rm recip}(\bm{k})$
+ -->
+<IMG
+ WIDTH="68" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$ \tilde{\bm{M}}^{\rm recip}(\bm{k})$"> decays.
+Practically, on the other hand, we can choose the optimal value of <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $">
+so that the calculation time is minimal.
+
+<P>
+<BR> <HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html500"
+  HREF="node27.html">Sample Run</A>
+<LI><A NAME="tex2html501"
+  HREF="node28.html">Help</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<A NAME="tex2html498"
+  HREF="node27.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html494"
+  HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html488"
+  HREF="node25.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html496"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html499"
+  HREF="node27.html">Sample Run</A>
+<B>Up:</B> <A NAME="tex2html495"
+  HREF="node3.html">stokes: Stokesian Dynamics Simulator</A>
+<B> Previous:</B> <A NAME="tex2html489"
+  HREF="node25.html">Parameter Script</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

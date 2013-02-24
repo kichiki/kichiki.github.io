@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Core libstokes Parameters</TITLE>
+<META NAME="description" CONTENT="Core libstokes Parameters">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="node7.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html283"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html279"
+  HREF="node7.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html273"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html281"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html284"
+  HREF="node9.html">libiter Parameters</A>
+<B>Up:</B> <A NAME="tex2html280"
+  HREF="node7.html">Hydrodynamic Interaction Parameters</A>
+<B> Previous:</B> <A NAME="tex2html274"
+  HREF="node7.html">Hydrodynamic Interaction Parameters</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00313100000000000000">
+Core <TT>libstokes</TT> Parameters</A>
+</H3>
+
+<UL>
+<LI><TT>version</TT> : (string) ``<TT>F</TT>,'' ``<TT>FT</TT>,'' or ``<TT>FTS</TT>.''
+</LI>
+<LI><TT>flag-noHI</TT> : (bool)
+<BR>  <TT>#t</TT> for no hydrodynamic interaction, 
+  that is, only the self term (Stokes drag),
+<BR>  <TT>#f</TT> with hydrodynamic interactions
+</LI>
+<LI><TT>flag-mat</TT>: (bool)
+<BR>  <TT>#t</TT> for matrix scheme,
+<BR>  <TT>#f</TT> for atimes scheme
+</LI>
+<LI><TT>flag-lub</TT>: (bool)
+<BR>  <TT>#t</TT> with lub,
+<BR>  <TT>#f</TT> without lub
+</LI>
+<LI><TT>rmin</TT> : (double) parameter for mininum distance in
+  <!-- MATH
+ $(a_{i}+a_{j})\ {\tt *\ rmin}$
+ -->
+<IMG
+ WIDTH="106" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$ (a_{i}+a_{j})\ {\tt *\ rmin}$">.
+</LI>
+<LI><TT>lub-min</TT>: (double) minimum cutoff of distance for lubrication
+</LI>
+<LI><TT>lub-max</TT>: (double) maximum cutoff of distance for lubrication
+</LI>
+<LI><TT>periodic</TT>: (bool)
+<BR>  <TT>#t</TT> for periodic systems,
+<BR>  <TT>#f</TT> for open boundary systems
+</LI>
+</UL>
+The following parameters are only for the periodic systems:
+
+<UL>
+<LI><TT>ewald-tr</TT>: (double) time ratio <IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ T_r/T_k$"> for Ewald summation
+</LI>
+<LI><TT>ewald-eps</TT>: (double) cut-off limit for Ewald summation
+</LI>
+<LI><TT>lattice</TT>: (list of doubles) size of the periodic box
+</LI>
+</UL>
+(See Section <A HREF="node26.html#sec:xi3">2.2</A> for the details.)
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

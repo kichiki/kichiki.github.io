@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+    <title>Errata on the papers</title>
+    <link rev="made" href="mailto:kichiki@users.sourceforge.net" />
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+    <script type="text/javascript" src="../LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+<div class="center">
+<h1>Errata on the papers for two-body exact solutions in Stokes flows</h1>
+</div>
+
+<p class="navi">
+<a href="../index.html">RYUON</a>|
+<a href="../docs/index.html">documents</a>|
+<a href="../stokes/index.html">stokes</a>|
+<a href="../libstokes.html">libstokes</a>
+<a href="../libiter.html">libiter</a>|
+<a href="index.html">twobody</a>
+</p>
+
+<hr />
+
+<p>
+Here, some typos and errors in the publications 
+for the exact solutions of two particles in Stokes flows
+by Jeffrey et al are summarized. <br />
+(Mathematical notations are done by
+<a href="http://www.maths.nottingham.ac.uk/personal/drw/lm.html">LaTeXMathML</a>. To see equations, please activate Javascript on your browser.)
+</p>
+
+<ul>
+ <li>
+  D.J.Jeffrey and Y.Onishi,
+  <a href="http://dx.doi.org/10.1017/S0022112084000355">J. Fluid Mech. <b>139</b> (1984) pp.261-290</a>.
+ <ul>
+  <li>(JO-1.6) and (JO-1.12):
+   those scalar functions are defined for the non-dimensional matrices
+   $\hat{A}, \hat{B}, \hat{C}, \hat{a}, \hat{b}, \hat{c}$,
+   not for the bare matrices $A, B, C, a, b, c$.
+  <li>(JO-3.11a) $\chi_{mn}^{(\alpha)} = (-1)^{3-\alpha} U \delta_{m0}\delta_{n1}$</li>
+  <li>(JO-4.9) The index of the last P is $s (q-s) (p-n-1)$</li>
+  <li>(JO-4.10) typo on the closing brace at the index of the second P.</li>
+  <li>(JO-6.12) the index of $f$ is $2k$ (not $2j$)</li>
+  <li>(JO-6.13) there are two corrections:
+   one term outside the summation (the third term in the right-hand side below)
+   and the factor 4 in the denominator at the second term in the summation 
+   were missing. The correct form is <br />
+   $X_{12}^{C} = \frac{4\lambda^2}{(1+\lambda)^4}\ln\frac{s+2}{s-2}
+   +\frac{8\lambda^2}{(1+\lambda)^4}s^{-1}\ln(1-4s^{-2})
+   -\frac{16\lambda^2}{(1+\lambda)^4}s^{-1}
+   -\frac{8}{(1+\lambda)^3}\sum_{k=1}^{\infty}
+   \left\{
+    (1+\lambda)^{-2k-1}f_{2k+1}
+    -2^{2k+2}k^{-1}(2k+1)^{-1}\frac{\lambda^2}{4(1+\lambda)}
+   \right\}s^{-2k-1}$
+ </li>
+  <li>p. 277 in JO,
+   $g_5 = \frac{1}{125}\lambda (43 - 24\lambda + 43\lambda^2)(1+\lambda)^{-4}$
+   ,from 
+   <a href="http://link.aip.org/link/?JCPSA6/93/3484/1">Ladd (1990) J.Chem.Phys.</a> p.3487 (or Kim-Mifflin -- I do not check it).</li>
+  <li>p.282 in JO (3rd line from the bottom),
+   the left-hand side is $P_{1pq}$ (not $p_{1pq}$).</li>
+  <li>(JO-12.1) $Q_{1pq} = \delta_{0p} \delta_{0q}</li>
+  <li>(JO-12.2) $x_{11}^{c} = \sum f_{n}(\lambda) (1+\lambda)^{-n} s^{-n}$
+   (drop the factor of $2^{n}$ from the right-hand side)</li>
+  <li>(JO-12.3)
+   $x_{12}^{c} = -\frac{1}{8}(1+\lambda)^{3}\sum f_{n}(\lambda) (1+\lambda)^{-n} s^{-n}$
+   (drop the factor of $2^{n}$ from the right-hand side)</li>
+ </ul>
+ </li>
+ <li>
+  D.J.Jeffrey,
+  <!-- http://link.aip.org/link/?pfa/4/16 -->
+  <a href="http://dx.doi.org/10.1063/1.858494">Phys. Fluids A <b>4</b> (1992) pp.16-29</a>.
+ <ul>
+  <li>Note: the differences of (J-60) and (J-61) from (JO-4.10) and (JO-4.11)
+   are coming from the different definition of $Q_{npq}$.
+   That is, $Q$ in [J-1992] is equal to $(2/3)$ times $Q$ in [JO-1984].</li>
+ </ul>
+ </li>
+ <li>
+  D.J.Jeffrey, J.F.Morris and J.F.Brady,
+  <!-- http://link.aip.org/link/?pfa/5/2317 -->
+  <a href="http://dx.doi.org/10.1063/1.858795">Phys. Fluids A <b>5</b> (1993) pp.2317-2325</a>.
+ <ul>
+  <li>at p. 2321, $f_8$ for $X^Q$ should be
+  <ul>
+   <li>$f_8 = 432 \lambda^2 -1410 \lambda^3 +5400 \lambda^4 +6240 \lambda^5$.</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<div class="navi">
+<a href="../index.html">RYUON</a>|
+<a href="../docs/index.html">documents</a>|
+<a href="../stokes/index.html">stokes</a>|
+<a href="../libstokes.html">libstokes</a>
+<a href="../libiter.html">libiter</a>|
+<a href="index.html">twobody</a>
+<br />
+<br />
+<address>
+e-mail:
+  <a href="mailto:kichiki@users.sourceforge.net">
+  kichiki@users.sourceforge.net</a></address>
+Copyright (C) 2006-2008 Kengo Ichiki.  All rights reserved.
+<br />
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+
+</div>
+
+</body>
+</html>

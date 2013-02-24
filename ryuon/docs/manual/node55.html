@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fixed Particles - Mixed Problem</TITLE>
+<META NAME="description" CONTENT="Fixed Particles - Mixed Problem">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node56.html">
+<LINK REL="previous" HREF="node54.html">
+<LINK REL="up" HREF="node51.html">
+<LINK REL="next" HREF="node56.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html896"
+  HREF="node56.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html892"
+  HREF="node51.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html886"
+  HREF="node54.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html894"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html897"
+  HREF="node56.html">Lubrication Correction</A>
+<B>Up:</B> <A NAME="tex2html893"
+  HREF="node51.html">Hydrodynamic Interaction in Stokes</A>
+<B> Previous:</B> <A NAME="tex2html887"
+  HREF="node54.html">FTS formulation</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00423000000000000000">
+Fixed Particles - Mixed Problem</A>
+</H2>
+When we are interested in particle dynamics,
+the mobility problem is the main target.
+However, in several situations, we may want to introduce
+fixed particles into the simulation representing some
+obstacles or vessel to support other mobile particles.
+[<A
+ HREF="node80.html#IchikiHayakawa1995">16</A>]
+In those cases, it is not a simple mobility problem but
+the mixed problems, that is,
+the ``mobility and resistance'' problem:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\left[
+    \begin{array}{c}
+      \bm{U}^{m}\\
+      \bm{E}^{m}\\
+      \bm{U}^{f}\\
+      \bm{E}^{f}
+    \end{array}
+  \right]
+  =
+  \left[
+    \begin{array}{cccc}
+      \bm{M}_{UF}^{mm} & \bm{M}_{US}^{mm} & \bm{M}_{UF}^{mf} & \bm{M}_{US}^{mf}\\
+      \bm{M}_{EF}^{mm} & \bm{M}_{ES}^{mm} & \bm{M}_{EF}^{mf} & \bm{M}_{ES}^{mf}\\
+      \bm{M}_{UF}^{fm} & \bm{M}_{US}^{fm} & \bm{M}_{UF}^{ff} & \bm{M}_{US}^{ff}\\
+      \bm{M}_{EF}^{fm} & \bm{M}_{ES}^{fm} & \bm{M}_{EF}^{ff} & \bm{M}_{ES}^{ff}\\
+    \end{array}
+  \right]
+  \cdot
+  \left[
+    \begin{array}{c}
+      \bm{F}^{m}\\
+      \bm{S}^{m}\\
+      \bm{F}^{f}\\
+      \bm{S}^{f}
+    \end{array}
+  \right]
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="361" HEIGHT="100" ALIGN="MIDDLE" BORDER="0"
+ SRC="img170.png"
+ ALT="$\displaystyle \left[ \begin{array}{c} \bm{U}^{m}\\ \bm{E}^{m}\\ \bm{U}^{f}\\ \b...
+...ray}{c} \bm{F}^{m}\\ \bm{S}^{m}\\ \bm{F}^{f}\\ \bm{S}^{f} \end{array} \right] .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.29)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Here, we denote the mobile and fixed particles by
+the superscripts <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img171.png"
+ ALT="$ m$"> and <IMG
+ WIDTH="13" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img172.png"
+ ALT="$ f$">, respectively.
+After sorting by the known and unknown variables,
+we have
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:atimes-gen"></A><!-- MATH
+ \begin{equation}
+\bm{B}
+  \cdot
+  \left[
+    \begin{array}{c}
+      \bm{F}^{m}\\
+      \bm{E}^{m}\\
+      \bm{U}^{f}\\
+      \bm{E}^{f}
+    \end{array}
+  \right]
+  =
+  \bm{A}
+  \cdot
+  \left[
+    \begin{array}{c}
+      \bm{U}^{m}\\
+      \bm{S}^{m}\\
+      \bm{F}^{f}\\
+      \bm{S}^{f}
+    \end{array}
+  \right]
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="181" HEIGHT="92" ALIGN="MIDDLE" BORDER="0"
+ SRC="img173.png"
+ ALT="$\displaystyle \bm{B} \cdot \left[ \begin{array}{c} \bm{F}^{m}\\ \bm{E}^{m}\\ \b...
+...ray}{c} \bm{U}^{m}\\ \bm{S}^{m}\\ \bm{F}^{f}\\ \bm{S}^{f} \end{array} \right] ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.30)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where given parameters are in the left-hand side
+and the unknowns are in the right-hand side.
+It is straightforward to obtain the matrices <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img174.png"
+ ALT="$ \bm{A}$"> and <IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img175.png"
+ ALT="$ \bm{B}$">
+by <IMG
+ WIDTH="24" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img176.png"
+ ALT="$ \bm{M}$">'s.
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\left[
+    \begin{array}{cccc}
+      -\bm{M}_{UF}^{mm} & \bm{0} & \bm{0} & \bm{0}\\
+      -\bm{M}_{EF}^{mm} & \bm{I} & \bm{0} & \bm{0}\\
+      -\bm{M}_{UF}^{fm} & \bm{0} & \bm{I} & \bm{0}\\
+      -\bm{M}_{EF}^{fm} & \bm{0} & \bm{0} & \bm{I}\\
+    \end{array}
+  \right]
+  \cdot
+  \left[
+    \begin{array}{c}
+      \bm{F}^{m}\\
+      \bm{E}^{m}\\
+      \bm{U}^{f}\\
+      \bm{E}^{f}
+    \end{array}
+  \right]
+  =
+  \left[
+    \begin{array}{cccc}
+      -\bm{I} & \bm{M}_{US}^{mm} & \bm{M}_{UF}^{mf} & \bm{M}_{US}^{mf}\\
+      \bm{0}  & \bm{M}_{ES}^{mm} & \bm{M}_{EF}^{mf} & \bm{M}_{ES}^{mf}\\
+      \bm{0}  & \bm{M}_{US}^{fm} & \bm{M}_{UF}^{ff} & \bm{M}_{US}^{ff}\\
+      \bm{0}  & \bm{M}_{ES}^{fm} & \bm{M}_{EF}^{ff} & \bm{M}_{ES}^{ff}\\
+    \end{array}
+  \right]
+  \cdot
+  \left[
+    \begin{array}{c}
+      \bm{U}^{m}\\
+      \bm{S}^{m}\\
+      \bm{F}^{f}\\
+      \bm{S}^{f}
+    \end{array}
+  \right]
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="505" HEIGHT="100" ALIGN="MIDDLE" BORDER="0"
+ SRC="img177.png"
+ ALT="$\displaystyle \left[ \begin{array}{cccc} -\bm{M}_{UF}^{mm} &amp; \bm{0} &amp; \bm{0} &amp; ...
+...ray}{c} \bm{U}^{m}\\ \bm{S}^{m}\\ \bm{F}^{f}\\ \bm{S}^{f} \end{array} \right] .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.31)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Because the matrices are known variables,
+the generalized form of linear set of equations (<A HREF="#eq:atimes-gen">3.30</A>)
+can be solved by the standard iterative method
+by giving the procedure to calculate <!-- MATH
+ $\bm{A}\cdot\bm{x}$
+ -->
+<IMG
+ WIDTH="39" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$ \bm {A}\cdot \bm {x}$">
+with <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img174.png"
+ ALT="$ \bm{A}$"> in (<A HREF="#eq:atimes-gen">3.30</A>)
+for a given vector <!-- MATH
+ $\bm{b} = \bm{B}\cdot\bm{b}'$
+ -->
+<IMG
+ WIDTH="70" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img178.png"
+ ALT="$ \bm{b} = \bm{B}\cdot\bm{b}'$">
+appeared in the left-hand side of Eq. (<A HREF="#eq:atimes-gen">3.30</A>).
+
+<P>
+To reduce the debugging cost (and extra complexity of the code),
+the implementation of the scheme in the library <TT>libstokes</TT>
+is in this way.<A NAME="tex2html5"
+  HREF="footnode.html#foot1272"><SUP>3.1</SUP></A>
+<P>
+<HR>
+<A NAME="tex2html896"
+  HREF="node56.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html892"
+  HREF="node51.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html886"
+  HREF="node54.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html894"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html897"
+  HREF="node56.html">Lubrication Correction</A>
+<B>Up:</B> <A NAME="tex2html893"
+  HREF="node51.html">Hydrodynamic Interaction in Stokes</A>
+<B> Previous:</B> <A NAME="tex2html887"
+  HREF="node54.html">FTS formulation</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Constructor/Destructor</TITLE>
+<META NAME="description" CONTENT="Constructor/Destructor">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node44.html">
+<LINK REL="previous" HREF="node42.html">
+<LINK REL="up" HREF="node42.html">
+<LINK REL="next" HREF="node44.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html747"
+  HREF="node44.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html743"
+  HREF="node42.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html737"
+  HREF="node42.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html745"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html748"
+  HREF="node44.html">Writing Routines</A>
+<B>Up:</B> <A NAME="tex2html744"
+  HREF="node42.html">NetCDF Interface</A>
+<B> Previous:</B> <A NAME="tex2html738"
+  HREF="node42.html">NetCDF Interface</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION00412010000000000000">
+Constructor/Destructor</A>
+</H4>
+The following constructor returns NetCDF id by the returned value.
+
+<UL>
+<LI><TT>stokes_nc_mob_f_init (filename, np);</TT>
+<BR>
+activated entries are <TT>f0, x, u</TT>.
+</LI>
+<LI><TT>stokes_nc_mob_ft_init (filename, np);</TT>
+<BR>
+activated entries are <TT>f0, t0, x, u, o</TT>.
+</LI>
+<LI><TT>stokes_nc_mob_fts_init (filename, np);</TT>
+<BR>
+activated entries are <TT>f0, t0, e0, x, u, o, s</TT>.
+</LI>
+<LI><TT>stokes_nc_mob_fix_f_init (filename, nm, nf);</TT>
+<BR>
+activated entries are <TT>xf0, f0, uf0, x, u, ff</TT>.
+</LI>
+<LI><TT>stokes_nc_mob_fix_ft_init (filename, np);</TT>
+<BR>
+activated entries are <TT>xf0, f0, t0, uf0, of0, x, u, o, ff, tf</TT>.
+</LI>
+<LI><TT>stokes_nc_mob_fix_fts_init (filename, np);</TT>
+<BR>
+activated entries are <TT>xf0, f0, t0, e0, uf0, of0, ef0,
+  x, u, o, s, ff, tf, sf</TT>.
+</LI>
+<LI><TT>stokes_nc_free (nc);</TT>
+<BR>
+destructor of NetCDF data structure.
+</LI>
+</UL>
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

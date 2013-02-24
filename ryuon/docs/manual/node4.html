@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>stokes3: Stokesian Dynamics Simulator</TITLE>
+<META NAME="description" CONTENT="stokes3: Stokesian Dynamics Simulator">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node26.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="node3.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html212"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html208"
+  HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html202"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html210"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html213"
+  HREF="node5.html">Output Parameters</A>
+<B>Up:</B> <A NAME="tex2html209"
+  HREF="node3.html">stokes: Stokesian Dynamics Simulator</A>
+<B> Previous:</B> <A NAME="tex2html203"
+  HREF="node3.html">stokes: Stokesian Dynamics Simulator</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00310000000000000000">
+<TT>stokes3</TT>:
+  Stokesian Dynamics Simulator</A>
+</H1>
+<TT>stokes3</TT> in <B>RYUON-stokes</B> package is a general-purpose 
+Stokesian-Brownian dynamics simulator.
+This simulator covers all range of the implementations in <TT>libstokes</TT>:
+
+<UL>
+<LI>hydrodynamic interactions with F, FT, and FTS versions
+</LI>
+<LI>periodic and non-periodic boundary conditions
+</LI>
+<LI>monodisperse and polydisperse systems
+</LI>
+<LI>no-slip and Navier slip boundary conditions on the particle surface
+</LI>
+<LI>with and without lubrication correction
+</LI>
+<LI>with and without fixed particles
+</LI>
+<LI>particles as well as chain(s) of particles connected by spring
+</LI>
+<LI>non-Brownian and Brownian systems
+</LI>
+</UL>
+Because it is the simulator for dynamics,
+only mobility problem (or mixed problem with fixed particles) are used.
+
+<P>
+In the following, 
+we are going to see parameters given by the ``<TT>init-file</TT>'' 
+passed to the simulator <TT>stokes3</TT>. 
+Note on the unit of length that 
+most parameters related to the length is scaled by 
+the parameter ``<TT>length</TT>,'' while some (including 
+``<TT>length</TT>'') are given with the real length unit 
+which you may take by yourself. 
+That is, either nanometer (nm) or micrometer (<IMG
+ WIDTH="13" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \mu$">m) is fine, 
+but use only one choice (of course). 
+
+<P>
+<BR> <HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html214"
+  HREF="node5.html">Output Parameters</A>
+<LI><A NAME="tex2html215"
+  HREF="node6.html">System Parameters</A>
+<LI><A NAME="tex2html216"
+  HREF="node7.html">Hydrodynamic Interaction Parameters</A>
+<UL>
+<LI><A NAME="tex2html217"
+  HREF="node8.html">Core <TT>libstokes</TT> Parameters</A>
+<LI><A NAME="tex2html218"
+  HREF="node9.html"><TT>libiter</TT> Parameters</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html219"
+  HREF="node10.html">Non-Brownian Dynamics Parameters</A>
+<UL>
+<LI><A NAME="tex2html220"
+  HREF="node11.html">Massless Particles</A>
+<LI><A NAME="tex2html221"
+  HREF="node12.html">Massive Particles</A>
+<UL>
+<LI><A NAME="tex2html222"
+  HREF="node13.html">Simple Equation of Motion</A>
+</UL>
+<LI><A NAME="tex2html223"
+  HREF="node14.html">ODE Parameters</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html224"
+  HREF="node15.html">Brownian Dynamics Parameters</A>
+<LI><A NAME="tex2html225"
+  HREF="node16.html">Chain Interaction Parameters</A>
+<UL>
+<LI><A NAME="tex2html226"
+  HREF="node17.html">Bond Parameters</A>
+<LI><A NAME="tex2html227"
+  HREF="node18.html">Agnle Parameters</A>
+<LI><A NAME="tex2html228"
+  HREF="node19.html">Constraint Parameters</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html229"
+  HREF="node20.html">Excluded-Volume Parameters</A>
+<UL>
+<LI><A NAME="tex2html230"
+  HREF="node21.html">Gaussian Type Excluded-Volume Parameters</A>
+<LI><A NAME="tex2html231"
+  HREF="node22.html">Debye-H&#252;ckel Type Excluded-Volume Parameters</A>
+<LI><A NAME="tex2html232"
+  HREF="node23.html">Lennard-Jones Type Excluded-Volume Parameters</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html233"
+  HREF="node24.html">Confinement Force Parameters</A>
+<LI><A NAME="tex2html234"
+  HREF="node25.html">Parameter Script</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

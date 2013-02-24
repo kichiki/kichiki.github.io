@@ -1,0 +1,606 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Conversions between Positions and Connectors</TITLE>
+<META NAME="description" CONTENT="Conversions between Positions and Connectors">
+<META NAME="keywords" CONTENT="reference">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="reference.css">
+
+<LINK REL="previous" HREF="node19.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node21.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html304"
+  HREF="node21.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html300"
+  HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html296"
+  HREF="node19.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html302"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html305"
+  HREF="node21.html">Bibliography</A>
+<B>Up:</B> <A NAME="tex2html301"
+  HREF="node13.html">General Configurations</A>
+<B> Previous:</B> <A NAME="tex2html297"
+  HREF="node19.html">Algorithm</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001014000000000000000"></A>
+<A NAME="sec:ref-bonds-groups-conversion-pos-conn"></A>
+<BR>
+Conversions between Positions and Connectors
+</H2>
+In terms of the struct <TT>BONDS_GROUP</TT> 
+which has <!-- MATH
+ $({\tt np}, {\tt ip[np]}, {\tt bonds[np-1]})$
+ -->
+<IMG
+ WIDTH="183" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.png"
+ ALT="$ ({\tt np}, {\tt ip[np]}, {\tt bonds[np-1]})$">, 
+we can construct the conversions 
+<!-- MATH
+ $\{\bm{x}_{\mu}\}\mapsto\{\overline{\bm{Q}}_{i}\}$
+ -->
+<IMG
+ WIDTH="84" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ \{\bm{x}_{\mu}\}\mapsto\{\overline{\bm{Q}}_{i}\}$"> 
+and <!-- MATH
+ $\{\overline{\bm{Q}}_{i}\}\mapsto\{\bm{x}_{\mu}\}$
+ -->
+<IMG
+ WIDTH="84" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.png"
+ ALT="$ \{\overline{\bm{Q}}_{i}\}\mapsto\{\bm{x}_{\mu}\}$">. 
+
+<P>
+First, we see the system with a single group. 
+Because we only take the independent bonds, 
+the bond index <IMG
+ WIDTH="8" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ i$"> runs from 0 to <IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ N-2$"> 
+(where the number of independent bonds is <IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.png"
+ ALT="$ N-1$">), 
+while the particle index <IMG
+ WIDTH="13" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img69.png"
+ ALT="$ \mu$"> runs from 0 to <IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.png"
+ ALT="$ N-1$"> 
+(where the number of particles is <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ N$">). 
+Adding the <IMG
+ WIDTH="52" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img70.png"
+ ALT="$ (N-1)$">-th element of the connector vector 
+<!-- MATH
+ $\{\overline{\bm{Q}}_{i}\}$
+ -->
+<IMG
+ WIDTH="32" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.png"
+ ALT="$ \{\overline{\bm{Q}}_{i}\}$"> by the center of mass <!-- MATH
+ $\bm{x}_{\text{COM}}$
+ -->
+<IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img71.png"
+ ALT="$ \bm{x}_{\text{COM}}$"> as 
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:ref-bonds-groups-last-connector-vector-COM"></A><!-- MATH
+ \begin{equation}
+\overline{\bm{Q}}_{N-1}
+  :=
+  \bm{x}_{\text{COM}}
+  =
+  \frac{1}{N}
+  \sum_{i=0}^{N-1}
+  \bm{x}_{{\tt ip}[i]}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="198" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.png"
+ ALT="$\displaystyle \overline{\bm{Q}}_{N-1} := \bm{x}_{\text{COM}} = \frac{1}{N} \sum_{i=0}^{N-1} \bm{x}_{{\tt ip}[i]} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.11)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+(therefore, precisely speaking, <!-- MATH
+ $\bm{x}_{\text{COM}}$
+ -->
+<IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img71.png"
+ ALT="$ \bm{x}_{\text{COM}}$"> is not 
+the center of <I>mass</I> though), 
+the numbers of elements of both <!-- MATH
+ $\{\bm{x}_{\mu}\}$
+ -->
+<IMG
+ WIDTH="32" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \{\bm{x}_{\mu}\}$"> 
+and <!-- MATH
+ $\{\overline{\bm{Q}}_{i}\}$
+ -->
+<IMG
+ WIDTH="32" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.png"
+ ALT="$ \{\overline{\bm{Q}}_{i}\}$"> become the same. 
+
+<P>
+The transformations between them can be constructed as follows. 
+By definition of connector vectors, 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\overline{\bm{Q}}_{i}
+  =
+  \bm{x}_{\alpha_{{\tt bonds}[i]}} - \bm{x}_{\beta_{{\tt bonds}[i]}},
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="155" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.png"
+ ALT="$\displaystyle \overline{\bm{Q}}_{i} = \bm{x}_{\alpha_{{\tt bonds}[i]}} - \bm{x}_{\beta_{{\tt bonds}[i]}} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.12)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for <!-- MATH
+ $i = 0, \cdots, N-2$
+ -->
+<IMG
+ WIDTH="108" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img32.png"
+ ALT="$ i = 0, \cdots, N-2$">. 
+The last element of the connector vector <!-- MATH
+ $\overline{\bm{Q}}_{N-1}$
+ -->
+<IMG
+ WIDTH="40" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.png"
+ ALT="$ \overline{\bm{Q}}_{N-1}$"> is given by 
+Eq. (<A HREF="#eq:ref-bonds-groups-last-connector-vector-COM">9.11</A>). 
+This is implemented in the routine <TT>BONDS_pos_to_conn_1</TT>. 
+Note that, for the isolated particle, 
+we define the (generalized) connector vector by 
+the position itself as 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\overline{\bm{Q}}_{0} = \bm{x}_{0}.
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="64" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img74.png"
+ ALT="$\displaystyle \overline{\bm{Q}}_{0} = \bm{x}_{0}.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.13)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+As we see, the relation is linear and the transformation can be 
+expressed by 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\overline{\bm{Q}}
+  =
+  \mathscr{B}\cdot\bm{x},
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="77" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$\displaystyle \overline{\bm{Q}} = \mathscr{B}\cdot\bm{x},$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.14)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $\overline{\bm{Q}}$
+ -->
+<IMG
+ WIDTH="18" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ \overline{\bm{Q}}$"> and <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img77.png"
+ ALT="$ \bm{x}$"> are the generalized vector 
+with <IMG
+ WIDTH="24" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img78.png"
+ ALT="$ 3N$"> dimension for <!-- MATH
+ $\{\overline{\bm{Q}}_{i}\}$
+ -->
+<IMG
+ WIDTH="32" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.png"
+ ALT="$ \{\overline{\bm{Q}}_{i}\}$"> and <!-- MATH
+ $\{\bm{x}_{\mu}\}$
+ -->
+<IMG
+ WIDTH="32" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \{\bm{x}_{\mu}\}$">, 
+respectively, and <!-- MATH
+ $\mathscr{B}$
+ -->
+<IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img79.png"
+ ALT="$ \mathscr{B}$"> is 
+<!-- MATH
+ $3N\times 3N$
+ -->
+<IMG
+ WIDTH="61" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$ 3N\times 3N$"> matrix based on the <IMG
+ WIDTH="45" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.png"
+ ALT="$ N\times N$"> matrix <!-- MATH
+ $\overline{\mathsf{B}}$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img36.png"
+ ALT="$ \overline{\mathsf{B}}$"> 
+in Eq. (<A HREF="node14.html#eq:ref-bonds-groups-conversion-particle-wise">9.4</A>). 
+
+<P>
+The opposite transformation 
+from <!-- MATH
+ $\overline{\bm{Q}}_{i}$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$ \overline{\bm{Q}}_{i}$"> to <!-- MATH
+ $\bm{x}_{\mu}$
+ -->
+<IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img81.png"
+ ALT="$ \bm{x}_{\mu}$"> can be obtained 
+from the inversion matrix <!-- MATH
+ $\mathscr{B}^{-1}$
+ -->
+<IMG
+ WIDTH="33" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img82.png"
+ ALT="$ \mathscr{B}^{-1}$">. 
+Alternatively (and directly), 
+we can calculate the position vectors from the connector vectors 
+(and the center-of-mass vector) as follows:
+For the isolated particle, 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{x}_{0} = \overline{\bm{Q}}_{0}.
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="64" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img83.png"
+ ALT="$\displaystyle \bm{x}_{0} = \overline{\bm{Q}}_{0}.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.15)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+For the group with <IMG
+ WIDTH="49" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img84.png"
+ ALT="$ N(&gt; 1)$"> particles, 
+we take the two steps: 
+
+<OL>
+<LI>at the first step, <!-- MATH
+ $\bm{x}_{\mu}$
+ -->
+<IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img81.png"
+ ALT="$ \bm{x}_{\mu}$"> is formed
+  with respect to the origin at the <!-- MATH
+ $\bm{x}_{\alpha_{{\tt bonds}[0]}}$
+ -->
+<IMG
+ WIDTH="53" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img85.png"
+ ALT="$ \bm{x}_{\alpha_{{\tt bonds}[0]}}$">,
+</LI>
+<LI>then, adjust the origin 
+  with respect to <!-- MATH
+ $\bm{x}_{\text{COM}} = \overline{\bm{Q}}_{N-1}$
+ -->
+<IMG
+ WIDTH="95" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.png"
+ ALT="$ \bm{x}_{\text{COM}} = \overline{\bm{Q}}_{N-1}$">. 
+</LI>
+</OL>
+
+<P>
+At the first step, 
+therefore, we define 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{x}_{\alpha_{{\tt bonds}[0]}} = \bm{0},
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="85" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img87.png"
+ ALT="$\displaystyle \bm{x}_{\alpha_{{\tt bonds}[0]}} = \bm{0},$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.16)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+as an initial condition. 
+After it, for the independent bond <IMG
+ WIDTH="8" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ i$"> from 0 to <IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ N-2$">, 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{x}_{\beta_{{\tt bonds}[i]}}
+  =
+  \bm{x}_{\alpha_{{\tt bonds}[i]}}
+  -
+  \overline{\bm{Q}}_{i}
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="155" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img88.png"
+ ALT="$\displaystyle \bm{x}_{\beta_{{\tt bonds}[i]}} = \bm{x}_{\alpha_{{\tt bonds}[i]}} - \overline{\bm{Q}}_{i} .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.17)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+To make this procedure work, 
+we should assure that 
+<!-- MATH
+ $\bm{x}_{\alpha_{{\tt bonds}[i]}}$
+ -->
+<IMG
+ WIDTH="51" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img89.png"
+ ALT="$ \bm{x}_{\alpha_{{\tt bonds}[i]}}$"> has been defined 
+by the <IMG
+ WIDTH="44" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.png"
+ ALT="$ (i-1)$">-th step. 
+This condition is satisfied from the fact that 
+
+<UL>
+<LI><TT>bonds[]</TT> don't have redundant bonds,
+</LI>
+<LI>the number of the independent bond is <TT>np-1</TT>, 
+</LI>
+<LI>the particle indices <!-- MATH
+ $\alpha_{i}$
+ -->
+<IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ \alpha_{i}$"> and <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.png"
+ ALT="$ \beta_{i}$"> are 
+  sorted as in Eq. (<A HREF="node19.html#eq:ref-bonds-groups-BONDS-sort-alpha-beta">9.10</A>),
+</LI>
+<LI><TT>bonds[]</TT> itself is sorted as 
+  <!-- MATH
+ ${\tt bonds}[i] < {\tt bonds}[i+1]$
+ -->
+<IMG
+ WIDTH="162" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.png"
+ ALT="$ {\tt bonds}[i] &lt; {\tt bonds}[i+1]$">.
+</LI>
+</UL>
+
+<P>
+After the first step, 
+we calculate <!-- MATH
+ $\widetilde{\bm{x}}_{\text{COM}}$
+ -->
+<IMG
+ WIDTH="41" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \widetilde{\bm{x}}_{\text{COM}}$"> as 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\widetilde{\bm{x}}_{\text{COM}}
+  =
+  \frac{1}{N}
+  \sum_{i=0}^{N-1}
+  \bm{x}_{{\tt ip}[i]}
+  \
+  \left(
+    =
+    \frac{1}{N}
+    \sum_{i=0}^{N-2}
+    \bm{x}_{\beta_{{\tt bonds}[i]}}
+  \right)
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="264" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img93.png"
+ ALT="$\displaystyle \widetilde{\bm{x}}_{\text{COM}} = \frac{1}{N} \sum_{i=0}^{N-1} \b...
+...\left( = \frac{1}{N} \sum_{i=0}^{N-2} \bm{x}_{\beta_{{\tt bonds}[i]}} \right) ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.18)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and adjust the center of mass to <!-- MATH
+ $\bm{x}_{\text{COM}}$
+ -->
+<IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img71.png"
+ ALT="$ \bm{x}_{\text{COM}}$"> as 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{x}_{{\tt ip}[i]}
+  =
+  \bm{x}_{{\tt ip}[i]}
+  -
+  \widetilde{\bm{x}}_{\text{COM}}
+  +
+  \bm{x}_{\text{COM}}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="202" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img94.png"
+ ALT="$\displaystyle \bm{x}_{{\tt ip}[i]} = \bm{x}_{{\tt ip}[i]} - \widetilde{\bm{x}}_{\text{COM}} + \bm{x}_{\text{COM}} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.19)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for <!-- MATH
+ $i = 0, \cdots, N-1$
+ -->
+<IMG
+ WIDTH="108" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img95.png"
+ ALT="$ i = 0, \cdots, N-1$">.
+
+<P>
+It should be noted that 
+the calculation of this rather tedeous procedure is <IMG
+ WIDTH="38" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img96.png"
+ ALT="$ O(N)$">, 
+while the inversion <!-- MATH
+ $\mathsf{A}^{-1}$
+ -->
+<IMG
+ WIDTH="28" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img97.png"
+ ALT="$ \mathsf{A}^{-1}$"> usually costs <IMG
+ WIDTH="44" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.png"
+ ALT="$ O(N^3)$">. 
+
+<P>
+For the system containing many groups at the same time, 
+we can apply the above procedure for each group separately, 
+and the overall calculation is still <IMG
+ WIDTH="38" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img96.png"
+ ALT="$ O(N)$">. 
+This system-wide transformations are implimented in the routines 
+<TT>BONDS_pos_to_conn</TT> and <TT>BONDS_conn_to_pos</TT>. 
+
+<P>
+
+<P>
+
+<HR>
+<A NAME="tex2html304"
+  HREF="node21.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html300"
+  HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html296"
+  HREF="node19.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html302"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html305"
+  HREF="node21.html">Bibliography</A>
+<B>Up:</B> <A NAME="tex2html301"
+  HREF="node13.html">General Configurations</A>
+<B> Previous:</B> <A NAME="tex2html297"
+  HREF="node19.html">Algorithm</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

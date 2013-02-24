@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Confinement Force Parameters</TITLE>
+<META NAME="description" CONTENT="Confinement Force Parameters">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node25.html">
+<LINK REL="previous" HREF="node20.html">
+<LINK REL="up" HREF="node4.html">
+<LINK REL="next" HREF="node25.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html476"
+  HREF="node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html472"
+  HREF="node4.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html466"
+  HREF="node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html474"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html477"
+  HREF="node25.html">Parameter Script</A>
+<B>Up:</B> <A NAME="tex2html473"
+  HREF="node4.html">stokes3: Stokesian Dynamics Simulator</A>
+<B> Previous:</B> <A NAME="tex2html467"
+  HREF="node23.html">Lennard-Jones Type Excluded-Volume Parameters</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00318000000000000000">
+Confinement Force Parameters</A>
+</H2>
+Sometimes, we want to simulate particles under a confinement. 
+We may introduce such confinement (which has no hydrodynamic interaction 
+but only mechanical force on the particles) 
+by the parameter ``<TT>confinement</TT>.'' 
+Details of the models are described in 
+&#167;<A HREF="node66.html#sec:Confinements">3.5</A>. 
+
+<P>
+<PRE>
+	confinement : list in the following form;
+	for spherical confinement,
+	(define confinement '(
+	  10.0 ;; LJ parameter epsilon in kT (so this is dimensionless value)
+	  1.0  ;; LJ parameter r0 in "length" (so this is dimensionless value)
+	  "sphere"
+	  10.0 ;; radius of the cavity at (0, 0, 0)
+	))
+	or spherical confinement with a hole,
+	(define confinement '(
+	  10.0 ;; LJ parameter epsilon in kT (so this is dimensionless value)
+	  1.0  ;; LJ parameter r0 in "length" (so this is dimensionless value)
+	  "sphere+hole"
+	  10.0 ;; radius of the cavity at (0, 0, 0)
+	  1.0  ;; radius of the hole at (0, 0, 1) direction
+	))
+	for cylindrical confinement,
+	(define confinement '(
+	  10.0 ;; LJ parameter epsilon in kT (so this is dimensionless value)
+	  1.0  ;; LJ parameter r0 in "length" (so this is dimensionless value)
+	  "cylinder" ;; the cylinder center goes through (0,0,0) and (x,y,z)
+	  10.0       ;; radius of the cylinder
+	  1.0  0.0  0.0 ;; direction vector (x, y, z) of the cylinder
+	))
+	for dumbbell confinement,
+	(define confinement '(
+	  10.0 ;; LJ parameter epsilon in kT (so this is dimensionless value)
+	  1.0  ;; LJ parameter r0 in "length" (so this is dimensionless value)
+	  "dumbbell" ;; the origin is at the center of the cylinder
+	  10.0       ;; left cavity radius centered at (center1, 0, 0)
+	  10.0       ;; right cavity radius centered at (center2, 0, 0)
+	  2.0        ;; length of the cylinder
+	  1.0        ;; cylinder radius
+	))
+	for 2D hexagonal confinement with cylinder pipe,
+	(define confinement '(
+	  10.0 ;; LJ parameter epsilon in kT (so this is dimensionless value)
+	  1.0  ;; LJ parameter r0 in "length" (so this is dimensionless value)
+	  "hex2d"
+	  10.0    ;; cavity radius
+	  1.0     ;; cylinder radius
+	  12.0    ;; lattice spacing
+	))
+	for porous media (outside of the 3D hexagonal particle array)
+	(define confinement '(
+	  10.0 ;; LJ parameter epsilon in kT (so this is dimensionless value)
+	  1.0  ;; LJ parameter r0 in "length" (so this is dimensionless value)
+	  "porous"
+	  10.0    ;; particle radius
+	  20.0    ;; lattice spacing in x (2R for touching case)
+	))
+</PRE>
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

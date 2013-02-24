@@ -1,0 +1,358 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Backgroud</TITLE>
+<META NAME="description" CONTENT="Backgroud">
+<META NAME="keywords" CONTENT="reference">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="reference.css">
+
+<LINK REL="next" HREF="node15.html">
+<LINK REL="previous" HREF="node13.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node15.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html233"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html229"
+  HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html223"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html231"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html234"
+  HREF="node15.html">Examples</A>
+<B>Up:</B> <A NAME="tex2html230"
+  HREF="node13.html">General Configurations</A>
+<B> Previous:</B> <A NAME="tex2html224"
+  HREF="node13.html">General Configurations</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001011000000000000000">
+Backgroud</A>
+</H2>
+Here, we discuss the generalization of the chain structure 
+beyond the simple straight chains. 
+For this purpose, we introduce particle indices 
+<!-- MATH
+ $(\alpha_{i}, \beta_{i})$
+ -->
+<IMG
+ WIDTH="47" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$ (\alpha_{i}, \beta_{i})$"> for connection (bond) <IMG
+ WIDTH="8" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ i$">. 
+Because the connection is completely characterized 
+by the link between the two particles, 
+the list of particle-pairs <!-- MATH
+ $(\alpha_{i}, \beta_{i})$
+ -->
+<IMG
+ WIDTH="47" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$ (\alpha_{i}, \beta_{i})$"> 
+is enough for arbitrary structure. 
+
+<P>
+Consider a system with <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ N$"> particles. 
+The positions of particles are given by 
+<!-- MATH
+ $\{\bm{x}_{\mu}\}$
+ -->
+<IMG
+ WIDTH="32" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \{\bm{x}_{\mu}\}$"> for <!-- MATH
+ $\mu = 0, \cdots, N-1$
+ -->
+<IMG
+ WIDTH="113" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img22.png"
+ ALT="$ \mu = 0, \cdots, N-1$">, 
+where <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ N$"> is the total number of particles in the system. 
+Let <IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.png"
+ ALT="$ N_{b}$"> be the number of bonds (connections) in the system. 
+Each bond is characterized by the pair of particles <!-- MATH
+ $(\alpha_{i}, \beta_{i})$
+ -->
+<IMG
+ WIDTH="47" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$ (\alpha_{i}, \beta_{i})$">, 
+where the bond index <IMG
+ WIDTH="8" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ i$"> runs from 0 to <IMG
+ WIDTH="47" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img24.png"
+ ALT="$ N_{b}-1$">. 
+We also define the ``group'' 
+which is a set containing particles connecting each other. 
+Particles without connection belong to different groups. 
+We denote the number of groups in the system by <IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img25.png"
+ ALT="$ N_{g}$">. 
+
+<P>
+Contrast to the simple straight chain configuration, 
+one extra care needs to be taken for general configurations. 
+That is, for a single group of particles which are all connecting each other, 
+sometimes the number of bonds (connections) becomes larger than 
+the degrees of freedom of the group except for the center-of-mass, <IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.png"
+ ALT="$ N-1$">. 
+For straight chain configurations, the number of bonds are always <IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.png"
+ ALT="$ N-1$">. 
+This fact means that the extra bonds are redundant and 
+the connector vectors for the redundant bonds can be 
+derived from those for the independent bonds. 
+See an example in Eq. (<A HREF="node18.html#eq:ref-bonds-groups-redundant-connector-for-loop">9.5</A>) later.
+
+<P>
+The crucial point is forming the list of independent bonds. 
+We denote the list by <!-- MATH
+ ${\tt bonds}[N-1]$
+ -->
+<IMG
+ WIDTH="94" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img27.png"
+ ALT="$ {\tt bonds}[N-1]$">. 
+Detailed discussions for the construction of the list 
+will be given in &#167;<A HREF="node19.html#sec:ref-bonds-groups-independent-bond-list-algorithm">9.1.3</A>. 
+
+<P>
+Let us define the connector vector <!-- MATH
+ $\bm{Q}_{i}$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.png"
+ ALT="$ \bm{Q}_{i}$"> for the bond <IMG
+ WIDTH="8" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ i$"> as 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{Q}_{i}
+  =
+  \bm{x}_{\alpha_{i}} - \bm{x}_{\beta_{i}}
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="103" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.png"
+ ALT="$\displaystyle \bm{Q}_{i} = \bm{x}_{\alpha_{i}} - \bm{x}_{\beta_{i}} .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.1)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Furthermore, we define the generalized (or canonical?) connector vector 
+<!-- MATH
+ $\overline{\bm{Q}}_{i}$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$ \overline{\bm{Q}}_{i}$"> where the index <IMG
+ WIDTH="8" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ i$"> runs from 0 to <IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.png"
+ ALT="$ N-1$">. 
+For a system with single group with <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ N$"> particles, 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\overline{\bm{Q}}_{i}
+  =
+  \bm{x}_{\alpha_{{\tt bonds}[i]}}
+  -
+  \bm{x}_{\beta_{{\tt bonds}[i]}}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="155" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.png"
+ ALT="$\displaystyle \overline{\bm{Q}}_{i} = \bm{x}_{\alpha_{{\tt bonds}[i]}} - \bm{x}_{\beta_{{\tt bonds}[i]}} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.2)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for <!-- MATH
+ $i = 0, \cdots, N-2$
+ -->
+<IMG
+ WIDTH="108" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img32.png"
+ ALT="$ i = 0, \cdots, N-2$">, and 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\overline{\bm{Q}}_{N-1}
+  =
+  \bm{x}_{\text{COM}}
+  :=
+  \frac{1}{N}
+  \sum_{\mu=0}^{N-1}
+  \bm{x}_{\mu}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="182" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img33.png"
+ ALT="$\displaystyle \overline{\bm{Q}}_{N-1} = \bm{x}_{\text{COM}} := \frac{1}{N} \sum_{\mu=0}^{N-1} \bm{x}_{\mu} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.3)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ ${\tt bonds}[i]$
+ -->
+<IMG
+ WIDTH="61" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$ {\tt bonds}[i]$"> is the <IMG
+ WIDTH="8" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ i$">th bond index 
+of the independent bonds. 
+Note that the number of elements of all connectors 
+<!-- MATH
+ $\{\overline{\bm{Q}}_{i}\}$
+ -->
+<IMG
+ WIDTH="32" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.png"
+ ALT="$ \{\overline{\bm{Q}}_{i}\}$"> 
+is equal to that of all position vectors <!-- MATH
+ $\{\bm{x}_{\mu}\}$
+ -->
+<IMG
+ WIDTH="32" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \{\bm{x}_{\mu}\}$"> 
+and they have one-to-one correspondence. 
+By introducing the transform matrix by <!-- MATH
+ $\overline{\mathsf{B}}$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img36.png"
+ ALT="$ \overline{\mathsf{B}}$"> 
+whose dimension is <IMG
+ WIDTH="45" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.png"
+ ALT="$ N\times N$">, we can write 
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:ref-bonds-groups-conversion-particle-wise"></A><!-- MATH
+ \begin{equation}
+\overline{\bm{Q}}_{i}
+  =
+  \sum_{\mu=0}^{N-1}
+  \overline{\mathsf{B}}_{i,\mu}
+  \bm{x}_{\mu}
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="108" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.png"
+ ALT="$\displaystyle \overline{\bm{Q}}_{i} = \sum_{\mu=0}^{N-1} \overline{\mathsf{B}}_{i,\mu} \bm{x}_{\mu} .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(9.4)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+The details about the transformation will be discussed later 
+in &#167;<A HREF="node20.html#sec:ref-bonds-groups-conversion-pos-conn">9.1.4</A>. 
+
+<P>
+<HR>
+<A NAME="tex2html233"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html229"
+  HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html223"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html231"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html234"
+  HREF="node15.html">Examples</A>
+<B>Up:</B> <A NAME="tex2html230"
+  HREF="node13.html">General Configurations</A>
+<B> Previous:</B> <A NAME="tex2html224"
+  HREF="node13.html">General Configurations</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

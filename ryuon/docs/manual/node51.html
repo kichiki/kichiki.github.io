@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Hydrodynamic Interaction in Stokes Flows</TITLE>
+<META NAME="description" CONTENT="Hydrodynamic Interaction in Stokes Flows">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node59.html">
+<LINK REL="previous" HREF="node38.html">
+<LINK REL="up" HREF="node37.html">
+<LINK REL="next" HREF="node52.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html842"
+  HREF="node52.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html838"
+  HREF="node37.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html832"
+  HREF="node50.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html840"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html843"
+  HREF="node52.html">Many Body Problem</A>
+<B>Up:</B> <A NAME="tex2html839"
+  HREF="node37.html">libstokes: Library for Stokesian</A>
+<B> Previous:</B> <A NAME="tex2html833"
+  HREF="node50.html">3D/monolayer d</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00420000000000000000">
+Hydrodynamic Interaction in Stokes Flows</A>
+</H1>
+In the following, physical background is explained.
+
+<P>
+Fluid is described by Navier-Stokes equation
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:navier-stokes"></A><!-- MATH
+ \begin{equation}
+\frac{\partial}{\partial t}
+  \Bigl[
+    \rho
+    \bm{u}
+    +
+    \left(
+      \bm{u}
+      \cdot
+      \bm{\nabla}
+    \right)
+    \bm{u}
+  \Bigr]
+  =
+  -
+  \bm{\nabla}
+  p
+  +
+  \mu
+  \Delta
+  \bm{u}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="233" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img108.png"
+ ALT="$\displaystyle \frac{\partial}{\partial t} \Bigl[ \rho \bm{u} + \left( \bm{u} \cdot \bm{\nabla} \right) \bm{u} \Bigr] = - \bm{\nabla} p + \mu \Delta \bm{u} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.2)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img109.png"
+ ALT="$ \bm{u}$"> is the fluid velocity,
+<IMG
+ WIDTH="13" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img110.png"
+ ALT="$ p$"> is the pressure, <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img111.png"
+ ALT="$ \rho$"> is the density,
+and <IMG
+ WIDTH="13" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \mu$"> is the viscosity.
+The differential operator
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{\nabla}
+  =
+  \left[
+    \begin{array}{c}
+      \partial/\partial x\\
+      \partial/\partial y\\
+      \partial/\partial z
+    \end{array}
+  \right]
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="104" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img112.png"
+ ALT="$\displaystyle \bm{\nabla} = \left[ \begin{array}{c} \partial/\partial x\\ \partial/\partial y\\ \partial/\partial z \end{array} \right] ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.3)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img113.png"
+ ALT="$ \Delta$"> is the Laplacian
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\Delta
+  =
+  \bm{\nabla}
+  \cdot
+  \bm{\nabla}
+  =
+  \partial^2/\partial x^2
+  +
+  \partial^2/\partial y^2
+  +
+  \partial^2/\partial z^2
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="261" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img114.png"
+ ALT="$\displaystyle \Delta = \bm{\nabla} \cdot \bm{\nabla} = \partial^2/\partial x^2 + \partial^2/\partial y^2 + \partial^2/\partial z^2 .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.4)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+This is the fluid equation of motion, in other words,
+the momentum balance equation and the counterpart of
+Newton's equation of motion <!-- MATH
+ $\bm{F} = m\bm{a}$
+ -->
+<IMG
+ WIDTH="58" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img115.png"
+ ALT="$ \bm{F} = m\bm{a}$">.
+Actually, writing the viscous fluid stress by
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{\sigma}
+  =
+  p
+  \bm{I}
+  +
+  \bm{\nabla}\bm{u}
+  +
+  \Bigl(
+  \bm{\nabla}\bm{u}
+  \Bigr)^\dagger
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="161" HEIGHT="47" ALIGN="MIDDLE" BORDER="0"
+ SRC="img116.png"
+ ALT="$\displaystyle \bm{\sigma} = p \bm{I} + \bm{\nabla}\bm{u} + \Bigl( \bm{\nabla}\bm{u} \Bigr)^\dagger ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.5)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Navier-Stokes equation (<A HREF="#eq:navier-stokes">3.2</A>) can be written by
+the similar equation of motion
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\frac{D}{D t}
+  \Bigl[
+    \rho
+    \bm{u}
+  \Bigr]
+  =
+  -
+  \bm{\nabla}
+  \cdot
+  \bm{\sigma}
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="125" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img117.png"
+ ALT="$\displaystyle \frac{D}{D t} \Bigl[ \rho \bm{u} \Bigr] = - \bm{\nabla} \cdot \bm{\sigma} .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.6)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The Stokes flows, which is the target of <TT>libstokes</TT>,
+is where the viscous term in Eq. (<A HREF="#eq:navier-stokes">3.2</A>)
+is dominating to the inertial term.
+The ratio of the magnitude of these two terms are characterized
+by a dimensionless number called ``Reynolds number'' <IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img118.png"
+ ALT="$ Re$">
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+Re
+  :=
+  \frac{LU}{\mu}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="74" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img119.png"
+ ALT="$\displaystyle Re := \frac{LU}{\mu} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.7)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img120.png"
+ ALT="$ L$"> and <IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img121.png"
+ ALT="$ U$"> are characteristic length and velocity.
+The Stokes flows are the flow of small Reynolds number.
+
+<P>
+In the limit <!-- MATH
+ $Re\rightarrow 0$
+ -->
+<IMG
+ WIDTH="53" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img122.png"
+ ALT="$ Re\rightarrow 0$">,
+the governing equation of fluids becomes
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:stokes"></A><!-- MATH
+ \begin{equation}
+\bm{0}
+  =
+  -
+  \bm{\nabla}
+  p
+  +
+  \mu
+  \Delta
+  \bm{u}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="118" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.png"
+ ALT="$\displaystyle \bm{0} = - \bm{\nabla} p + \mu \Delta \bm{u} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.8)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+which is a linear partial differential equation.
+In the following, we are studying fluid motions
+governed by Eq. (<A HREF="#eq:stokes">3.8</A>)
+for incompressible fluid
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{\nabla}
+  \cdot
+  \bm{u}
+  =
+  0
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="72" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img124.png"
+ ALT="$\displaystyle \bm{\nabla} \cdot \bm{u} = 0 .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.9)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<BR> <HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html844"
+  HREF="node52.html">Many Body Problem</A>
+<UL>
+<LI><A NAME="tex2html845"
+  HREF="node53.html">Question:</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html846"
+  HREF="node54.html">FTS formulation</A>
+<LI><A NAME="tex2html847"
+  HREF="node55.html">Fixed Particles - Mixed Problem</A>
+<LI><A NAME="tex2html848"
+  HREF="node56.html">Lubrication Correction</A>
+<LI><A NAME="tex2html849"
+  HREF="node57.html">Ewald Summation</A>
+<LI><A NAME="tex2html850"
+  HREF="node58.html">Navier Slip Boundary Condition</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<A NAME="tex2html842"
+  HREF="node52.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html838"
+  HREF="node37.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html832"
+  HREF="node50.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html840"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html843"
+  HREF="node52.html">Many Body Problem</A>
+<B>Up:</B> <A NAME="tex2html839"
+  HREF="node37.html">libstokes: Library for Stokesian</A>
+<B> Previous:</B> <A NAME="tex2html833"
+  HREF="node50.html">3D/monolayer d</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

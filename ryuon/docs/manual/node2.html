@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Introduction</TITLE>
+<META NAME="description" CONTENT="Introduction">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html155"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html151"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html145"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html153"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html156"
+  HREF="node3.html">stokes: Stokesian Dynamics Simulator</A>
+<B>Up:</B> <A NAME="tex2html152"
+  HREF="manual.html">RYUON - a Particle</A>
+<B> Previous:</B> <A NAME="tex2html146"
+  HREF="node1.html">Contents</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00200000000000000000">
+Introduction</A>
+</H1>
+<B>RYUON</B> is a particle simulation suite,
+currently covering Stokesian dynamics method
+and hopefully more general many-body problems in the future,
+released under the GNU General Public License (see Chapter <A HREF="node78.html#chp:GPL">A</A>).
+
+<P>
+This document describes overview of <B>RYUON</B> and 
+some tutorials aiming for users.
+There are other documents:
+
+<UL>
+<LI>``RYUON User's Manual'':
+  describing overview and some tutorials of <B>RYUON</B> (for users).
+</LI>
+<LI>``RYUON Reference Manual'':
+  describing numerical implementations 
+  of <B>RYUON</B> (for developers).
+</LI>
+<LI>``Theory of RYUON'':
+  a textbook describing theoretical background of <B>RYUON</B>
+  (for researchers).
+</LI>
+</UL>
+
+<P>
+My scientific interest is on ``particles in a fluid'' 
+or between ``discrete and continuous systems.''
+RYU of RYU-ON has meanings of ``grain'' and ``flow'' 
+in Japanese and it well fits my interest, the GAP between the two.
+
+<P>
+Currently, <B>RYUON</B> contains the following codes and data:
+
+<UL>
+<LI>Simulators: <TT>stokes</TT> (Chapter <A HREF="node3.html#chp:stokes">2</A>)
+  
+<UL>
+<LI>Stokesian dynamics for massless particles in a viscous fluid
+</LI>
+<LI>Fluidized-Beds Simulator
+    [<A
+ HREF="node80.html#IchikiHayakawa1995">16</A>,<A
+ HREF="node80.html#IchikiHayakawa1998">17</A>]
+    for heavy particles in a viscous fluid
+</LI>
+<LI>Chain Simulator for bead-spring model in a viscous fluid
+  
+</LI>
+</UL>
+</LI>
+<LI>Libraries
+  
+<UL>
+<LI><TT>libstokes</TT> (Chapter <A HREF="node37.html#chp:libstokes">3</A>):
+    library for Stokesian dynamics
+    [<A
+ HREF="node80.html#BradyBossis1988">4</A>,<A
+ HREF="node80.html#DurlofskyEtal1987">6</A>,<A
+ HREF="node80.html#BradyEtal1988">5</A>,<A
+ HREF="node80.html#Ichiki2002">13</A>]
+</LI>
+<LI><TT>libiter</TT> (Chapter <A HREF="node67.html#chp:libiter">4</A>):
+    library of iterative solvers for the linear set of equations
+    [<A
+ HREF="node80.html#IchikiBrady2001">14</A>]
+</LI>
+<LI><TT>libexp</TT> (Chapter <A HREF="node71.html#chp:libexp">5</A>):
+    Solver for General Many-Body Problems:
+    including electrostatics, gravitational systems,
+    elasticity, vortex dynamics, etc
+</LI>
+<LI>FEM, BEM layer using the above.
+  
+</LI>
+</UL>
+</LI>
+<LI>Data and Details
+  
+<UL>
+<LI><TT>twobody</TT> (Chapter <A HREF="node76.html#chp:twobody">6</A>):
+    The exact solutions for two-body problems in Stokes flows
+    [<A
+ HREF="node80.html#JeffreyOnishi1984">20</A>,<A
+ HREF="node80.html#jeffrey1992">18</A>,<A
+ HREF="node80.html#jeffrey1993">19</A>]
+  
+</LI>
+</UL>
+</LI>
+<LI>Utilities: Analysis and Visualization
+  
+<UL>
+<LI>Molecular dynamics:
+    utility for existing Open Source Projects such as GROMACS and TINKER
+    [<A
+ HREF="node80.html#IchikiConsta2006">15</A>]
+  
+</LI>
+</UL>
+</LI>
+</UL>
+
+<P>
+<HR>
+<A NAME="tex2html155"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html151"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html145"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html153"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html156"
+  HREF="node3.html">stokes: Stokesian Dynamics Simulator</A>
+<B>Up:</B> <A NAME="tex2html152"
+  HREF="manual.html">RYUON - a Particle</A>
+<B> Previous:</B> <A NAME="tex2html146"
+  HREF="node1.html">Contents</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

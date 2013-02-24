@@ -1,0 +1,1085 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+    <title>RYUON/libstokes</title>
+    <link rev="made" href="mailto:kichiki@users.sourceforge.net" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+
+<body>
+
+<div class="center">
+<h1>libstokes: library for Stokesian dynamics</h1>
+</div>
+
+<p class="navi">
+<a href="index.html">RYUON</a>|
+<a href="docs/index.html">documents</a>|
+<a href="stokes/index.html">stokes</a>|
+<a href="libstokes.html">libstokes</a>
+<a href="libiter.html">libiter</a>|
+<a href="twobody/index.html">twobody</a>
+<br />
+<a href="#outline">outline</a>|
+<a href="#download">download</a>|
+<a href="#API">API</a>|
+<a href="#res">res</a>|
+<a href="#mob">mob</a>|
+<a href="#mix">mix</a>|
+<a href="#atimes">Ax</a>
+</p>
+
+<hr />
+
+<h2><a id="outline" name="outline"></a>Outline</h2>
+<p>
+<b>libstokes</b> contains functions
+to solve resistance and mobility problems
+under the periodic boundary condition
+with F, FT, and FTS versions
+for full 3D as well as semi-2D (monolayer) configurations.
+For each of them, there are two functions,
+<b>with</b> or <b>without</b> lubrication correction.
+For mobility problem, also fixed particles can be handled.
+</p>
+<p>
+(Please look at <a href="stokes/index.html">RYUON-stokes</a> package
+how to use <b>libstokes</b>.)
+</p>
+
+<h2><a id="download" name="download">
+  Download</a></h2>
+<p>
+please visit <a href="http://sourceforge.net/project/showfiles.php?group_id=177943">File Releases @ SF</a>.
+</p>
+
+<h3>Changes and Plans</h3>
+<ul>
+ <li>in future releases
+ <ul>
+  <li>import open boundary codes
+   (much simpler than the periodic codes)</li>
+  <li>import higher order expansions</li>
+  <li>import FMM codes, non-adaptive and adaptive versions</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/ryuon/libstokes-0.4.tar.bz2?download">0.4</a>:
+  (<a href="http://sourceforge.net/project/shownotes.php?release_id=457735&group_id=177943">Release Notes</a>,
+   CVS Tag: <a href="http://ryuon.cvs.sourceforge.net/ryuon/libstokes/?pathrev=LIBSTOKES_0_4_1_RELEASE">LIBSTOKES_0_4_1_RELEASE</a>)
+ <ul>
+  <li>add reading functions of stokes-NetCDF file.</li>
+  <li>add guile initialization script routines.</li>
+  <li>change the names of solver routines.</li>
+  <li>some bug fixed.</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/ryuon/libstokes-0.3.tar.bz2?download">0.3</a>:
+  (<a href="http://sourceforge.net/project/shownotes.php?release_id=454965&group_id=177943">Release Notes</a>,
+   CVS Tag: <a href="http://ryuon.cvs.sourceforge.net/ryuon/libstokes/?pathrev=LIBSTOKES_0_3_RELEASE">LIBSTOKES_0_3_RELEASE</a>)
+ <ul>
+  <li><a href="http://www.unidata.ucar.edu/software/netcdf/">NetCDF</a>
+   routines are added for data I/O</li>
+  <li>update for <a href="libiter.html">libiter</a>-0.3</li>
+  <li>API changed -- stokes_set_pos() is added</li>
+  <li>directory structure is completely changed</li>
+  <li>use newer GNU automake19 autoconf259 tools</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/ryuon/libstokes-0.2.tar.gz?download">0.2</a>:
+  (<a href="http://sourceforge.net/project/shownotes.php?release_id=453186&group_id=177943">Release Notes</a>,
+   CVS Tag: <a href="http://ryuon.cvs.sourceforge.net/ryuon/libstokes/?pathrev=LIBSTOKES_0_2_RELEASE">LIBSTOKES_0_2_RELEASE</a>)
+ <ul>
+  <li>import matrix version - O(N<sup>3</sup>) scheme</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/ryuon/libstokes-0.1.tar.gz?download">0.1</a>:
+  (<a href="http://sourceforge.net/project/shownotes.php?release_id=451037&group_id=177943">Release Notes</a>,
+   CVS Tag: <a href="http://ryuon.cvs.sourceforge.net/ryuon/libstokes/?pathrev=LIBSTOKES_0_1_RELEASE">LIBSTOKES_0_1_RELEASE</a>)
+ <ul>
+  <li>Initial revision.</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="requirements" name="requirements">
+  Requirements</a></h2>
+<ul>
+ <li><a href="libiter.html">libiter</a>
+  for atimes-procedure</li>
+ <li><a href="http://www.netlib.org/blas/">BLAS</a> or
+  <a href="http://math-atlas.sourceforge.net/">ATLAS</a>
+  for matrix manipulation</li>
+ <li><a href="http://www.gnu.org/software/guile/guile.html">guile</a>
+  for initializing script</li>
+ <li><a href="http://www.unidata.ucar.edu/software/netcdf/">NetCDF</a>
+  for file I/O</li>
+</ul>
+
+<hr />
+
+<h2>API</h2>
+<p>
+In the following,
+function prototypes provided by
+&quot;<a href="libstokes-h.html">libstokes.h</a>&quot;
+are given.
+</p>
+<p>
+(Please look at <a href="stokes/index.html">RYUON-stokes</a> package
+how to use <b>libstokes</b>.)
+</p>
+
+<h2><a id="res" name="res"></a>
+Resistance problems</h2>
+<pre>
+<font color="#444444"><i>/***********************************
+ ** resistance problems           **
+ ***********************************/</i></font>
+<font color="#444444">/* solve natural resistance problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *  u [np * 3] :
+ * OUTPUT
+ *  f [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *  u [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			   <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			       <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			       <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+				<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+				 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_2f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_2f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   o [np * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_2ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   o [np * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_2ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   o [np * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ *   e [np * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_2fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   o [np * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ *   e [np * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_2fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+</pre>
+
+<h2><a id="mob" name="mob"></a>
+Mobility problems</h2>
+<pre>
+<font color="#444444"><i>/***********************************
+ ** mobility problems             **
+ ***********************************/</i></font>
+
+<font color="#444444">/* solve natural mobility problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *  f [np * 3] :
+ * OUTPUT
+ *  u [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ * OUTPUT
+ *   u [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+			   <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ * OUTPUT
+ *   u [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_lub_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			       <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+			       <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+			    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_lub_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+				<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_lub_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+				 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in F version under Ewald sum
+ *  sys : system parameters
+ *   f [np * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ * OUTPUT
+ *   u [np * 3] : results are given in 3D form
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_2f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FT version under Ewald sum
+ *  sys : system parameters
+ *   f [np * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [np * 3] : OK, this is 3D form
+ * OUTPUT
+ *   u [np * 3] : results are given in 3D form
+ *   o [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_2ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FTS version under Ewald sum
+ *  sys : system parameters
+ *   f [np * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [np * 3] : OK, this is 3D form
+ *   e [np * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ * OUTPUT
+ *   u [np * 3] : results are given in 3D form
+ *   o [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_2fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+</pre>
+
+<h2><a id="mix" name="mix"></a>
+Mixed problems (Mobility + Resistance)</h2>
+<pre>
+<font color="#444444"><i>/***********************************
+ ** mixed problems                **
+ ***********************************/</i></font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in F version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *  f [nm * 3] :
+ *  uf [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   ff [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *  f [nm * 3] :
+ *  uf [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   ff [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+			   <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   uf [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   ff [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			       <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+			       <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in FT version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+			    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+				<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+				<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+				<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in FTS version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   e [nm * 5] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ *   ef [nf * 5] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   e [nm * 5] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ *   ef [nf * 5] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   e [nm * 5] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ *   ef [nf * 5] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+			     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+			     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   e [nm * 5] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ *   ef [nf * 5] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+				 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+				 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in F version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   ff [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_2f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   ff [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_2f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in FT version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [nm * 3] : OK, this is 3D form
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   of [nf * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_2ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [nm * 3] : OK, this is 3D form
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   of [nf * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_2ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in FTS version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [nm * 3] : OK, this is 3D form
+ *   e [nm * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   of [nf * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ *   ef [nf * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_2fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [nm * 3] : OK, this is 3D form
+ *   e [nm * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   of [nf * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ *   ef [nf * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_2fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+</pre>
+
+<h2><a id="atimes" name="atimes"></a>
+A-times forms (a kind of mobility problem)</h2>
+<pre>
+<font color="#444444"><i>/************************************************
+ ** atimes forms (unnatural mobility problems) **
+ ************************************************/</i></font>
+
+<font color="#444444"><i>/** table version **/</i></font>
+
+<font color="#444444">/* ATIMES of calc ewald-summed mobility for F/FT/FTS versions
+ * with the ewald table
+ * INPUT
+ *  n := np*3 (F), np*6 (FT), or np*11 (FTS)
+ *  x [n] : F, FT, or FTS
+ *  user_data = (struct stokes *) sys
+ * OUTPUT
+ *  y [n] : U, UO, or UOE
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">atimes_ewald_3all</font> <font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">n</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">x</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">y</font>, <strong>void</strong> <font color="4444FF">*</font> <font color="#2040a0">user_data</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* make ewald-summed mobility matrix for F/FT/FTS versions
+ * with the ewald table
+ * INPUT
+ * sys : system parameters
+ * OUTPUT
+ *  mat [np * 3  * np * 3 ] : for F version
+ *  mat [np * 6  * np * 6 ] : for FT version
+ *  mat [np * 11 * np * 11] : for FTS version
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">make_matrix_mob_ewald_3all</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>, <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">mat</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* ATIMES of calc ewald-summed mobility for F/FT/FTS versions
+ * through matrix with the ewald table
+ * INPUT
+ *  n := np*3 (F), np*6 (FT), or np*11 (FTS)
+ *  x [n] : F, FT, or FTS
+ *  user_data = (struct stokes *) sys
+ * OUTPUT
+ *  y [n] : U, UO, or UOE
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">atimes_ewald_3all_matrix</font> <font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">n</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">x</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">y</font>, <strong>void</strong> <font color="4444FF">*</font> <font color="#2040a0">user_data</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444"><i>/** non-table version **/</i></font>
+
+<font color="#444444">/* ATIMES of calc ewald-summed mobility for F/FT/FTS versions
+ * INPUT
+ *  n := np*3 (F), np*6 (FT), or np*11 (FTS)
+ *  x [n] : F, FT, or FTS
+ *  user_data = (struct stokes *) sys
+ * OUTPUT
+ *  y [n] : U, UO, or UOE
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">atimes_ewald_3all_notbl</font> <font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">n</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">x</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">y</font>, <strong>void</strong> <font color="4444FF">*</font> <font color="#2040a0">user_data</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* make ewald-summed mobility matrix for F/FT/FTS versions
+ * INPUT
+ * sys : system parameters
+ * OUTPUT
+ *  mat [np * 3  * np * 3 ] : for F version
+ *  mat [np * 6  * np * 6 ] : for FT version
+ *  mat [np * 11 * np * 11] : for FTS version
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">make_matrix_mob_ewald_3all_notbl</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>, <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">mat</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* ATIMES of calc ewald-summed mobility for F/FT/FTS versions
+ * through matrix
+ * INPUT
+ *  n := np*3 (F), np*6 (FT), or np*11 (FTS)
+ *  x [n] : F, FT, or FTS
+ *  user_data = (struct stokes *) sys
+ * OUTPUT
+ *  y [n] : U, UO, or UOE
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">atimes_ewald_3all_matrix_notbl</font> <font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">n</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">x</font>,
+				<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">y</font>, <strong>void</strong> <font color="4444FF">*</font> <font color="#2040a0">user_data</font><font color="4444FF">)</font><font color="4444FF">;</font>
+</pre>
+
+<hr />
+
+<div class="navi">
+<a href="#outline">outline</a>|
+<a href="#download">download</a>|
+<a href="#API">API</a>|
+<a href="#res">res</a>|
+<a href="#mob">mob</a>|
+<a href="#mix">mix</a>|
+<a href="#atimes">Ax</a>
+<br />
+<a href="index.html">RYUON</a>|
+<a href="docs/index.html">documents</a>|
+<a href="stokes/index.html">stokes</a>|
+<a href="libstokes.html">libstokes</a>
+<a href="libiter.html">libiter</a>|
+<a href="twobody/index.html">twobody</a>
+<br />
+<br />
+<address>
+e-mail:
+  <a href="mailto:kichiki@users.sourceforge.net">
+  kichiki@users.sourceforge.net</a></address>
+Copyright (C) 2006-2008 Kengo Ichiki.  All rights reserved.
+<br />
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+
+</div>
+
+</body>
+</html>

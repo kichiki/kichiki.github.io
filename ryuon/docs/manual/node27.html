@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Sample Run</TITLE>
+<META NAME="description" CONTENT="Sample Run">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node28.html">
+<LINK REL="previous" HREF="node26.html">
+<LINK REL="up" HREF="node26.html">
+<LINK REL="next" HREF="node28.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html512"
+  HREF="node28.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html508"
+  HREF="node26.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html502"
+  HREF="node26.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html510"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html513"
+  HREF="node28.html">Help</A>
+<B>Up:</B> <A NAME="tex2html509"
+  HREF="node26.html">xi3: Tuning Program for</A>
+<B> Previous:</B> <A NAME="tex2html503"
+  HREF="node26.html">xi3: Tuning Program for</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00321000000000000000">
+Sample Run</A>
+</H2>
+Here is a sample procedure showing how to use <TT>xi3</TT> in practice.
+We are looking at the problem of 8 particles at SC lattice sites
+in (5, 5, 5) periodic box.
+A sample configuration file (<TT>xi3.scm</TT>) is given in the package:
+<PRE>
+; sample set file for xi3
+; SC lattice config of 8 particles in (5,5,5) box
+; $Id: manual.tex,v 1.5 2008/10/12 20:16:53 kichiki Exp $
+(define version    "F")     ; version. "F", "FT", or "FTS"
+(define flag-mat   #t)      ; #t =&gt; matrix scheme, #f =&gt; atimes scheme
+(define flag-notbl #f)      ; #t =&gt; no-table,      #f =&gt; with table
+
+(define np         8)       ; number of particles
+(define ewald-eps  1.0e-12) ; cut-off limit for Ewald summation
+
+; lattice vector
+(define lattice '(5.0  5.0  5.0))
+
+; configuration of particles
+(define x #(
+0.0  0.0  0.0
+2.5  0.0  0.0
+0.0  2.5  0.0
+0.0  0.0  2.5
+0.0  2.5  2.5
+2.5  0.0  2.5
+2.5  2.5  0.0
+2.5  2.5  2.5
+))
+
+; list of time ratio Tr/Tk for Ewald summation (optional)
+;(define ewald-trs
+;  '(0.1
+;    1.0
+;    10.0
+;    100.0
+;    ))
+</PRE>
+Here is a part of the result:
+<PRE>
+# F version table matrix
+0.110000 0.245379 22.087 21.575 0.512 1.33163581314065055e-01 2197 125 1713 80
+0.121000 0.249308 21.106 20.592 0.514 1.33163581314059309e-01 2197 125 1713 80
+0.133100 0.253300 20.812 20.224 0.588 1.33163581314069690e-01 2197 125 1689 92
+...
+</PRE>
+Each line of the output consists of 10 columns in this case,
+that is, for F version with table.
+First 5 columns are the same for any cases;
+First and second columns are <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$"> and <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $"> (see below in details).
+The next 3 are CPU times in milli-seconds
+for real space, reciprocal space, and the total
+calculations, respectively.
+The next column is, for F version, the <I>averaged</I> velocity
+obtained by the calculation (see below in details).
+For FT and FTS versions, there are 2 and 3 numbers there.
+Next two integers show the lattice points within the range
+for real and reciprocal summations. Note that the numbers 
+are those in the cubic regions (not spherical). For non-table version
+we are taking into account the lattice points within the cubic region
+specified by the numbers of lattice points in <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img25.png"
+ ALT="$ x$">, <IMG
+ WIDTH="11" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.png"
+ ALT="$ y$">, and <IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img84.png"
+ ALT="$ z$"> directions.
+For table version, on the other hand, we apply more complicated 
+(and empirical) criteria for the truncation of lattice sum and
+roughly speaking this reduce the region from cubic to spherical.
+In the case, the final two integers, which are the actual numbers 
+of points for real and reciprocal summations we took, are added.
+
+<P>
+In <TT>xi3</TT> program as well as <TT>libstokes</TT>
+library, another parameter <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$"> instead of <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $"> is used.
+<IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$"> is a rough estimation of CPU time ratio between real and reciprocal
+summations and related to <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $"> as
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+R_T
+  =
+  \frac{
+    \left(
+      l_x l_y l_z
+      \xi^3
+    \right)^2
+  }{\pi^3}
+  =
+  \frac{T_{real}}{T_{recip}}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="168" HEIGHT="74" ALIGN="MIDDLE" BORDER="0"
+ SRC="img85.png"
+ ALT="$\displaystyle R_T = \frac{ \left( l_x l_y l_z \xi^3 \right)^2 }{\pi^3} = \frac{T_{real}}{T_{recip}} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(2.31)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+T_{real}
+  \propto
+  l_x l_y l_z
+  \xi^3
+  ,
+  \quad
+  T_{recip}
+  \propto
+  k_x k_y k_z
+  =
+  \frac{\pi^3}{l_x l_y l_z \xi^3}
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="281" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.png"
+ ALT="$\displaystyle T_{real} \propto l_x l_y l_z \xi^3 , \quad T_{recip} \propto k_x k_y k_z = \frac{\pi^3}{l_x l_y l_z \xi^3} .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(2.32)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:xi3-xi"></A><A NAME="576"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 2.1:</STRONG>
+
+    <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $"> versus <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$">.
+  </CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">  <IMG
+ WIDTH="309" HEIGHT="213" ALIGN="BOTTOM" BORDER="0"
+ SRC="img87.png"
+ ALT="\includegraphics[width=7cm]{figures/FIG-xi3-xi}">
+  </DIV></TD></TR>
+</TABLE>
+</DIV>
+Figure <A HREF="#fig:xi3-xi">2.1</A> shows <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $"> vs. <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$">.
+(Those are at the first and second columns in the result file.)
+Note that this is implemented in the routine
+<TT>xi_by_tratio ()</TT>.
+
+<P>
+Changing <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$">, the number of lattice points in real and reciprocal
+summations are changing: The former is decreasing
+and the latter increasing as <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$"> is increasing.
+Because the calculation result is independent of <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $"> and therefore <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$">,
+we can use this parameter to tune the calculation of the Ewald summation.
+That is, we can take a specific value of <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $"> which minimize
+the calculation cost.
+This is the whole purpose of <TT>xi3</TT> program.
+Figure <A HREF="#fig:xi3-CPU">2.2</A> shows CPU times for real and reciprocal spaces
+and the total.
+
+<DIV ALIGN="CENTER"><A NAME="fig:xi3-CPU"></A><A NAME="585"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 2.2:</STRONG>
+
+  </CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">  <IMG
+ WIDTH="293" HEIGHT="213" ALIGN="BOTTOM" BORDER="0"
+ SRC="img88.png"
+ ALT="\includegraphics[width=7cm]{figures/FIG-xi3-CPU}">
+  </DIV></TD></TR>
+</TABLE>
+</DIV>
+As we see, there is an obvious minimum point on the total CPU time.
+In this example (for SC lattice of <IMG
+ WIDTH="43" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img89.png"
+ ALT="$ N=8$"> particles in
+<IMG
+ WIDTH="52" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.png"
+ ALT="$ (5, 5, 5)$"> periodic box),
+the minimum is around <!-- MATH
+ $R_T\approx 4$
+ -->
+<IMG
+ WIDTH="49" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.png"
+ ALT="$ R_T\approx 4$">.
+
+<P>
+Previously, I wrote that
+the calculation result is independent of <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $"> and therefore <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$">.
+This is the mathematical conclusion and therefore this is a good 
+check for the code:
+<BLOCKQUOTE>
+<B>The results should be the same for various <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ \xi $"> (and therefore <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$">).</B>
+
+</BLOCKQUOTE>
+Actually, we truncate the lattice summations at the point where
+the term is small enough. The criteria is given by another parameter
+<TT>ewald_eps</TT>.
+In this example, we take <!-- MATH
+ ${\tt ewald\_eps} = 10^{-12}$
+ -->
+<IMG
+ WIDTH="131" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img92.png"
+ ALT="$ {\tt ewald\_eps} = 10^{-12}$">.
+(Small enough, isn't it?)
+In the code of <TT>xi3</TT>, we calculate not physical problems
+but the plain <!-- MATH
+ $\mathbf{A}\cdot\mathbf{x}$
+ -->
+<IMG
+ WIDTH="35" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img93.png"
+ ALT="$ \mathbf{A}\cdot\mathbf{x}$"> calculation
+for the mobility matrix <!-- MATH
+ $\mathbf{A}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img94.png"
+ ALT="$ \mathbf{A}$"> and
+a vector <!-- MATH
+ $\mathbf{x} = (1,1,\cdots,1)^\dagger$
+ -->
+<IMG
+ WIDTH="114" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img95.png"
+ ALT="$ \mathbf{x} = (1,1,\cdots,1)^\dagger$">.
+The 6th column of the result <TT>xi3</TT> generates
+is the average of <!-- MATH
+ $\mathbf{A}\cdot\mathbf{x}$
+ -->
+<IMG
+ WIDTH="35" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img93.png"
+ ALT="$ \mathbf{A}\cdot\mathbf{x}$">, that is,
+a kind of averaged velocity. (``a kind of'' means
+that the average is taken element-wise rather than particle-wise.)
+
+<DIV ALIGN="CENTER"><A NAME="fig:xi3-err"></A><A NAME="604"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 2.3:</STRONG>
+
+  </CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">  <IMG
+ WIDTH="309" HEIGHT="213" ALIGN="BOTTOM" BORDER="0"
+ SRC="img96.png"
+ ALT="\includegraphics[width=7cm]{figures/FIG-xi3-err}">
+  </DIV></TD></TR>
+</TABLE>
+</DIV>
+Figure <A HREF="#fig:xi3-err">2.3</A> shows the calculated results versus <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ R_T$">.
+The values in y-axis is the absolute value of the difference
+to a point at <!-- MATH
+ $R_T \approx 10$
+ -->
+<IMG
+ WIDTH="57" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.png"
+ ALT="$ R_T \approx 10$">, which I just pick to see the 
+fluctuations, in other words, the empirical error. (You should 
+note that if everything is working good, this approach works,
+but otherwise it is not.)
+It looks OK.
+Actually, my cut-off criteria with <TT>ewald_eps</TT> might be 
+a little hard (because the error is less than 1.0e-13, one order 
+lower than expected). But it does not harm and I leave it.
+
+<P>
+<HR>
+<A NAME="tex2html512"
+  HREF="node28.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html508"
+  HREF="node26.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html502"
+  HREF="node26.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html510"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html513"
+  HREF="node28.html">Help</A>
+<B>Up:</B> <A NAME="tex2html509"
+  HREF="node26.html">xi3: Tuning Program for</A>
+<B> Previous:</B> <A NAME="tex2html503"
+  HREF="node26.html">xi3: Tuning Program for</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

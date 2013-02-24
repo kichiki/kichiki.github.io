@@ -1,0 +1,438 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>FTS formulation</TITLE>
+<META NAME="description" CONTENT="FTS formulation">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node55.html">
+<LINK REL="previous" HREF="node52.html">
+<LINK REL="up" HREF="node51.html">
+<LINK REL="next" HREF="node55.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html884"
+  HREF="node55.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html880"
+  HREF="node51.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html874"
+  HREF="node53.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html882"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html885"
+  HREF="node55.html">Fixed Particles - Mixed</A>
+<B>Up:</B> <A NAME="tex2html881"
+  HREF="node51.html">Hydrodynamic Interaction in Stokes</A>
+<B> Previous:</B> <A NAME="tex2html875"
+  HREF="node53.html">Question:</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00422000000000000000">
+FTS formulation</A>
+</H2>
+Equation (<A HREF="node52.html#eq:mob-fts">3.18</A>) is the famous FTS formulation
+derived in the paper of Stokesian dynamics method[<A
+ HREF="node80.html#DurlofskyEtal1987">6</A>].
+
+<P>
+As shown above, it is natural form in the mathematical sense
+that <IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \bm{U}$">, <!-- MATH
+ $\bm{\Omega}$
+ -->
+<IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img144.png"
+ ALT="$ \bm{\Omega}$"> and <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img145.png"
+ ALT="$ \bm{E}$"> are in the left-hand side
+and <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img157.png"
+ ALT="$ \bm{F}$">, <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img158.png"
+ ALT="$ \bm{T}$"> and <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img155.png"
+ ALT="$ \bm{S}$"> are in the right-hand side.
+However, from physical point of view, especially for the rigid particles,
+it is not always the case.
+For instance, in the resistance problem,
+<IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \bm{U}$"> and <!-- MATH
+ $\bm{\Omega}$
+ -->
+<IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img144.png"
+ ALT="$ \bm{\Omega}$"> are given and
+<IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img157.png"
+ ALT="$ \bm{F}$"> and <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img158.png"
+ ALT="$ \bm{T}$"> are unknown,
+while in the mobility problem,
+<IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img157.png"
+ ALT="$ \bm{F}$"> and <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img158.png"
+ ALT="$ \bm{T}$"> are given and
+<IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \bm{U}$"> and <!-- MATH
+ $\bm{\Omega}$
+ -->
+<IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img144.png"
+ ALT="$ \bm{\Omega}$"> are unknown.
+But from the rigidity of the particles,
+<IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img145.png"
+ ALT="$ \bm{E}$"> is always a given parameter and
+<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img155.png"
+ ALT="$ \bm{S}$"> is unknown.
+That is, for the mobility problem, it would be the natural form that
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\left[
+    \begin{array}{c}
+      \bm{U}\\
+      \bm{\Omega}\\
+      \bm{S}
+    \end{array}
+  \right]
+  =
+  \bm{M}'
+  \cdot
+  \left[
+    \begin{array}{c}
+      \bm{F}\\
+      \bm{T}\\
+      \bm{E}
+    \end{array}
+  \right]
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="149" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img159.png"
+ ALT="$\displaystyle \left[ \begin{array}{c} \bm{U}\\ \bm{\Omega}\\ \bm{S} \end{array}...
+...}' \cdot \left[ \begin{array}{c} \bm{F}\\ \bm{T}\\ \bm{E} \end{array} \right] .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.22)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Actually, Kim <I>et al</I>.[<A
+ HREF="node80.html#KimMifflin1985">21</A>] take this form
+rather than Eq. (<A HREF="node52.html#eq:mob-fts">3.18</A>).
+But, here, we stick to the FTS form of Eq. (<A HREF="node52.html#eq:mob-fts">3.18</A>).
+Because the equation is linear,
+we can construct the FTE form from FTS as
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+{\bm{M}'}_{UF}
+  &=&
+  \bm{M}_{UF}
+  -
+  \bm{M}_{US}
+  \cdot
+  \Bigl(
+  \bm{M}_{ES}
+  \Bigr)^{-1}
+  \cdot
+  \bm{M}_{EF}
+  ,\\
+  {\bm{M}'}_{UE}
+  &=&
+  \bm{M}_{US}
+  \cdot
+  \Bigl(
+    \bm{M}_{ES}
+  \Bigr)^{-1}
+  ,\\
+  {\bm{M}'}_{SF}
+  &=&
+  -
+  \Bigl(
+    \bm{M}_{ES}
+  \Bigr)^{-1}
+  \cdot
+  \bm{M}_{EF}
+  ,\\
+  {\bm{M}'}_{SE}
+  &=&
+  \Bigl(
+    \bm{M}_{ES}
+  \Bigr)^{-1}
+  ,
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="46" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img160.png"
+ ALT="$\displaystyle {\bm{M}'}_{UF}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="211" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img161.png"
+ ALT="$\displaystyle \bm{M}_{UF}
+-
+\bm{M}_{US}
+\cdot
+\Bigl(
+\bm{M}_{ES}
+\Bigr)^{-1}
+\cdot
+\bm{M}_{EF}
+,$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.23)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="46" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img162.png"
+ ALT="$\displaystyle {\bm{M}'}_{UE}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="113" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img163.png"
+ ALT="$\displaystyle \bm{M}_{US}
+\cdot
+\Bigl(
+\bm{M}_{ES}
+\Bigr)^{-1}
+,$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.24)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="45" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img164.png"
+ ALT="$\displaystyle {\bm{M}'}_{SF}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="122" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img165.png"
+ ALT="$\displaystyle -
+\Bigl(
+\bm{M}_{ES}
+\Bigr)^{-1}
+\cdot
+\bm{M}_{EF}
+,$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.25)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="44" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img166.png"
+ ALT="$\displaystyle {\bm{M}'}_{SE}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="67" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img167.png"
+ ALT="$\displaystyle \Bigl(
+\bm{M}_{ES}
+\Bigr)^{-1}
+,$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.26)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+for
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\left[
+    \begin{array}{c}
+      \bm{U}\\
+      \bm{S}
+    \end{array}
+  \right]
+  =
+  \left[
+    \begin{array}{cc}
+      {\bm{M}'}_{UF} & {\bm{M}'}_{UE}\\
+      {\bm{M}'}_{SF} & {\bm{M}'}_{SE}
+    \end{array}
+  \right]
+  \cdot
+  \left[
+    \begin{array}{c}
+      \bm{F}\\
+      \bm{E}
+    \end{array}
+  \right]
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="251" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img168.png"
+ ALT="$\displaystyle \left[ \begin{array}{c} \bm{U}\\ \bm{S} \end{array} \right] = \le...
+...ay} \right] \cdot \left[ \begin{array}{c} \bm{F}\\ \bm{E} \end{array} \right] ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.27)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\left[
+    \begin{array}{c}
+      \bm{U}\\
+      \bm{E}
+    \end{array}
+  \right]
+  =
+  \left[
+    \begin{array}{cc}
+      \bm{M}_{UF} & \bm{M}_{US}\\
+      \bm{M}_{EF} & \bm{M}_{ES}
+    \end{array}
+  \right]
+  \cdot
+  \left[
+    \begin{array}{c}
+      \bm{F}\\
+      \bm{S}
+    \end{array}
+  \right]
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="238" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img169.png"
+ ALT="$\displaystyle \left[ \begin{array}{c} \bm{U}\\ \bm{E} \end{array} \right] = \le...
+...ay} \right] \cdot \left[ \begin{array}{c} \bm{F}\\ \bm{S} \end{array} \right] .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.28)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Note that, for simplicity, we combine <!-- MATH
+ $\bm{\Omega}$
+ -->
+<IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img144.png"
+ ALT="$ \bm{\Omega}$"> and <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img158.png"
+ ALT="$ \bm{T}$"> into
+<IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \bm{U}$"> and <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img157.png"
+ ALT="$ \bm{F}$"> respectively.
+
+<P>
+This procedure is exactly applied for the higher orders
+of expansions for rigid particles, because not only <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img145.png"
+ ALT="$ \bm{E}$">
+but the higher order velocity moments should be vanished
+(that is, these are always given parameters).
+
+<P>
+<HR>
+<A NAME="tex2html884"
+  HREF="node55.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html880"
+  HREF="node51.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html874"
+  HREF="node53.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html882"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html885"
+  HREF="node55.html">Fixed Particles - Mixed</A>
+<B>Up:</B> <A NAME="tex2html881"
+  HREF="node51.html">Hydrodynamic Interaction in Stokes</A>
+<B> Previous:</B> <A NAME="tex2html875"
+  HREF="node53.html">Question:</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

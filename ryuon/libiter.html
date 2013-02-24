@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+    <title>RYUON/libiter</title>
+    <link rev="made" href="mailto:kichiki@users.sourceforge.net" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+
+<body>
+
+<div class="center">
+<h1>libiter: library of iterative solvers</h1>
+</div>
+
+<p class="navi">
+<a href="index.html">RYUON</a>|
+<a href="docs/index.html">documents</a>|
+<a href="stokes/index.html">stokes</a>|
+<a href="libstokes.html">libstokes</a>
+<a href="libiter.html">libiter</a>|
+<a href="twobody/index.html">twobody</a>
+<br />
+<a href="#outline">outline</a>|
+<a href="#download">download</a>|
+<a href="#API">API</a>
+</p>
+
+<hr />
+
+<h2><a id="outline" name="outline"></a>Outline</h2>
+<p>
+<b>libiter</b> is a library containing iterative solvers
+for linear set of equations used in <a href="libstokes.html">libstokes</a>.
+Currently the following solvers are implemented:
+<ul>
+ <li>gmres : generalized minimum residual method
+  (Saad &amp; Schultz, SIAM J.Sci.Stat.Comput. 1986, vol.7 pp.856-869)
+ </li>
+ <li>otmk: orthomin method</li>
+ <li>sta:  bi-cgsta method
+  (Van der Vorst, SIAM J.Sci.Stat.Comput. 1992, vol.13 pp.631-644)</li>
+ <li>sta2: bi-cgsta2 method
+  (Gutknecht, SIAM J.Sci.Comput. 1993 vol.14 pp.1020-1033)</li>
+ <li>gpb:  gpbi-cg method
+  (Zhang, SIAM J.Sci.Comput. 1997 vol.18 pp.537-551)</li>
+</ul>
+</p>
+<h3>References</h2>
+<p>Some useful references:
+<ul>
+ <li>Ruediger Weiss, &quot;Parameter-Free Iterative Linear Solvers,&quot;
+  Akademie Verlag (1996).</li>
+</ul>
+
+<h2><a id="download" name="download">
+  Download</a></h2>
+<p>
+please visit <a href="http://sourceforge.net/project/showfiles.php?group_id=177943">File Releases @ SF</a>.
+</p>
+
+<h3>Changes</h3>
+<ul>
+ <li>in future releases
+ <ul>
+  <li>implement preconditioner</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/ryuon/libiter-0.3.tar.bz2?download">0.3</a>:
+  (<a href="http://sourceforge.net/project/shownotes.php?release_id=454964&group_id=177943">Release Notes</a>,
+   CVS Tag: <a href="http://ryuon.cvs.sourceforge.net/ryuon/libiter/?pathrev=LIBITER_0_3_RELEASE">LIBITER_0_3_RELEASE</a>)
+ <ul>
+  <li>new solvers are added; steepest, cg, cgs, bicgstab.</li>
+  <li>API changed -- solve_iter() get FILE* to out debug report</li>
+  <li>add detailed debug option</li>
+  <li>directory structure is completely changed</li>
+  <li>use newer GNU automake19 autoconf259 tools</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/ryuon/libiter-0.2.tar.gz?download">0.2</a>:
+  (<a href="http://sourceforge.net/project/shownotes.php?release_id=453184&group_id=177943">Release Notes</a>,
+   CVS Tag: <a href="http://ryuon.cvs.sourceforge.net/ryuon/libiter/?pathrev=LIBITER_0_2_RELEASE">LIBITER_0_2_RELEASE</a>)
+ <ul>
+  <li>combine the top level routines into &quot;solve_iter()&quot;.</li>
+ </ul>
+ </li>
+ <li><a href="http://prdownloads.sourceforge.net/ryuon/libiter-0.1.tar.gz?download">0.1</a>:
+  (<a href="http://sourceforge.net/project/shownotes.php?release_id=451038&group_id=177943">Release Notes</a>,
+   CVS Tag: <a href="http://ryuon.cvs.sourceforge.net/ryuon/libiter/?pathrev=LIBITER_0_1_RELEASE">LIBITER_0_1_RELEASE</a>)
+ <ul>
+  <li>Initial revision.</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="API" name="API"></a>API</h2>
+<p>
+<pre>
+<font color="#444444">/* initialize parameters
+ * INPUT
+ *   solver : string indicating the solver
+ *            sta, sta2, gpb, otmk, or gmres (default)
+ *   eps and log10_eps
+ *   max (and restart)
+ *   debug = 0 : no debug info
+ *         = 1 : iteration numbs and residue
+ *   out   : FILE * to output debug info.
+ * OUTPUT
+ *   (struct iter *) returned value :
+ */</font>
+<strong>struct</strong> <font color="#2040a0">iter</font> <font color="4444FF">*</font>
+<font color="#2040a0">iter_init</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">solver</font>,
+           <strong>int</strong> <font color="#2040a0">max</font>,
+           <strong>int</strong> <font color="#2040a0">restart</font>,
+           <strong>double</strong> <font color="#2040a0">eps</font>,
+           <strong>int</strong> <font color="#2040a0">debug</font>,
+           <font color="#2040a0">FILE</font> <font color="4444FF">*</font> <font color="#2040a0">out</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* wrapper routine for iterative solvers
+ * INPUT
+ *   n : size of vectors v[] and f[] -- expected to be np * nelm for red-sym
+ *   b [n] : given vector
+ *   atimes (n, x, b, user_data) : routine to calc A.x and return b[]
+ *   user_data : pointer to be passed to solver and atimes routines
+ *   it_param : parameters for iterative solvers
+ *              solver : string indicating the solver
+ *                &quot;steepest&quot; : steepest descent method
+ *                &quot;cg&quot;       : conjugate gradient
+ *                &quot;cgs&quot;      : conjugate gradient squared
+ *                &quot;bicgstab&quot; : bi-conjugate gradient stabilized
+ *                &quot;sta&quot;, &quot;sta2&quot;, &quot;gpb&quot;, &quot;otmk&quot; :
+ *                &quot;gmres&quot;    : generalized minimum residual method  (default)
+ *              eps and log10_eps
+ *              max (and restart)
+ * OUTPUT
+ *   x [n] : solution
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_iter</font> <font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">n</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">b</font>,
+            <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">x</font>,
+            <strong>void</strong> <font color="4444FF">(</font><font color="4444FF">*</font><font color="#2040a0">atimes</font><font color="4444FF">)</font> <font color="4444FF">(</font><strong>int</strong>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font>, <strong>double</strong> <font color="4444FF">*</font>, <strong>void</strong> <font color="4444FF">*</font><font color="4444FF">)</font>,
+            <strong>void</strong> <font color="4444FF">*</font> <font color="#2040a0">user_data</font>,
+            <strong>struct</strong> <font color="#2040a0">iter</font> <font color="4444FF">*</font> <font color="#2040a0">it_param</font><font color="4444FF">)</font><font color="4444FF">;</font>
+</pre>
+</p>
+
+<hr />
+
+<div class="navi">
+<a href="#outline">outline</a>|
+<a href="#download">download</a>|
+<a href="#API">API</a>
+<br />
+<a href="index.html">RYUON</a>|
+<a href="docs/index.html">documents</a>|
+<a href="stokes/index.html">stokes</a>|
+<a href="libstokes.html">libstokes</a>
+<a href="libiter.html">libiter</a>|
+<a href="twobody/index.html">twobody</a>
+<br />
+<br />
+<address>
+e-mail:
+  <a href="mailto:kichiki@users.sourceforge.net">
+  kichiki@users.sourceforge.net</a></address>
+Copyright (C) 2006-2008 Kengo Ichiki.  All rights reserved.
+<br />
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+
+</div>
+
+</body>
+</html>

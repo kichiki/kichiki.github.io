@@ -1,0 +1,112 @@
+\begin{thebibliography}{10}
+
+\bibitem{OpenGL}
+{\em Opengl}.
+\newblock http://www.opengl.org/.
+
+\bibitem{SWIG}
+{\em Swig: Simplified wrapper and interface generator}.
+\newblock http://www.swig.org/.
+
+\bibitem{Beenakker1986}
+{\sc C.~W.~J. Beenakker}, {\em {E}wald sum of the {R}otne-{P}rager tensor}, J.
+  Chem. Phys., 85 (1986), pp.~1581--1582.
+
+\bibitem{BradyBossis1988}
+{\sc J.~F. Brady and G.~Bossis}, {\em {S}tokesian dynamics}, Annu. Rev. Fluid
+  Mech., 20 (1988), pp.~111--157.
+
+\bibitem{BradyEtal1988}
+{\sc J.~F. Brady, R.~J. Phillips, J.~C. Lester, and G.~Bossis}, {\em Dynamic
+  simulation of hydrodynamically interacting suspensions}, J. Fluid Mech., 195
+  (1988), pp.~257--280.
+
+\bibitem{DurlofskyEtal1987}
+{\sc L.~Durlofsky, J.~F. Brady, and G.~Bossis}, {\em Dynamic simulation of
+  hydrodynamically interacting particles}, J. Fluid Mech., 180 (1987), p.~21.
+
+\bibitem{Octave}
+{\sc J.~W. Eaton}, {\em Gnu octave}.
+\newblock http://www.gnu.org/software/octave/.
+
+\bibitem{GSL}
+{\sc {Free Software Foundation}}, {\em The gnu scientific library}.
+\newblock http://www.gnu.org/software/gsl/.
+
+\bibitem{guile}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Guile}.
+\newblock http://www.gnu.org/software/guile/.
+
+\bibitem{GreengardRokhlin1987}
+{\sc L.~Greengard and V.~Rokhlin}, {\em A fast algorithm for particle
+  simulations}, J. Comput. Phys., 73 (1987), pp.~325--348.
+
+\bibitem{greengard}
+{\sc L.~F. Greengard}, {\em The Rapid Evaluation of Potential Fields in
+  Particle Systems}, The {MIT} {P}ress, {C}ambridge, 1988.
+
+\bibitem{Hasimoto1959}
+{\sc H.~Hasimoto}, {\em On the periodic fundamental solutions of the {S}tokes
+  equations and their application to viscous flow past a cubic array of
+  spheres}, J. Fluid Mech., 5 (1959), pp.~317--328.
+
+\bibitem{Ichiki2002}
+{\sc K.~Ichiki}, {\em Improvement of the {Stokesian Dynamics} method for
+  systems with finite number of particles}, J. Fluid Mech., 452 (2002),
+  pp.~231--262.
+
+\bibitem{IchikiBrady2001}
+{\sc K.~Ichiki and J.~F. Brady}, {\em Many-body effects and matrix-inversion in
+  low-{R}eynolds-number hydrodynamics}, Phys. Fluids, 13 (2001), pp.~350--353.
+
+\bibitem{IchikiConsta2006}
+{\sc K.~Ichiki and S.~Consta}, {\em Disintegration mechanisms of charged
+  aqueous nanodroplets studied by simulations and analytical models}, J. Phys.
+  Chem. B, 110 (2006), pp.~19168--19175.
+
+\bibitem{IchikiHayakawa1995}
+{\sc K.~Ichiki and H.~Hayakawa}, {\em Dynamical simulation of fluidized beds:
+  Hydrodynamically interacting granular particles}, Phys. Rev. E, 52 (1995),
+  pp.~658--670.
+
+\bibitem{IchikiHayakawa1998}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Analysis of
+  statistical quantities in simulation of fluidized beds}, Phys. Rev. E, 57
+  (1998), pp.~1990--1996.
+
+\bibitem{jeffrey1992}
+{\sc D.~J. Jeffrey}, {\em The calculation of the low {R}eynolds number
+  resistance for two unequal spheres}, Phys. Fluids A, 4 (1992), pp.~16--29.
+
+\bibitem{jeffrey1993}
+{\sc D.~J. Jeffrey, J.~F. Morris, and J.~F. Brady}, {\em The pressure moments
+  for two rigid spheres in low-{R}eynolds-number flow}, Phys. Fluids A, 5
+  (1993), pp.~2317--2325.
+
+\bibitem{JeffreyOnishi1984}
+{\sc D.~J. Jeffrey and Y.~Onishi}, {\em Calculation of the resistance and
+  mobility functions for two unequal spheres in low-{R}eynolds-number flow}, J.
+  Fluid Mech., 139 (1984), pp.~261--290.
+
+\bibitem{KimMifflin1985}
+{\sc S.~Kim and R.~T. Mifflin}, {\em The resistance and mobility functions of
+  two equal spheres in low-{R}eynolds-number flow}, Phys. Fluids, 28 (1985),
+  p.~2033.
+
+\bibitem{VTK}
+{\sc {Kitware Inc.}}, {\em The visualization toolkit}.
+\newblock http://www.vtk.org/.
+
+\bibitem{Ruby}
+{\sc Y.~m. Matsumoto}, {\em Ruby}.
+\newblock http://www.ruby-lang.org/.
+
+\bibitem{Python}
+{\sc G.~van Rossum}, {\em The python programming language}.
+\newblock http://www.python.org/.
+
+\bibitem{Perl}
+{\sc L.~Wall}, {\em Perl}.
+\newblock http://www.perl.org/.
+
+\end{thebibliography}

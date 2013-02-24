@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Gaussian Type Excluded-Volume Parameters</TITLE>
+<META NAME="description" CONTENT="Gaussian Type Excluded-Volume Parameters">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node22.html">
+<LINK REL="previous" HREF="node20.html">
+<LINK REL="up" HREF="node20.html">
+<LINK REL="next" HREF="node22.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html442"
+  HREF="node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html438"
+  HREF="node20.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html432"
+  HREF="node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html440"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html443"
+  HREF="node22.html">Debye-H&#252;ckel Type Excluded-Volume Parameters</A>
+<B>Up:</B> <A NAME="tex2html439"
+  HREF="node20.html">Excluded-Volume Parameters</A>
+<B> Previous:</B> <A NAME="tex2html433"
+  HREF="node20.html">Excluded-Volume Parameters</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00317100000000000000">
+Gaussian Type Excluded-Volume Parameters</A>
+</H3>
+<PRE>
+	ev : list in the following form;
+	(define ev '(
+	 5.0     ; max distance [nm] (or in the same dimension of "length")
+	 ( ; for EV type 1
+	  0.0012 ; v [nm^3] (or in the same dimension of "length")
+	  0      ; fene flag. if fene == 0, (p1,p2) = (A^{sp},L_{s})
+	  1.0    ; p1 = A^{sp}, scaled spring const
+	  2.1    ; p2 = L_{s} / length, scaled max extension
+	  (0 1 2); list of particles belongs to the EV parameters
+	 )
+	 ( ; for EV type 2
+	  0.002  ; v [nm^3] (or in the same dimension of "length")
+	  1      ; fene flag. if fene == 1, (p1,p2) = (N_{K,s},b_{K})
+	  19.8   ; p1 = N_{K,s}, the Kuhn steps for a spring
+	  106.0  ; p2 = b_{K} [nm], the Kuhn length
+	  (3 4)  ; list of particles belongs to the EV parameters
+	 )
+	))
+</PRE>
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

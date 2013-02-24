@@ -1,0 +1,1549 @@
+<html>
+<head>
+  <title>libstokes.h</title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<pre>
+<font color="#444444">/* header file for library 'libstokes'
+ * Copyright (C) 1993-2006 Kengo Ichiki &lt;kichiki@users.sourceforge.net&gt;
+ * $Id: libstokes.h,v 1.11 2006/10/19 04:32:17 ichiki Exp $
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */</font>
+<font color="0000ff"><strong>#ifndef	_LIBSTOKES_H_</strong></font>
+<font color="0000ff"><strong>#define	_LIBSTOKES_H_</strong></font>
+
+<font color="0000ff"><strong>#include <font color="#008000">&lt;stdio.h&gt;</font> // FILE</strong></font>
+
+
+<font color="#444444"><i>/***********************************
+ ** system parameters             **
+ ***********************************/</i></font>
+<strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF"><strong>{</strong></font>
+  <strong>int</strong> <font color="#2040a0">np</font><font color="4444FF">;</font> <font color="#444444">/* number of all particles */</font>
+  <strong>int</strong> <font color="#2040a0">nm</font><font color="4444FF">;</font> <font color="#444444">/* number of mobile particles */</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">pos</font><font color="4444FF">;</font> <font color="#444444">/* position of particles */</font>
+
+  <strong>int</strong> <font color="#2040a0">version</font><font color="4444FF">;</font> <font color="#444444">/* 0 = F, 1 = FT, 2 = FTS */</font>
+
+  <font color="#444444">/* imposed flow */</font>
+  <strong>double</strong> <font color="#2040a0">Ui</font><font color="4444FF">[</font><font color="#FF0000">3</font><font color="4444FF">]</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="#2040a0">Oi</font><font color="4444FF">[</font><font color="#FF0000">3</font><font color="4444FF">]</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="#2040a0">Ei</font><font color="4444FF">[</font><font color="#FF0000">5</font><font color="4444FF">]</font><font color="4444FF">;</font>
+
+  <font color="#444444">/* for ewald codes */</font>
+  <strong>double</strong> <font color="#2040a0">rmax2</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">rmaxx</font>, <font color="#2040a0">rmaxy</font>, <font color="#2040a0">rmaxz</font><font color="4444FF">;</font> <font color="#444444">/* # of cell in real space */</font>
+  <strong>double</strong> <font color="#2040a0">kmax</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">kmaxx</font>, <font color="#2040a0">kmaxy</font>, <font color="#2040a0">kmaxz</font><font color="4444FF">;</font> <font color="#444444">/* # of cell in reciprocal space */</font>
+
+  <strong>double</strong> <font color="#2040a0">xi</font>, <font color="#2040a0">xi2</font>, <font color="#2040a0">xiaspi</font>, <font color="#2040a0">xia2</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="#2040a0">pivol</font><font color="4444FF">;</font>
+
+  <strong>double</strong> <font color="#2040a0">lx</font>, <font color="#2040a0">ly</font>, <font color="#2040a0">lz</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="#2040a0">llx</font><font color="4444FF">[</font><font color="#FF0000">27</font><font color="4444FF">]</font>, <font color="#2040a0">lly</font><font color="4444FF">[</font><font color="#FF0000">27</font><font color="4444FF">]</font>, <font color="#2040a0">llz</font><font color="4444FF">[</font><font color="#FF0000">27</font><font color="4444FF">]</font><font color="4444FF">;</font> <font color="#444444">/* for regist and lub */</font>
+
+  // <font color="#2040a0">self</font> <font color="#2040a0">part</font>
+  <strong>double</strong> <font color="#2040a0">self_a</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="#2040a0">self_c</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="#2040a0">self_m</font><font color="4444FF">;</font>
+
+  // <font color="#2040a0">table</font> <strong>for</strong> <font color="#2040a0">lattice</font> <font color="#2040a0">summation</font>
+  <strong>int</strong> <font color="#2040a0">flag_table</font><font color="4444FF">;</font> // <font color="#FF0000">0</font> <font color="4444FF">=</font> <font color="#2040a0">inactive</font>, <font color="#FF0000">1</font> <font color="4444FF">=</font> <font color="#2040a0">active</font>
+  // <font color="#2040a0">real</font> <font color="#2040a0">space</font>
+  <strong>int</strong> <font color="#2040a0">nr</font><font color="4444FF">;</font> // <font color="#2040a0">number</font> <font color="#2040a0">of</font> <font color="#2040a0">lattice</font> <font color="#2040a0">points</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">rlx</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">rly</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">rlz</font><font color="4444FF">;</font>
+  // <font color="#2040a0">reciprocal</font> <font color="#2040a0">space</font>
+  <strong>int</strong> <font color="#2040a0">nk</font><font color="4444FF">;</font> // <font color="#2040a0">number</font> <font color="#2040a0">of</font> <font color="#2040a0">lattice</font> <font color="#2040a0">points</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ex</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ey</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ez</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">k</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">k1</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">k2</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">k3</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ya</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">yb</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">yc</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">yg</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">yh</font><font color="4444FF">;</font>
+  <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ym</font><font color="4444FF">;</font>
+
+  <font color="#444444">/* for lubrication */</font>
+  <strong>double</strong> <font color="#2040a0">lubcut</font><font color="4444FF">;</font>
+
+  <font color="#444444">/* for zeta program */</font>
+  <strong>double</strong> <font color="#2040a0">cpu1</font>, <font color="#2040a0">cpu2</font>, <font color="#2040a0">cpu3</font><font color="4444FF">;</font>
+
+  <font color="#444444">/* for iterative solvers */</font>
+  <strong>struct</strong> <font color="#2040a0">iter</font> <font color="4444FF">*</font> <font color="#2040a0">it</font><font color="4444FF">;</font>
+<font color="4444FF"><strong>}</strong></font><font color="4444FF">;</font>
+
+
+<font color="#444444">/* all elements are zero-cleared
+ */</font>
+<strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_init</font> <font color="4444FF">(</font><strong>void</strong><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<strong>void</strong>
+<font color="#2040a0">stokes_free</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* set np and nm and allocate the memory for pos[np*3]
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_set_np</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+	       <strong>int</strong> <font color="#2040a0">np</font>, <strong>int</strong> <font color="#2040a0">nm</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<strong>void</strong>
+<font color="#2040a0">stokes_set_Ui</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+	       <strong>double</strong> <font color="#2040a0">uix</font>, <strong>double</strong> <font color="#2040a0">uiy</font>, <strong>double</strong> <font color="#2040a0">uiz</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_set_Oi</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+	       <strong>double</strong> <font color="#2040a0">oix</font>, <strong>double</strong> <font color="#2040a0">oiy</font>, <strong>double</strong> <font color="#2040a0">oiz</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_set_Ei</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+	       <strong>double</strong> <font color="#2040a0">eixx</font>, <strong>double</strong> <font color="#2040a0">eixy</font>, <strong>double</strong> <font color="#2040a0">eixz</font>,
+	       <strong>double</strong> <font color="#2040a0">eiyz</font>, <strong>double</strong> <font color="#2040a0">eiyy</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<strong>void</strong>
+<font color="#2040a0">stokes_set_l</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+	      <strong>double</strong> <font color="#2040a0">lx</font>, <strong>double</strong> <font color="#2040a0">ly</font>, <strong>double</strong> <font color="#2040a0">lz</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<strong>void</strong>
+<font color="#2040a0">stokes_set_xi</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+	       <strong>double</strong> <font color="#2040a0">xi</font>, <strong>double</strong> <font color="#2040a0">cutlim</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<strong>double</strong>
+<font color="#2040a0">xi_by_tratio</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+	      <strong>double</strong> <font color="#2040a0">tratio</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* set iter param
+ * INPUT
+ *   solver : string indicating the solver
+ *            sta, sta2, gpb, otmk, or gmres (default)
+ *   eps and log10_eps
+ *   max (and restart)
+ *   debug = 0 : no debug info
+ *         = 1 : iteration numbs and residue
+ *   out   : FILE * to output debug info.
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_set_iter</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		 <strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">solver</font>,
+		 <strong>int</strong> <font color="#2040a0">max</font>,
+		 <strong>int</strong> <font color="#2040a0">restart</font>,
+		 <strong>double</strong> <font color="#2040a0">eps</font>,
+		 <strong>int</strong> <font color="#2040a0">debug</font>,
+		 <font color="#2040a0">FILE</font> <font color="4444FF">*</font> <font color="#2040a0">out</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* set pos safely by another array
+ * INPUT
+ *  pos[np*3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_set_pos</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">pos</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+
+<font color="#444444"><i>/************************************
+ ** NetCDF interface for libstokes **
+ ************************************/</i></font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF"><strong>{</strong></font>
+  <strong>int</strong> <font color="#2040a0">id</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">np</font><font color="4444FF">;</font> // <font color="#2040a0">only</font> <font color="#2040a0">MOBILE</font> <font color="#2040a0">particles</font> <font color="#2040a0">here</font><font color="4444FF">!</font><font color="4444FF">!</font>
+  <strong>int</strong> <font color="#2040a0">p_dim</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">p_id</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">npf</font><font color="4444FF">;</font> // <font color="#2040a0">number</font> <font color="#2040a0">of</font> <font color="#2040a0">fixed</font> <font color="#2040a0">particles</font> <font color="4444FF">(</font><font color="#2040a0">stored</font> <font color="#2040a0">separately</font><font color="4444FF">)</font>
+  <strong>int</strong> <font color="#2040a0">pf_dim</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">pf_id</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">nvec</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">vec_dim</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">vec_id</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">nstt</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">stt_dim</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">stt_id</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">time_dim</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">time_id</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">l_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">ui0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">oi0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">ei0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">ui_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">oi_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">ei_id</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">x0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">u0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">o0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">e0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">f0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">t0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">s0_id</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">xf0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">uf0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">of0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">ef0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">ff0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">tf0_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">sf0_id</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">x_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">u_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">o_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">e_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">f_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">t_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">s_id</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">xf_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">uf_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">of_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">ef_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">ff_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">tf_id</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">sf_id</font><font color="4444FF">;</font>
+
+  <font color="#444444">/* active/inactive flags : 0 = inactive
+   *                         1 = active */</font>
+  <strong>int</strong> <font color="#2040a0">flag_ui0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_oi0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_ei0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_ui</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_oi</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_ei</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">flag_x0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_u0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_o0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_e0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_f0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_t0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_s0</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">flag_xf0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_uf0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_of0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_ef0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_ff0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_tf0</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_sf0</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">flag_x</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_u</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_o</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_e</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_f</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_t</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_s</font><font color="4444FF">;</font>
+
+  <strong>int</strong> <font color="#2040a0">flag_xf</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_uf</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_of</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_ef</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_ff</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_tf</font><font color="4444FF">;</font>
+  <strong>int</strong> <font color="#2040a0">flag_sf</font><font color="4444FF">;</font>
+<font color="4444FF"><strong>}</strong></font><font color="4444FF">;</font>
+
+
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_error</font> <font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">status</font>, <strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">message</font>, <strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">varname</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_print_actives</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+			 <font color="#2040a0">FILE</font> <font color="4444FF">*</font> <font color="#2040a0">out</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+
+<font color="#444444">/* initialize NetCDF file for libstokes for mob_F problem
+ * INPUT
+ *  np : number of MOBILE particles
+ * OUTPUT
+ *  (returned value) : ncid
+ *  activated entries are, f0, x, u.
+ */</font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_nc_mob_f_init</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">filename</font>, <strong>int</strong> <font color="#2040a0">np</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* initialize NetCDF file for libstokes for mob_FT problem
+ * INPUT
+ *  np : number of MOBILE particles
+ * OUTPUT
+ *  (returned value) : ncid
+ *  activated entries are, f0, t0, x, u, o.
+ */</font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_nc_mob_ft_init</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">filename</font>, <strong>int</strong> <font color="#2040a0">np</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* initialize NetCDF file for libstokes for mob_FTS problem
+ * INPUT
+ *  np : number of MOBILE particles
+ * OUTPUT
+ *  (returned value) : ncid
+ *  activated entries are, f0, t0, e0, x, u, o, s.
+ */</font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_nc_mob_fts_init</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">filename</font>, <strong>int</strong> <font color="#2040a0">np</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* initialize NetCDF file for libstokes for mob_fix_F problem
+ * with a constant imposed flow
+ * INPUT
+ *  nm : number of MOBILE particles
+ *  nf : number of fixed particles
+ * OUTPUT
+ *  (returned value) : ncid
+ *  activated entries are, ui0, xf0, f0, uf0, x, u, ff.
+ */</font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_nc_mob_fix_f_i0_init</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">filename</font>, <strong>int</strong> <font color="#2040a0">nm</font>, <strong>int</strong> <font color="#2040a0">nf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* initialize NetCDF file for libstokes for mob_fix_FT problem
+ * with a constant imposed flow
+ * INPUT
+ *  nm : number of MOBILE particles
+ *  nf : number of fixed particles
+ * OUTPUT
+ *  (returned value) : ncid
+ *  activated entries are, ui0, oi0, xf0, f0, t0, uf0, of0, x, u, o, ff, tf.
+ */</font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_nc_mob_fix_ft_i0_init</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">filename</font>, <strong>int</strong> <font color="#2040a0">nm</font>, <strong>int</strong> <font color="#2040a0">nf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* initialize NetCDF file for libstokes for mob_fix_FTS problem
+ * with a constant imposed flow
+ * INPUT
+ *  nm : number of MOBILE particles
+ *  nf : number of fixed particles
+ * OUTPUT
+ *  (returned value) : ncid
+ *  activated entries are, ui0, oi0, ei0,
+ *                         xf0, f0, t0, e0, uf0, of0, ef0,
+ *                         x, u, o, s, ff, tf, sf.
+ */</font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_nc_mob_fix_fts_i0_init</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">filename</font>, <strong>int</strong> <font color="#2040a0">nm</font>, <strong>int</strong> <font color="#2040a0">nf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* initialize NetCDF file for libstokes for mob_fix_F problem
+ * with a time-changing imposed flow
+ * INPUT
+ *  nm : number of MOBILE particles
+ *  nf : number of fixed particles
+ * OUTPUT
+ *  (returned value) : ncid
+ *  activated entries are, ui, xf0, f0, uf0, x, u, ff.
+ */</font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_nc_mob_fix_f_it_init</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">filename</font>, <strong>int</strong> <font color="#2040a0">nm</font>, <strong>int</strong> <font color="#2040a0">nf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* initialize NetCDF file for libstokes for mob_fix_FT problem
+ * with a time-changing imposed flow
+ * INPUT
+ *  nm : number of MOBILE particles
+ *  nf : number of fixed particles
+ * OUTPUT
+ *  (returned value) : ncid
+ *  activated entries are, ui, oi, xf0, f0, t0, uf0, of0, x, u, o, ff, tf.
+ */</font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_nc_mob_fix_ft_it_init</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">filename</font>, <strong>int</strong> <font color="#2040a0">nm</font>, <strong>int</strong> <font color="#2040a0">nf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* initialize NetCDF file for libstokes for mob_fix_FTS problem
+ * with a time-changing imposed flow
+ * INPUT
+ *  nm : number of MOBILE particles
+ *  nf : number of fixed particles
+ * OUTPUT
+ *  (returned value) : ncid
+ *  activated entries are, ui, oi, ei,
+ *                         xf0, f0, t0, e0, uf0, of0, ef0,
+ *                         x, u, o, s, ff, tf, sf.
+ */</font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_nc_mob_fix_fts_it_init</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">filename</font>, <strong>int</strong> <font color="#2040a0">nm</font>, <strong>int</strong> <font color="#2040a0">nf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+
+<font color="#444444">/* close (and write if necessary) NetCDF file for libstokes
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_free</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+
+<font color="#444444"><i>/** set nc data **/</i></font>
+<font color="#444444">/* set l = (lx, ly, lz)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_l</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">l</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set ui
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_ui</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ui</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set oi
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_oi</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">oi</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set ei
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_ei</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ei</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set x0
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_x0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">x0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set u0
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_u0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">u0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set o0 data
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_o0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">o0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set e0 data
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_e0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">e0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set f0 data
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_f0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">f0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set t0 data
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_t0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">t0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set s0 data
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_s0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">s0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set xf0
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_xf0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">xf0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set uf0
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_uf0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">uf0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set of0 data
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_of0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">of0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set ef0 data
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_ef0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ef0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set ff0 data
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_ff0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ff0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set tf0 data
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_tf0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">tf0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set sf0 data
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_sf0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">sf0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* set time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_time</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		    <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set x at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_x</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		 <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">x</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set u at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_u</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		 <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">u</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set o at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_o</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		 <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">o</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set e at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_e</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		 <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">e</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set f at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		 <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set t at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_t</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		 <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set s at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_s</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		 <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font><font color="4444FF">;</font>
+<font color="#444444">/* set xf at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_xf</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">xf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set uf at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_uf</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">uf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set of at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_of</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">of</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set ef at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_ef</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ef</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set ff at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_ff</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set tf at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_tf</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* set sf at time (step)
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_set_sf</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		  <strong>int</strong> <font color="#2040a0">step</font>, <strong>double</strong> <font color="#2040a0">time</font>,
+		  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+
+<font color="#444444">/* from stokes-nc-read.h
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_print_actives</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+			 <font color="#2040a0">FILE</font> <font color="4444FF">*</font> <font color="#2040a0">out</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font>
+<font color="#2040a0">stokes_nc_open</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">filename</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_get_data0</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		     <strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">name</font>,
+		     <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">x</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<strong>void</strong>
+<font color="#2040a0">stokes_nc_get_data</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes_nc</font> <font color="4444FF">*</font> <font color="#2040a0">nc</font>,
+		    <strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">name</font>,
+		    <strong>int</strong> <font color="#2040a0">step</font>,
+		    <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">x</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+
+<font color="#444444"><i>/************************************
+ ** Guile interface for libstokes  **
+ ************************************/</i></font>
+<font color="#444444">/* this utility function (original name is does_scm_symbol_exist)
+ * written by Michael Gran is taken from
+ * http://www.lonelycactus.com/guilebook/c319.html
+ */</font>
+<strong>int</strong>
+<font color="#2040a0">guile_check_symbol</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font><font color="#2040a0">name</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* check boolean
+ * INPUT
+ *  var : string of the SCM variable
+ * OUTPUT
+ *  true  : if var is not nil
+ *  false : if var is nil or even not defined
+ */</font>
+<strong>int</strong>
+<font color="#2040a0">guile_get_bool</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">var</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/*
+ * INPUT
+ *  var : string of the SCM variable
+ *  i0  : default value (for the undefined case)
+ * OUTPUT
+ */</font>
+<strong>int</strong>
+<font color="#2040a0">guile_get_int</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">var</font>, <strong>int</strong> <font color="#2040a0">i0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/*
+ * INPUT
+ *  var : string of the SCM variable
+ *  d0  : default value (for the undefined case)
+ * OUTPUT
+ */</font>
+<strong>double</strong>
+<font color="#2040a0">guile_get_double</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">var</font>, <strong>double</strong> <font color="#2040a0">d0</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/*
+ * OUTPUT
+ *  returned value : 0 = failed (not defined)
+ *                   1 = success
+ */</font>
+<strong>int</strong>
+<font color="#2040a0">guile_get_doubles</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">var</font>, <strong>int</strong> <font color="#2040a0">n</font>, <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">x</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/*
+ */</font>
+<strong>char</strong> <font color="4444FF">*</font>
+<font color="#2040a0">guile_get_string</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">var</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/*
+ */</font>
+<font color="#2040a0">FILE</font> <font color="4444FF">*</font>
+<font color="#2040a0">guile_open_file</font> <font color="4444FF">(</font><strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">var</font>, <strong>const</strong> <strong>char</strong> <font color="4444FF">*</font> <font color="#2040a0">mode</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+
+
+<font color="#444444"><i>/***********************************
+ ** resistance problems           **
+ ***********************************/</i></font>
+
+<font color="#444444">/* solve natural resistance problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *  u [np * 3] :
+ * OUTPUT
+ *  f [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *  u [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			   <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			       <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			       <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+				<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+				 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_2f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_2f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   o [np * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_2ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   o [np * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ *   t [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_2ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   o [np * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ *   e [np * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_ewald_2fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural resistance problem with lubrication
+ * in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   u [np * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   o [np * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ *   e [np * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ * OUTPUT
+ *   f [np * 3] : results are given in 3D form
+ *   t [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_res_lub_ewald_2fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444"><i>/***********************************
+ ** mobility problems             **
+ ***********************************/</i></font>
+
+<font color="#444444">/* solve natural mobility problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *  f [np * 3] :
+ * OUTPUT
+ *  u [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ * OUTPUT
+ *   u [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+			   <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ * OUTPUT
+ *   u [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_lub_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			       <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+			       <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+			    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_lub_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+				<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [np * 3] :
+ *   t [np * 3] :
+ *   e [np * 5] :
+ * OUTPUT
+ *   u [np * 3] :
+ *   o [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_lub_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+				 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in F version under Ewald sum
+ *  sys : system parameters
+ *   f [np * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ * OUTPUT
+ *   u [np * 3] : results are given in 3D form
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_2f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FT version under Ewald sum
+ *  sys : system parameters
+ *   f [np * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [np * 3] : OK, this is 3D form
+ * OUTPUT
+ *   u [np * 3] : results are given in 3D form
+ *   o [np * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_2ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem in FTS version under Ewald sum
+ *  sys : system parameters
+ *   f [np * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [np * 3] : OK, this is 3D form
+ *   e [np * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ * OUTPUT
+ *   u [np * 3] : results are given in 3D form
+ *   o [np * 3] :
+ *   s [np * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mob_ewald_2fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444"><i>/***********************************
+ ** mixed problems                **
+ ***********************************/</i></font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in F version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *  f [nm * 3] :
+ *  uf [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   ff [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *  f [nm * 3] :
+ *  uf [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   ff [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			   <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+			   <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   uf [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   ff [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3f_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			       <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+			       <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in FT version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+			    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3ft_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+				<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+				<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+				<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in FTS version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   e [nm * 5] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ *   ef [nf * 5] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   e [nm * 5] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ *   ef [nf * 5] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   e [nm * 5] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ *   ef [nf * 5] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+			     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+			     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 3] :
+ *   t [nm * 3] :
+ *   e [nm * 5] :
+ *   uf [nf * 3] :
+ *   of [nf * 3] :
+ *   ef [nf * 5] :
+ * OUTPUT
+ *   u [nm * 3] :
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_3fts_matrix</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+				 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+				 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+				 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in F version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   ff [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_2f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+		    <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+		    <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in F version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   ff [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_2f</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>,
+			<strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>,
+			<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in FT version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [nm * 3] : OK, this is 3D form
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   of [nf * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_2ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>,
+		     <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+		     <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FT version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [nm * 3] : OK, this is 3D form
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   of [nf * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   o [nm * 3] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_2ft</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>,
+			 <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with fixed particles in FTS version
+ * under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [nm * 3] : OK, this is 3D form
+ *   e [nm * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   of [nf * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ *   ef [nf * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_ewald_2fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+		      <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+		      <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444">/* solve natural mobility problem with lubrication
+ * with fixed particles in FTS version under Ewald sum
+ * INPUT
+ *  sys : system parameters
+ *   f [nm * 2] : f_x, f_y are given (and f_z = 0 is assumed)
+ *   t3 [nm * 3] : OK, this is 3D form
+ *   e [nm * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ *   uf [nf * 2] : u_x, u_y are given (and u_z = 0 is assumed)
+ *   of [nf * 1] : o_z is given (and o_x = o_y = 0 is assumed)
+ *   ef [nf * 2] : e_xx, e_xy are given (e_?z = e_z? = 0 is assumed)
+ * OUTPUT
+ *   u [nm * 3] : results are given in 3D form
+ *   o [nm * 3] :
+ *   s [nm * 5] :
+ *   ff [nf * 3] :
+ *   tf [nf * 3] :
+ *   sf [nf * 5] :
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">solve_mix_lub_ewald_2fts</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">f</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">t3</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">e</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">uf</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">of</font>,
+			  <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ef</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">u</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">o</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">s</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">ff</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">tf</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">sf</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444"><i>/************************************************
+ ** atimes forms (unnatural mobility problems) **
+ ************************************************/</i></font>
+
+<font color="#444444"><i>/** table version **/</i></font>
+
+<font color="#444444">/* ATIMES of calc ewald-summed mobility for F/FT/FTS versions
+ * with the ewald table
+ * INPUT
+ *  n := np*3 (F), np*6 (FT), or np*11 (FTS)
+ *  x [n] : F, FT, or FTS
+ *  user_data = (struct stokes *) sys
+ * OUTPUT
+ *  y [n] : U, UO, or UOE
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">atimes_ewald_3all</font> <font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">n</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">x</font>, <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">y</font>, <strong>void</strong> <font color="4444FF">*</font> <font color="#2040a0">user_data</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* make ewald-summed mobility matrix for F/FT/FTS versions
+ * with the ewald table
+ * INPUT
+ * sys : system parameters
+ * OUTPUT
+ *  mat [np * 3  * np * 3 ] : for F version
+ *  mat [np * 6  * np * 6 ] : for FT version
+ *  mat [np * 11 * np * 11] : for FTS version
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">make_matrix_mob_ewald_3all</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>, <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">mat</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* ATIMES of calc ewald-summed mobility for F/FT/FTS versions
+ * through matrix with the ewald table
+ * INPUT
+ *  n := np*3 (F), np*6 (FT), or np*11 (FTS)
+ *  x [n] : F, FT, or FTS
+ *  user_data = (struct stokes *) sys
+ * OUTPUT
+ *  y [n] : U, UO, or UOE
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">atimes_ewald_3all_matrix</font> <font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">n</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">x</font>,
+			  <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">y</font>, <strong>void</strong> <font color="4444FF">*</font> <font color="#2040a0">user_data</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="#444444"><i>/** non-table version **/</i></font>
+
+<font color="#444444">/* ATIMES of calc ewald-summed mobility for F/FT/FTS versions
+ * INPUT
+ *  n := np*3 (F), np*6 (FT), or np*11 (FTS)
+ *  x [n] : F, FT, or FTS
+ *  user_data = (struct stokes *) sys
+ * OUTPUT
+ *  y [n] : U, UO, or UOE
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">atimes_ewald_3all_notbl</font> <font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">n</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">x</font>,
+			 <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">y</font>, <strong>void</strong> <font color="4444FF">*</font> <font color="#2040a0">user_data</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* make ewald-summed mobility matrix for F/FT/FTS versions
+ * INPUT
+ * sys : system parameters
+ * OUTPUT
+ *  mat [np * 3  * np * 3 ] : for F version
+ *  mat [np * 6  * np * 6 ] : for FT version
+ *  mat [np * 11 * np * 11] : for FTS version
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">make_matrix_mob_ewald_3all_notbl</font> <font color="4444FF">(</font><strong>struct</strong> <font color="#2040a0">stokes</font> <font color="4444FF">*</font> <font color="#2040a0">sys</font>, <strong>double</strong> <font color="4444FF">*</font> <font color="#2040a0">mat</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<font color="#444444">/* ATIMES of calc ewald-summed mobility for F/FT/FTS versions
+ * through matrix
+ * INPUT
+ *  n := np*3 (F), np*6 (FT), or np*11 (FTS)
+ *  x [n] : F, FT, or FTS
+ *  user_data = (struct stokes *) sys
+ * OUTPUT
+ *  y [n] : U, UO, or UOE
+ */</font>
+<strong>void</strong>
+<font color="#2040a0">atimes_ewald_3all_matrix_notbl</font> <font color="4444FF">(</font><strong>int</strong> <font color="#2040a0">n</font>, <strong>const</strong> <strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">x</font>,
+				<strong>double</strong> <font color="4444FF">*</font><font color="#2040a0">y</font>, <strong>void</strong> <font color="4444FF">*</font> <font color="#2040a0">user_data</font><font color="4444FF">)</font><font color="4444FF">;</font>
+
+<font color="0000ff"><strong>#endif<font color="#444444"> /* !_LIBSTOKES_H_ */</font></strong></font>
+
+</pre>
+<hr>
+syntax highlighted by <a href="http://www.palfrader.org/code2html">Code2HTML</a>, v. 0.9.1
+</body>
+</html>

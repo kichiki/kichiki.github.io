@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>ODE Parameters</TITLE>
+<META NAME="description" CONTENT="ODE Parameters">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node12.html">
+<LINK REL="up" HREF="node10.html">
+<LINK REL="next" HREF="node15.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html354"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html350"
+  HREF="node10.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html346"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html352"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html355"
+  HREF="node15.html">Brownian Dynamics Parameters</A>
+<B>Up:</B> <A NAME="tex2html351"
+  HREF="node10.html">Non-Brownian Dynamics Parameters</A>
+<B> Previous:</B> <A NAME="tex2html347"
+  HREF="node13.html">Simple Equation of Motion</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00314300000000000000">
+ODE Parameters</A>
+</H3>
+To obtain the trajectory, the above equation of motion
+in the form of ordinary differential equation
+is integrated in time.
+In the code, ODE integrator in GSL library[<A
+ HREF="node80.html#GSL">8</A>] is used.
+
+<P>
+Currently the following stepper routines are available:
+
+<UL>
+<LI>``<TT>rk2</TT>''       Embedded Runge-Kutta (2, 3) method.
+</LI>
+<LI>``<TT>rk4</TT>''       4th order (classical) Runge-Kutta.
+</LI>
+<LI>``<TT>rkf45</TT>''     Embedded Runge-Kutta-Fehlberg (4, 5) method.
+</LI>
+<LI>``<TT>rkck</TT>''      Embedded Runge-Kutta Cash-Karp (4, 5) method.
+</LI>
+<LI>``<TT>rk8pd</TT>''     Embedded Runge-Kutta Prince-Dormand (8,9) method.
+</LI>
+<LI>``<TT>rk2imp</TT>''    Implicit 2nd order Runge-Kutta at Gaussian points.
+</LI>
+<LI>``<TT>rk4imp</TT>''    Implicit 4th order Runge-Kutta at Gaussian points.
+</LI>
+<LI>``<TT>gear1</TT>''     M=1 implicit Gear method.
+</LI>
+<LI>``<TT>gear2</TT>''     M=2 implicit Gear method.
+</LI>
+</UL>
+Set the name in ``<TT>ode-solver</TT>'' at the initialization script. 
+The variable ``<TT>ode-eps</TT>'' is the accuracy parameter <IMG
+ WIDTH="11" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.png"
+ ALT="$ \epsilon$"> 
+for the GSL-ODE routine. 
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

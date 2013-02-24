@@ -1,0 +1,5 @@
+No implementation found for style `graphicx'
+No implementation found for style `txfonts'
+No implementation found for style `mathrsfs'
+
+manual.tex is newer than manual.bbl: Please rerun latex and bibtex.

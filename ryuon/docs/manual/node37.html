@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>libstokes: Library for Stokesian Dynamics</TITLE>
+<META NAME="description" CONTENT="libstokes: Library for Stokesian Dynamics">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node67.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node38.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html632"
+  HREF="node38.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html628"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html622"
+  HREF="node36.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html630"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html633"
+  HREF="node38.html">API</A>
+<B>Up:</B> <A NAME="tex2html629"
+  HREF="manual.html">RYUON - a Particle</A>
+<B> Previous:</B> <A NAME="tex2html623"
+  HREF="node36.html">Octave</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00400000000000000000"></A>
+<A NAME="chp:libstokes"></A>
+<BR>
+<TT>libstokes</TT>:
+  Library for Stokesian Dynamics
+</H1>
+<BR> <HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html634"
+  HREF="node38.html">API</A>
+<UL>
+<LI><A NAME="tex2html635"
+  HREF="node39.html">System Parameters</A>
+<UL>
+<LI><A NAME="tex2html636"
+  HREF="node40.html">Constructor/Destructor</A>
+<LI><A NAME="tex2html637"
+  HREF="node41.html">Initialize Functions</A>
+</UL>
+<LI><A NAME="tex2html638"
+  HREF="node42.html">NetCDF Interface</A>
+<UL>
+<LI><A NAME="tex2html639"
+  HREF="node43.html">Constructor/Destructor</A>
+<LI><A NAME="tex2html640"
+  HREF="node44.html">Writing Routines</A>
+</UL>
+<LI><A NAME="tex2html641"
+  HREF="node45.html">Solvers</A>
+<UL>
+<LI><A NAME="tex2html642"
+  HREF="node46.html">Type of Problem <IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.png"
+ ALT="$ \langle$"><TT>type</TT><IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.png"
+ ALT="$ \rangle$"></A>
+<LI><A NAME="tex2html643"
+  HREF="node47.html">Truncation Version <IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.png"
+ ALT="$ \langle$"><TT>ver</TT><IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.png"
+ ALT="$ \rangle$"></A>
+<LI><A NAME="tex2html644"
+  HREF="node48.html">Lubrication <IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.png"
+ ALT="$ \langle$"><TT>lub</TT><IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.png"
+ ALT="$ \rangle$"></A>
+<LI><A NAME="tex2html645"
+  HREF="node49.html">Matrix/<!-- MATH
+ $\bm{A}\cdot\bm{x}$
+ -->
+<IMG
+ WIDTH="39" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$ \bm {A}\cdot \bm {x}$"> <IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.png"
+ ALT="$ \langle$"><TT>mat</TT><IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.png"
+ ALT="$ \rangle$"></A>
+<LI><A NAME="tex2html646"
+  HREF="node50.html">3D/monolayer <IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.png"
+ ALT="$ \langle$"><TT>d</TT><IMG
+ WIDTH="10" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.png"
+ ALT="$ \rangle$"></A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html647"
+  HREF="node51.html">Hydrodynamic Interaction in Stokes Flows</A>
+<UL>
+<LI><A NAME="tex2html648"
+  HREF="node52.html">Many Body Problem</A>
+<UL>
+<LI><A NAME="tex2html649"
+  HREF="node53.html">Question:</A>
+</UL>
+<LI><A NAME="tex2html650"
+  HREF="node54.html">FTS formulation</A>
+<LI><A NAME="tex2html651"
+  HREF="node55.html">Fixed Particles - Mixed Problem</A>
+<LI><A NAME="tex2html652"
+  HREF="node56.html">Lubrication Correction</A>
+<LI><A NAME="tex2html653"
+  HREF="node57.html">Ewald Summation</A>
+<LI><A NAME="tex2html654"
+  HREF="node58.html">Navier Slip Boundary Condition</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html655"
+  HREF="node59.html">Brownian Dynamics</A>
+<LI><A NAME="tex2html656"
+  HREF="node60.html">Chain Interaction among Particles</A>
+<UL>
+<LI><A NAME="tex2html657"
+  HREF="node61.html">Bead-Spring Models -- Overview</A>
+<LI><A NAME="tex2html658"
+  HREF="node62.html">Hookean Spring</A>
+<LI><A NAME="tex2html659"
+  HREF="node63.html">Finitely Extensible Nonlinear Spring Models</A>
+<LI><A NAME="tex2html660"
+  HREF="node64.html">Discrete Wormlike Chain Model</A>
+<LI><A NAME="tex2html661"
+  HREF="node65.html">Bead-Rod Model</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html662"
+  HREF="node66.html">Confinements</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

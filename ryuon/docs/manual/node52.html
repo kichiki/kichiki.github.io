@@ -1,0 +1,546 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Many Body Problem</TITLE>
+<META NAME="description" CONTENT="Many Body Problem">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node54.html">
+<LINK REL="previous" HREF="node51.html">
+<LINK REL="up" HREF="node51.html">
+<LINK REL="next" HREF="node53.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html861"
+  HREF="node53.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html857"
+  HREF="node51.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html851"
+  HREF="node51.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html859"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html862"
+  HREF="node53.html">Question:</A>
+<B>Up:</B> <A NAME="tex2html858"
+  HREF="node51.html">Hydrodynamic Interaction in Stokes</A>
+<B> Previous:</B> <A NAME="tex2html852"
+  HREF="node51.html">Hydrodynamic Interaction in Stokes</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00421000000000000000">
+Many Body Problem</A>
+</H2>
+In a viscous fluid, objects are dragged by the surrounding fluid.
+(Imagine when you are in water pool or the sea.)
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:stokes-integral"></A><!-- MATH
+ \begin{equation}
+\bm{u}
+  (\bm{x})
+  =
+  -
+  \frac{1}{8\pi\mu}
+  \int_S
+  {\rm d}S(\bm{y})\
+  \bm{J}(\bm{x}-\bm{y})
+  \cdot
+  \bm{f}(\bm{y})
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="267" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img125.png"
+ ALT="$\displaystyle \bm{u} (\bm{x}) = - \frac{1}{8\pi\mu} \int_S {\rm d}S(\bm{y})\ \bm{J}(\bm{x}-\bm{y}) \cdot \bm{f}(\bm{y}) .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.10)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Boundary value problem (Dirichlet problem).
+
+<P>
+Expanding the integrand in the right-hand side
+of Eq. (<A HREF="#eq:stokes-integral">3.10</A>),
+we have
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{u}
+  (\bm{x})
+  =
+  -
+  \frac{1}{n!}
+  \sum_{n=0}^{\infty}
+  \frac{1}{8\pi\mu}
+  \Bigl[
+    (-)^n
+    \bm{\nabla}^n
+    \bm{J}
+  \Bigr]
+  (\bm{x}-\bm{y}_0)
+  \odot^n
+  \int_S
+  {\rm d}S(\bm{y})\
+  \Bigl[
+    \bm{y}
+    -
+    \bm{y}_0
+  \Bigr]^n
+  \bm{f}(\bm{y})
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="445" HEIGHT="59" ALIGN="MIDDLE" BORDER="0"
+ SRC="img126.png"
+ ALT="$\displaystyle \bm{u} (\bm{x}) = - \frac{1}{n!} \sum_{n=0}^{\infty} \frac{1}{8\p...
+...t^n \int_S {\rm d}S(\bm{y})\ \Bigl[ \bm{y} - \bm{y}_0 \Bigr]^n \bm{f}(\bm{y}) ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.11)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where we assume that the surface <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img127.png"
+ ALT="$ S$"> consists of a single sphere
+and <IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img128.png"
+ ALT="$ \bm{y}_0$"> is its center.
+
+<P>
+Note that the surface integral in the right-hand side
+is a tensor of order <IMG
+ WIDTH="48" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img129.png"
+ ALT="$ (n+1)$"> and
+is called the force moment <!-- MATH
+ $\mathcal{F}^{(n)}$
+ -->
+<IMG
+ WIDTH="31" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img130.png"
+ ALT="$ \mathcal{F}^{(n)}$">
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\mathcal{F}^{(n)}
+  (\bm{y}_0)
+  :=
+  -
+  \int_S
+  {\rm d}S(\bm{y})\
+  \Bigl[
+    \bm{y}
+    -
+    \bm{y}_0
+  \Bigr]^n
+  \bm{f}(\bm{y})
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="253" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img131.png"
+ ALT="$\displaystyle \mathcal{F}^{(n)} (\bm{y}_0) := - \int_S {\rm d}S(\bm{y})\ \Bigl[ \bm{y} - \bm{y}_0 \Bigr]^n \bm{f}(\bm{y}) ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.12)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\mathcal{F}^{(0)}
+  (\bm{y}_0)
+  &=&
+  \bm{F}
+  ,\\
+  \mathcal{F}^{(1)}
+  (\bm{y}_0)
+  &=&
+  \bm{\epsilon}
+  \cdot
+  \bm{T}
+  +
+  \bm{S}
+  .
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="58" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img132.png"
+ ALT="$\displaystyle \mathcal{F}^{(0)}
+(\bm{y}_0)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img133.png"
+ ALT="$\displaystyle \bm{F}
+,$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.13)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="58" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img134.png"
+ ALT="$\displaystyle \mathcal{F}^{(1)}
+(\bm{y}_0)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="69" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img135.png"
+ ALT="$\displaystyle \bm{\epsilon}
+\cdot
+\bm{T}
++
+\bm{S}
+.$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.14)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+Taking the terms up to <IMG
+ WIDTH="39" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img136.png"
+ ALT="$ n=1$"> and substituting the above,
+we have an expression[<A
+ HREF="node80.html#DurlofskyEtal1987">6</A>]
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{u}
+  (\bm{x})
+  =
+  \Bigl(
+    1
+    +
+    \frac{a^2\nabla^2}{6}
+  \Bigr)
+  \bm{J}
+  (\bm{x}-\bm{y}_0)
+  \cdot
+  \bm{F}
+  +
+  \bm{R}
+  (\bm{x}-\bm{y}_0)
+  \cdot
+  \bm{T}
+  -
+  \Bigl(
+    1
+    +
+    \frac{a^2\nabla^2}{10}
+  \Bigr)
+  \bm{K}
+  (\bm{x}-\bm{y}_0)
+  \odot^2
+  \bm{S}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="524" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img137.png"
+ ALT="$\displaystyle \bm{u} (\bm{x}) = \Bigl( 1 + \frac{a^2\nabla^2}{6} \Bigr) \bm{J} ...
+...gl( 1 + \frac{a^2\nabla^2}{10} \Bigr) \bm{K} (\bm{x}-\bm{y}_0) \odot^2 \bm{S} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.15)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img138.png"
+ ALT="$ \bm{R}$"> and <IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img139.png"
+ ALT="$ \bm{K}$"> are given by
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\bm{R}
+  &=&
+  ,\\
+  \bm{K}
+  &=&
+  .
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="18" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img140.png"
+ ALT="$\displaystyle \bm{R}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="8" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.png"
+ ALT="$\displaystyle ,$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.16)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img142.png"
+ ALT="$\displaystyle \bm{K}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="8" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img143.png"
+ ALT="$\displaystyle .$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.17)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+Up to this order of expansion,
+if we introduce the corresponding velocity moments, that is,
+the translational and angular velocity <IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \bm{U}$"> and <!-- MATH
+ $\bm{\Omega}$
+ -->
+<IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img144.png"
+ ALT="$ \bm{\Omega}$">
+and the rate of strain tensor <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img145.png"
+ ALT="$ \bm{E}$">,
+we have the closed linear set of equations
+written in the matrix form as
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:mob-fts"></A><!-- MATH
+ \begin{equation}
+\left[
+    \begin{array}{c}
+      \bm{U}\\
+      \bm{\Omega}\\
+      \bm{E}
+    \end{array}
+  \right]
+  =
+  \left[
+    \begin{array}{ccc}
+      \bm{a} & \bm{b} & \bm{g}\\
+      \tilde{\bm{b}} & \bm{c} & \bm{h}\\
+      \tilde{\bm{g}} & \tilde{h} & \bm{m}
+    \end{array}
+  \right]
+  \cdot
+  \left[
+    \begin{array}{c}
+      \bm{F}\\
+      \bm{T}\\
+      \bm{S}
+    \end{array}
+  \right]
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="218" HEIGHT="74" ALIGN="MIDDLE" BORDER="0"
+ SRC="img146.png"
+ ALT="$\displaystyle \left[ \begin{array}{c} \bm{U}\\ \bm{\Omega}\\ \bm{E} \end{array}...
+...t] \cdot \left[ \begin{array}{c} \bm{F}\\ \bm{T}\\ \bm{S} \end{array} \right] .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.18)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+From the mathematical property of Eq. (<A HREF="#eq:stokes-integral">3.10</A>),
+the whole matrix relating two vectors
+<!-- MATH
+ $(\bm{U}, \bm{\Omega}, \bm{E})^\dagger$
+ -->
+<IMG
+ WIDTH="76" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img147.png"
+ ALT="$ (\bm{U}, \bm{\Omega}, \bm{E})^\dagger$"> and
+<!-- MATH
+ $(\bm{F}, \bm{T}, \bm{S})^\dagger$
+ -->
+<IMG
+ WIDTH="72" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.png"
+ ALT="$ (\bm{F}, \bm{T}, \bm{S})^\dagger$">
+should be symmetric.
+That is,
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+a_{ij} &=& a_{ji},\\
+  \tilde{b}_{ij} &=& b_{ji},\\
+  c_{ij} &=& c_{ji}.
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img149.png"
+ ALT="$\displaystyle a_{ij}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img150.png"
+ ALT="$\displaystyle a_{ji},$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.19)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="21" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img151.png"
+ ALT="$\displaystyle \tilde{b}_{ij}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img152.png"
+ ALT="$\displaystyle b_{ji},$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.20)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img153.png"
+ ALT="$\displaystyle c_{ij}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="24" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img154.png"
+ ALT="$\displaystyle c_{ji}.$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3.21)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+However, we should note that
+once we reduce the elements of vectors,
+the symmetry does not hold.
+From the definition, the second order tensors <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img145.png"
+ ALT="$ \bm{E}$"> and <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img155.png"
+ ALT="$ \bm{S}$">
+are symmetric and traceless, so that only 5 components
+out of <IMG
+ WIDTH="37" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img156.png"
+ ALT="$ 3\times 3$"> are independent.
+Without the reduction to the independent components,
+the linear set of equation becomes ill-defined
+and the inverse matrix (with the full components) are not unique.
+
+<P>
+<BR> <HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><UL>
+<LI><A NAME="tex2html863"
+  HREF="node53.html">Question:</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+<A NAME="tex2html861"
+  HREF="node53.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html857"
+  HREF="node51.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html851"
+  HREF="node51.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html859"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html862"
+  HREF="node53.html">Question:</A>
+<B>Up:</B> <A NAME="tex2html858"
+  HREF="node51.html">Hydrodynamic Interaction in Stokes</A>
+<B> Previous:</B> <A NAME="tex2html852"
+  HREF="node51.html">Hydrodynamic Interaction in Stokes</A>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

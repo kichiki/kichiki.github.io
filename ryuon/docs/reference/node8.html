@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Top Layer</TITLE>
+<META NAME="description" CONTENT="Top Layer">
+<META NAME="keywords" CONTENT="reference">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="reference.css">
+
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="node7.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html150"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html146"
+  HREF="node7.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html140"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html148"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html151"
+  HREF="node9.html">Polydisperse Systems</A>
+<B>Up:</B> <A NAME="tex2html147"
+  HREF="node7.html">Lubrication</A>
+<B> Previous:</B> <A NAME="tex2html141"
+  HREF="node7.html">Lubrication</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00710000000000000000">
+Top Layer</A>
+</H1>
+The lubrication forces for <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ N$"> (all) particles 
+The lubrication forces for <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ N$"> (all) particles 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\bm{F}
+  =
+  \bm{L}
+  \cdot
+  \bm{U}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="78" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$\displaystyle \bm{F} = \bm{L} \cdot \bm{U} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(6.1)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+is calculated by
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+{\tt calc\_lub\_\langle d\rangle\langle ver\rangle\ (sys, u, f)}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="205" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$\displaystyle {\tt calc\_lub\_\langle d\rangle\langle ver\rangle\ (sys, u, f)} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(6.2)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+which is called by the top-level function
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+{\tt solve\_\langle type\rangle\_lub\_\langle d\rangle\langle ver\rangle\ ()}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="208" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$\displaystyle {\tt solve\_\langle type\rangle\_lub\_\langle d\rangle\langle ver\rangle\ ()} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(6.3)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for mobility, resistance, and mixed problems (<TT>type</TT>) 
+in 2- and 3-dimensions (<TT>d</TT>) 
+with F, FT, and FTS versions (<TT>ver</TT>).
+
+<P>
+The function <!-- MATH
+ ${\tt calc\_lub\_\langle d\rangle\langle ver\rangle\ ()}$
+ -->
+<IMG
+ WIDTH="145" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ {\tt calc\_lub\_\langle d\rangle\langle ver\rangle\ ()}$"> 
+has particle-loops.
+Under the periodic boundary condition, particles in the image cells 
+are also taken into account.
+
+<P>
+In the loop for particle-particle pairs, 
+either 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+{\tt calc\_lub\_\langle ver\rangle\_2b()}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="144" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.png"
+ ALT="$\displaystyle {\tt calc\_lub\_\langle ver\rangle\_2b()}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(6.4)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for monodisperse system or
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+{\tt calc\_lub\_\langle ver\rangle\_2b\_poly()}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="183" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.png"
+ ALT="$\displaystyle {\tt calc\_lub\_\langle ver\rangle\_2b\_poly()}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(6.5)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for polydisperse system is called.
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

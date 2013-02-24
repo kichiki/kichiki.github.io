@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Lubrication Correction</TITLE>
+<META NAME="description" CONTENT="Lubrication Correction">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node57.html">
+<LINK REL="previous" HREF="node55.html">
+<LINK REL="up" HREF="node51.html">
+<LINK REL="next" HREF="node57.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html908"
+  HREF="node57.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html904"
+  HREF="node51.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html898"
+  HREF="node55.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html906"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html909"
+  HREF="node57.html">Ewald Summation</A>
+<B>Up:</B> <A NAME="tex2html905"
+  HREF="node51.html">Hydrodynamic Interaction in Stokes</A>
+<B> Previous:</B> <A NAME="tex2html899"
+  HREF="node55.html">Fixed Particles - Mixed</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00424000000000000000">
+Lubrication Correction</A>
+</H2>
+One of the innovation done by Stokesian dynamics
+[<A
+ HREF="node80.html#BradyBossis1988">4</A>,<A
+ HREF="node80.html#DurlofskyEtal1987">6</A>,<A
+ HREF="node80.html#BradyEtal1988">5</A>]
+is the model of lubrication into the system.
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:res-lub"></A><!-- MATH
+ \begin{equation}
+\bm{R}
+  \simeq
+  \left(
+    \bm{M}
+  \right)^{-1}
+  +
+  \bm{L}
+  .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="114" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.png"
+ ALT="$\displaystyle \bm{R} \simeq \left( \bm{M} \right)^{-1} + \bm{L} .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.32)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+In a straightforward implementation of this lubrication correction,
+even in F version, the mobility problem needs twice matrix-inversions.
+
+<P>
+Here's some trick to prevent the extra matrix-inversion,
+which is usually the bottleneck of the calculation
+(especially for large systems).
+Substituting the resistance matrix (<A HREF="#eq:res-lub">3.32</A>)
+into the resistance equation and multiplying <IMG
+ WIDTH="24" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img176.png"
+ ALT="$ \bm{M}$"> from the left,
+we have the inverse-free matrix equation
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\Bigl(
+    \bm{I}
+    +
+    \bm{M}
+    \cdot
+    \bm{L}
+  \Bigr)
+  \cdot
+  \bm{U}
+  =
+  \bm{M}
+  \cdot
+  \bm{F}
+  ,
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="178" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img181.png"
+ ALT="$\displaystyle \Bigl( \bm{I} + \bm{M} \cdot \bm{L} \Bigr) \cdot \bm{U} = \bm{M} \cdot \bm{F} ,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.33)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \bm{U}$"> and <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img157.png"
+ ALT="$ \bm{F}$"> contains all velocity and force moments
+for simplicity.
+Writing the equation in this form,
+we can always apply the generalized linear set of equation
+as in Eq. (<A HREF="node55.html#eq:atimes-gen">3.30</A>) for any case.
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

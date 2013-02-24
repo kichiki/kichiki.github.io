@@ -1,0 +1,436 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Parameter Script</TITLE>
+<META NAME="description" CONTENT="Parameter Script">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node24.html">
+<LINK REL="up" HREF="node4.html">
+<LINK REL="next" HREF="node26.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html486"
+  HREF="node26.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html482"
+  HREF="node4.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html478"
+  HREF="node24.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html484"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html487"
+  HREF="node26.html">xi3: Tuning Program for</A>
+<B>Up:</B> <A NAME="tex2html483"
+  HREF="node4.html">stokes3: Stokesian Dynamics Simulator</A>
+<B> Previous:</B> <A NAME="tex2html479"
+  HREF="node24.html">Confinement Force Parameters</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00319000000000000000">
+Parameter Script</A>
+</H2>
+Here's a sample initialization script:
+<PRE>
+; sample initialization file for stokes3
+; SC lattice config of 8 particles in (5,5,5) box
+; $Id: manual.tex,v 1.5 2008/10/12 20:16:53 kichiki Exp $
+
+;; output parameters
+(define outfile    "stokes3.SC8.nc") ; output filename
+(define dt         0.1)     ; time step for the integrator
+(define nout       10)      ; frequency of data output
+(define nloop      1000)    ; main loop
+(define flag-Q     #f)      ; #t =&gt; output quaternion, #f =&gt; no quaternion.
+
+;; core libstokes parameters
+(define version    "F")     ; version. "F", "FT", or "FTS"
+(define flag-noHI  #f)      ; #t =&gt; no HI, #f =&gt; with HI
+(define flag-mat   #t)      ; #t =&gt; matrix scheme, #f =&gt; atimes scheme
+(define flag-lub   #t)      ; #t =&gt; with lub,      #f =&gt; without lub
+(define rmin       0.0)     ; param for min distance (ai+aj) * rmin
+(define lub-min    2.0000000001) ; min cutoff of distance for lub
+(define lub-max    4.0)          ; max cutoff of distance for lub
+
+;; periodic systems
+(define periodic   #t)      ; #f =&gt; non periodic, #t =&gt; periodic
+(define ewald-tr   4.1)     ; time ratio Tr/Tk for Ewald summation
+(define ewald-eps  1.0e-12) ; cut-off limit for Ewald summation
+(define lattice    '(5.0  5.0  5.0)) ; size of the periodic box
+
+;; iterative solver (ignored if flag-mat is true)
+(define IT-solver "otmk") ; solver for libiter
+; the following solvers are available
+; "cg"       conjugate gradient method
+; "cgs"      conjugate gradient squared (Weiss' Algorithm 11)
+; "bicgstab" bi-conjugate gradient stabilized (Weiss' Algorithm 12)
+; "sta"      bi-cgstab method
+; "sta2"     bi-cgstab2 method
+; "gpb"      gpbi-cg method
+; "otmk"     orthomin method
+; "gmres"    generalized minimum residual method
+(define IT-max 2000)   ; max number of iterations
+(define IT-n   20)     ; restart number
+(define IT-eps 1.0e-6) ; accuracy of the solution
+(define IT-debug 0)    ; set 1 to print the debug info for solve_iter()
+
+;; ODE parameters
+(define ode-solver "rkf45")
+; the following solvers are available
+; "rk2"       Embedded Runge-Kutta (2, 3) method.
+; "rk4"       4th order (classical) Runge-Kutta.
+; "rkf45"     Embedded Runge-Kutta-Fehlberg (4, 5) method.
+; "rkck"      Embedded Runge-Kutta Cash-Karp (4, 5) method.
+; "rk8pd"     Embedded Runge-Kutta Prince-Dormand (8,9) method.
+; "rk2imp"    Implicit 2nd order Runge-Kutta at Gaussian points.
+; "rk4imp"    Implicit 4th order Runge-Kutta at Gaussian points.
+; "gear1"     M=1 implicit Gear method.
+; "gear2"     M=2 implicit Gear method.
+(define ode-eps 1.0e-6) ; ODE control parameter eps
+
+;; system parameters
+(define np         8)       ; number of particles
+(define nm         8)       ; number of free particles
+
+; particle radius
+; set '() for monodisperse (a = 1.0 for all particles)
+(define a '())
+; otherwise, poly codes are used in the calculations
+;(define a #(
+;1.0
+;1.0
+;1.0
+;1.0
+;1.0
+;1.0
+;1.0
+;1.0
+;))
+
+; slip length
+; set '() for no-slip system (slip = 0 for all particles)
+(define slip '())
+; otherwise, slip codes are used in the calculations
+;(define slip #(
+;1.0
+;1.0
+;1.0
+;1.0
+;1.0
+;1.0
+;1.0
+;1.0
+;))
+
+; initial configuration
+(define x #(
+0.0  0.0  0.0
+2.5  0.0  0.0
+0.0  2.5  0.0
+0.0  0.0  2.5
+0.0  2.5  2.5
+2.5  0.0  2.5
+2.5  2.5  0.0
+2.5  2.5  2.5
+))
+
+; imposed-flow parameters
+(define Ui '(0.0  0.0  0.0)) ; imposed translational velocity
+(define Oi '(0.0  0.0  0.0)) ; imposed angular velocity relative to O
+(define Ei '(0.0  0.0  0.0  0.0  0.0)) ; imposed strain relative to O
+
+; auxiliary imposed-flow parameters for simple shear
+(define shear-mode 0); 0 == imposed flow is given by Ui, Oi, Ei
+                     ; 1 == simple shear (x = flow dir, y = grad dir)
+                     ; 2 == simple shear (x = flow dir, z = grad dir)
+(define shear-rate 0.0); the shear rate for shear-mode = 1 or 2
+(define shear-shift 0.0); the initial condition of cell-shift
+                        ; for shear-mode = 1 or 2
+
+(define F0 '(0.0  0.0 -0.1)) ; applied force
+(define T0 '(0.0  0.0  0.0)) ; applied torque
+
+(define stokes 0.0)     ; effective stokes number
+
+;; Brownian dynamics parameters
+(define peclet -1)      ; peclet number (negative means no Brownian force)
+(define length 1.0)     ; the characteristic length [nm] (or [micro m]).
+                        ; the parameters above are recognized by this.
+                        ; the unit should be the same for parameters below
+                        ; just ignored for non-Brownian case (peclet&lt;0).
+(define BD-seed 0)      ; seed for random number generator for BD.
+
+(define n-cheb-minv 50)      ; number of chebyshev coefficients for minv
+(define n-cheb-lub  70)      ; number of chebyshev coefficients for lub
+
+; time-integration scheme
+(define BD-scheme "mid-point")
+; the following algorithms are available
+; "mid-point"        the mid-point algorithm
+; "BanchioBrady03"   Banchio-Brady (2003)
+; "BallMelrose97"    Ball-Melrose (1997)
+; "JendrejackEtal00" Jendrejack et al (2000)
+; "semi-implicit-PC" semi-implicit predictor-corrector
+; "SI-connector"     semi-implicit for connector vectors
+(define BB-n   100)    ; step parameter for Banchio-Brady-2003 algorithm
+
+; nonlinear solver for implicit schemes
+(define BD-nl-solver "GSL")
+; the following solvers are available
+; "GSL"    GSL multiroot solver
+; "NITSOL" Newton-GMRES solver by Pernice and Walker (1998)
+; "fastSI" fast semi-implicit solver (only for "SI-connector")
+
+; dt-adjustment parameters
+; NOTE: if 'rmin' above is defined by non-zero, dt-adjustment is just skipped.
+(define BD-rmin 1.0)   ; overlap-param for dt-adjustment process in BD.
+                       ; the condition is (r2 &lt;= rmin * a2).
+(define dt-lim 1.e-12) ; lower bound to shrink dt to prevent overlaps
+                       ; set "dt" (or larger value) if you don't want 
+                       ; to adjust "dt" but just reject it.
+
+;; constraint parameters
+(define constraints '())
+; an example of constraints
+; note that the distance unit should be the same for "length" above.
+;(define constraints '(
+; ; system parameters
+; 1.0e-6    ; 1) tolerance
+; "NITSOL"  ; 2) scheme for solving nonlinear equations
+;           ;    "linear" for iterative scheme in linear approximation
+;           ;    "NITSOL" for Newton-GMRES scheme by NITSOL library
+; ; the following is for each constraint
+; (         ; 3) constraint type 1
+;  5.0      ; 3-1) distance [nm]
+;  (        ; 3-2) list of particle-pairs
+;   (0 1)
+;   (1 2)
+;   (2 3)
+; ))
+; (         ; 4) constraint type 2
+;  10.0     ; 4-1) distance [nm]
+;  (        ; 4-2) list of particle-pairs
+;   (3 4)
+;   (4 5)
+; ))
+;))
+
+; bond parameters
+(define bonds '())
+(define flag-relax #f) ; #f =&gt; stokesian dynamics with bond interactions
+                       ; #t =&gt; relaxation dynamics only with bond interactions
+(define gamma 1.0)     ; friction coefficient for relaxation dynamics
+; an example of bonds
+; note that the length unit should be the same for "length" above.
+;(define bonds '(
+;  (; bond 1
+;   0       ; 1) spring type
+;   (       ; 2) spring parameters (list with 3 elements)
+;    0      ;    fene = 0 means (p1, p2) = (A^{sp}, L_{s})
+;    1.0    ;    p1   = A^{sp}, scaled spring constant
+;    2.1)   ;    p2   = L_{s} / length, scaled max extension
+;   ((0 1)  ; 3) list of pairs
+;    (1 2)
+;    (2 3))
+;    -1)    ; 4) number of exclusion for lubrication
+;           ;    negative means all particles in the chain is excluded.
+;  (; bond 2
+;   2       ; 1) spring type
+;   (       ; 2) spring parameters (list with 3 elements)
+;    1      ;    fene = 1 means (p1, p2) = (N_{K,s}, b_{K})
+;    19.8   ;    p1 = N_{K,s}, the Kuhn steps for a spring
+;    106.0) ;    p2 = b_{K} [nm], the Kuhn length
+;           ;    note that, for dWLC (type == 6),
+;           ;    (p1, p2) = (k, r0 [nm]), where the potential is
+;           ;    (k/2) * (kT / r0^2) * (r-r0)^2
+;   ((4 5)  ; 3) list of pairs
+;    (5 6)
+;    (6 7))
+;     1)    ; 4) number of exclusion for lubrication
+; ))
+; where spring types are
+;   0 : Hookean spring (Asp * (r - Ls)
+;   1 : wormlike chain (WLC)
+;   2 : inverse Langevin chain (ILC)
+;   3 : Cohen's Pade approximation
+;   4 : Warner spring
+;   5 : Hookean spring (Asp * r / Ls)
+;   6 : Hookean spring for dWLC
+
+;; excluded volume parameters
+; note that the length unit should be the same for "length" above.
+;(define ev-v   '())    ; v [nm^3] (or [micro m^3]) for each chain type
+;(define ev-lim 5.0)    ; max distance for F^{EV} [nm] (or [micro m])
+(define ev '())
+; an example
+;(define ev '(
+; 5.0     ; max distance [nm] (or in the same dimension of "length")
+; ( ; for the EV 1
+;  0.0012 ; v [nm^3] (or in the same dimension of "length")
+;  0      ; fene
+;  1.0    ; p1 = A^{sp}, scaled spring const
+;  2.1    ; p2 = L_{s} / length, scaled max extension
+;  (0 1 2); list of particles belongs to the EV parameters
+; )
+; ( ; for the EV 2
+;  0.002  ; v [nm^3] (or in the same dimension of "length")
+;  1      ; fene
+;  19.8   ; p1 = N_{K,s}, the Kuhn steps for a spring
+;  106.0  ; p2 = b_{K} [nm], the Kuhn length
+;  (3 4)  ; list of particles belongs to the EV parameters
+; )
+;))
+
+;; angle parameters
+(define angles '())
+; an example
+;(define angles '(
+;  (; angle type 1
+;   10.0    ; 1) constant (k^{angle})
+;   0.0     ; 2) angle in degree (theta_0)
+;   0       ; 3) scale flag (0 == scaled)
+;           ;    in this case, the above value for k is just used.
+;   ((0 1 2); 4) list of triplets
+;    (1 2 3)
+;    (2 3 4)
+;   )
+;  )
+;  (; angle type 2
+;   20.0    ; 1) constant (k^{angle})
+;   90.0    ; 2) angle in degree (theta_0)
+;   1       ; 3) scale flag (1 == not scaled yet)
+;           ;    in this case, the potential is given by 
+;           ;    (k/2) * kT * (theta - theta_0)^2
+;   ((3 4 5); 4) list of triplets
+;    (4 5 6)
+;   )
+;  )
+;))
+
+;; excluded volume in Debye-Huckel type
+(define ev-dh   '())
+; an example
+; note that the length unit should be the same for "length" above.
+;(define ev-dh '(
+;  ; system parameters
+;  1.0e-6   ; 1) epsilon for the cut-off distance of EV_DH interaction
+;  298.0    ; 2) temperature [K]
+;  80.0     ; 3) dielectric constant of the solution
+;  3.07     ; 4) Debye length [nm] (or [micro m])
+;  (        ; 5) list of chain types
+;   (; chain type 1
+;    2.43    ; 1) nu [e/nm] (or [e/micro m])
+;    5.00    ; 2) l0 [nm] (or [micro m])
+;    (0 1 2) ; 3) list of particles
+;   )
+;   (; chain type 2
+;    2.00    ; 1) nu [e/nm] (or [e/micro m])
+;    4.00    ; 2) l0 [nm] (or [micro m])
+;    (3 4)   ; 3) list of particles
+;   )
+;  )
+;))
+
+;; excluded volume in Debye-Huckel type
+(define ev-LJ   '())
+; an example
+; note that the length unit should be the same for "length" above.
+;(define ev-LJ '(
+; (; LJ type 1
+;  10.0 ; 1) LJ parameter epsilon in kT (so this is dimensionless value)
+;  1.0  ; 2) LJ parameter r0 in "length" (so this is dimensionless value)
+;  (    ; 3) list of particles
+;   0 1 2
+;  )
+; )
+; (; LJ type 2
+;  8.0  ; 1) LJ parameter epsilon in kT (so this is dimensionless value)
+;  2.0  ; 2) LJ parameter r0 in "length" (so this is dimensionless value)
+;  (    ; 3) list of particles
+;   3 4
+;  )
+; )
+;))
+
+;; confinement force parameters
+(define confinement '())
+; examples:
+; for spherical confinement,
+;  (define confinement '(
+;    "sphere"
+;    10.0 ;; radius of the cavity at (0, 0, 0)
+;  ))
+; for spherical confinement with a hole,
+;  (define confinement '(
+;    "sphere+hole"
+;    10.0 ;; radius of the cavity at (0, 0, 0)
+;    1.0  ;; radius of the hole at (0, 0, 1) direction
+;  ))
+; for cylindrical confinement,
+;  (define confinement '(
+;    "cylinder" ;; the cylinder center goes through (0,0,0) and (x,y,z)
+;    10.0       ;; radius of the cylinder
+;    1.0  0.0  0.0 ;; direction vector (x, y, z) of the cylinder
+;  ))
+; for dumbbell confinement,
+;  (define confinement '(
+;    "dumbbell" ;; the origin is at the center of the cylinder
+;    10.0       ;; left cavity radius centered at (center1, 0, 0)
+;    10.0       ;; right cavity radius centered at (center2, 0, 0)
+;    2.0        ;; length of the cylinder
+;    1.0        ;; cylinder radius
+;  ))
+; for 2D hexagonal confinement with cylinder pipe,
+;  (define confinement '(
+;    "hex2d"
+;    10.0    ;; cavity radius
+;    1.0     ;; cylinder radius
+;    12.0    ;; lattice spacing
+;  ))
+; for porous media (outside of the 3D hexagonal particle array)
+;  (define confinement '(
+;    10.0 ;; LJ parameter epsilon in kT (so this is dimensionless value)
+;    1.0  ;; LJ parameter r0 in "length" (so this is dimensionless value)
+;    "porous"
+;    10.0    ;; particle radius
+;    20.0    ;; lattice spacing in x (2R for touching case)
+;  ))
+</PRE>
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>

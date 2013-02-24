@@ -1,0 +1,263 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+    <title>RYUON - Particle Simulation Suite</title>
+    <link rev="made" href="mailto:kichiki@users.sourceforge.net" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+
+<body>
+
+<div class="center">
+<img src="ryuon.jpg" width="320" height="240" />
+<h1>RYUON</h1>
+is a Particle Simulation Suite
+<sup><a href="#footnotes">&dagger;</a></sup>
+</div>
+
+<p class="navi">
+<a href="index.html">RYUON</a>|
+<a href="docs/index.html">documents</a>|
+<a href="stokes/index.html">stokes</a>|
+<a href="libstokes.html">libstokes</a>
+<a href="libiter.html">libiter</a>|
+<a href="twobody/index.html">twobody</a>
+<br />
+<a href="#news">News</a>|
+<a href="#what">What?</a>|
+<a href="#download">download</a>|
+<a href="#links">Links</a>|
+<a href="#history">History</a>
+</p>
+
+<hr />
+
+<a href="stokes/index.html#visualization">
+<img src="stokes/data/stokes-povray_t.jpg" align="right"
+ width="240" height="180" alt="RYUON" /></a>
+<h2><a id="news" name"news">What's new?</a></h2>
+<ul>
+ <li><a href="http://sourceforge.net/news/?group_id=177943">News @ SF</a></li>
+ <li>Oct 23, 2006:
+  <a href="stokes/index.html">stokes</a>-<a href="http://prdownloads.sourceforge.net/ryuon/stokes-0.4.tar.bz2?download">0.4</a> released
+ </li>
+ <li>Oct 22, 2006:
+  <a href="libstokes.html">libstokes</a>-<a href="http://prdownloads.sourceforge.net/ryuon/libstokes-0.4.tar.bz2?download">0.4</a> released
+ </li>
+ <li>Oct 12, 2006:
+ <ul>
+  <li><a href="manual/index.html">manual</a> added!</li>
+  <li>
+   <a href="stokes/index.html">stokes</a>-<a href="http://prdownloads.sourceforge.net/ryuon/stokes-0.3.tar.bz2?download">0.3</a>,
+   <a href="libstokes.html">libstokes</a>-<a href="http://prdownloads.sourceforge.net/ryuon/libstokes-0.3.tar.bz2?download">0.3</a>,
+   and
+   <a href="libiter.html">libiter</a>-<a href="http://prdownloads.sourceforge.net/ryuon/libiter-0.3.tar.bz2?download">0.3</a>
+   released</li>
+ </ul>
+ </li>
+ <li>Oct 5, 2006:
+  <a href="libstokes.html">libstokes</a>-<a href="http://prdownloads.sourceforge.net/ryuon/libstokes-0.2.tar.gz?download">0.2</a>
+  and
+  <a href="libiter.html">libiter</a>-<a href="http://prdownloads.sourceforge.net/ryuon/libiter-0.2.tar.gz?download">0.2</a>
+  released
+ </li>
+ <li>Oct 3, 2006:
+  add <a href="stokes/index.html">stokes</a> web page.</li>
+</ul>
+
+<h2><a id="what" name="what">
+  What is <i>RYUON</i>?</a></h2>
+<p>RYUON is a Particle Simulation Suite.</p>
+<p>My scientific interest is on &quot;particles in a fluid&quot;
+or between &quot;discrete and continuous systems&quot;.
+RYU of RYU-ON has meanings of
+&quot;grain&quot; and &quot;flow&quot;
+in Japanese and it well fits my interest, the <i>GAP</i> between the two.</p>
+
+<p>I am planning to release the following codes and data:</p>
+<ul>
+ <li>Simulators
+ <ul>
+  <li>[<a href="stokes/index.html">stokes</a>]Stokesian dynamics:
+   massless particles in a viscous fluid
+  </li>
+  <li>Fluidized Beds Simulator:
+   heavy particles in a viscous fluid
+  <ul>
+   <li><a href="http://publish.uwo.ca/~kichiki/papers.html#ichiki1995">Ichiki &amp; Hayakawa, Phys. Rev. E 52,(1995) 658-670</a></li>
+   <li><a href="http://publish.uwo.ca/~kichiki/papers.html#ichiki1998">Ichiki &amp; Hayakawa, Phys. Rev. E 57,(1998) 1990-1996</a></li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>Libraries
+ <ul>
+  <li>[<a href="libstokes.html">libstokes</a>]library for Stokesian dynamics
+  <ul>
+   <li>Brady &amp; Bossis, Annu.Rev.Fluid Mech. 1988, Vol.20 pp.111-157,<br />
+    Durlofsky &amp; Brady, J.Fluid Mech. 1987, Vol.180 p.21,<br />
+    Brady, Phillips, Lester, &amp; Bossis,
+    J.Fluid Mech. 1988, Vol.195 pp.257-280.</li>
+   <li><a href="http://publish.uwo.ca/~kichiki/papers.html#ichiki2002">Ichiki, J.Fluid Mech. 452  (2002) pp. 231-262.</a></li>
+  </ul>
+  </li>
+  <li>[<a href="libiter.html">libiter</a>]library of iterative solvers
+   for the linear set of equations
+  <ul>
+   <li><a href="http://publish.uwo.ca/~kichiki/papers.html#ichiki2001">Ichiki &amp; Brady, Phys. Fluids 2001, Vol.13 pp.350-353</a></li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>Data and Details
+ <ul>
+  <li>[<a href="twobody/index.html">twobody</a>]
+   The exact solutions for two-body problems in Stokes flows
+  <ul>
+   <li>Jeffrey &amp; Onishi, J.Fluid Mech. 1984, Vol.139 pp.261-290,<br />
+     Jeffrey, Phys. Fluids A 1992, Vol.4, pp.16-29,<br />
+     Jeffrey, Morris, Brady, Phys. Fluids A 1993, Vol.5, pp.2317-2325.</li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>Utilities: Analysis and Visualization
+ <ul>
+  <li>Molecular dynamics:
+   utility for existing OpenSource Projects
+   such as
+   <a href="http://www.gromacs.org/">GROMACS</a> and
+   <a href="http://dasher.wustl.edu/tinker/">TINKER</a>
+  <ul>
+   <li><a href="http://publish.uwo.ca/~kichiki/papers.html#ichiki2006">Ichiki &amp; Consta, J. Phys. Chem. B (2006) <b>110</b> pp.19168-19175</a></li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li>Future Plans
+ <ul>
+  <li>Solver for General Many-Body Problems:
+   including electrostatics, gravitational systems,
+   elastisity, vortex dynamics, etc</li>
+  <li>FEM, BEM layer using the above.</li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="download" name="download">
+  Download</a></h2>
+<p>
+please visit <a href="http://sourceforge.net/project/showfiles.php?group_id=177943">File Releases @ SF</a>.
+</p>
+
+<h2><a id="links" name="links">
+  Links</a></h2>
+<ul>
+ <li><a href="http://sourceforge.net/projects/ryuon/">Project Page @ SF</a></li>
+ <li>about myself:
+ <ul>
+  <li><a href="http://www.ualberta.ca/~ichiki/">official web site</a></li>
+  <li><a href="http://www.google.com/url?sa=D&q=http://kichiki.hp.infoseek.co.jp/cgi-bin/blosxom.cgi/diary/en/index.html">blog</a></li>
+  <li><a href="http://waon.sourceforge.net/">WaoN</a>,
+   another Open Source Project</li>
+ </ul>
+ </li>
+ <li>
+  <a href="http://www.che.caltech.edu/groups/jfb/">Brady' group @ caltech</a>,
+  father of the Stokesian dynamics method</li>
+ <li>This project owes the following Open Source Projects:
+ <ul>
+  <li><a href="http://sourceforge.net">SourceForge.Net</a>, the host</li>
+  <li>Scientific:
+   <a href="http://www.netlib.org/blas/">BLAS</a>,
+   <a href="http://math-atlas.sourceforge.net/">ATLAS</a>,
+   <a href="http://www.unidata.ucar.edu/software/netcdf/">NetCDF</a>,
+   <a href="http://www.gnu.org/software/octave/">Octave</a></li>
+  <li>Visualization:
+   <a href="http://www.povray.org/">POVRAY</a>,
+   <a href="http://www.vtk.org/">VTK</a>,
+   <a href="http://www.opengl.org/">OpenGL</a></li>
+  <li>Others:
+   <a href="http://www.swig.org/">SWIG</a>,
+   <a href="http://www.gnu.org/software/guile/guile.html">guile</a></li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="history" name="history">
+  History</a></h2>
+<ul>
+ <li>Sep 27, 2006
+ <ul>
+  <li>1) <a href="libiter.html">libiter</a>
+   and <a href="libstokes.html">libstokes</a> are up at
+   <a href="http://ryuon.cvs.sourceforge.net/ryuon/">CVS</a>!</li>
+  <li>2)
+   <a href="http://prdownloads.sourceforge.net/ryuon/libiter-0.1.tar.gz?download">libiter-0.1</a>
+   and
+   <a href="http://prdownloads.sourceforge.net/ryuon/libstokes-0.1.tar.gz?download">libstokes-0.1</a>
+   are released!
+  </li>
+ </ul>
+ <li>Sep 26, 2006 : <a href="libstokes.html">libstokes</a>
+  and <a href="libiter.html">libiter</a> web pages are up.
+  CVS will be ready soon.</li>
+ <li>Sep 24, 2006 : <a href="twobody/index.html">twobody</a> web page
+  (in preliminary version) is added.</li>
+ <li>Sep 22, 2006 : start this page.</li>
+</ul>
+
+<hr />
+
+<h2><a id="footnotes" name="footnotes">
+Footnotes</h2>
+<p>
+The image is generated by POV-Ray.
+Here's the source:
+</p>
+<ul>
+ <li><a href="ryuon.pov">ryuon.pov</a>: main source for POV-Ray</li>
+ <li><a href="ryuon.inc">ryuon.inc</a>: RYUON logo object</li>
+ <li>High resolution images:
+  <a href="ryuon-640x480.jpg">640x480</a>,
+  <a href="ryuon-1024x768.jpg">1024x768</a></li>
+</ul>
+
+<hr />
+
+<div class="navi">
+<a href="#news">News</a>|
+<a href="#what">What?</a>|
+<a href="#download">download</a>|
+<a href="#links">Links</a>|
+<a href="#history">History</a>
+<br />
+<a href="index.html">RYUON</a>|
+<a href="docs/index.html">documents</a>|
+<a href="stokes/index.html">stokes</a>|
+<a href="libstokes.html">libstokes</a>
+<a href="libiter.html">libiter</a>|
+<a href="twobody/index.html">twobody</a>
+<br />
+<br />
+<address>
+e-mail:
+  <a href="mailto:kichiki@users.sourceforge.net">
+  kichiki@users.sourceforge.net</a></address>
+Copyright (C) 2006-2008 Kengo Ichiki.  All rights reserved.
+<br />
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+
+</div>
+
+</body>
+</html>

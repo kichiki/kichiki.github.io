@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Writing Routines</TITLE>
+<META NAME="description" CONTENT="Writing Routines">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node43.html">
+<LINK REL="up" HREF="node42.html">
+<LINK REL="next" HREF="node45.html">
+</HEAD>
+
+<BODY >
+
+<A NAME="tex2html757"
+  HREF="node45.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/local/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html753"
+  HREF="node42.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/local/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html749"
+  HREF="node43.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/local/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html755"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/local/share/latex2html/icons/contents.png"></A>  <BR>
+<B> Next:</B> <A NAME="tex2html758"
+  HREF="node45.html">Solvers</A>
+<B>Up:</B> <A NAME="tex2html754"
+  HREF="node42.html">NetCDF Interface</A>
+<B> Previous:</B> <A NAME="tex2html750"
+  HREF="node43.html">Constructor/Destructor</A>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H4><A NAME="SECTION00412020000000000000">
+Writing Routines</A>
+</H4>
+To set the values to NetCDF data structure,
+use the following routines:
+
+<UL>
+<LI><TT>stokes_nc_set_?0 (nc, ?0);</TT>
+<BR>
+define quantity ``?'' at <IMG
+ WIDTH="39" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.png"
+ ALT="$ t=t_0$">,
+</LI>
+<LI><TT>stokes_nc_set_time (nc, step, time);</TT>
+<BR>
+define time <IMG
+ WIDTH="9" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img101.png"
+ ALT="$ t$"> for the step ``<TT>step</TT>'',
+</LI>
+<LI><TT>stokes_nc_set_? (nc, step, time, ?);</TT>
+<BR>
+define quantity ``?'' at <IMG
+ WIDTH="9" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img101.png"
+ ALT="$ t$"> (<TT>step</TT>),
+</LI>
+</UL>
+where ``?'' is either
+<TT>x, u, o, e, f, t, s</TT> (for mobile particles), or
+<TT>xf, uf, of, ef, ff, tf, sf</TT> (for fixed particles).
+
+<P>
+<BR> <HR>
+<ADDRESS>
+<i>Kengo Ichiki 2008-10-12</i>
+<a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=177943&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+
+<!-- motigo counter for RYUON -->
+<a id="mws4533786" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=AEUuGg/tT1n/h/qxzqXhiFixRW8w" /></a>
+<script type="text/javascript" src="http://m1.webstats.motigo.com/c.js?id=4533786"></script>
+</ADDRESS>
+</BODY>
+</HTML>
