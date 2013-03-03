@@ -22,6 +22,7 @@ is a <span class="blue">Wa</span>ve-t<span class="blue">o</span>-<span class="bl
 WaoN|
 <a href="gwaon.html">gWaoN</a>|
 <a href="pv.html">pv</a>
+||<a href="dist/index.html">Download</a>
 <br />
 <a href="#news">News</a>|
 <a href="#what">WaoN?</a>|
@@ -44,6 +45,12 @@ WaoN|
 <a id="news" name="news"></a>
 <h2>What's new?</h2>
 <ul>
+ <li>Mar. 3, 2013:
+ <ul>
+  <li>move the project from <a href="http://waon.sourceforge.net/">sourceforce</a> to <a href="http://kichiki.github.com/WaoN/">github</a>.</li>
+  <li>Win32 binaries are pre-released. See <a href="dist/index.html">Download page</a>.</li>
+ </ul>
+ </li>
  <li><a href="http://sourceforge.net/news/?group_id=177685">News @ SF</a></li>
  <li>Jan. 1, 2012:
   add &quot;<a href="#demo">Demo</a>&quot; section.</li>
@@ -54,50 +61,6 @@ WaoN|
    the quality of result is improved by cleaning up useless notes.</li>
   <li><a href="gwaon.html">gwaon</a>:
    horizontal keyboard is added on the spectrum pane.</li>
- </ul>
- </li>
- <li>Nov. 4, 2007 :
-  <a href="http://prdownloads.sourceforge.net/waon/waon-0.9.tar.gz?download">waon-0.9</a> released. (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=551903">Release Note</a>)
- <ul>
-  <li>add manual pages (waon.1, pv.1, gwaon.1).</li>
-  <li>clean the codes.</li>
-  <li><a href="pv.html">pv</a>:
-  <ul>
-   <li>add the interactive curses mode with real-time time-strech
-    and pitch-shift.</li>
-   <li>add no-fft scheme (just for fun).</li>
-  </ul>
-  </li>
-  <li><a href="gwaon.html">gwaon</a>:
-   update about window and the GUI, adding buttons for each function.</li>
- </ul>
- </li>
- <li>Oct 9, 2007 :
-  <a href="http://sourceforge.net/forum/forum.php?forum_id=743713">ports for FreeBSD is now available</a>.
- </li>
- <li>Mar 10, 2007 :
-  <a href="http://prdownloads.sourceforge.net/waon/waon-0.8.tar.gz?download">waon-0.8</a> released. (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=492772">Release Note</a>)
- <ul>
-  <li><a href="pv.html">pv</a>:
-   <b>rate</b> and <b>pitch</b> options can work together.</li>
-  <li><a href="gwaon.html">gWaoN</a>:
-   add pitch-shift scale.</li>
- </ul>
- </li>
- <li>Mar 1, 2007 :
-  <a href="http://prdownloads.sourceforge.net/waon/waon-0.7.tar.gz?download">waon-0.7</a> released!
- <ul>
-  <li>WaoN:
-  <ul>
-   <li>bug fixed for the procedure in phase-diff correction.</li>
-   <li>add two functionalities, drum-removal (by options <b>-psub-n</b>, <b>-psub-f</b>) and octave removal (by option <b>-oct</b>).</li>
-   <li>set hanning window as the default window.</li>
-   <li>set phase-diff correction as the default,
-    and cut --phase option and add <b>-nophase</b> option, instead.</li>
-  </ul>
-  </li>
-  <li><a href="pv.html">pv</a>:
-   set hanning window as the default window.</li>
  </ul>
  </li>
  <li><a href="#history">old news</a></li>
@@ -164,8 +127,9 @@ Here is the
 <a id="platform" name="platform"></a>
 <h2>Platform</h2>
 <p>
-I believe that WaoN is able to be built on any platforms, but
-I develop it on <a href="http://www.freebsd.org/">FreeBSD</a>.
+I believe that WaoN is able to be built on any platforms.<br />
+I am developing this project currently on Mac OS X
+(and, before that, on <a href="http://www.freebsd.org/">FreeBSD</a>).
 </p>
 <p>
 Currently, (to my knowledge) there are some packages:
@@ -185,6 +149,9 @@ Currently, (to my knowledge) there are some packages:
  <li><a href="http://src.gnu-darwin.org/ports/audio/waon/">package</a>
   for <a href="http://src.gnu-darwin.org/">GNU-Darwin</a>.</li>
 </ul>
+</p>
+<p>
+Since version 0.11, Win32 binaries (built on MinGW) are ready.
 </p>
 
 <a id="formats" name="formats"></a>
@@ -206,10 +173,10 @@ See also <a href="#tips">Tips</a>.
 <h3>help</h3>
 <pre>
 $ ./waon --help
-WaoN - a Wave-to-Notes transcriber, Version 0.9
+WaoN - a Wave-to-Notes transcriber, Version 0.10
 
-Copyright (C) 1998-2007 Kengo Ichiki &lt;kengoichiki@gmail.com&gt;
-Web: http://waon.sourceforge.net/
+Copyright (C) 1998-2013 Kengo Ichiki &gt;kengoichiki@gmail.com&gt;
+Web: http://kichiki.github.com/WaoN/
 
 WaoN is a Wave-to-Notes transcriber,
 that is, a converter from sound file to midi file.
@@ -217,53 +184,53 @@ that is, a converter from sound file to midi file.
 Usage: ./waon [option ...]
 
 Options:
-  -h --help     print this help.
-  -v, --version print version information.
+  -h --help	print this help.
+  -v, --version	print version information.
 OPTIONS FOR FILES
-  -i --input    input wav file (default: stdin)
-  -o --output   output mid file (default: 'output.mid')
-        options -i and -o have argument '-' as stdin/stdout
-  -p --patch    patch file (default: no patch)
+  -i --input	input wav file (default: stdin)
+  -o --output	output mid file (default: 'output.mid')
+	options -i and -o have argument '-' as stdin/stdout
+  -p --patch	patch file (default: no patch)
 FFT OPTIONS
-  -n            sampling number from WAV in 1 step (default: 2048)
-  -w --window   0 no window
-                1 parzen window
-                2 welch window
-                3 hanning window (default)
-                4 hamming window
-                5 blackman window
-                6 steeper 30-dB/octave rolloff window
+  -n		sampling number from WAV in 1 step (default: 2048)
+  -w --window	0 no window
+		1 parzen window
+		2 welch window
+		3 hanning window (default)
+		4 hamming window
+		5 blackman window
+		6 steeper 30-dB/octave rolloff window
 READING WAV OPTIONS
-  -s --shift    shift number from WAV in 1 step
-                (default: 1/4 of the value in -n option)
+  -s --shift	shift number from WAV in 1 step
+		(default: 1/4 of the value in -n option)
 PHASE-VOCODER OPTIONS
-  -nophase      don't use phase diff to improve freq estimation.
-                (default: use the correction)
+  -nophase	don't use phase diff to improve freq estimation.
+		(default: use the correction)
 NOTE SELECTION OPTIONS
-  -c --cutoff   log10 of cut-off ratio to scale velocity of note
-                (default: -5.0)
-  -r --relative log10 of cut-off ratio relative to the average.
-                (default: no relative cutoff
-                = absolute cutoff with the value in -c option)
-  -k --peak     peak threshold for note-on, which ranges [0,127]
-                (default: 128 = no peak-search = search only first on-event)
-  -t --top      top note [midi #] (default: 103 = G7)
-  -b --bottom   bottom note [midi #] (default: 28 = E1)
-        Here middle C (261 Hz) = C4 = midi 60. Midi # ranges [0,127].
-  -a --adjust   adjust-pitch param, which is suggested by WaoN after analysis.
-                unit is half-note, that is, +1 is half-note up,
-                and -0.5 is quater-note down. (default: 0)
+  -c --cutoff	log10 of cut-off ratio to scale velocity of note
+		(default: -5.0)
+  -r --relative	log10 of cut-off ratio relative to the average.
+		(default: no relative cutoff
+		= absolute cutoff with the value in -c option)
+  -k --peak	peak threshold for note-on, which ranges [0,127]
+		(default: 128 = no peak-search = search only first on-event)
+  -t --top	top note [midi #] (default: 103 = G7)
+  -b --bottom	bottom note [midi #] (default: 28 = E1)
+	Here middle C (261 Hz) = C4 = midi 60. Midi # ranges [0,127].
+  -a --adjust	adjust-pitch param, which is suggested by WaoN after analysis.
+		unit is half-note, that is, +1 is half-note up,
+		and -0.5 is quater-note down. (default: 0)
 DRUM-REMOVAL OPTIONS
-  -psub-n       number of averaging bins in one side.
-                that is, for n, (i-n,...,i,...,i+n) are averaged
-                (default: 0)
-  -psub-f       factor to the average, where the power is modified as
-                p[i] = (sqrt(p[i]) - f * sqrt(ave[i]))^2
-                (default: 0.0)
-OCTAVE-REMOVER OPTIONS
-  -oct  factor to the octave removal, where the power is modified as
-                p[i] = (sqrt(p[i]) - f * sqrt(oct[i]))^2
-                (default: 0.0)
+  -psub-n	number of averaging bins in one side.
+		that is, for n, (i-n,...,i,...,i+n) are averaged
+		(default: 0)
+  -psub-f	factor to the average, where the power is modified as
+		p[i] = (sqrt(p[i]) - f * sqrt(ave[i]))^2
+		(default: 0.0)
+OCTAVE-REMOVAL OPTIONS
+  -oct	factor to the octave removal, where the power is modified as
+		p[i] = (sqrt(p[i]) - f * sqrt(oct[i]))^2
+		(default: 0.0)
 </pre>
 
 <a id="tips" name="tips"></a>
@@ -299,12 +266,21 @@ or
 
 <a id="download" name="download"></a>
 <h2>Download</h2>
-<p>
-please visit <a href="http://sourceforge.net/project/showfiles.php?group_id=177685">File Releases @ SF</a>.
-</p>
+<ul>
+ <li>source code: go to <a href="https://github.com/kichiki/WaoN">github.com/kichiki/WaoN</a></li>
+ <li>releases (and Win32 binaries):
+  go to <a href="dist/index.html">Download page</a>.</li>
+</ul>
 
 <h3>Changes</h3>
 <ul>
+ <li>0.11 (tentative)
+ <ul>
+  <li>gwaon: bug fixed on ao_device initialization</li>
+  <li>waon: MinGW patch, provided by David Millis, is applied.
+   (this patch was sent in April 2010... sorry it took so long)</li>
+ </ul>
+ </li>
  <li><a href="http://sourceforge.net/projects/waon/files/waon/0.10/waon-0.10.tar.gz/download">0.10</a> (<a href="https://sourceforge.net/projects/waon/files/waon/0.10/">Release Note</a>)
  <ul>
   <li>waon:
@@ -505,6 +481,52 @@ and <a href="http://www.mega-nerd.com/libsndfile/">libsndfile</a>.
 <a id="history" name="history"></a>
 <h2>History</h2>
 <ul>
+ <li>Apr. 21, 2010 :
+  David Millis sent me a patch for waon MinGW port.</li>
+ <li>Nov. 4, 2007 :
+  <a href="http://prdownloads.sourceforge.net/waon/waon-0.9.tar.gz?download">waon-0.9</a> released. (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=551903">Release Note</a>)
+ <ul>
+  <li>add manual pages (waon.1, pv.1, gwaon.1).</li>
+  <li>clean the codes.</li>
+  <li><a href="pv.html">pv</a>:
+  <ul>
+   <li>add the interactive curses mode with real-time time-strech
+    and pitch-shift.</li>
+   <li>add no-fft scheme (just for fun).</li>
+  </ul>
+  </li>
+  <li><a href="gwaon.html">gwaon</a>:
+   update about window and the GUI, adding buttons for each function.</li>
+ </ul>
+ </li>
+ <li>Oct 9, 2007 :
+  <a href="http://sourceforge.net/forum/forum.php?forum_id=743713">ports for FreeBSD is now available</a>.
+ </li>
+ <li>Mar 10, 2007 :
+  <a href="http://prdownloads.sourceforge.net/waon/waon-0.8.tar.gz?download">waon-0.8</a> released. (<a href="http://sourceforge.net/project/shownotes.php?group_id=177685&release_id=492772">Release Note</a>)
+ <ul>
+  <li><a href="pv.html">pv</a>:
+   <b>rate</b> and <b>pitch</b> options can work together.</li>
+  <li><a href="gwaon.html">gWaoN</a>:
+   add pitch-shift scale.</li>
+ </ul>
+ </li>
+ <li>Mar 1, 2007 :
+  <a href="http://prdownloads.sourceforge.net/waon/waon-0.7.tar.gz?download">waon-0.7</a> released!
+ <ul>
+  <li>WaoN:
+  <ul>
+   <li>bug fixed for the procedure in phase-diff correction.</li>
+   <li>add two functionalities, drum-removal (by options <b>-psub-n</b>, <b>-psub-f</b>) and octave removal (by option <b>-oct</b>).</li>
+   <li>set hanning window as the default window.</li>
+   <li>set phase-diff correction as the default,
+    and cut --phase option and add <b>-nophase</b> option, instead.</li>
+  </ul>
+  </li>
+  <li><a href="pv.html">pv</a>:
+   set hanning window as the default window.</li>
+ </ul>
+ </li>
  <li>Feb 24, 2007 :
   <a href="http://prdownloads.sourceforge.net/waon/waon-0.6.tar.gz?download">waon-0.6</a> released!
  <ul>
@@ -549,7 +571,7 @@ and <a href="http://www.mega-nerd.com/libsndfile/">libsndfile</a>.
  <li>Sep 20, 2006 : move to
   <a href="http://www.sourceforge.net">sourceforge</a>.</li>
  <li>Feb 2, 2005 :
-   Victor Liu sent a patch for FFTW3. thanks!
+   Victor Liu sent me a patch for FFTW3. thanks!
  </li>
  <li>Jan 9, 2004 :
    LOGO is made.
@@ -623,6 +645,7 @@ and <a href="http://www.mega-nerd.com/libsndfile/">libsndfile</a>.
 WaoN|
 <a href="gwaon.html">gWaoN</a>|
 <a href="pv.html">pv</a>
+||<a href="dist/index.html">Download</a>
 </p>
 
 <div class="navi">
@@ -630,7 +653,7 @@ WaoN|
 e-mail:
   <a href="mailto:kengoichiki@gmail.com">
   kengoichiki@gmail.com</a></address>
-Copyright (C) 1998-2008,2011,2013 Kengo Ichiki.  All rights reserved.
+Copyright (C) 1998-2013 Kengo Ichiki.  All rights reserved.
 <br />
 <!-- motigo webstats for WaoN -->
 <a id="mws4533787" href="http://webstats.motigo.com/">
