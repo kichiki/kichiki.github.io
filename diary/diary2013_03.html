@@ -36,9 +36,114 @@ alt="日記 -" /> 2013年3月</h1>
 
 <hr />
 
+<h2><a id="d3"></a>3/3 (Sun)</h2>
+<ul>
+ <li><a id="d3-waon"></a>[WaoN][github] WaoN の Win32 バイナリをリリース。
+ <ul>
+  <li><a href="#d2-waon">昨日</a>のつづき。</li>
+  <li>gwaon で、 wav ファイルを開くと落ちる問題(<a href="diary2011_02.html#d27-gwaon">2/27/2011</a>)が解決。
+  <ul>
+   <li>詳しく調べていったら（と言っても、結果的には
+    <a href="http://www.xiph.org/ao/">libao</a> の
+    <a href="http://www.xiph.org/ao/doc/ao_example.c">サンプルコード</a>
+    と、一つずつ確認していったら、ってことだけど）
+    間違いを見つけた、という顛末だったんだけど…。</li>
+   <li>ao_device の初期化部分で、
+   <pre>
+/* -- Initialize -- */
+ao_initialize();
+
+/* -- Setup for default driver -- */
+int default_driver = ao_default_driver_id();
+
+ao_sample_format format;
+<font color="red">memset(&format, 0, sizeof(format));</font>
+format.bits = 16;
+format.channels = 2;
+format.rate = 44100;
+format.byte_format = AO_FMT_LITTLE;
+
+/* -- Open driver -- */
+ao_device *device = ao_open_live(default_driver, &format, NULL /* no options */);
+   </pre>
+    上の memset() の１行が、ぼくのコードには入ってなかった…。</li>
+   <li>分かってみれば「なるほど、それで挙動不審だったのか」と納得するが
+    （多分、初期化されてない部分が問題を起こす時があったのだろう）、
+    この１行は、最近になって必要になったのだろうか？
+    だって、絶対にオレ、サンプルコードを丸写ししたはずなので、
+    ここだけ抜かすなんて器用な事、しないと思う…。</li>
+   <li>commit: <a href="https://github.com/kichiki/WaoN/commit/c6f69f7b1d17cce2eed0f0152624bd3ad10487de">c6f69f7b1d17cce2eed0f0152624bd3ad10487de</a>
+   <pre>
+bug fixed on ao_device initialization.
+   </pre>
+   </li>
+  </ul>
+  </li>
+  <li>と、スッキリしたところで、 Windows のバイナリをまとめる。</li>
+  <li>実は、メールのアーカイブを調べてみたら、2010年4月21日に
+   David Millis さんという方から、当時の WaoN (バージョン 0.9) を
+   MinGW でビルドした、とメールを頂いていた。
+  <ul>
+   <li>彼は、 CUI な <a href="http://kichiki.github.com/waon/index.html">waon</a> のみビルドしてて、
+    「curses を使った <a href="http://kichiki.github.com/waon/pv.html">pv</a> と GTK+ を使った <a href="http://kichiki.github.com/waon/gwaon.html">gwaon</a> は難しそう」
+    とのことだった。</li>
+   <li>親切にも、パッチだけでなくバイナリ（必要な dll 込み）も
+    送ってもらってたが、
+    多分バタバタしてたんだろう、結局、見えるところに置く事もしてなかった。</li>
+   <li>ということで、まずは、頂いたパッチを適用しておく。</li>
+   <li>commit: <a href="https://github.com/kichiki/WaoN/commit/be49359ed053a9c3ff304b5f95747141ea83d863">be49359ed053a9c3ff304b5f95747141ea83d863</a>
+   <pre>
+import MinGW patch provided by David Millis.
+   </pre>
+   </li>
+   <li>見れば、先週ぼくが自分でやってた porting は、
+    かなり適当だったことが分かる。
+    （というのは、 stdout の file descriptor を取得する部分のこと。）</li>
+  </ul>
+  </li>
+  <li>この上に、ぼくのやった他の porting を乗せることにする。
+  <ul>
+   <li><a href="http://kichiki.github.com/waon/pv.html">pv</a> は、（後でメールを確認したときに気づいた事だが、
+    David が件のメールの中で suggest してくれてた）
+    public domain な実装 <a href="http://pdcurses.sourceforge.net/">pdcurses</a>
+    を使ったら、コードは何も変更なく、リンクすればそれだけでうまくいった。</li>
+   <li><a href="http://kichiki.github.com/waon/gwaon.html">gwaon</a> に関しては、ここしばらく仕事で GTK+ なコードを Windows で
+    動かすことに挑戦してて、「<a href="http://kevinboone.net/gtkwindows.html">Building native graphical applications in C for MS Windows, using GTK+ and open-source tools</a>」(Kevin Boone)に従ったら簡単に動いたので、
+    そのまま <a href="http://kichiki.github.com/waon/gwaon.html">gwaon</a> もビルドしたら動いた。
+    （でも、アイコンをまだ作ってない。
+    誰か、かっこいいやつ、描いてくれないかなぁ〜）</li>
+   <li>commit: <a href="https://github.com/kichiki/WaoN/commit/a3e23de7b96bab16ca8be8c27c9996eacb89944c">a3e23de7b96bab16ca8be8c27c9996eacb89944c</a>
+   <pre>
+MinGW port: add Makefiles for win32 builds.
+   </pre>
+    見てとのおり、David Millis 氏のパッチのおかげで、ソースは修正なし。</li>
+  </ul>
+  </li>
+  <li><a href="http://kichiki.github.com/waon/index.html">web page</a> の方も改訂しておく。
+  <ul>
+   <li><a href="http://kichiki.github.com/waon/dist/index.html">ダウンロード・セクション</a>を作った。</li>
+   <li>commit: <a href="https://github.com/kichiki/kichiki.github.com/commit/5d8fccdd5e4cdc10d45701b8ea4043117e0609e6">5d8fccdd5e4cdc10d45701b8ea4043117e0609e6</a>
+   <pre>
+update WaoN project page.
+
+adding Download page waon/dist/index.html.
+also add tar.gz files for each release and win32 binaries.
+   </pre>
+   </li>
+  </ul>
+  </li>
+  <li>ってことなので、これまで WaoN に興味あったけど、
+   Windows マシンしかなくてビルドできない！と悔しい思いをしていた皆さん、
+   まだ確認作業などほとんどしてない状態ですが、ダウンロード
+   (<a href="http://kichiki.github.com/waon/dist/waon-0.11-mingw.zip">waon-0.11-mingw.zip</a>)して、
+   どんどん遊んでみてください。</li>
+ </ul>
+ </li>
+</ul>
+
 <h2><a id="d2"></a>3/2 (Sat)</h2>
 <ul>
- <li><a id="d2-waon"></a>[WaoN] WaoN も github にお引越。
+ <li><a id="d2-waon"></a>[WaoN][github] WaoN も github にお引越。
  <ul>
   <li><a href="diary2013_02.html#d24-github">2/24/2013</a>のつづき。</li>
   <li>前回の RYUON の時に手順ははっきりしたので、そのまま。
@@ -78,6 +183,8 @@ alt="日記 -" /> 2013年3月</h1>
    <li><a href="http://kichiki.github.com/waon/gwaon.html">gWaoN</a></li>
   </ul>
   </li>
+  <li><a href="#d3-waon">3/3/2013</a>:
+   Win32 バイナリ（waon, pv, gwaon）をプレリリース</li>
  </ul>
  </li>
 </ul>
