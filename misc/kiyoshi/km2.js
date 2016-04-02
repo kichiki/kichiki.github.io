@@ -105,23 +105,23 @@ window.onload = function() {
 	   ) {
 	    playSound(sample1, 0);
 	} else if (keyCode == 87 // W
-	    || keyCode == 0x38 // 8
+		   || keyCode == 0x38 // 8
 	   ) {
 	    playSound(sample2, 0);
 	} else if (keyCode == 69 // E
-	    || keyCode == 0x39 // 9
+		   || keyCode == 0x39 // 9
 	   ) {
 	    playSound(sample3, 0);
 	} else if (keyCode == 65 // A
-	    || keyCode == 0x34 // 4
+		   || keyCode == 0x34 // 4
 	   ) {
 	    playSound(sample4, 0);
 	} else if (keyCode == 83 // S
-	    || keyCode == 0x35 // 5
+		   || keyCode == 0x35 // 5
 	   ) {
 	    playSound(sample5, 0);
 	} else if (keyCode == 68 // D
-	    || keyCode == 0x36 // 6
+		   || keyCode == 0x36 // 6
 	   ) {
 	    playSound(sample6, 0);
 	} else if (keyCode == 90 // Z
@@ -130,6 +130,7 @@ window.onload = function() {
 		   || keyCode == 0x31 // 1
 		   || keyCode == 0x32 // 2
 		   || keyCode == 0x33 // 3
+		   || keyCode == 0x20 // SPC
 		  ) {
 	    playSound(sample78, 0);
 	}
