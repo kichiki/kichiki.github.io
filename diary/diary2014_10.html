@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Open Diary - October 2014</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <script type="text/javascript" src="LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2014年10月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+<div class="body">
+
+<hr />
+
+<h2><a id="d22"></a>10/22 (Wed)</h2>
+<ul>
+ <li>[mac]EmacsとAUCTeX
+ <ul>
+  <li>Yosemite にアップデートしたついでに、環境整備。</li>
+  <li>前回の設定の記録(<a href="https://twitter.com/ichiki_k/status/268591349064929280">14:49 - 2012年11月14日</a>)
+  <blockquote>
+    tex 環境のはなし、<br />
+    emacs は cocoa な 24.2 <a href="http://emacsformacosx.com/">http://emacsformacosx.com/</a>  使ってるんだが、<br />
+    auctex はこいつの package からインストールした。<br />
+    この ELPA <a href="http://tromey.com/elpa/">http://tromey.com/elpa/</a>  っての、知らなかった。
+  </blockquote>
+  </li>
+  <li>上記<a href="http://emacsformacosx.com/">emacsformacosx.com</a>
+    に行ってみたら、何と数日前にリリースされたばかり
+    (cf.<a href="http://tech.slashdot.org/story/14/10/20/2137236/gnu-emacs-244-released-today">GNU Emacs 24.4 Released Today</a>@/.)という 24.4 が
+    すでに出てたので、入ってた 24.2 と入れ替えた。</li>
+  <li>が、ELPA から auctex が消えてたみたいで、めんどくせー、と。</li>
+  <li>ソースは <a href="http://www.gnu.org/software/auctex/download-for-macosx.html">AUCTEX / Download for Mac OS X</a> に 11.87 ってのがある。</li>
+  <li>superuser.com: <a href="http://superuser.com/questions/171681/installing-auctex-1-86-over-emacs-app-in-os-x">Installing AucTeX 1.86 over Emacs.app in OS X</a>みたら Emacs.app で AUCTeX を入れる話が出てて、やる気が出た。
+  <ul>
+   <li>ポイントは、 configure に渡すパラメータ。</li>
+   <li>そこでは tex 系は MacTeX を想定してて、
+   <pre>    
+     ./configure --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs
+     --with-lispdir=/Applications/Emacs.app/Contents/Resources/site-lisp
+     --with-texmf-dir=/usr/local/texlive/texmf-local
+   </pre>
+    みたいな感じだったので、       
+   <pre>
+     ./configure --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs
+     --with-lispdir=/Applications/Emacs.app/Contents/Resources/site-lisp
+     --with-texmf-dir=<font color="red">/opt/local/share/texmf-local</font>
+   </pre>
+   として、 make; sudo make install してみる。
+   </li>
+  </ul>
+  </li>
+  <li>できた。以上。</li>
+ </ul>
+ </li>
+</ul>
+  
+<hr />
+
+<h2><a id="d8"></a>10/8 (Wed)</h2>
+<ul>
+ <li>[monton]モントンと月食
+ <ul>
+  <li>皆既月食の日。</li>
+  <li>金沢はあいにく、雲が出てるが、雲の切れ目から時々月が顔を出してる。</li>
+  <li>ちょうどモンちゃんの散歩のとき、赤い月が見えた。
+   (<a href="http://instagram.com/p/t4_XUdF5Dx/">instagram.com/p/t4_XUdF5Dx/</a> - iPhone 手持ち撮影なので、映像的には残念だけど…)
+  </li>
+ </ul>
+ </li>
+</ul>
+
+<h2><a id="d7"></a>10/7 (Tue)</h2>
+<ul>
+ <li>[monton]モントン、抜糸
+ <ul>
+  <li>今朝、病院の日。退院の日にもらってた化膿止めの薬を飲み終わった。</li>
+  <li>車に乗せるのに、いつものバッグに入れて、玄関から車まで運んだ後、
+   ふと見ると、バッグの中で吐いてた。
+   多分、前の入院のこととか思い出したんだろう。</li>
+  <li>先生に見てもらった所、傷口も腫れも引いて、きれいに塞がっていると。
+   ということで、抜糸してもらう。モンちゃん、上向いて頑張ってた。</li>
+  <li>傷をかかないように付けてたサポーターも、取る。
+   これでモンちゃんも、すっかりご機嫌だろう。</li>
+  <li>ずっとお風呂に入ってなくて、最近、かゆがってるんだけど、
+   先生は「週末まで待って」と。</li>
+  <li>夜、耳がくさいので、久しぶりに耳掃除をした。
+   モントン、終わった後も、すごく不満そうだ…</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+<h2><a id="d2"></a>10/2 (Thu)</h2>
+<ul>
+ <li>日記を是非とも再開すべきであると、最近感じている。
+ </li>
+ <li>[monton]モントン、チェックアップ
+ <ul>
+  <li>今日は傷の状況を先生に確認してもらう。
+   切った所が、当初は腫れていたけど、それもすっかり引いた。
+   包帯の下のテープを取る。傷は思ったより大きいな。
+   先生が新しいヘアバンド的なものをその場で作ってくれた。</li>
+  <li>家に帰ってから、しかし、今日はちょっとモントン、おとなしい。
+   天気が悪く昼から雨模様で、傷が痛んだりしてるのかな？
+   それともテープを外したので、気になるのか、痛いのか。
+   昼とか夜とか、（人間が）ごはんを食べてたら、
+   「お膝ください」と乗ってきた。
+   モントンの晩ご飯を食べるときも、お膝に乗って、その上から食べて、
+   そのまま寝てしまう…オレ、身動き取れず。</li>
+ </ul>
+ </li>
+</ul>
+
+<hr />
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2014, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a><br />
+facebook: <a href="http://www.facebook.com/kengo.ichiki">Kengo Ichiki</a>
+  </td>
+  <td>
+
+<!-- motigo webstats for Infoseek -->
+<a id="mws1196334" href="http://webstats.motigo.com/">
+<img width="18" height="18" border="0" alt="Free counter and web stats" src="http://m1.webstats.motigo.com/n.gif?id=ABJBLgPmCHIB5A59buMkc0vHZpwg" /></a>
+<script src="http://m1.webstats.motigo.com/c.js?id=1196334" type="text/javascript"></script>
+<!-- End Motigo Webstats counter code -->
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://s10.sitemeter.com/stats.asp?site=s10kengoichiki">
+<img src="http://s10.sitemeter.com/meter.asp?site=s10kengoichiki"
+ width="38" height="15" alt="Site Meter" /></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+</body>
+</html>
