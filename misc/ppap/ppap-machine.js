@@ -35,31 +35,31 @@ var sample3 = null;
 var sample4 = null;
 var sample5 = null;
 var sample6 = null;
-var sample78 = null;
+var sample7 = null;
 
 
 // main
 window.onload = function() {
-  getAudioBuffer('kiyoshi_zun1_1.wav', function(buffer1) {
+  getAudioBuffer('PPAP-1.wav', function(buffer1) {
     sample1 = buffer1;
   });
-  getAudioBuffer('kiyoshi_zun1_2.wav', function(buffer2) {
+  getAudioBuffer('PPAP-4.wav', function(buffer2) {
     sample2 = buffer2;
   });
-  getAudioBuffer('kiyoshi_zun1_3.wav', function(buffer3) {
+  getAudioBuffer('PPAP-3-P1.wav', function(buffer3) {
     sample3 = buffer3;
   });
-  getAudioBuffer('kiyoshi_zun1_4.wav', function(buffer4) {
+  getAudioBuffer('PPAP-3-PA.wav', function(buffer4) {
     sample4 = buffer4;
   });
-  getAudioBuffer('kiyoshi_zun1_5.wav', function(buffer5) {
+  getAudioBuffer('PPAP-3-AP.wav', function(buffer5) {
     sample5 = buffer5;
   });
-  getAudioBuffer('kiyoshi_zun1_6.wav', function(buffer6) {
+  getAudioBuffer('PPAP-3-P2.wav', function(buffer6) {
     sample6 = buffer6;
   });
-  getAudioBuffer('kiyoshi_zun1_78.wav', function(buffer78) {
-    sample78 = buffer78;
+  getAudioBuffer('PPAP-5.wav', function(buffer78) {
+    sample7 = buffer78;
   });
 
 
@@ -82,16 +82,16 @@ window.onload = function() {
 	playSound(sample6, 0);
     };
     btn78.onclick = function() {
-	playSound(sample78, 0);
+	playSound(sample7, 0);
     };
     
     document.onkeydown = function(e) {
         var keyCode = false;
-
+        
         if (e) {
             event = e;
         }
-
+        
         if (event) {
             if (event.keyCode) {
                 keyCode = event.keyCode;
@@ -99,7 +99,7 @@ window.onload = function() {
                 keyCode = event.which;
             }
         }
-
+        
         if (keyCode == 81 // Q
             || keyCode == 0x37 // 7
            ) {
@@ -132,7 +132,7 @@ window.onload = function() {
                    || keyCode == 0x33 // 3
                    || keyCode == 0x20 // SPC
                   ) {
-            playSound(sample78, 0);
+            playSound(sample7, 0);
         }
     };
 

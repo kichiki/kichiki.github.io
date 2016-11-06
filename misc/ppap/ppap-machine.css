@@ -9,11 +9,12 @@ body {
     position: absolute;
     width: 32vw;
     height: 30vh;
-    top: 1vh;
+    top: 6vh;
     left: 1vw;
     right: 33vw;
     bottom: 31vh;
-    font-size: 7vh;
+    //font-size: 5vh;
+    font-size: 4vh;
     color: #000;
     background-color: #ff0;
 }
@@ -21,14 +22,11 @@ body {
     position: absolute;
     width: 32vw;
     height: 30vh;
-    top: 1vh;
+    top: 6vh;
     left: 34vw;
     right: 66vw;
     bottom: 31vh;
-    font-size: 7vh;
-    color: #000;
-    background-color: #ff0;
-    font-size: 7vh;
+    font-size: 5vh;
     color: #000;
     background-color: #6f0;
 }
@@ -36,11 +34,11 @@ body {
     position: absolute;
     width: 32vw;
     height: 30vh;
-    top: 1vh;
+    top: 6vh;
     left: 67vw;
     right: 99vw;
     bottom: 31vh;
-    font-size: 7vh;
+    font-size: 5vh;
     color: #000;
     background-color: #06f;
 }
@@ -48,11 +46,12 @@ body {
     position: absolute;
     width: 32vw;
     height: 30vh;
-    top: 32vh;
+    top: 37vh;
     left: 1vw;
     right: 33vw;
     bottom: 62vh;
-    font-size: 7vh;
+    //font-size: 5vh;
+    font-size: 4vh;
     color: #000;
     background-color: #aaf;
 }
@@ -60,11 +59,11 @@ body {
     position: absolute;
     width: 32vw;
     height: 30vh;
-    top: 32vh;
+    top: 37vh;
     left: 34vw;
     right: 66vw;
     bottom: 62vh;
-    font-size: 7vh;
+    font-size: 5vh;
     color: #000;
     background-color: #0ff;
 }
@@ -72,11 +71,11 @@ body {
     position: absolute;
     width: 32vw;
     height: 30vh;
-    top: 32vh;
+    top: 37vh;
     left: 67vw;
     right: 99vw;
     bottom: 62vh;
-    font-size: 7vh;
+    font-size: 5vh;
     color: #000;
     background-color: #aff;
 }
@@ -84,11 +83,11 @@ body {
     position: absolute;
     width: 98vw;
     height: 30vh;
-    top: 63vh;
+    top: 68vh;
     left: 1vw;
     right: 99vw;
     bottom: 93vh;
-    font-size: 7vh;
+    font-size: 5vh;
     color: #000;
     background-color: #f06;
 }
@@ -97,7 +96,7 @@ body {
     position: absolute;
     width: 99vw;
     height: 5vh;
-    top: 94vh;
+    top: 1vh;
     left: 1vw;
     right: 99vw;
     bottom: 99vh;
