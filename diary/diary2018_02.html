@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Open Diary - February 2018</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <script type="text/javascript" src="LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2018年2月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+<div class="body">
+
+<hr />
+
+<h2 id="d25">2/25 (Sun)</h2>
+<ul>
+  <li id="d25-nikki">日記再開する
+    <ul>
+      <li>と、実は日々思っていて、時々「やるやる」というエントリーだけ書いて、
+	また書かないという行動を、どうもここ４〜５年やっているようだ。
+	実際、直前のエントリー (<a href="diary2016_09.html#d21">9/21/2016</a>)
+	がまさにそれだった、１年半前。</li>
+      <li>今回の再会宣言に際して、今までと同じことやってもダメなので、
+	１つ気持ちを切り替えた。内容のレベルを上げないこと。
+	これをモットーに、2018年の日記は書いていこうと思う。</li>
+    </ul>
+  </li>
+
+  <li id="d25-audio">[WaoN] audio processing と machine learning
+    <ul>
+      <li>2009年に帰国したぼくを雇ってくれた今の<a href="https://www.zenkei.com/">会社</a>では、これまで画像処理を中心に
+	研究開発的なプログラミングをやってきた。
+	それが、ここ半年から１年前から、機械学習に軸足を移して
+	仕事をしてる。（もちろん、これ以前にも手は出していたが。）
+	この間、プログラミングの環境は python がメインになり
+	（といっても、個人的にはこれまでも perl や ruby よりも python が
+	一番好きで使ってたが）、
+	TensorFlow を勉強して、Keras を勉強して、PyTorch を勉強して、
+	という風に世間の皆さんと同様慌ただしい学習体験だった。
+	（この調子で、まだしばらく、いろいろ出てくるんだろうな。）</li>
+      <li>そういうこともあり、deep learning 関係の情報収集は継続的にやってて、
+	つい先日も、次のツイートを見つけた<br />
+	from <a href="https://twitter.com/fjord41/status/963165268330536960">https://twitter.com/fjord41/status/963165268330536960</a>
+	<pre>
+New blog post about the project I've been working on for a while.
+Automatic piano music transcription (raw audio to MIDI)
+that works really well!
+
+6:37 AM - 13 Feb 2018
+	</pre>
+	引用されてたのは、以下の magenta のブログ
+	<ul>
+	  <li>magenta: <a href="https://magenta.tensorflow.org/onsets-frames">Onsets and Frames: Dual-Objective Piano Transcription (Feb 12, 2018)</a></li>
+	</ul>
+	おもしろい、というか <a href="http://kichiki.github.io/waon/index.html">WaoN</a> がやってることそのままじゃないか。WaoN と対決させてみようかな。
+      </li>
+      <li>この magenta のプロジェクト、colab に Jupyter Notebook も公開してる。
+	<ul>
+	  <li>colab notebook: <a href="https://colab.research.google.com/notebook#fileId=/v2/external/notebooks/magenta/onsets_frames_transcription/onsets_frames_transcription.ipynb">Onsets and Frames: Dual-Objective Piano Transcription</a></li>
+	</ul>
+	ぼく自身も、最近は Jupyter Notebook で生活してるので、
+	そこで音をどう扱ってるのかについて、興味深い。
+	しかし、世の中は未だに <a href="http://www.fluidsynth.org/">fluidsynth</a> なんだと、ちょっと感慨深くなった。というか <a href="http://kichiki.github.io/waon/index.html">WaoN</a> も、もうちょっと頑張るか、と思った。</li>
+      <li>ふとググったら、
+	<blockquote>
+なんかパラメータいっぱいあってもっと調整できそうだけどドキュメントがないので星二つ
+	</blockquote>
+	とか (cf. <a href="https://sourceforge.net/projects/waon/">SF の User Reviews</a>)、
+	<blockquote>
+WaoN がどうやってるのか知りたくてソース読んだけどゴチャゴチャしててわかんね
+	</blockquote>
+	とか (cf. <a href="https://stackoverflow.com/questions/44764521/waon-wav-to-midi-conversion">stackoverflow</a>)、
+	なんか申し訳ない気分でいっぱいだし、
+	中身をきちんと説明することの需要もあるのかな、と思ったので、
+	Jupyter で何かやってみようかな。
+	phase shift で周波数を補正してるところは neat だと思うし。</li>
+      <li>そんなことを思って、自分の環境にも fluidsynth を入れてみたが、
+	これ、anki の solfege プロジェクトにも使えるね。
+	（この件については、また改めて書こうと思う。）</li>
+      <li>そんなこんなで、気づいたら日曜も終わってしまったので、
+	「TensorFlow vs WaoN」も、「WaoN の中身」も、また今度。</li>
+      <li>書いて投稿するハードルを下げる、をモットー（言い訳）に！</li>
+    </ul>
+  </li><!-- audio processing と machine learning -->
+
+ <li id="d25-run">[run] ランニングコースの積雪状況の確認を兼ねて久しぶりに走る
+   <ul>
+     <li>４、５年ぶりの大雪で、２月は全く走れてなかった。
+       １月も４走なので、今年５走目。
+       久しぶりなのと、靴は雪道を考えてトレッキングシューズを履いたので、
+       のんびり走ってくる。河川敷を走ってるんだけど、当初雪が深くて誰一人
+       立ち入らない状態で、足跡すらないままだったけど、ここの所の暖かさで、
+       やっと下流の方は幅５０センチくらい地面が出てて、走れそうだった。</li>
+   </ul>
+ </li>
+
+</ul>
+
+<hr />
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2018, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a><br />
+facebook: <a href="http://www.facebook.com/kengo.ichiki">Kengo Ichiki</a>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+</body>
+</html>
