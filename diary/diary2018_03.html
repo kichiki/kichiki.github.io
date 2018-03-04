@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Open Diary - March 2018</title>
+    <link rev="made" href="mailto:kengoichiki@yahoo.com" />
+    <link rel="stylesheet" type="text/css" href="diary.css" />
+    <link rel="icon" href="images/favicon-16.png" />
+    <script type="text/javascript" src="LaTeXMathML.js"></script>
+  </head>
+
+<body>
+
+<table class="header"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="header">
+ <tr>
+  <td align="left">
+
+<h1><a id="top"></a> <img src="images/NIKKI.png"
+width="166" height="57"
+alt="日記 -" /> 2018年3月</h1>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+<div class="body">
+
+<hr />
+
+<h2 id="d4">3/4 (Sun)</h2>
+<ul>
+  <li id="d4-waon">[WaoN] <a href="http://kichiki.github.io/waon/index.html">WaoN</a> で Google Magenta に挑戦
+    <ul>
+      <li>ちょっと長いですが、
+	<blockquote>
+	  自分の書いたプログラムでグーグルに戦いを挑んで、
+	  かなり善戦したぜ
+	</blockquote>
+	という内容です（かなりバイアスかかってます）。
+	結果は、次の３つのオーディオファイルを聞けば分かります。
+	オリジナルが左、真ん中が Google Magenta の結果、
+	右がぼくの書いた WaoN の結果です。<br />
+	<table border="1">
+	  <tr><th>オリジナル</th><th>magenta</th><th>WaoN</th></tr>
+	  <tr><td><!-- ground -->
+	      <audio controls>
+		<source src="LOCAL/20180304-waon/brad-1min.mp3" type="audio/mpeg" />
+	      </audio>
+	    </td><td><!-- magenta -->
+	      <audio controls>
+		<source src="LOCAL/20180304-waon/brad-1min.magenta.mp3" type="audio/mpeg" />
+	      </audio>
+	    </td><td><!-- WaoN -->
+	      <audio controls>
+		<source src="LOCAL/20180304-waon/brad-1min.waon_n4096_s512_cm6_r1.mp3" type="audio/mpeg" />
+	      </audio>
+	  </td></tr>
+	</table>
+	ということで、以下、本文です。
+      </li>
+
+      <li>先日ツイッターで予告した通り(<a href="https://twitter.com/ichiki_k/status/965413383448100865">https://twitter.com/ichiki_k/status/965413383448100865</a>)、
+	Google Magenta チームが書いた Machine Learning による
+	オーディオから MIDI に変換する transcriber に対して、
+	ぼくが昔書いた <a href="http://kichiki.github.io/waon/index.html">WaoN</a> というプログラムで挑んでみよう、
+	というはなしです。</li>
+      <li>ことの発端は、以下のツイート (<a href="https://twitter.com/fjord41/status/963165268330536960">https://twitter.com/fjord41/status/963165268330536960</a>)
+	<pre>
+New blog post about the project I've been working on for a while.
+Automatic piano music transcription (raw audio to MIDI) that works really well!
+
+6:37 AM - 13 Feb 2018
+	</pre>
+	ここに引用されてるブログ記事「<a href="https://magenta.tensorflow.org/onsets-frames">Onsets and Frames: Dual-Objective Piano Transcription</a>」読んでみると、彼らがご自慢の TensorFlow でやってることは、
+	オーディオファイルから MIDI ファイルを生成するという処理、
+	いわゆる採譜 (transcription) で、 <a href="http://kichiki.github.io/waon/index.html">WaoN</a> がやってることそのものでした。
+	これを見て、天下のグーグルさんがどれほどのものか知るいい機会だぜ、
+	と思ったわけです（この時は）。</li>
+      <li>ということで、まずは <a href="https://magenta.tensorflow.org/onsets-frames">Magenta のブログ</a>にあったショパンとモーツァルトのサンプルを WaoN で試してみました。
+	手順は、まず上記記事からダウンロードした ground truth の mp3 ファイルを <a href="https://www.mars.org/home/rob/proj/mpeg/">madplay</a> で decode して、<a href="http://kichiki.github.io/waon/index.html">WaoN</a> に食わせてみました。 WaoN のオプションは default のままです。
+	この WaoN が吐き出した midi file を、
+	<a href="http://www.fluidsynth.org/">fluidsynth</a> で wav にして <a href="http://normalize.nongnu.org/">normalize</a> をかけて、<a href="http://lame.sourceforge.net/">LAME</a> で mp3 にエンコードしました。
+	一応、具体的な手順を、ショパンの場合で載せておきます。
+	<pre>
+% madplay -o chop25-3-ground.wav chop25-3-ground.mp3 
+MPEG Audio Decoder 0.15.2 (beta) - Copyright (c) 2000-2004 Robert Leslie et al.
+          Title: chop25-3-ground
+       Composer: Sageev Oore
+         Artist: Sageev Oore
+          Album: Sageev Oore's Album
+           Year: 2017-10-23T09:51
+609 frames decoded (0:00:15.9), -5.4 dB peak amplitude, 0 clipped samples
+
+% waon -i chop25-3-ground.wav -o chop25-3-waon.mid
+Format: Microsoft WAV format (little endian default).
+Subtype: Signed 16 bit data
+Endian type: Default file endian-ness.
+frames     : 701568
+samplerate : 44100
+channels   : 2
+sections   : 1
+seekable   : 1
+WaoN : end of file.
+division = 43
+WaoN : # of events = 1542
+WAON_notes : n = 1542
+filename : chop25-3-waon.mid
+
+% fluidsynth -F chop25-3-waon.wav /opt/local/share/sounds/sf2/FluidR3_GM.sf2 chop25-3-waon.mid 
+FluidSynth version 1.1.6
+Copyright (C) 2000-2012 Peter Hanappe and others.
+Distributed under the LGPL license.
+SoundFont(R) is a registered trademark of E-mu Systems, Inc.
+
+Rendering audio to file 'chop25-3-waon.wav'..
+
+% normalize chop25-3-waon.wav 
+Computing levels...
+ chop25-3-waon.wav 100% done, ETA 00:00:00 (batch 100% done, ETA 00:00:00) 
+Applying adjustment of 26.08dB to chop25-3-waon.wav...
+ chop25-3-waon.wav 100% done, ETA 00:00:00 (batch 100% done, ETA 00:00:00) 
+
+% lame chop25-3-waon.wav 
+LAME 3.100 64bits (http://lame.sf.net)
+Using polyphase lowpass filter, transition band: 16538 Hz - 17071 Hz
+Encoding chop25-3-waon.wav to chop25-3-waon.mp3
+Encoding as 44.1 kHz j-stereo MPEG-1 Layer III (11x) 128 kbps qval=3
+    Frame          |  CPU time/estim | REAL time/estim | play/CPU |    ETA 
+   558/558   (100%)|    0:00/    0:00|    0:01/    0:01|   17.819x|    0:00 
+-------------------------------------------------------------------------------
+   kbps        LR    MS  %     long switch short %
+  128.0       37.8  62.2        98.8   0.7   0.4
+Writing LAME Tag...done
+ReplayGain: -7.5dB
+	</pre>
+      </li>
+      <li>結果は、以下のようになりました。
+	<ul>
+	  <li>ショパン： <a href="LOCAL/20180304-waon/chopin25-3-waon.mid">chopin25-3-waon.mid</a>
+	    <br />
+	    <table border="1">
+	      <tr><th>ground trugh</th><th>magenta</th><th>WaoN</th></tr>
+	      <tr><td><!-- ground -->
+		  <audio controls>
+		    <source src="LOCAL/20180304-waon/chop25-3-ground.mp3" type="audio/mpeg" />
+		  </audio>
+		</td><td><!-- magenta -->
+		  <audio controls>
+		    <source src="LOCAL/20180304-waon/chop25-3-ours.mp3" type="audio/mpeg" />
+		  </audio>
+		</td><td><!-- WaoN -->
+		  <audio controls>
+		    <source src="LOCAL/20180304-waon/chop25-3-waon.mp3" type="audio/mpeg" />
+		  </audio>
+	      </td></tr>
+	    </table>
+	  </li>
+	  <li>モーツァルト： <a href="LOCAL/20180304-waon/moz331-waon.mid">moz331-waon.mid</a>
+	    <br />
+	    <table border="1">
+	      <tr><th>ground trugh</th><th>magenta</th><th>WaoN</th></tr>
+	      <tr><td><!-- ground -->
+		  <audio controls>
+		    <source src="LOCAL/20180304-waon/moz331-ground.mp3" type="audio/mpeg" />
+		  </audio>
+		</td><td><!-- magenta -->
+		  <audio controls>
+		    <source src="LOCAL/20180304-waon/moz331-ours.mp3" type="audio/mpeg" />
+		  </audio>
+		</td><td><!-- WaoN -->
+		  <audio controls>
+		    <source src="LOCAL/20180304-waon/moz331-waon.mp3" type="audio/mpeg" />
+		  </audio>
+	      </td></tr>
+	    </table>
+	  </li>
+	  <li>善戦しているな、というのは作者のひいき目が入ってると思いますが、
+	    結果のできは明らかに Magenta の方がいいですね。
+	    まぁ、ブログには使っているものは、たくさんある結果の中から
+	    きれいなものだろうとは思いますが。</li>
+	</ul>
+      </li>
+      <li>ここでちゃぶ台をひっくり返しますが、
+	ぼくはショパンとかモーツァルトが transcribe できても
+	何も嬉しくありません。
+	そもそも、ぼくがどうして WaoN を書いたのかというと、
+	譜面のない音楽の譜面が欲しい、という理由だったので、
+	当然です（負け惜しみですが…）。
+	ということで、ぼくが採譜したい音楽で競争することにします。
+	（今更）</li>
+      <li>そのためには、まず Magenta チームの transcriber
+	(github: <a href="https://github.com/tensorflow/magenta/tree/master/magenta/models/onsets_frames_transcription">Onsets and Frames: Dual-Objective Piano Transcription</a>) を手元に準備する必要があります。
+	いくつか方法が書かれてますが、今回は一番簡単な
+	<a href="https://colab.research.google.com/notebook#fileId=/v2/external/notebooks/magenta/onsets_frames_transcription/onsets_frames_transcription.ipynb">Colab Notebook</a> でサクッと inference のみで
+	使ってみることにしました。</li>
+      <li>課題となる音源は、youtube から好きなビデオをピックアップして、
+	そのオーディオを使うことにしましょう。
+	今回は、ぼくのお気に入りの、 Brad Mehldau がピアノソロで演奏した、
+	Stevie Wonder の名曲「Golden Lady」を使ってみました。<br />
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/Lpk86Ddsp7U?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </li>
+      <li>素材は、<a href="https://rg3.github.io/youtube-dl/">youtube-dl</a> と <a href="http://www.mplayerhq.hu/">mplayer</a> と <a href="http://sox.sourceforge.net/">sox</a> を使って、以下のように１分の長さの wav file を作りました。
+	<pre>
+% youtube-dl Lpk86Ddsp7U
+% mplayer -vo null -ao pcm:file=brad.wav Brad\ Mehldau\ -\ Golden\ Lady\ \(Stevie\ Wonder\)\ Solo-Lpk86Ddsp7U.mkv
+% sox brad.wav brad-1min.wav --show-progress trim 0 01:00
+% lame brad-1min.wav
+	</pre>
+	<audio controls>
+	  <source src="LOCAL/20180304-waon/brad-1min.mp3" type="audio/mpeg" />
+	</audio>
+	<br />
+	聞いてみると分かる通り、ドラムなどの入ってないピアノソロで、
+	でも使ってる音域が低音寄りで、普通に FFT でアプローチしようとすると
+	結構タフな演奏だと思います。
+      </li>
+
+      <li>まずは Magenta のお手並みを拝見。
+	すでに学習済みのモデルに wav file を食わせるだけです。
+	google colab の
+	<a href="https://github.com/tensorflow/magenta/tree/master/magenta/models/onsets_frames_transcription">ノートブック</a> を順次実行していき、さっき作った素材ファイルをアップすると、
+	こんな感じに解析が完了し、結果の midi file もダウンロードできました。
+	<br />
+	<a href="LOCAL/20180304-waon/Screen Shot 2018-03-03 at 11.56.52 PM.png"><!-- 1168x691 -->
+	  <img src="LOCAL/20180304-waon/Screen Shot 2018-03-03 at 11.56.52 PM_thumb.jpg" width="200" height="118" style="border: 2px #ccc solid;" /></a>
+	<br />
+	時間は、きちんと計ってなかったのですが、
+	ファイルのアップロードが一番かかって、
+	inference は速かったです。
+	結果の <a href="LOCAL/20180304-waon/brad-1min.magenta.mid">midi file</a> は、これまでと同様に
+	<a href="http://www.fluidsynth.org/">fluidsynth</a> で wav にして <a href="http://normalize.nongnu.org/">normalize</a> をかけて、<a href="http://lame.sourceforge.net/">LAME</a> で mp3 にエンコードします。
+	<br />
+	<audio controls>
+	  <source src="LOCAL/20180304-waon/brad-1min.magenta.mp3" type="audio/mpeg" />
+	</audio>
+	<br />
+	結果を聞いてみた感じ、
+	低音は大きな音で（確信をもって）取っていますが、
+	ぼくの耳には音程がずれているように思える部分がいくつかありました。
+	（かなり粗探しモードになってます。）
+      </li>
+
+      <li>さて、我が <a href="http://kichiki.github.io/waon/index.html">WaoN</a> で同じ素材を midi に変換してみましょう。
+	最初は素直に default option で試してみます。
+	<pre>
+% waon -i brad-1min.wav -o brad-1min.waon.mid
+Format: Microsoft WAV format (little endian default).
+Subtype: 32 bit float data
+Endian type: Default file endian-ness.
+frames     : 2880000
+samplerate : 48000
+channels   : 2
+sections   : 1
+seekable   : 1
+WaoN : end of file.
+division = 46
+WaoN : # of events = 2882
+WAON_notes : n = 2882
+filename : brad-1min.waon.mid
+	</pre>
+	結果はこちら(<a href="LOCAL/20180304-waon/brad-1min.waon.mid">midi file</a>)
+	<br />
+	<audio controls>
+	  <source src="LOCAL/20180304-waon/brad-1min.waon.mp3" type="audio/mpeg">
+	</audio>
+	<br />
+	聞いてみて分かるように、メインのメロディーは取れてるけど、
+	伴奏が取れてない感じです。ということで、
+	ちょっと低音域を伸ばして(-n 4096)、
+	でも時間分解能は同じくらいで(-s 512)、
+	もうちょっと小さい音まで拾うように(-c -6)、
+	でも雑音はできる限り落として(-r 1)、
+	という気持ちでパラメータを調整して、再挑戦してみます。
+	<pre>
+% waon -i brad-1min.wav -o brad-1min.waon_n4096_s512_cm6_r1.mid -n 4096 -s 512 -c -6 -r 1
+Format: Microsoft WAV format (little endian default).
+Subtype: 32 bit float data
+Endian type: Default file endian-ness.
+frames     : 2880000
+samplerate : 48000
+channels   : 2
+sections   : 1
+seekable   : 1
+WaoN : end of file.
+division = 46
+WaoN : # of events = 2374
+WAON_notes : n = 2374
+filename : brad-1min.waon_n4096_s512_cm6_r1.mid
+	</pre>
+	結果はこちら(<a href="LOCAL/20180304-waon/brad-1min.waon_n4096_s512_cm6_r1.mid">brad-1min.waon_n4096_s512_cm6_r1.mid</a>)
+	<br />
+	<audio controls>
+	  <source src="LOCAL/20180304-waon/brad-1min.waon_n4096_s512_cm6_r1.mp3" type="audio/mpeg" />
+	</audio>
+	<br />
+	さて、少しはよくなったかな。
+      </li>
+
+      <li>この結果と Magenta の結果を聴き比べると、
+	Magenta は１音１音確信を持ってキーを叩ききってる感じなのに対し、
+	WaoN は繊細に弾いてるように聞こえますね。
+	WaoN は倍音など雑音をかなり拾っているのに対し、
+	Magenta は音の選択を、これも確信を持って行ってるように感じました。
+	作者のひいき目を最大限行使して、今回の勝負は引き分け、
+	ということにしておきます（クラシックは負けたけど、ジャズは勝った、ということで）。</li>
+      <li>こうやって Machine Learning のアルゴリズムと対決してみると、
+	なんだか、画像処理における
+	Computer Vision 対 Machine Learning の状況が頭をよぎります。
+	画像処理については、ぼくも仕事で少し手を出してますが、ぼく自身、
+	古き良き匠の技的な Computer Vision のアプローチには見切りをつけて
+	（技能習得を諦めて、が正しいかな）、
+	Machine Learning の側に立っていると思っていますが、
+	今回は、まったく逆の立場に立たされた訳で、
+	その意味でもとても面白かったです。
+	個人的なはなしになりますが、
+	歴史的な経緯を抜きにしても、音（特に音楽）については、
+	Machine Learning 的に、結果が得られればいいじゃん、
+	という気分には、なかなかなり切れないので、
+	この分野では、古き良き匠の世界の肩を持ちたいと、今も思ってます。
+	同じ「音」でも、音声認識とかは、全然ブラックボックスでも
+	構わないのですが。</li>
+    </ul>
+  </li><!-- WaoN で Google Magenta に挑戦 -->
+
+</ul>
+
+<hr />
+
+</div><!-- end of body -->
+
+<table class="footer"
+ width="100%" border="0" cellspacing="0" cellpadding="0"
+ summary="footer">
+ <tr>
+  <td align="left">
+Copyright (C) 1997-2018, Kengo Ichiki
+<br />
+twitter: @<a href="http://twitter.com/ichiki_k">ichiki_k</a><br />
+facebook: <a href="http://www.facebook.com/kengo.ichiki">Kengo Ichiki</a>
+  </td>
+  <td align="right">
+<p>
+[<a href="index.html">日記一覧</a>]
+[<a href="../index-j.html">トップ</a>]
+</p>
+  </td>
+ </tr>
+</table>
+
+</body>
+</html>
