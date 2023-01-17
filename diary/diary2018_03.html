@@ -41,13 +41,13 @@ alt="日記 -" /> 2018年3月</h1>
     <ul>
       <li>ちょっと長いですが、
 	<blockquote>
-	  自分の書いたプログラムでグーグルに戦いを挑んで、
-	  かなり善戦したぜ
+	  自分の書いたプログラムとグーグルのプログラムを比べてみたら、
+	  ほぼ互角の勝負でした
 	</blockquote>
-	という内容です（かなりバイアスかかってます）。
-	結果は、次の３つのオーディオファイルを聞けば分かります。
+	という内容です--というのは私の主観です（かなりバイアスかかってます）。
+	次の３つのオーディオファイルを聞いて、みなさん判断してください。
 	オリジナルが左、真ん中が Google Magenta の結果、
-	右がぼくの書いた WaoN の結果です。<br />
+	右が私の書いた WaoN の結果です。<br />
 	<table border="1">
 	  <tr><th>オリジナル</th><th>magenta</th><th>WaoN</th></tr>
 	  <tr><td><!-- ground -->
@@ -64,13 +64,13 @@ alt="日記 -" /> 2018年3月</h1>
 	      </audio>
 	  </td></tr>
 	</table>
-	ということで、以下、本文です。
+	というのが内容のまとめです。以下、本文です。
       </li>
 
       <li>先日ツイッターで予告した通り(<a href="https://twitter.com/ichiki_k/status/965413383448100865">https://twitter.com/ichiki_k/status/965413383448100865</a>)、
 	Google Magenta チームが書いた Machine Learning による
 	オーディオから MIDI に変換する transcriber に対して、
-	ぼくが昔書いた <a href="http://kichiki.github.io/waon/index.html">WaoN</a> というプログラムで挑んでみよう、
+	私が昔書いた <a href="http://kichiki.github.io/waon/index.html">WaoN</a> というプログラムで挑んでみよう、
 	というはなしです。</li>
       <li>ことの発端は、以下のツイート (<a href="https://twitter.com/fjord41/status/963165268330536960">https://twitter.com/fjord41/status/963165268330536960</a>)
 	<pre>
@@ -79,10 +79,10 @@ Automatic piano music transcription (raw audio to MIDI) that works really well!
 
 6:37 AM - 13 Feb 2018
 	</pre>
-	ここに引用されてるブログ記事「<a href="https://magenta.tensorflow.org/onsets-frames">Onsets and Frames: Dual-Objective Piano Transcription</a>」読んでみると、彼らがご自慢の TensorFlow でやってることは、
+	ここに引用されてるブログ記事「<a href="https://magenta.tensorflow.org/onsets-frames">Onsets and Frames: Dual-Objective Piano Transcription</a>」を読んでみると、彼らが TensorFlow でやってることは、
 	オーディオファイルから MIDI ファイルを生成するという処理、
 	いわゆる採譜 (transcription) で、 <a href="http://kichiki.github.io/waon/index.html">WaoN</a> がやってることそのものでした。
-	これを見て、天下のグーグルさんがどれほどのものか知るいい機会だぜ、
+	これを見て、天下のグーグルさんがどれほどのものか知るいい機会だな、
 	と思ったわけです（この時は）。</li>
       <li>ということで、まずは <a href="https://magenta.tensorflow.org/onsets-frames">Magenta のブログ</a>にあったショパンとモーツァルトのサンプルを WaoN で試してみました。
 	手順は、まず上記記事からダウンロードした ground truth の mp3 ファイルを <a href="https://www.mars.org/home/rob/proj/mpeg/">madplay</a> で decode して、<a href="http://kichiki.github.io/waon/index.html">WaoN</a> に食わせてみました。 WaoN のオプションは default のままです。
@@ -142,12 +142,13 @@ Writing LAME Tag...done
 ReplayGain: -7.5dB
 	</pre>
       </li>
-      <li>結果は、以下のようになりました。
+      <li>結果は、以下のようになりました。比較として、上記記事にある
+	ground truth と magenta の結果も並べておきます。）
 	<ul>
 	  <li>ショパン： <a href="LOCAL/20180304-waon/chopin25-3-waon.mid">chopin25-3-waon.mid</a>
 	    <br />
 	    <table border="1">
-	      <tr><th>ground trugh</th><th>magenta</th><th>WaoN</th></tr>
+	      <tr><th>ground truth</th><th>magenta</th><th>WaoN</th></tr>
 	      <tr><td><!-- ground -->
 		  <audio controls>
 		    <source src="LOCAL/20180304-waon/chop25-3-ground.mp3" type="audio/mpeg" />
@@ -166,7 +167,7 @@ ReplayGain: -7.5dB
 	  <li>モーツァルト： <a href="LOCAL/20180304-waon/moz331-waon.mid">moz331-waon.mid</a>
 	    <br />
 	    <table border="1">
-	      <tr><th>ground trugh</th><th>magenta</th><th>WaoN</th></tr>
+	      <tr><th>ground truth</th><th>magenta</th><th>WaoN</th></tr>
 	      <tr><td><!-- ground -->
 		  <audio controls>
 		    <source src="LOCAL/20180304-waon/moz331-ground.mp3" type="audio/mpeg" />
@@ -183,27 +184,22 @@ ReplayGain: -7.5dB
 	    </table>
 	  </li>
 	  <li>善戦しているな、というのは作者のひいき目が入ってると思いますが、
-	    結果のできは明らかに Magenta の方がいいですね。
+	    結果の出来は明らかに Magenta の方がいいですね。
 	    まぁ、ブログには使っているものは、たくさんある結果の中から
 	    きれいなものだろうとは思いますが。</li>
 	</ul>
       </li>
       <li>ここでちゃぶ台をひっくり返しますが、
-	ぼくはショパンとかモーツァルトが transcribe できても
+	私はショパンとかモーツァルトが transcribe できても
 	何も嬉しくありません。
-	そもそも、ぼくがどうして WaoN を書いたのかというと、
+	そもそも、私がどうして WaoN を書いたのかというと、
 	譜面のない音楽の譜面が欲しい、という理由だったので、
 	当然です（負け惜しみですが…）。
-	ということで、ぼくが採譜したい音楽で競争することにします。
-	（今更）</li>
-      <li>そのためには、まず Magenta チームの transcriber
-	(github: <a href="https://github.com/tensorflow/magenta/tree/master/magenta/models/onsets_frames_transcription">Onsets and Frames: Dual-Objective Piano Transcription</a>) を手元に準備する必要があります。
-	いくつか方法が書かれてますが、今回は一番簡単な
-	<a href="https://colab.research.google.com/notebook#fileId=/v2/external/notebooks/magenta/onsets_frames_transcription/onsets_frames_transcription.ipynb">Colab Notebook</a> でサクッと inference のみで
-	使ってみることにしました。</li>
+	ということで、ここからは私が採譜したい音楽で競争することにします。</li>
+
       <li>課題となる音源は、youtube から好きなビデオをピックアップして、
 	そのオーディオを使うことにしましょう。
-	今回は、ぼくのお気に入りの、 Brad Mehldau がピアノソロで演奏した、
+	今回は私のお気に入りの、 Brad Mehldau がピアノソロで演奏した、
 	Stevie Wonder の名曲「Golden Lady」を使ってみました。<br />
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/Lpk86Ddsp7U?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </li>
@@ -224,9 +220,13 @@ ReplayGain: -7.5dB
       </li>
 
       <li>まずは Magenta のお手並みを拝見。
+	そのためには、まず Magenta チームの transcriber
+	(github: <a href="https://github.com/tensorflow/magenta/tree/master/magenta/models/onsets_frames_transcription">Onsets and Frames: Dual-Objective Piano Transcription</a>) を手元に準備する必要があります。
+	いくつか方法が書かれてますが、今回は inference だけでいいので、
+	一番簡単な
+	<a href="https://colab.research.google.com/notebook#fileId=/v2/external/notebooks/magenta/onsets_frames_transcription/onsets_frames_transcription.ipynb">Colab Notebook</a> を使ってみることにしました。
 	すでに学習済みのモデルに wav file を食わせるだけです。
-	google colab の
-	<a href="https://github.com/tensorflow/magenta/tree/master/magenta/models/onsets_frames_transcription">ノートブック</a> を順次実行していき、さっき作った素材ファイルをアップすると、
+	<a href="https://colab.research.google.com/notebook#fileId=/v2/external/notebooks/magenta/onsets_frames_transcription/onsets_frames_transcription.ipynb">ノートブック</a> を順次実行していき、さっき作った素材ファイルをアップすると、
 	こんな感じに解析が完了し、結果の midi file もダウンロードできました。
 	<br />
 	<a href="LOCAL/20180304-waon/Screen Shot 2018-03-03 at 11.56.52 PM.png"><!-- 1168x691 -->
@@ -244,8 +244,8 @@ ReplayGain: -7.5dB
 	<br />
 	結果を聞いてみた感じ、
 	低音は大きな音で（確信をもって）取っていますが、
-	ぼくの耳には音程がずれているように思える部分がいくつかありました。
-	（かなり粗探しモードになってます。）
+	私の耳には音程がずれているように思える部分がいくつかありました。
+	（かなり粗探しモードになってますね。）
       </li>
 
       <li>さて、我が <a href="http://kichiki.github.io/waon/index.html">WaoN</a> で同じ素材を midi に変換してみましょう。
@@ -273,7 +273,7 @@ filename : brad-1min.waon.mid
 	</audio>
 	<br />
 	聞いてみて分かるように、メインのメロディーは取れてるけど、
-	伴奏が取れてない感じです。ということで、
+	伴奏が取れてない感じです。あと低音が弱い。ということで、
 	ちょっと低音域を伸ばして(-n 4096)、
 	でも時間分解能は同じくらいで(-s 512)、
 	もうちょっと小さい音まで拾うように(-c -6)、
@@ -309,24 +309,30 @@ filename : brad-1min.waon_n4096_s512_cm6_r1.mid
 	WaoN は繊細に弾いてるように聞こえますね。
 	WaoN は倍音など雑音をかなり拾っているのに対し、
 	Magenta は音の選択を、これも確信を持って行ってるように感じました。
-	作者のひいき目を最大限行使して、今回の勝負は引き分け、
-	ということにしておきます（クラシックは負けたけど、ジャズは勝った、ということで）。</li>
-      <li>こうやって Machine Learning のアルゴリズムと対決してみると、
-	なんだか、画像処理における
+	transcriber とは凡人の耳では捉えきれない和音を見つける
+	手助けとなるプログラムである、という
+	WaoN 作者のひいき目を最大限行使して、
+	淡い音も可能性として切り捨てずに残している WaoN の繊細さを評価して、
+	今回の勝負は引き分け、ということにしておきましょう
+	（クラシックは負けたけど、ジャズは勝った、ということで）。</li>
+      <li>こうやって、伝統的なアルゴリズムのプログラミングと
+	Machine Learning で対決していると、なんだか、画像処理における
 	Computer Vision 対 Machine Learning の状況が頭をよぎります。
-	画像処理については、ぼくも仕事で少し手を出してますが、ぼく自身、
+	画像処理については仕事で少し手を出してますが、私自身は、
 	古き良き匠の技的な Computer Vision のアプローチには見切りをつけて
 	（技能習得を諦めて、が正しいかな）、
 	Machine Learning の側に立っていると思っていますが、
-	今回は、まったく逆の立場に立たされた訳で、
-	その意味でもとても面白かったです。
-	個人的なはなしになりますが、
-	歴史的な経緯を抜きにしても、音（特に音楽）については、
-	Machine Learning 的に、結果が得られればいいじゃん、
-	という気分には、なかなかなり切れないので、
-	この分野では、古き良き匠の世界の肩を持ちたいと、今も思ってます。
+	今回は、まったく逆の立場に立たされた訳で、とても面白かったです。
+	個人的な考え方のはなしになりますが、
+	音（特に音楽）については Machine Learning 的に
+	「結果が得られればなんでもいい」という気分には、
+	なかなかなり切れませんね。どうしても、
+	古き良き匠の世界の肩を持ちたいと思ってしまいます。
 	同じ「音」でも、音声認識とかは、全然ブラックボックスでも
 	構わないのですが。</li>
+
+      <li>付記： Qiita に投稿した。<br />
+	<a href="https://qiita.com/kichiki/items/0325aa2e8b70416f6597">グーグルMagentaの採譜プログラムと自分のプログラムを比べたら互角の勝負だったという話</a></li>
     </ul>
   </li><!-- WaoN で Google Magenta に挑戦 -->
 
